@@ -1,0 +1,20 @@
+{
+    "name": "groupchat",
+    "private": true,
+    "workspaces": [
+        "website",
+        "server"
+    ],
+    "scripts": {
+        "dev": "concurrently -n \"web,srv\" -c \"cyan,magenta\" \"bun run --filter website dev\" \"bun run --filter server dev\"",
+        "dev:web": "bun run --filter website dev",
+        "dev:srv": "bun run --filter server dev",
+        "build": "bun run --filter '*' build",
+        "start": "concurrently -n \"web,srv\" -c \"cyan,magenta\" \"bun run --filter website serve\" \"bun run --filter server start\""
+    },
+    "devDependencies": {
+        "concurrently": "^9.2.1",
+        "tsx": "^4.21.0",
+        "typescript": "^5.7.2"
+    }
+}

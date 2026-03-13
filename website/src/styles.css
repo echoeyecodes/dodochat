@@ -1,0 +1,256 @@
+@import 'tailwindcss';
+/* Scan Streamdown dist files so Tailwind generates CSS for their internal classes */
+@source "../node_modules/streamdown/dist/*.js";
+@source "../node_modules/@streamdown/code/dist/*.js";
+@plugin '@tailwindcss/typography';
+@plugin 'tailwindcss-animate';
+
+/* ─── Design Tokens ─── */
+:root {
+  /* Typography */
+  --font-body: var(--font-geist), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), 'SF Mono', 'Fira Code', monospace;
+
+  /* Colors — warm neutral palette */
+  --color-bg: #FAFAF8;
+  --color-bg-elevated: #FFFFFF;
+  --color-bg-subtle: #F5F4F0;
+  --color-bg-muted: #EEEEE8;
+
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #6B6B6B;
+  --color-text-tertiary: #999999;
+  --color-text-quaternary: #BFBFBF;
+
+  --color-border: #E8E8E3;
+  --color-border-subtle: #F0F0EB;
+
+  --color-accent: #E8590C;
+  --color-accent-hover: #D14D08;
+  --color-accent-subtle: rgba(232, 89, 12, 0.08);
+
+  /* Semantic - Refined */
+  --color-success: #2B593F;
+  /* Deep Forest Sage */
+  --color-success-bg: #F2F7F4;
+  --color-error: #9B2C2C;
+  /* Muted Crimson */
+  --color-error-bg: #FDF2F2;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+  --space-5xl: 128px;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+
+  /* Shadows */
+  --shadow-editorial: 0 12px 40px -12px rgba(26, 26, 26, 0.12), 0 8px 16px -8px rgba(26, 26, 26, 0.08);
+
+  /* Shadcn-compatible variables for Streamdown */
+  --background: 45 33% 98%;
+  --foreground: 0 0% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 10%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 10%;
+  --primary: 21 82% 48%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 45 15% 91%;
+  --secondary-foreground: 0 0% 10%;
+  --muted: 45 15% 93%;
+  --muted-foreground: 0 0% 42%;
+  --accent: 45 15% 91%;
+  --accent-foreground: 0 0% 10%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 45 15% 91%;
+  --input: 45 15% 91%;
+  --ring: 21 82% 48%;
+}
+
+/* ─── Base ─── */
+@layer base {
+
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(232, 89, 12, 0.25);
+  }
+}
+
+/* ─── Grain Overlay ─── */
+.grain::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px;
+}
+
+/* ─── Layout divider ─── */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      var(--color-border) 20%,
+      var(--color-border) 80%,
+      transparent 100%);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+button {
+  cursor: pointer;
+}
+
+
+[data-streamdown="code-block"] {
+  margin: 1.5rem 0 !important;
+  border: 1px solid #2e2e2b !important;
+  border-radius: var(--radius-lg) !important;
+  background-color: #1a1a18 !important;
+  box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.4) !important;
+  overflow: hidden !important;
+  gap: 0 !important;
+  padding: 0 !important;
+}
+
+[data-streamdown="code-block-header"] {
+  background-color: #242421 !important;
+  border-bottom: 1px solid #2e2e2b !important;
+  padding: 0.5rem 1rem !important;
+  height: auto !important;
+}
+
+[data-streamdown="code-block-header"] span {
+  font-family: var(--font-mono) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  color: #8c8c85 !important;
+  margin-left: 0 !important;
+}
+
+[data-streamdown="code-block-body"] {
+  padding: 1rem 0 !important;
+  background-color: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+[data-streamdown="code-block-body"] pre {
+  background-color: transparent !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+[data-streamdown="code-block-body"] code {
+  font-family: var(--font-mono) !important;
+  font-size: 13px !important;
+  line-height: 1.7 !important;
+  color: #e2e2e0 !important;
+}
+
+/* Line styles */
+[data-streamdown="code-block-body"] span.block {
+  padding: 0 1.25rem !important;
+}
+
+[data-streamdown="code-block-body"] span.block::before {
+  color: #4a4a45 !important;
+  font-size: 11px !important;
+  width: 2rem !important;
+  margin-right: 1.25rem !important;
+  opacity: 1 !important;
+}
+
+/* Actions area */
+[data-streamdown="code-block-actions"] {
+  background-color: #2a2a27 !important;
+  border: 1px solid #3e3e3a !important;
+  padding: 4px !important;
+  border-radius: var(--radius-md) !important;
+  margin-right: 0.5rem !important;
+}
+
+[data-streamdown="code-block-actions"] button {
+  padding: 4px !important;
+  border-radius: var(--radius-sm) !important;
+  color: #8c8c85 !important;
+  transition: all var(--duration-fast) var(--ease-out) !important;
+}
+
+[data-streamdown="code-block-actions"] button:hover {
+  background-color: #3e3e3a !important;
+  color: #e2e2e0 !important;
+}
+
+/* Token Colors - Optimized for Dark Warm Background */
+.token.comment { color: #63635e !important; }
+.token.punctuation { color: #8c8c85 !important; }
+.token.string { color: #fdba74 !important; } /* Soft Warm Orange */
+.token.number { color: #c084fc !important; } /* Soft Purple */
+.token.keyword { color: #7dd3fc !important; } /* Cyan/Blue */
+.token.function { color: #86efac !important; } /* Mint Green */
+.token.operator { color: #a1a19a !important; }
+.token.class-name { color: #fde047 !important; }
+.token.regex { color: #fda4af !important; }
+.token.variable { color: #e2e2e0 !important; }
+.token.constant { color: #fb7185 !important; }

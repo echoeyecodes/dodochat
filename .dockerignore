@@ -1,0 +1,11 @@
+node_modules
+server/node_modules
+website/node_modules
+server/dist
+website/dist
+website/.output
+website/.vinxi
+website/.vite
+.env
+.DS_Store
+uploads
