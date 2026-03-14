@@ -1,9 +1,9 @@
 import { Conversation } from '../models/Conversation';
 import { getTextFromParts } from './getTextFromParts';
 
-export const listConversations = async () => {
+export const listConversations = async ({ user_id }: { user_id: string }) => {
     const conversations = await Conversation.find(
-        {},
+        { user_id },
         {
             title: 1,
             created_at: 1,

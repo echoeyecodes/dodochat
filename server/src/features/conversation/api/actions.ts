@@ -1,4 +1,5 @@
 import type { Request, Response, NextFunction } from 'express';
+import type { AuthRequest } from '../../common/types/request';
 import { streamText, convertToModelMessages, embed, stepCountIs } from 'ai';
 import { google } from '@ai-sdk/google';
 import crypto from 'node:crypto';
@@ -13,9 +14,10 @@ import storageService from '../../../lib/storage';
 import { allTools } from '../tools';
 
 
-const listConversations = async (_req: Request, res: Response, next: NextFunction) => {
+const listConversations = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const conversations = await conversationRepository.listConversations();
+        const authReq = req as AuthRequest;
+        const conversations = await conversationRepository.listConversations({ user_id: authReq.user_id! });
         return sendResponse({ res, status: HTTP_STATUS_CODES.OK })(conversations);
     } catch (error) {
         return next(error);
@@ -24,16 +26,18 @@ const listConversations = async (_req: Request, res: Response, next: NextFunctio
 
 const getConversation = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const conversation = await conversationRepository.getConversationById(req.params.id as string);
+        const authReq = req as AuthRequest;
+        const conversation = await conversationRepository.getConversationById({ user_id: authReq.user_id!, id: req.params.id as string });
         return sendResponse({ res, status: HTTP_STATUS_CODES.OK })(conversation);
     } catch (error) {
         return next(error);
     }
 };
 
-const createConversation = async (_req: Request, res: Response, next: NextFunction) => {
+const createConversation = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const conversation = await conversationRepository.createConversation();
+        const authReq = req as AuthRequest;
+        const conversation = await conversationRepository.createConversation({ user_id: authReq.user_id! });
         return sendResponse({ res, status: HTTP_STATUS_CODES.CREATED })(conversation);
     } catch (error) {
         return next(error);
@@ -42,7 +46,8 @@ const createConversation = async (_req: Request, res: Response, next: NextFuncti
 
 const deleteConversation = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        await conversationRepository.deleteConversation(req.params.id as string);
+        const authReq = req as AuthRequest;
+        await conversationRepository.deleteConversation({ user_id: authReq.user_id!, id: req.params.id as string });
         return sendResponse({ res, status: HTTP_STATUS_CODES.OK })({ message: 'Conversation removed' });
     } catch (error) {
         return next(error);
@@ -51,9 +56,10 @@ const deleteConversation = async (req: Request, res: Response, next: NextFunctio
 
 const updateConversation = async (req: Request, res: Response, next: NextFunction) => {
     try {
+        const authReq = req as AuthRequest;
         const id = req.params.id as string;
         const updateData = req.body as UpdateConversationInput;
-        const conversation = await conversationRepository.updateConversation(id, updateData);
+        const conversation = await conversationRepository.updateConversation({ user_id: authReq.user_id!, id, updateData });
         return sendResponse({ res, status: HTTP_STATUS_CODES.OK })(conversation);
     } catch (error) {
         return next(error);
@@ -61,10 +67,11 @@ const updateConversation = async (req: Request, res: Response, next: NextFunctio
 };
 
 const chat = async (req: Request, res: Response, next: NextFunction) => {
+    const authReq = req as AuthRequest;
     const { messages, conversationId } = req.body as ChatInput;
 
     try {
-        const conversation = await conversationRepository.findOrCreateConversation(conversationId);
+        const conversation = await conversationRepository.findOrCreateConversation({ user_id: authReq.user_id!, conversationId });
 
         const newUserMessages = messages
             .filter(
@@ -253,8 +260,9 @@ const chat = async (req: Request, res: Response, next: NextFunction) => {
 
 const searchConversations = async (req: Request, res: Response, next: NextFunction) => {
     try {
+        const authReq = req as AuthRequest;
         const query = req.query.q as string;
-        const conversations = await conversationRepository.searchConversations(query);
+        const conversations = await conversationRepository.searchConversations({ user_id: authReq.user_id!, query });
         return sendResponse({ res, status: HTTP_STATUS_CODES.OK })(conversations);
     } catch (error) {
         return next(error);
@@ -263,7 +271,11 @@ const searchConversations = async (req: Request, res: Response, next: NextFuncti
 
 const getConversationFiles = async (req: Request, res: Response, next: NextFunction) => {
     try {
+        const authReq = req as AuthRequest;
         const id = req.params.id as string;
+
+        await conversationRepository.getConversationById({ user_id: authReq.user_id!, id });
+
         const files = await mediaRepository.getFilesByConversationId(id);
         return sendResponse({ res, status: HTTP_STATUS_CODES.OK })(files.map(mapFileToResponse));
     } catch (error) {

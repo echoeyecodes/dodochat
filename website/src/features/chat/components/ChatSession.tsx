@@ -36,6 +36,7 @@ export const ChatSession = ({ conversationId, initialMessages = [], children }: 
         () => new DefaultChatTransport({
             api: `${envConfig.get("BASE_API_URL")}/api/conversations/chat`,
             body: activeId ? { conversationId: activeId } : undefined,
+            credentials: 'include'
         }),
         [activeId]
     );

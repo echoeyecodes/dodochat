@@ -1,11 +1,11 @@
 import { Conversation } from '../models/Conversation';
 import { getTextFromParts } from './getTextFromParts';
 
-export const searchConversations = async (query: string) => {
+export const searchConversations = async ({ user_id, query }: { user_id: string; query: string }) => {
     if (!query) return [];
 
     const conversations = await Conversation.find(
-        { $text: { $search: query } },
+        { user_id, $text: { $search: query } },
         {
             score: { $meta: 'textScore' },
             title: 1,

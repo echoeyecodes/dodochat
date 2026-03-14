@@ -1,8 +1,8 @@
 import { Conversation } from '../models/Conversation';
 import { conversationNotFoundError } from '../constants/errors';
 
-export const getConversationById = async (id: string) => {
-    const conversation = await Conversation.findById(id).lean();
+export const getConversationById = async ({ user_id, id }: { user_id: string; id: string }) => {
+    const conversation = await Conversation.findOne({ _id: id, user_id }).lean();
     if (!conversation) throw conversationNotFoundError();
 
     return {

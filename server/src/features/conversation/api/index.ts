@@ -13,6 +13,6 @@ router.get('/:id/files', isAuthenticated, validate(GetConversationSchema), conve
 router.post('/', isAuthenticated, conversationActions.createConversation);
 router.patch('/:id', isAuthenticated, validate(UpdateConversationSchema), conversationActions.updateConversation);
 router.delete('/:id', isAuthenticated, validate(DeleteConversationSchema), conversationActions.deleteConversation);
-router.post('/chat', validate(ChatSchema), conversationActions.chat);
+router.post('/chat', isAuthenticated, validate(ChatSchema), conversationActions.chat);
 
 export default router;

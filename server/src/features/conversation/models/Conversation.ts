@@ -2,6 +2,7 @@ import mongoose, { Schema, Document } from 'mongoose';
 import type { MessagePart, Message } from '../types/index';
 
 export type ConversationDoc = {
+    user_id: string;
     title: string;
     messages: Message[];
     created_at: Date;
@@ -28,6 +29,7 @@ const messageSchema = new Schema<Message>(
 
 const conversationSchema = new Schema(
     {
+        user_id: { type: Schema.Types.ObjectId, ref: 'User', required: true, index: true },
         title: { type: String, default: 'New Chat' },
         messages: [messageSchema],
     },
