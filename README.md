@@ -42,18 +42,27 @@ bun install
 
 ### 2. Environment Setup
 
-Go into the `server` directory and set up your `.env`:
+You'll need to set up environment variables for both the `server` and the `website`.
 
+#### Server (`server/.env`)
 ```bash
 cd server
 cp .env.sample .env
 ```
+Key requirements:
+- `GOOGLE_GENERATIVE_AI_API_KEY`: Get one from [Google AI Studio](https://aistudio.google.com/).
+- `MONGODB_URI`: Your MongoDB connection string.
+- **Firebase Admin**: Used for server-side auth verification. You'll need `FIREBASE_PROJECT_ID`, `FIREBASE_CLIENT_EMAIL`, and `FIREBASE_PRIVATE_KEY`. **Note**: The private key must be base64 encoded to avoid multiline issues in environment variables.
+- `IGDB_CLIENT_ID` & `IGDB_CLIENT_SECRET`: Optional, for gaming data features.
 
-You'll need a few keys:
-- `GOOGLE_GENERATIVE_AI_API_KEY`: Get one from Google AI Studio.
-- `MONGODB_URI`: Your Mongo connection string.
-- `IGDB_CLIENT_ID` & `IGDB_CLIENT_SECRET`: For gaming data features.
-- See `.env.sample` for the full list (Firebase, Storage, etc.).
+#### Website (`website/.env`)
+```bash
+cd website
+cp .env.sample .env
+```
+Key requirements:
+- **Firebase Config**: Standard Firebase web configuration (`FIREBASE_API_KEY`, `FIREBASE_AUTH_DOMAIN`, etc.) to handle client-side authentication.
+- `BASE_API_URL`: Should point to your running server (default: `http://localhost:3001`).
 
 ### 3. Run it
 
