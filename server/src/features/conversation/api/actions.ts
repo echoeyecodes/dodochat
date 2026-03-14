@@ -14,6 +14,7 @@ import type { Message } from '../types/index';
 import storageService from '../../../lib/storage';
 import { allTools } from '../tools';
 import { userSettingsCache } from '../../user/helpers/user-settings-cache';
+import { safeDecryptGeminiKey } from '../../user/helpers/safe-decrypt';
 import envConfig from '@/lib/env';
 
 
@@ -77,8 +78,12 @@ const chat = async (req: Request, res: Response, next: NextFunction) => {
         const user = await userSettingsCache.getSettings(authReq.user_id!);
         const useUserKey = user?.settings?.should_use_own_gemini_key && user?.gemini_api_key;
 
+        const apiKey = useUserKey
+            ? safeDecryptGeminiKey(user.gemini_api_key!)
+            : envConfig.get('GOOGLE_GENERATIVE_AI_API_KEY');
+
         const googleProvider = createGoogleGenerativeAI({
-            apiKey: useUserKey ? user.gemini_api_key : envConfig.get('GOOGLE_GENERATIVE_AI_API_KEY'),
+            apiKey: apiKey!,
         });
 
         const conversation = await conversationRepository.findOrCreateConversation({ user_id: authReq.user_id!, conversationId });
