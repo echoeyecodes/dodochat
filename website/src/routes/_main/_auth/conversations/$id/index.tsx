@@ -36,7 +36,6 @@ export const Route = createFileRoute('/_main/_auth/conversations/$id/')({
 
 function ConversationRoute() {
     const conversation = Route.useLoaderData()
-
     return (
         <ChatSession
             key={conversation._id}

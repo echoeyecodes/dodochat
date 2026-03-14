@@ -7,6 +7,7 @@ export type FileResponse = {
     type: string;
     size: number;
     url: string;
+    metadata?: Record<string, string | number>;
     created_at: Date;
 };
 
@@ -15,6 +16,7 @@ export const mapFileToResponse = (file: FileDoc): FileResponse => ({
     name: file.name,
     type: file.type,
     size: file.size,
-    url: withCDN(file.path.replace(/\\/g, '/')),
+    url: file.path.replace(/\\/g, '/'),
+    metadata: file.metadata,
     created_at: file.created_at,
 });

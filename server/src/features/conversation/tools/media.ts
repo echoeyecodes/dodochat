@@ -1,15 +1,18 @@
 import { tool } from 'ai';
 import { z } from 'zod';
-import fs from 'node:fs/promises';
+import storageService from '@/lib/storage';
+import { withCDN } from '@/features/common/helpers';
 import sharp from 'sharp';
 import { mediaRepository } from '../../media/repository';
 
 export const mediaTools = {
     applyImageEffect: tool({
-        description: 'Apply an effect to an uploaded user image (grayscale, rotate, flip, tint). ONLY works for files the user has uploaded to this chat, NOT for IGDB images.',
+        description: 'Apply an effect to an image (grayscale, rotate, flip, tint). Works for both uploaded chat files (using fileId) and external images like IGDB covers (using imageUrl).',
         inputSchema: z.object({
-            fileId: z.string().describe('The MongoDB ObjectId of the uploaded image file.'),
-            effect: z.enum(['grayscale', 'rotate_90', 'rotate_180', 'rotate_270', 'flip', 'tint_blue', 'tint_red', 'tint_green']).describe('The effect to apply to the image.')
+            fileId: z.string().optional().describe('The MongoDB ObjectId of the uploaded image file.'),
+            imageUrl: z.string().optional().describe('The absolute URL of an external image (e.g. from IGDB).'),
+            effect: z.enum(['grayscale', 'rotate_90', 'rotate_180', 'rotate_270', 'flip', 'tint_blue', 'tint_red', 'tint_green']).describe('The effect to apply to the image.'),
+            conversationId: z.string().describe('The current conversation ID to associate the processed image with.')
         }),
         outputSchema: z.object({
             success: z.boolean(),
@@ -18,19 +21,36 @@ export const mediaTools = {
             new_file_url: z.string(),
             message: z.string()
         }),
-        execute: async ({ fileId, effect }) => {
-            // Validate if fileId is a valid MongoDB ObjectId (24 chars hex)
-            if (!/^[0-9a-fA-F]{24}$/.test(fileId)) {
-                throw new Error(`Invalid fileId: "${fileId}". This tool only accepts 24-character hex MongoDB ObjectIds from the uploaded files list. IGDB numeric IDs are not supported.`);
-            }
-
+        execute: async ({ fileId, imageUrl, effect, conversationId }) => {
             try {
-                const fileRecord = await mediaRepository.getFileById(fileId);
-                if (!fileRecord || !fileRecord.type.startsWith('image/')) {
-                    throw new Error('File not found or is not an image');
+                let inputBuffer: Buffer;
+                let originalName: string;
+                let contentType: string;
+
+                if (fileId) {
+                    // Validate if fileId is a valid MongoDB ObjectId (24 chars hex)
+                    if (!/^[0-9a-fA-F]{24}$/.test(fileId)) {
+                        throw new Error(`Invalid fileId: "${fileId}". This tool only accepts 24-character hex MongoDB ObjectIds from the uploaded files list.`);
+                    }
+                    const fileRecord = await mediaRepository.getFileById(fileId);
+                    if (!fileRecord || !fileRecord.type.startsWith('image/')) {
+                        throw new Error('File not found or is not an image');
+                    }
+                    inputBuffer = await storageService.get(fileRecord.path);
+                    originalName = fileRecord.name;
+                    contentType = fileRecord.type;
+                } else if (imageUrl) {
+                    const response = await fetch(imageUrl);
+                    if (!response.ok) throw new Error(`Failed to fetch image from URL: ${imageUrl}`);
+                    const arrayBuffer = await response.arrayBuffer();
+                    inputBuffer = Buffer.from(arrayBuffer);
+                    const urlPath = new URL(imageUrl).pathname;
+                    originalName = urlPath.split('/').pop() || 'external-image.jpg';
+                    contentType = response.headers.get('content-type') || 'image/jpeg';
+                } else {
+                    throw new Error('Either fileId or imageUrl must be provided');
                 }
 
-                const inputBuffer = await fs.readFile(fileRecord.path);
                 let transformer = sharp(inputBuffer);
 
                 switch (effect) {
@@ -46,25 +66,30 @@ export const mediaTools = {
 
                 const outputBuffer = await transformer.toBuffer();
 
-                const filename = `processed-${Date.now()}-${fileRecord.name}`;
-                const newPath = `uploads/${filename}`;
-                await fs.writeFile(newPath, outputBuffer);
+                const filename = `processed-${Date.now()}-${originalName}`;
+                const newKey = `uploads/${filename}`;
+
+                await storageService.upload({
+                    key: newKey,
+                    body: outputBuffer,
+                    contentType: contentType,
+                });
 
                 const newFile = await mediaRepository.createFile({
                     name: filename,
-                    type: fileRecord.type,
+                    type: contentType,
                     size: outputBuffer.length,
-                    path: newPath,
-                    conversation_id: fileRecord.conversation_id,
+                    path: newKey,
+                    conversation_id: conversationId as any,
                     chunks: []
                 });
 
                 return {
                     success: true,
-                    original_name: fileRecord.name,
+                    original_name: originalName,
                     new_file_id: newFile._id.toString(),
-                    new_file_url: `/uploads/${filename}`,
-                    message: `Applied ${effect} to ${fileRecord.name}`
+                    new_file_url: newKey,
+                    message: `Applied ${effect} to ${originalName}`
                 };
             } catch (error: any) {
                 console.error('Image processing failed:', error);

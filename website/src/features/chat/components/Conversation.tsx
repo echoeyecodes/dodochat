@@ -449,16 +449,18 @@ export const Conversation = ({ title }: ConversationProps) => {
                                         name={part.file.name}
                                         url={withCDN(part.file.url)}
                                         isMe={isMe}
+                                        duration={part.file.metadata?.duration}
                                       />
                                     );
                                   }
 
                                   return (
-                                    <FileAttachment
-                                      key={partIdx}
-                                      name={part.file.name}
-                                      isMe={isMe}
-                                    />
+                                     <FileAttachment
+                                       key={partIdx}
+                                       name={part.file.name}
+                                       size={part.file.size}
+                                       isMe={isMe}
+                                     />
                                   );
                                 }
                                 if (part.type === 'reasoning') {

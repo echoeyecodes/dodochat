@@ -1,12 +1,13 @@
-import { cn } from '@/lib/utils';
+import { cn, formatFileSize } from '@/lib/utils';
 
 type FileAttachmentProps = {
     name: string;
+    size?: number;
     isMe: boolean;
     className?: string;
 }
 
-export const FileAttachment = ({ name, isMe, className }: FileAttachmentProps) => {
+export const FileAttachment = ({ name, size, isMe, className }: FileAttachmentProps) => {
     return (
         <div
             className={cn(
@@ -37,7 +38,7 @@ export const FileAttachment = ({ name, isMe, className }: FileAttachmentProps) =
                     "text-[10px] opacity-60 font-medium uppercase tracking-tight",
                     isMe ? "text-white/80" : "text-(--color-text-tertiary)"
                 )}>
-                    Document
+                    {size ? `${formatFileSize(size)} • ` : ''}Document
                 </span>
             </div>
         </div>

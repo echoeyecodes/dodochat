@@ -9,7 +9,7 @@ import { sendResponse } from '../../common/helpers';
 import { HTTP_STATUS_CODES } from '../../common/constants/http-status-codes';
 import type { ChatInput, UpdateConversationInput } from './req-schema';
 import type { Message } from '../types/index';
-import fs from 'node:fs/promises';
+import storageService from '../../../lib/storage';
 import { allTools } from '../tools';
 
 
@@ -99,7 +99,7 @@ const chat = async (req: Request, res: Response, next: NextFunction) => {
                     // Handle images and audio for direct model processing
                     if (fileRecord && (fileRecord.type.startsWith('image/') || fileRecord.type.startsWith('audio/'))) {
                         try {
-                            const buffer = await fs.readFile(fileRecord.path);
+                            const buffer = await storageService.get(fileRecord.path);
                             collectedMedia.push({
                                 msgIdx,
                                 buffer,
@@ -107,7 +107,7 @@ const chat = async (req: Request, res: Response, next: NextFunction) => {
                                 type: fileRecord.type.startsWith('image/') ? 'image' : 'file'
                             });
                         } catch (err) {
-                            console.error('Failed to read media file:', err);
+                            console.error('Failed to read media file from storage:', err);
                         }
                         return null;
                     }
@@ -158,11 +158,15 @@ const chat = async (req: Request, res: Response, next: NextFunction) => {
 
         const systemPrompt = [
             "You are an advanced software engineer participating in a group chat about design and development, and you also have access to the IGDB database to answer questions about video games. Be concise and conversational.",
+            `The current conversation ID is ${conversation._id}. You MUST provide this ID to tools that require it (like applyImageEffect).`,
             "IMPORTANT: Use the provided tools (like getSystemInfo) ONLY if the user explicitly asks for system metrics, uptime, or process information.",
             "Gaming Images: IGDB images use hashes. The pattern is https://images.igdb.com/igdb/image/upload/t_{size}/{hash}.jpg. Common sizes: t_cover_big, t_screenshot_huge, t_720p, t_1080p. Append _2x for high-DPI (e.g. t_720p_2x).",
             "CRITICAL: To display IGDB images in the chat, you MUST use Markdown image syntax: ![description](https://url). Always ensure you prepend 'https:' to IGDB image URLs if they start with '//'.",
-            "Gaming Tools: If the user asks about a game, search for it first, then get more details if needed. Prefer showing release dates, ratings, and platforms. Note: You CANNOT apply image effects to game covers or artworks from IGDB.",
-            "You can also process images using the applyImageEffect tool for locally uploaded files. If a user asks to modify an uploaded image (e.g. 'make it black and white', 'rotate it'), find the image ID in the list of uploaded files below and call the tool.",
+            "Gaming Tools: If the user asks about a game, search for it first, then get more details if needed. Prefer showing release dates, ratings, and platforms.",
+            "Image Processing: You can process BOTH uploaded files and external images (like IGDB covers).",
+            "- For uploaded files: Use the fileId from the list below.",
+            "- For IGDB/External images: Use the imageUrl from the game details.",
+            "- You MUST always provide the current conversationId to the applyImageEffect tool.",
             fileListStr ? `The user has uploaded the following files: ${fileListStr}.` : "",
             context ? `Use the following relevant context from these files to inform your response:\n${context}` : (fileListStr ? "The user is asking about the documents, but no specific relevant content was found via vector search. Acknowledge the files exist and ask for more specific questions if needed." : "")
         ].filter(Boolean).join('\n\n');

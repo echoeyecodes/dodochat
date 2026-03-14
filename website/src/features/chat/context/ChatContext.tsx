@@ -47,6 +47,11 @@ export type FilePart = {
         name: string;
         url: string;
         id: string;
+        size?: number;
+        metadata?: {
+            duration?: number;
+            [key: string]: any;
+        };
     };
 };
 

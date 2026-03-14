@@ -1,13 +1,16 @@
-import { cn } from '@/lib/utils';
+import { withCDN } from '@/features/common/helpers';
+import { cn, formatDuration } from '@/lib/utils';
 
 type AudioAttachmentProps = {
     name: string;
     url: string;
     isMe: boolean;
+    duration?: number;
     className?: string;
 }
 
-export const AudioAttachment = ({ name, url, isMe, className }: AudioAttachmentProps) => {
+export const AudioAttachment = ({ name, url, isMe, duration, className }: AudioAttachmentProps) => {
+    console.log(withCDN(url))
     return (
         <div
             className={cn(
@@ -41,12 +44,12 @@ export const AudioAttachment = ({ name, url, isMe, className }: AudioAttachmentP
                         "text-[10px] opacity-70 font-medium uppercase tracking-tight",
                         isMe ? "text-white/80" : "text-(--color-text-tertiary)"
                     )}>
-                        Audio Attachment
+                        Audio Attachment {duration ? `• ${formatDuration(duration)}` : ''}
                     </span>
                 </div>
             </div>
             <audio
-                src={url}
+                src={withCDN(url)}
                 controls
                 className={cn(
                     "w-full h-8 brightness-90 contrast-125",

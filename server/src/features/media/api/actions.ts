@@ -1,12 +1,13 @@
 import type { Request, Response, NextFunction } from 'express';
 import { embedMany } from 'ai';
 import { google } from '@ai-sdk/google';
-import fs from 'node:fs/promises';
+import storageService from '@/lib/storage';
 import pdfParse from 'pdf-parse-new';
 import { mediaRepository } from '../repository/index';
 import { sendResponse } from '../../common/helpers';
 import { HTTP_STATUS_CODES } from '../../common/constants/http-status-codes';
 import { mapFileToResponse } from '../types/index';
+import { parseBuffer } from 'music-metadata';
 
 const chunkText = (text: string, chunkSize = 1000, chunkOverlap = 200): string[] => {
     const chunks: string[] = [];
@@ -17,7 +18,7 @@ const chunkText = (text: string, chunkSize = 1000, chunkOverlap = 200): string[]
 
         if (end < text.length) {
             const searchWindow = text.substring(start, end + chunkOverlap);
-            
+
             const searchRangeStart = chunkSize - chunkOverlap;
             const searchRangeEnd = Math.min(chunkSize + chunkOverlap, searchWindow.length);
             const range = searchWindow.substring(searchRangeStart, searchRangeEnd);
@@ -39,7 +40,7 @@ const chunkText = (text: string, chunkSize = 1000, chunkOverlap = 200): string[]
         if (chunk) chunks.push(chunk);
 
         const nextStart = end - chunkOverlap;
-        
+
         start = (nextStart <= start) ? end : nextStart;
     }
 
@@ -62,14 +63,15 @@ const uploadFile = async (req: Request, res: Response, next: NextFunction) => {
         let fileChunks: any[] = [];
         const isText = file.mimetype === 'text/plain' || file.originalname.endsWith('.txt');
         const isPdf = file.mimetype === 'application/pdf' || file.originalname.endsWith('.pdf');
+        const isAudio = file.mimetype.startsWith('audio/');
 
         let extractedText = '';
+        const buffer = file.buffer;
 
         if (isText) {
-            extractedText = await fs.readFile(file.path, 'utf-8');
+            extractedText = buffer.toString('utf-8');
         } else if (isPdf) {
-            const pdfBuffer = await fs.readFile(file.path);
-            const data = await pdfParse(pdfBuffer);
+            const data = await pdfParse(buffer);
             extractedText = data.text;
         }
 
@@ -87,11 +89,32 @@ const uploadFile = async (req: Request, res: Response, next: NextFunction) => {
             }));
         }
 
+        let metadata: Record<string, string | number> = {};
+        if (isAudio) {
+            try {
+                const audioMetadata = await parseBuffer(buffer, file.mimetype);
+                if (audioMetadata.format.duration) {
+                    metadata.duration = audioMetadata.format.duration;
+                }
+            } catch (err) {
+                console.error('Failed to parse audio metadata:', err);
+            }
+        }
+
+        const key = `uploads/${Date.now()}-${file.originalname}`;
+
+        await storageService.upload({
+            key,
+            body: buffer,
+            contentType: file.mimetype,
+        });
+
         const newFile = await mediaRepository.createFile({
             name: file.originalname,
             type: file.mimetype,
             size: file.size,
-            path: file.path,
+            path: key,
+            metadata,
             conversation_id: conversation_id as any,
             chunks: fileChunks,
         });

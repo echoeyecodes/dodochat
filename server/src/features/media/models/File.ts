@@ -10,6 +10,7 @@ export type FileDoc = {
     type: string;
     size: number;
     path: string;
+    metadata?: Record<string, string | number>;
     conversation_id: mongoose.Types.ObjectId;
     chunks: FileChunk[];
     created_at: Date;
@@ -29,6 +30,7 @@ const fileSchema = new Schema(
         type: { type: String, required: true },
         size: { type: Number, required: true },
         path: { type: String, required: true },
+        metadata: { type: Schema.Types.Mixed },
         conversation_id: { type: Schema.Types.ObjectId, ref: 'Conversation', required: true },
         chunks: [fileChunkSchema],
     },

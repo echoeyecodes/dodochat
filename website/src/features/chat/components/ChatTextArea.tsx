@@ -1,6 +1,5 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 import { cn } from '@/lib/utils';
-import { withCDN } from '@/features/common/helpers';
 import { useChatContext } from '../context/ChatContext';
 import { useUploadFile } from '../../media/hooks/useUploadFile';
 import { conversationApi } from '../api';
@@ -77,7 +76,7 @@ export const ChatTextArea = () => {
                 media_type: file.type,
                 file: {
                     name: file.name,
-                    url: withCDN((file as any).url || `/uploads/${fileId}`),
+                    url: (file as any).url,
                     id: fileId
                 }
             });
