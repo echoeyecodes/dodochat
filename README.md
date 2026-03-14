@@ -18,6 +18,7 @@ The project is primarily about the details that make AI feel less like a black b
 - **Document Intelligence & RAG**: Uses vector embeddings to index and search uploaded documents, providing the model with accurate local context.
 - **File Generation**: The AI can generate `.txt` and `.pdf` files on the fly based on your conversation.
 - **Image & Media Reasoning**: Handles multi-modal inputs natively. It can search IGDB for gaming data or use `sharp` to apply transformations to images.
+- **Personal API Keys (BYOK)**: Users can opt to use their own Gemini API keys, which are stored with AES-256 encryption. This bypasses system-wide rate limits.
 - **Gaming Integration**: Supports integration with the IGDB database for reasoning about games, screenshots, and release history.
 
 ## The Stack
@@ -51,6 +52,7 @@ cp .env.sample .env
 ```
 Key requirements:
 - `GOOGLE_GENERATIVE_AI_API_KEY`: Get one from [Google AI Studio](https://aistudio.google.com/).
+- `USER_GEMINI_TOKEN_SECRET`: A random string used to encrypt user-provided API keys.
 - `MONGODB_URI`: Your MongoDB connection string.
 - **Firebase Admin**: Used for server-side auth verification. You'll need `FIREBASE_PROJECT_ID`, `FIREBASE_CLIENT_EMAIL`, and `FIREBASE_PRIVATE_KEY`. **Note**: The private key must be base64 encoded to avoid multiline issues in environment variables.
 - `IGDB_CLIENT_ID` & `IGDB_CLIENT_SECRET`: Optional, for gaming data features.
