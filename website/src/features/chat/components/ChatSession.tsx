@@ -1,4 +1,4 @@
-import { useMemo, useState, useCallback, useEffect } from 'react';
+import { useMemo, useState, useCallback } from 'react';
 import { useChat } from '@ai-sdk/react';
 import { DefaultChatTransport } from 'ai';
 import { ChatContext, type CustomMessage } from '../context/ChatContext';
@@ -30,10 +30,7 @@ export const ChatSession = ({ conversationId, initialMessages = [], children }: 
     const [input, setInput] = useState('');
     const [activeId, setActiveId] = useState<string | null>(conversationId || null);
 
-    // Sync activeId with conversationId prop when it changes (e.g. from route)
-    useEffect(() => {
-        setActiveId(conversationId || null);
-    }, [conversationId]);
+
 
     const transport = useMemo(
         () => new DefaultChatTransport({

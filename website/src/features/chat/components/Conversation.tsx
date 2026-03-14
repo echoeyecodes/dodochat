@@ -120,9 +120,8 @@ export const Conversation = ({ title }: ConversationProps) => {
   const [showScrollButton, setShowScrollButton] = useState(false)
 
   useEffect(() => {
-    // Reset mobile sheet on navigation between conversations
     setMobileFilesOpen(false)
-  }, [conversationId, setMobileFilesOpen])
+  }, [setMobileFilesOpen])
 
   useEffect(() => {
     const handleResize = () => {
@@ -169,12 +168,9 @@ export const Conversation = ({ title }: ConversationProps) => {
     checkScrollVisibility()
   }, [messages, isLoading, checkScrollVisibility])
 
-  useEffect(() => {
-    setDisplayTitle(title)
-  }, [title])
+
 
   const lastPinnedId = useRef<string | null>(null)
-  const lastConversationId = useRef<string | null>(null)
 
   useEffect(() => {
     const container = scrollContainerRef.current
@@ -197,14 +193,9 @@ export const Conversation = ({ title }: ConversationProps) => {
       }
     }
 
-    const isPersistence = lastConversationId.current === null && conversationId !== null && messages.length > 0
-    const isNewId = lastConversationId.current !== conversationId
 
-    if (isNewId) {
-      if (!isPersistence) {
-        scrollToBottom('auto')
-      }
-      lastConversationId.current = conversationId ?? null
+    if (messages.length > 0 && !lastPinnedId.current) {
+      scrollToBottom('auto')
     }
 
     if (messages.length > 0) {
@@ -218,16 +209,17 @@ export const Conversation = ({ title }: ConversationProps) => {
         const behavior = isNewTurn ? 'smooth' : 'auto'
 
         if (isNewTurn) {
-          setTimeout(() => {
+          const timer = setTimeout(() => {
             scrollToMessage(userMessage.id, behavior)
             lastPinnedId.current = userMessage.id
           }, 50)
+          return () => clearTimeout(timer)
         } else if (isLoading) {
           scrollToMessage(userMessage.id, behavior)
         }
       }
     }
-  }, [messages.length, isLoading, conversationId])
+  }, [messages.length, isLoading])
 
   return (
     <div className="flex-1 flex flex-col min-h-0 bg-(--color-bg-elevated) relative">
