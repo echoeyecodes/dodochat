@@ -25,6 +25,13 @@ export const Route = createRootRouteWithContext<RouterContext>()({
         content: 'Your versatile AI assistant for every task.',
       },
     ],
+    link: [
+      {
+        rel: 'icon',
+        type: 'image/png',
+        href: '/favicon.ico',
+      },
+    ],
   }),
   component: RootComponent,
 })
