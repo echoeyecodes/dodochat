@@ -1,7 +1,5 @@
-import React from 'react'
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { Button } from '@/components/ui/button'
-import { LucideArrowRight, LucideUpload, LucideMessageSquare, LucideSearch, LucideShieldCheck } from 'lucide-react'
 
 export const Route = createFileRoute('/_main/_landing/')({
     component: LandingPage,
@@ -15,190 +13,122 @@ function LandingPage() {
     const isLoggedIn = !!user
 
     return (
-        <>
-            {/* ─── Hero Section ─── */}
-            <section className="relative min-h-[calc(100vh-72px)] flex items-center px-6 overflow-hidden border-b border-(--color-border)">
-                <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-(--color-accent-subtle) blur-[140px] rounded-full translate-x-1/2 -translate-y-1/2 -z-10 opacity-60"></div>
+        <article className="max-w-[700px] mx-auto px-6 py-24 md:py-32 flex flex-col gap-12">
+            <header className="flex flex-col gap-4">
+                <time className="text-[12px] font-medium text-(--color-text-tertiary) uppercase tracking-widest">
+                    March 2026
+                </time>
+                <h1 className="text-[40px] md:text-[56px] font-bold tracking-tight text-(--color-text-primary) leading-[1.1]">
+                    Building DodoChat
+                </h1>
+            </header>
 
-                <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center py-16">
-                    <div className="flex flex-col gap-10">
-                        <div className="inline-flex items-center gap-2 w-fit px-4 py-1.5 rounded-full bg-white border border-(--color-border-subtle) shadow-sm text-(--color-accent) text-[12px] font-bold uppercase tracking-wider">
-                            <span className="relative flex h-2 w-2">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-(--color-accent) opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-(--color-accent)"></span>
-                            </span>
-                            Now Powered by Gemini 1.5
-                        </div>
-                        <div className="flex flex-col gap-6">
-                            <h1 className="text-[52px] md:text-[84px] font-bold leading-[0.95] tracking-tight text-(--color-text-primary)">
-                                Intelligent AI <br /> built for <br />
-                                <span className="text-(--color-accent) relative">
-                                    efficiency.
-                                    <svg className="absolute -bottom-2 left-0 w-full" width="240" height="20" viewBox="0 0 240 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M2.5 17.5C40 7.5 120 7.5 237.5 17.5" stroke="var(--color-accent)" strokeWidth="4" strokeLinecap="round" opacity="0.4" />
-                                    </svg>
-                                </span>
-                            </h1>
-                            <p className="text-[18px] md:text-[22px] text-(--color-text-secondary) max-w-[540px] leading-relaxed font-medium">
-                                Chat, process images, and analyze documents in one place. DodoChat is your versatile companion for handling complex tasks with simple conversations.
-                            </p>
-                        </div>
-                        <div className="flex flex-wrap gap-5 pt-4">
-                            <Button size="lg" asChild roundness="full" className="px-10 h-16 text-[16px] shadow-xl shadow-orange-500/20">
-                                <Link to={isLoggedIn ? '/conversations' : '/login'}>
-                                    {isLoggedIn ? 'Open App' : 'Get Started for Free'}
-                                    <LucideArrowRight />
-                                </Link>
-                            </Button>
-                        </div>
-                        <div className="flex items-center gap-4 text-[13px] text-(--color-text-tertiary) font-medium">
-                            <div className="flex -space-x-3">
-                                {[1, 2, 3, 4].map(i => (
-                                    <div key={i} className="w-10 h-10 rounded-full border-4 border-(--color-bg) bg-(--color-bg-muted) flex items-center justify-center overflow-hidden">
-                                        <img src={`https://i.pravatar.cc/100?u=${i}`} alt="user" className="w-full h-full object-cover" />
-                                    </div>
-                                ))}
-                            </div>
-                            Trusted by <span className="text-(--color-text-primary) font-bold">2,000+</span> power users
-                        </div>
+            <div className="prose prose-neutral max-w-none prose-p:text-[17px] prose-p:leading-[1.7] prose-p:text-(--color-text-secondary) prose-headings:text-(--color-text-primary) prose-headings:font-bold prose-strong:text-(--color-text-primary)">
+                <p>
+                    I started building DodoChat to understand what it's like to work with LLMs beyond basic prompt-and-response. I wanted a space to explore how streaming, tool calls, and document context actually feel in a real application.
+                </p>
+
+                <p>
+                    Most of my time has been spent on the details that make AI feel less like a black box and more like a tool. This means fast, token-by-token streaming, the ability for the model to interact with files, and maintaining a clear conversation history.
+                </p>
+
+                <h2 className="text-[24px] mt-12 mb-4">Core Focus</h2>
+
+                <p>
+                    The project is primarily an exploration of three things:
+                </p>
+
+                <div className="my-12 flex flex-col gap-4">
+                    <div className="rounded-xl overflow-hidden border border-(--color-border-subtle) bg-(--color-bg-subtle)">
+                        <img
+                            src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1200"
+                            alt="Code exploration"
+                            className="w-full aspect-video object-cover"
+                        />
                     </div>
-                    <div className="relative group">
-                        <div className="absolute inset-0 bg-(--color-accent) blur-[100px] opacity-10 group-hover:opacity-20 transition-opacity duration-1000"></div>
-                        <div className="relative rounded-[40px] overflow-hidden shadow-(--shadow-editorial) border-8 border-white/50 backdrop-blur-sm transition-all duration-700 aspect-square">
-                            <img
-                                src="/hero-visual.png"
-                                alt="Groupchat AI Visual"
-                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
-                            />
-                        </div>
-                    </div>
+                    <span className="text-[13px] text-(--color-text-tertiary) italic text-center">Exploring complex tool-calling patterns within the chat runtime.</span>
                 </div>
-            </section>
 
-            {/* ─── How it Works ─── */}
-            <section id="how-it-works" className="py-24 px-6 md:py-40 bg-white relative overflow-hidden">
-                <div className="max-w-7xl mx-auto">
-                    <div className="flex flex-col lg:flex-row justify-between items-end gap-12 mb-24">
-                        <div className="flex flex-col gap-6 max-w-xl">
-                            <h2 className="text-[14px] font-bold text-(--color-accent) uppercase tracking-[0.2em] px-4 py-1 bg-orange-50 rounded-full w-fit">The Process</h2>
-                            <h3 className="text-[40px] md:text-[56px] font-bold tracking-tight text-(--color-text-primary) leading-tight">Three steps to <br /> total clarity.</h3>
-                        </div>
-                        <p className="text-(--color-text-secondary) text-[18px] max-w-[400px] leading-relaxed mb-4">Stop scrolling through thousands of messages manually. Let AI do the heavy lifting for you.</p>
+                <h2 className="text-[24px] mt-12 mb-4">What DodoChat Supports</h2>
+
+                <p>
+                    The current version of the experiment is built to handle more than just text. It integrates directly with external data and the local file system using a suite of custom tools:
+                </p>
+
+                <ul className="list-none pl-0 flex flex-col gap-6 mt-8">
+                    <li className="flex flex-col gap-1">
+                        <strong className="text-[16px]">Document Intelligence & RAG</strong>
+                        <span className="text-(--color-text-secondary)">
+                            It uses vector embeddings to index uploaded documents. When you ask a question, it searches for the most relevant chunks of text to provide accurate context to the model.
+                        </span>
+                    </li>
+                    <li className="flex flex-col gap-1">
+                        <strong className="text-[16px]">File Generation</strong>
+                        <span className="text-(--color-text-secondary)">
+                            You can ask the AI to summarize a conversation or transform data into portable formats. It currently supports generating both <code>.txt</code> and <code>.pdf</code> files on the fly.
+                        </span>
+                    </li>
+                    <li className="flex flex-col gap-1">
+                        <strong className="text-[16px]">Image & Media Reasoning</strong>
+                        <span className="text-(--color-text-secondary)">
+                            The system handles multi-modal inputs natively. It can "see" uploaded images or process external media (like gaming covers from IGDB) and apply effects using <a href="https://sharp.pixelplumbing.com/" target="_blank" rel="noreferrer" className="text-(--color-text-primary) underline underline-offset-4 decoration-(--color-border) hover:decoration-(--color-text-primary) transition-colors">sharp</a> via tool calls.
+                        </span>
+                    </li>
+                    <li className="flex flex-col gap-1">
+                        <strong className="text-[16px]">Gaming Data & IGDB</strong>
+                        <span className="text-(--color-text-secondary)">
+                            Integrated with the IGDB database, the AI can search for game details, fetch high-resolution screenshots, and reason about release dates or platform availability.
+                        </span>
+                    </li>
+                </ul>
+
+                <div className="my-12 flex flex-col gap-4">
+                    <div className="rounded-xl overflow-hidden border border-(--color-border-subtle) bg-(--color-bg-subtle)">
+                        <img
+                            src="https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?auto=format&fit=crop&q=80&w=1200"
+                            alt="Multi-modal interface"
+                            className="w-full aspect-video object-cover"
+                        />
                     </div>
-
-                    <div className="grid md:grid-cols-3 gap-8 relative">
-                        {/* Connecting Line */}
-                        <div className="absolute top-1/2 left-0 w-full h-px bg-linear-to-r from-transparent via-(--color-border) to-transparent hidden lg:block -translate-y-12"></div>
-
-                        {[
-                            {
-                                icon: <LucideUpload className="w-7 h-7" />,
-                                title: 'Upload to DodoChat',
-                                desc: 'Drag your file into DodoChat. We process and index your conversations securely.'
-                            },
-                            {
-                                icon: <LucideMessageSquare className="w-7 h-7" />,
-                                title: 'Chat & Edit',
-                                desc: 'Ask questions about your documents or request image edits like rotation and filters using natural language.'
-                            },
-                            {
-                                icon: <LucideShieldCheck className="w-7 h-7" />,
-                                title: 'Secure History',
-                                desc: 'Your conversations and files are stored securely, creating a personal knowledge base for you alone.'
-                            },
-                        ].map((step, i) => (
-                            <div key={i} className="relative flex flex-col gap-8 p-10 rounded-[32px] bg-(--color-bg) border border-(--color-border-subtle) hover:border-(--color-accent)/30 transition-all duration-500 hover:shadow-(--shadow-editorial) group h-full">
-                                <div className="flex items-center justify-between">
-                                    <div className="w-14 h-14 bg-white shadow-md rounded-2xl flex items-center justify-center text-(--color-accent) group-hover:bg-(--color-accent) group-hover:text-white transition-all duration-500">
-                                        {step.icon}
-                                    </div>
-                                    <span className="text-[48px] font-black text-(--color-text-primary) opacity-5 italic select-none">0{i + 1}</span>
-                                </div>
-                                <div className="flex flex-col gap-4 mt-4">
-                                    <h4 className="text-[22px] font-bold text-(--color-text-primary) tracking-tight">{step.title}</h4>
-                                    <p className="text-(--color-text-secondary) leading-relaxed text-[16px]">{step.desc}</p>
-                                </div>
-                                <div className="mt-4 flex items-center gap-2 text-[13px] font-bold text-(--color-accent) opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all">
-                                    Learn more <LucideArrowRight className="w-3.5 h-3.5" />
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+                    <span className="text-[13px] text-(--color-text-tertiary) italic text-center">Testing multi-modal reasoning and external data integrations.</span>
                 </div>
-            </section>
 
-            {/* ─── Features ─── */}
-            <section id="features" className="py-24 px-6 md:py-40 bg-(--color-bg-subtle) overflow-hidden relative">
-                <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-24 items-center">
-                    <div className="relative">
-                        <div className="bg-white p-10 rounded-[40px] shadow-(--shadow-editorial) border border-(--color-border) flex flex-col gap-8 -rotate-2 relative z-10 transition-transform duration-700 hover:rotate-0">
-                            <div className="flex items-center gap-3 border-b border-(--color-border) pb-6">
-                                <div className="w-3.5 h-3.5 rounded-full bg-red-400/80"></div>
-                                <div className="w-3.5 h-3.5 rounded-full bg-yellow-400/80"></div>
-                                <div className="w-3.5 h-3.5 rounded-full bg-green-400/80"></div>
-                            </div>
-                            <div className="flex flex-col gap-6">
-                                <div className="p-4 rounded-[20px] bg-(--color-bg-subtle) text-[14px] font-medium self-start max-w-[85%] border border-(--color-border-subtle)">Can you rotate this photo and give it a vintage tint?</div>
-                                <div className="p-4 rounded-[20px] bg-(--color-accent) text-white text-[14px] font-medium self-end max-w-[85%] shadow-xl shadow-orange-500/30">
-                                    Done! I've rotated your photo 90° and applied a red tint for that warm vintage feel. You can download the result below.
-                                </div>
-                            </div>
-                        </div>
-                        {/* Decorative blobs */}
-                        <div className="absolute -top-10 -left-10 w-40 h-40 bg-orange-500/10 blur-[60px] rounded-full"></div>
-                        <div className="absolute -bottom-10 -right-10 bg-white p-8 rounded-3xl shadow-2xl border border-(--color-border) hidden lg:block animate-bounce [animation-duration:4s] z-20">
-                            <div className="flex items-center gap-4">
-                                <div className="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center text-(--color-accent)">
-                                    <LucideSearch className="w-6 h-6" />
-                                </div>
-                                <span className="text-[16px] font-bold tracking-tight">Semantic Discovery</span>
-                            </div>
-                        </div>
-                    </div>
+                <h2 className="text-[24px] mt-12 mb-4">The Technical Stack</h2>
 
-                    <div className="flex flex-col gap-12">
-                        <div className="flex flex-col gap-6">
-                            <h2 className="text-[40px] md:text-[56px] font-bold tracking-tight text-(--color-text-primary) leading-[1.1]">All your work <br /> in one place.</h2>
-                            <p className="text-(--color-text-secondary) text-[18px] leading-relaxed">From quick image edits to deep document analysis, DodoChat adapts to your needs. It's a general-purpose assistant that learns from the context you provide.</p>
-                        </div>
+                <p>
+                    DodoChat is built with a focus on low latency and developer ergonomics. The architecture is designed to be lean, using modern tools that allow for rapid experimentation:
+                </p>
 
-                        <div className="grid sm:grid-cols-2 gap-8">
-                            {[
-                                { title: 'Privacy First', icon: <LucideShieldCheck />, desc: 'Local processing, zero global training.' },
-                                { title: 'Fast Indexing', icon: <LucideUpload />, desc: '50k+ messages indexed in seconds.' },
-                                { title: 'Multi-Chat', icon: <LucideMessageSquare />, desc: 'Switch between group context instantly.' },
-                                { title: 'Smart Cleanup', icon: <LucideArrowRight />, desc: 'Automatic de-duplication and cleaning.' },
-                            ].map((f, i) => (
-                                <div key={i} className="flex flex-col gap-3">
-                                    <div className="flex items-center gap-2 text-(--color-accent) font-bold text-[15px]">
-                                        {React.cloneElement(f.icon as React.ReactElement<any>, { className: 'w-4 h-4' })}
-                                        {f.title}
-                                    </div>
-                                    <p className="text-[14px] text-(--color-text-tertiary) leading-relaxed">{f.desc}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+                <ul className="list-disc pl-5 flex flex-col gap-2 mt-4 text-(--color-text-secondary)">
+                    <li><strong>Runtime:</strong> Built on Bun and Node.js for high-performance server-side execution.</li>
+                    <li><strong>Intelligence:</strong> Powered by Google's Gemini models (including Flash for fast inference and Text-Embedding-001 for RAG).</li>
+                    <li><strong>Orchestration:</strong> Uses the <a href="https://ai-sdk.dev/" target="_blank" rel="noreferrer" className="text-(--color-text-primary) underline underline-offset-4 decoration-(--color-border) hover:decoration-(--color-text-primary) transition-colors font-medium">Vercel AI SDK</a> to manage tool calling, streaming, and complex multi-step reasoning.</li>
+                    <li><strong>Frontend:</strong> A React-based single-page application built with Vite and TanStack Router for type-safe, fluid navigation.</li>
+                </ul>
+
+                <h2 className="text-[24px] mt-12 mb-4">Open Source</h2>
+
+                <p>
+                    DodoChat is open source. You can find the full implementation, from the tool-calling logic to the streaming architecture, on <a href="https://github.com/echoeyecodes/dodochat" target="_blank" rel="noreferrer" className="text-(--color-text-primary) underline underline-offset-4 decoration-(--color-border) hover:decoration-(--color-text-primary) transition-colors font-medium">GitHub</a>.
+                </p>
+
+                <p className="mt-12">
+                    DodoChat is an ongoing experiment in AI interaction. It's a space where I explore new patterns for digital assistance, aiming to build tools that feel as responsive and capable as they are intelligent.
+                </p>
+            </div>
+
+            <section className="mt-16 pt-12 border-t border-(--color-border-subtle) flex flex-col items-start gap-8">
+                <div className="flex flex-col gap-2">
+                    <h3 className="text-[18px] font-bold text-(--color-text-primary)">Want to try it out?</h3>
+                    <p className="text-(--color-text-secondary)">You can use the current version of the app to chat with Gemini and test the file processing features.</p>
                 </div>
-            </section>
 
-            {/* ─── CTA Section ─── */}
-            <section className="py-24 px-6 md:py-48">
-                <div className="max-w-5xl mx-auto rounded-[60px] bg-(--color-text-primary) p-12 md:p-32 text-center relative overflow-hidden shadow-2xl">
-                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-(--color-accent) blur-[150px] opacity-20 z-0"></div>
-                    <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-blue-500 blur-[150px] opacity-10 z-0"></div>
-                    <div className="relative z-10 flex flex-col gap-10 items-center">
-                        <h2 className="text-[42px] md:text-[64px] font-bold tracking-tight text-white leading-[1.05]">Experience the <br /> future of chat.</h2>
-                        <p className="text-white/50 text-[18px] md:text-[22px] max-w-xl mx-auto leading-relaxed">Join users who are supercharging their productivity with an AI that doesn't just talk, but acts.</p>
-                        <Button size="lg" roundness="full" asChild className="px-12 h-18 text-[18px] bg-white text-black hover:bg-white/90">
-                            <Link to={isLoggedIn ? '/conversations' : '/login'}>
-                                {isLoggedIn ? 'Open App' : 'Get Started Now'}
-                                <LucideArrowRight className="w-5 h-5" />
-                            </Link>
-                        </Button>
-                    </div>
-                </div>
+                <Button size="lg" asChild className="h-14 px-10 text-[15px] font-bold shadow-sm">
+                    <Link to={isLoggedIn ? '/conversations' : '/login'}>
+                        {isLoggedIn ? 'Go to Conversations' : 'Get Started'}
+                    </Link>
+                </Button>
             </section>
-        </>
+        </article>
     )
 }
