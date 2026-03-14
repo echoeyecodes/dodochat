@@ -89,7 +89,7 @@ export const GeminiApiKeyDialog = forwardRef<GeminiApiKeyDialogRef, GeminiApiKey
                             Set up Gemini
                         </DialogTitle>
                         <DialogDescription className="text-[13px] text-(--color-text-secondary) max-w-[280px]">
-                            To start chatting, you'll need to provide your Google Gemini API key.
+                            To chat without interruptions, you'll need to provide your Google Gemini API key.
                         </DialogDescription>
                     </div>
                 </div>

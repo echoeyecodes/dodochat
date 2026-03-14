@@ -225,6 +225,8 @@ export const Conversation = ({ title }: ConversationProps) => {
     }
   }, [messages.length, isLoading])
 
+  const isRateLimitError = error?.message.includes('429') || error?.message.toLowerCase().includes('rate limit')
+
   return (
     <div className="flex-1 flex flex-col min-h-0 bg-(--color-bg-elevated) relative">
       <div
@@ -506,20 +508,35 @@ export const Conversation = ({ title }: ConversationProps) => {
                 )}
 
                 {error && (
-                  <div className="flex items-center gap-3 px-4 py-3 rounded-lg bg-(--color-bg-subtle) border border-(--color-border) text-[13px]">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-(--color-accent) shrink-0" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <line x1="12" y1="8" x2="12" y2="12"></line>
-                      <line x1="12" y1="16" x2="12.01" y2="16"></line>
-                    </svg>
-                    <span className="flex-1 text-(--color-text-secondary)">
-                      {error.message || 'Something went wrong. Please try again.'}
-                    </span>
+                  <div className="flex items-start gap-2.5 px-3 py-2 rounded-lg bg-(--color-bg-subtle) border border-(--color-border) text-[13px] shadow-sm animate-in fade-in slide-in-from-bottom-2 max-w-lg">
+                    <div className="w-5 h-5 rounded-full bg-amber-500/10 flex items-center justify-center shrink-0">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-amber-500" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                      </svg>
+                    </div>
+                    <div className="flex-1 flex flex-wrap items-center gap-x-2 text-(--color-text-secondary)">
+                      <span>
+                        {isRateLimitError
+                          ? "You have reached the rate limit for the default Gemini API key. To continue chatting without interruptions, you can use your own API key, or wait a few minutes before trying again."
+                          : (error.message || 'Something went wrong.')}
+                      </span>
+                      {isRateLimitError && (
+                        <Link to="/profile" className="text-(--color-accent) hover:underline font-medium">
+                          Change API Key
+                        </Link>
+                      )}
+                    </div>
                     <button
                       onClick={() => clearError()}
-                      className="shrink-0 text-[12px] font-medium text-(--color-text-tertiary) hover:text-(--color-text-primary) underline underline-offset-2 transition-colors"
+                      className="p-1 hover:bg-(--color-bg-hover) rounded-md transition-colors text-(--color-text-tertiary) hover:text-(--color-text-primary)"
+                      title="Dismiss"
                     >
-                      Dismiss
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                      </svg>
                     </button>
                   </div>
                 )}

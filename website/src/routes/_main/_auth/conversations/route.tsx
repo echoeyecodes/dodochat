@@ -22,7 +22,6 @@ function RouteComponent() {
             <VerificationDialog />
             <GeminiApiKeyDialog
                 defaultOpen={!user.gemini_api_key}
-                preventClose={!user.gemini_api_key}
             />
         </>
     )
