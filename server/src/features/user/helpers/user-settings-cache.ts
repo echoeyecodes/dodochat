@@ -10,7 +10,7 @@ type CachedUser = {
 const cache = new Map<string, { data: CachedUser; timestamp: number }>();
 const TTL = 1000 * 60 * 5; // 5 minutes cache
 
-export const userSettingsService = {
+export const userSettingsCache = {
     async getSettings(userId: string): Promise<CachedUser | null> {
         const cached = cache.get(userId);
         if (cached && (Date.now() - cached.timestamp) < TTL) {

@@ -13,7 +13,7 @@ import type { ChatInput, UpdateConversationInput } from './req-schema';
 import type { Message } from '../types/index';
 import storageService from '../../../lib/storage';
 import { allTools } from '../tools';
-import { userSettingsService } from '../../user/services/userSettingsService';
+import { userSettingsCache } from '../../user/helpers/user-settings-cache';
 import envConfig from '@/lib/env';
 
 
@@ -74,7 +74,7 @@ const chat = async (req: Request, res: Response, next: NextFunction) => {
     const { messages, conversationId } = req.body as ChatInput;
 
     try {
-        const user = await userSettingsService.getSettings(authReq.user_id!);
+        const user = await userSettingsCache.getSettings(authReq.user_id!);
         const useUserKey = user?.settings?.should_use_own_gemini_key && user?.gemini_api_key;
 
         const googleProvider = createGoogleGenerativeAI({

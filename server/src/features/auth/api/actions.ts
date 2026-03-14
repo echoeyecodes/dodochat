@@ -160,7 +160,7 @@ export const logout = async (req: AuthRequest, res: Response, next: NextFunction
     try {
         const access_token = req.cookies.access_token;
         if (access_token) {
-            await authRepository.deleteAuthToken(access_token);
+            await authRepository.deleteAuthToken(hashToken(access_token));
         }
         res.clearCookie('access_token');
         res.clearCookie('refresh_token');
