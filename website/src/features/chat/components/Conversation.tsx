@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react'
+import { useRef, useEffect, useState, useCallback } from 'react'
 import { cn } from '@/lib/utils'
 import { withCDN } from '@/features/common/helpers'
 import { Streamdown } from 'streamdown'
@@ -134,43 +134,40 @@ export const Conversation = ({ title }: ConversationProps) => {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
+  const checkScrollVisibility = useCallback(() => {
+    const container = scrollContainerRef.current
+    if (!container) return
+
+    const { scrollTop, scrollHeight, clientHeight } = container
+    const distanceToBottom = scrollHeight - scrollTop - clientHeight
+    const isNearBottom = distanceToBottom < 100
+
+    if (isLoading && lastPinnedId.current) {
+      const activeElement = document.getElementById(`msg-${lastPinnedId.current}`)
+      if (activeElement) {
+        const isAtTopofTurn = Math.abs(scrollTop - (activeElement.offsetTop - 16)) < 50
+        if (isAtTopofTurn && distanceToBottom < 400) {
+          setShowScrollButton(false)
+          return
+        }
+      }
+    }
+    setShowScrollButton(!isNearBottom)
+  }, [isLoading])
+
+  // Set up scroll listener
   useEffect(() => {
     const container = scrollContainerRef.current
     if (!container) return
 
-    const checkScrollVisibility = () => {
-      const { scrollTop, scrollHeight, clientHeight } = container
-
-      const distanceToBottom = scrollHeight - scrollTop - clientHeight
-      const isNearBottom = distanceToBottom < 100
-
-      if (isLoading && lastPinnedId.current) {
-        const activeElement = document.getElementById(`msg-${lastPinnedId.current}`)
-        if (activeElement) {
-          const isAtTopofTurn = Math.abs(scrollTop - (activeElement.offsetTop - 16)) < 50
-
-          if (isAtTopofTurn) {
-            if (distanceToBottom < 400) {
-              setShowScrollButton(false)
-              return
-            }
-          }
-        }
-      }
-
-      setShowScrollButton(!isNearBottom)
-    }
-
-    const handleScroll = () => {
-      checkScrollVisibility()
-    }
-
+    const handleScroll = () => checkScrollVisibility()
     container.addEventListener('scroll', handleScroll)
-
-    checkScrollVisibility()
-
     return () => container.removeEventListener('scroll', handleScroll)
-  }, [isLoading, messages.length, messages[messages.length - 1]?.parts.map(p => 'text' in p ? p.text?.length : 0).join('')])
+  }, [checkScrollVisibility])
+
+  useEffect(() => {
+    checkScrollVisibility()
+  }, [messages, isLoading, checkScrollVisibility])
 
   useEffect(() => {
     setDisplayTitle(title)
