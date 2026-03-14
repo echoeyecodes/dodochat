@@ -14,10 +14,11 @@ import { ConfirmationDialog, type ConfirmationDialogHandle } from '@/components/
 import { useDeleteConversation } from '../hooks/useDeleteConversation'
 import { useSidebar } from '../context/SidebarContext'
 import { useFilesSidebar } from '../context/FilesSidebarContext'
-import { LucideMenu, LucideExternalLink, LucideCopy, LucideFiles, LucideDownload, LucideChevronDown } from 'lucide-react'
+import { LucideMenu, LucideExternalLink, LucideCopy, LucideFiles, LucideDownload, LucideChevronDown, LucidePlus } from 'lucide-react'
 import { ConversationFiles } from './ConversationFiles'
 import { ChatTextArea } from './ChatTextArea'
 import { Sheet, SheetContent } from '@/components/ui/sheet'
+import { Link } from '@tanstack/react-router'
 import { toast } from 'sonner'
 import {
   Dialog,
@@ -242,6 +243,15 @@ export const Conversation = ({ title }: ConversationProps) => {
           </div>
         </div>
         <div className="flex items-center gap-1 md:gap-2">
+          {conversationId && (
+            <Link
+              to="/conversations"
+              className="p-2 rounded-full text-(--color-text-tertiary) hover:bg-(--color-bg-subtle) hover:text-(--color-text-primary) transition-colors"
+              title="New chat"
+            >
+              <LucidePlus className="w-5 h-5 stroke-[1.5px]" />
+            </Link>
+          )}
           <button
             onClick={toggleFiles}
             className={cn(
