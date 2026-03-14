@@ -22,6 +22,22 @@ export const ChatTextArea = () => {
         textareaRef.current?.focus();
     }, [conversationId]);
 
+    // Auto-grow textarea
+    useEffect(() => {
+        const textarea = textareaRef.current;
+        if (!textarea) return;
+
+        const adjustHeight = () => {
+            textarea.style.height = 'auto';
+            textarea.style.height = `${Math.min(textarea.scrollHeight, 160)}px`;
+        };
+
+        textarea.addEventListener('input', adjustHeight);
+        adjustHeight();
+
+        return () => textarea.removeEventListener('input', adjustHeight);
+    }, [input]);
+
     const onSelectFile = useCallback((file: any) => {
         const text = textareaRef.current?.value || '';
         const cursorPosition = mentionState.cursorPosition;
@@ -211,7 +227,7 @@ export const ChatTextArea = () => {
                     }}
                     placeholder="Send a message..."
                     autoFocus
-                    className="flex-1 max-h-32 min-h-[24px] py-2.5 px-2 text-[14px] bg-transparent outline-none resize-none text-(--color-text-primary)"
+                    className="flex-1 max-h-[160px] min-h-[24px] py-2.5 px-2 text-[14px] bg-transparent outline-none resize-none text-(--color-text-primary) overflow-y-auto"
                     rows={1}
                 />
 
