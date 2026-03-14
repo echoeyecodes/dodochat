@@ -159,11 +159,17 @@ export const Conversation = ({ title }: ConversationProps) => {
       }
     }
 
-    // If conversation ID changed, jump to bottom instantly once
-    if (lastConversationId.current !== conversationId) {
-      scrollToBottom('auto')
+    const isPersistence = lastConversationId.current === null && conversationId !== null && messages.length > 0
+    const isNewId = lastConversationId.current !== conversationId
+
+    if (isNewId) {
+      if (!isPersistence) {
+        scrollToBottom('auto')
+      }
       lastConversationId.current = conversationId ?? null
-    } else if (messages.length > 0) {
+    }
+
+    if (messages.length > 0) {
       const lastMessage = messages[messages.length - 1]
 
       if (lastMessage.role === 'user') {
@@ -173,9 +179,7 @@ export const Conversation = ({ title }: ConversationProps) => {
       } else if (isLoading) {
         const userMessage = [...messages].reverse().find(m => m.role === 'user')
         if (userMessage) {
-          setTimeout(() => {
-            scrollToMessage(userMessage.id, 'smooth')
-          }, 50)
+          scrollToMessage(userMessage.id, 'auto')
         }
       }
     }
@@ -313,7 +317,7 @@ export const Conversation = ({ title }: ConversationProps) => {
                       isMe ? 'flex-row-reverse items-end' : 'flex-row items-start',
                       !isFirstInGroup && "-mt-2 md:-mt-4",
                       !isMe && !hasVisibleContent && isLastAssistant && "animate-pulse",
-                      !isMe && i === messages.length - 1 && "min-h-[calc(100dvh-200px)]"
+                      !isMe && i === messages.length - 1 && isLoading && "min-h-[calc(100dvh-200px)]"
                     )}
                   >
 
