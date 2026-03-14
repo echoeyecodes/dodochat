@@ -149,18 +149,34 @@ export const Conversation = ({ title }: ConversationProps) => {
       })
     }
 
+    const scrollToMessage = (id: string, behavior: ScrollBehavior = 'smooth') => {
+      const element = document.getElementById(`msg-${id}`)
+      if (element && container) {
+        container.scrollTo({
+          top: element.offsetTop - 16,
+          behavior
+        })
+      }
+    }
+
     // If conversation ID changed, jump to bottom instantly once
     if (lastConversationId.current !== conversationId) {
       scrollToBottom('auto')
       lastConversationId.current = conversationId ?? null
-    } else {
+    } else if (messages.length > 0) {
       const lastMessage = messages[messages.length - 1]
-      const justSentByUser = lastMessage?.role === 'user'
 
-      if (justSentByUser) {
+      if (lastMessage.role === 'user') {
         setTimeout(() => {
-          scrollToBottom('smooth')
+          scrollToMessage(lastMessage.id, 'smooth')
         }, 50)
+      } else if (isLoading) {
+        const userMessage = [...messages].reverse().find(m => m.role === 'user')
+        if (userMessage) {
+          setTimeout(() => {
+            scrollToMessage(userMessage.id, 'smooth')
+          }, 50)
+        }
       }
     }
   }, [messages.length, isLoading, conversationId])
@@ -291,11 +307,13 @@ export const Conversation = ({ title }: ConversationProps) => {
                 return (
                   <div
                     key={msg.id}
+                    id={`msg-${msg.id}`}
                     className={cn(
-                      "flex items-end",
-                      isMe ? 'flex-row-reverse' : 'flex-row',
+                      "flex",
+                      isMe ? 'flex-row-reverse items-end' : 'flex-row items-start',
                       !isFirstInGroup && "-mt-2 md:-mt-4",
-                      !isMe && !hasVisibleContent && isLastAssistant && "animate-pulse"
+                      !isMe && !hasVisibleContent && isLastAssistant && "animate-pulse",
+                      !isMe && i === messages.length - 1 && "min-h-[calc(100dvh-200px)]"
                     )}
                   >
 
@@ -411,7 +429,7 @@ export const Conversation = ({ title }: ConversationProps) => {
               })}
 
               {isLoading && messages[messages.length - 1]?.role === 'user' && (
-                <div className="flex items-end flex-row">
+                <div className="flex items-start flex-row min-h-[calc(100dvh-200px)]">
 
                   <div className="max-w-[75%] flex flex-col items-start">
                     <div className="flex items-baseline gap-2 mb-1.5 mx-1">
