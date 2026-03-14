@@ -8,6 +8,9 @@ const userSchema = new Schema<User>(
         display_name: { type: String, required: true },
         avatar_url: { type: String },
         gemini_api_key: { type: String },
+        settings: {
+            should_use_own_gemini_key: { type: Boolean, default: false },
+        },
     },
     {
         timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },

@@ -9,7 +9,7 @@ const fetchCurrentUser = async (): Promise<User> => {
     return data.data
 }
 
-const updateProfile = async (params: { gemini_api_key: string }): Promise<User> => {
+const updateProfile = async (params: { gemini_api_key?: string; settings?: { should_use_own_gemini_key: boolean } }): Promise<User> => {
     const { data } = await request({
         path: 'api/users/me',
         method: 'PUT',

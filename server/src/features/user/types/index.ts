@@ -7,4 +7,7 @@ export type User = {
     created_at: Date;
     updated_at: Date;
     gemini_api_key?: string;
+    settings?: {
+        should_use_own_gemini_key: boolean;
+    };
 };

@@ -13,10 +13,12 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { useUpdateProfile } from "../hooks/useUpdateProfile"
+import { useCurrentUser } from "../hooks/useCurrentUser"
 import { toast } from "sonner"
 
 const apiKeySchema = z.object({
-    gemini_api_key: z.string().min(1, 'API key is required').startsWith('AIza', 'Invalid Gemini API key format'),
+    gemini_api_key: z.string().startsWith('AIza', 'Invalid Gemini API key format').optional().or(z.literal('')),
+    should_use_own_gemini_key: z.boolean(),
 })
 
 type ApiKeyFormValues = z.infer<typeof apiKeySchema>
@@ -33,19 +35,34 @@ type GeminiApiKeyDialogProps = {
 
 export const GeminiApiKeyDialog = forwardRef<GeminiApiKeyDialogRef, GeminiApiKeyDialogProps>(({ defaultOpen, preventClose }, ref) => {
     const [isOpen, setIsOpen] = useState(defaultOpen)
+    const currentUser = useCurrentUser()?.user
     const { mutate: updateProfile, isPending } = useUpdateProfile()
 
     const {
         register,
         handleSubmit,
         reset,
+        watch,
+        setValue,
         formState: { errors },
     } = useForm<ApiKeyFormValues>({
         resolver: zodResolver(apiKeySchema),
         defaultValues: {
-            gemini_api_key: '',
+            gemini_api_key: currentUser?.gemini_api_key || '',
+            should_use_own_gemini_key: currentUser?.settings?.should_use_own_gemini_key || false,
         },
     })
+
+    const shouldUseOwnKey = watch('should_use_own_gemini_key')
+
+    useEffect(() => {
+        if (isOpen && currentUser) {
+            reset({
+                gemini_api_key: currentUser.gemini_api_key || '',
+                should_use_own_gemini_key: currentUser.settings?.should_use_own_gemini_key || false,
+            })
+        }
+    }, [isOpen, currentUser, reset])
 
     useImperativeHandle(ref, () => ({
         open: () => setIsOpen(true),
@@ -59,13 +76,18 @@ export const GeminiApiKeyDialog = forwardRef<GeminiApiKeyDialogRef, GeminiApiKey
     }, [isOpen, reset])
 
     const onSubmit = (data: ApiKeyFormValues) => {
-        updateProfile(data, {
+        updateProfile({
+            gemini_api_key: data.gemini_api_key,
+            settings: {
+                should_use_own_gemini_key: data.should_use_own_gemini_key
+            }
+        }, {
             onSuccess: () => {
-                toast.success('API key saved successfully')
+                toast.success('Settings saved successfully')
                 setIsOpen(false)
             },
             onError: (error: any) => {
-                toast.error(error.message || 'Failed to save API key')
+                toast.error(error.message || 'Failed to save settings')
             }
         })
     }
@@ -110,6 +132,7 @@ export const GeminiApiKeyDialog = forwardRef<GeminiApiKeyDialogRef, GeminiApiKey
                                     type="password"
                                     placeholder="AIza..."
                                     className="pl-11 h-12 bg-(--color-bg) border-(--color-border) focus:ring-(--color-accent)/20"
+                                    disabled={!shouldUseOwnKey}
                                     {...register('gemini_api_key')}
                                 />
                             </div>
@@ -118,6 +141,36 @@ export const GeminiApiKeyDialog = forwardRef<GeminiApiKeyDialogRef, GeminiApiKey
                                     {errors.gemini_api_key.message}
                                 </p>
                             )}
+                        </div>
+
+                        <div className="flex items-center justify-between p-4 rounded-xl bg-(--color-bg-subtle) border border-(--color-border-subtle)">
+                            <div className="space-y-0.5">
+                                <label
+                                    htmlFor="should_use_own_gemini_key"
+                                    className="text-[13px] font-semibold text-(--color-text-primary)"
+                                >
+                                    Enable Personal Key
+                                </label>
+                                <p className="text-[11px] text-(--color-text-tertiary)">
+                                    Swap from shared to your own Gemini quota
+                                </p>
+                            </div>
+                            <button
+                                type="button"
+                                onClick={() => setValue('should_use_own_gemini_key', !shouldUseOwnKey)}
+                                className={cn(
+                                    "relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-(--color-accent) focus:ring-offset-2",
+                                    shouldUseOwnKey ? "bg-(--color-accent)" : "bg-neutral-200 dark:bg-neutral-800"
+                                )}
+                            >
+                                <span
+                                    aria-hidden="true"
+                                    className={cn(
+                                        "pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out",
+                                        shouldUseOwnKey ? "translate-x-5" : "translate-x-0"
+                                    )}
+                                />
+                            </button>
                         </div>
 
                         <div className="rounded-xl bg-(--color-bg-subtle) p-4 border border-(--color-border-subtle)">
@@ -139,7 +192,7 @@ export const GeminiApiKeyDialog = forwardRef<GeminiApiKeyDialogRef, GeminiApiKey
                                     Saving key...
                                 </>
                             ) : (
-                                'Activate Gemini'
+                                'Update Settings'
                             )}
                         </Button>
                     </div>

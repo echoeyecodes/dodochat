@@ -1,7 +1,8 @@
 import type { Request, Response, NextFunction } from 'express';
 import type { AuthRequest } from '../../common/types/request';
 import { streamText, convertToModelMessages, embed, stepCountIs } from 'ai';
-import { google } from '@ai-sdk/google';
+import { createGoogleGenerativeAI } from '@ai-sdk/google';
+import { UserModel } from '../../user/models/User';
 import crypto from 'node:crypto';
 import { conversationRepository } from '../repository/index';
 import { mediaRepository } from '../../media/repository/index';
@@ -12,6 +13,8 @@ import type { ChatInput, UpdateConversationInput } from './req-schema';
 import type { Message } from '../types/index';
 import storageService from '../../../lib/storage';
 import { allTools } from '../tools';
+import { userSettingsService } from '../../user/services/userSettingsService';
+import envConfig from '@/lib/env';
 
 
 const listConversations = async (req: Request, res: Response, next: NextFunction) => {
@@ -71,6 +74,13 @@ const chat = async (req: Request, res: Response, next: NextFunction) => {
     const { messages, conversationId } = req.body as ChatInput;
 
     try {
+        const user = await userSettingsService.getSettings(authReq.user_id!);
+        const useUserKey = user?.settings?.should_use_own_gemini_key && user?.gemini_api_key;
+
+        const googleProvider = createGoogleGenerativeAI({
+            apiKey: useUserKey ? user.gemini_api_key : envConfig.get('GOOGLE_GENERATIVE_AI_API_KEY'),
+        });
+
         const conversation = await conversationRepository.findOrCreateConversation({ user_id: authReq.user_id!, conversationId });
 
         const newUserMessages = messages
@@ -153,7 +163,7 @@ const chat = async (req: Request, res: Response, next: NextFunction) => {
         let context = '';
         if (lastUserText && conversationId && files.length > 0) {
             const { embedding } = await embed({
-                model: google.textEmbeddingModel('gemini-embedding-001'),
+                model: googleProvider.textEmbeddingModel('gemini-embedding-001'),
                 value: lastUserText,
             });
 
@@ -180,7 +190,7 @@ const chat = async (req: Request, res: Response, next: NextFunction) => {
         ].filter(Boolean).join('\n\n');
 
         const result = streamText({
-            model: google('gemini-3.1-flash-lite-preview'),
+            model: googleProvider('gemini-3.1-flash-lite-preview'),
             messages: modelMessages,
             system: systemPrompt,
             tools: allTools,

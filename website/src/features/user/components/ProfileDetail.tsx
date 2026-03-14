@@ -1,4 +1,5 @@
 import { useSelectCurrentUser } from '@/features/user/hooks/useSelectCurrentUser'
+import { cn } from '@/lib/utils'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { LucideArrowLeft, LucideEye, LucideEyeOff, LucideKey, LucideMail, LucideUser, LucideLoader2 } from 'lucide-react'
@@ -11,7 +12,8 @@ import { useUpdateProfile } from '../hooks/useUpdateProfile'
 import { toast } from 'sonner'
 
 const profileSchema = z.object({
-    gemini_api_key: z.string().min(1, 'API key is required'),
+    gemini_api_key: z.string().startsWith('AIza', 'Invalid Gemini API key format').optional().or(z.literal('')),
+    should_use_own_gemini_key: z.boolean(),
 })
 
 type ProfileFormValues = z.infer<typeof profileSchema>
@@ -25,24 +27,35 @@ export const ProfileDetail = () => {
         register,
         handleSubmit,
         reset,
+        watch,
+        setValue,
         formState: { errors, isDirty },
     } = useForm<ProfileFormValues>({
         resolver: zodResolver(profileSchema),
         defaultValues: {
             gemini_api_key: user?.gemini_api_key || '',
+            should_use_own_gemini_key: user?.settings?.should_use_own_gemini_key || false,
         },
     })
+
+    const shouldUseOwnKey = watch('should_use_own_gemini_key')
 
     useEffect(() => {
         if (user) {
             reset({
                 gemini_api_key: user.gemini_api_key || '',
+                should_use_own_gemini_key: user.settings?.should_use_own_gemini_key || false,
             })
         }
     }, [user, reset])
 
     const onSubmit = (data: ProfileFormValues) => {
-        updateProfile(data, {
+        updateProfile({
+            gemini_api_key: data.gemini_api_key,
+            settings: {
+                should_use_own_gemini_key: data.should_use_own_gemini_key
+            }
+        }, {
             onSuccess: () => {
                 toast.success('Profile updated successfully')
                 reset(data)
@@ -148,49 +161,82 @@ export const ProfileDetail = () => {
                                         </p>
                                     </div>
 
-                                    <div className="space-y-2">
-                                        <div className="flex gap-2">
-                                            <div className="relative flex-1">
-                                                <Input
-                                                    id="gemini-api-key"
-                                                    type={showApiKey ? 'text' : 'password'}
-                                                    {...register('gemini_api_key')}
-                                                    placeholder="AIza..."
-                                                    className="h-10 pr-10 text-[13px] font-mono bg-(--color-bg) border-(--color-border)"
-                                                />
-                                                <button
-                                                    type="button"
-                                                    onClick={() => setShowApiKey(!showApiKey)}
-                                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-(--color-text-tertiary) hover:text-(--color-text-primary) transition-colors"
+                                    <div className="space-y-4">
+                                        <div className="flex items-center justify-between p-3.5 rounded-xl bg-(--color-bg-subtle) border border-(--color-border-subtle)">
+                                            <div className="space-y-0.5">
+                                                <label
+                                                    htmlFor="should_use_own_gemini_key"
+                                                    className="text-[13px] font-semibold text-(--color-text-primary)"
                                                 >
-                                                    {showApiKey ? (
-                                                        <LucideEyeOff className="h-4 w-4" />
-                                                    ) : (
-                                                        <LucideEye className="h-4 w-4" />
-                                                    )}
-                                                </button>
+                                                    Enable Personal Key
+                                                </label>
+                                                <p className="text-[11px] text-(--color-text-tertiary)">
+                                                    Use your own Gemini API quota
+                                                </p>
                                             </div>
-                                            <Button
-                                                type="submit"
-                                                size="sm"
-                                                className="h-10 px-5 text-[13px]"
-                                                disabled={isPending || !isDirty}
-                                            >
-                                                {isPending ? (
-                                                    <>
-                                                        <LucideLoader2 className="mr-2 h-4 w-4 animate-spin" />
-                                                        Saving...
-                                                    </>
-                                                ) : (
-                                                    'Save'
+                                            <button
+                                                type="button"
+                                                onClick={() => setValue('should_use_own_gemini_key', !shouldUseOwnKey, { shouldDirty: true })}
+                                                className={cn(
+                                                    "relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-(--color-accent) focus:ring-offset-2",
+                                                    shouldUseOwnKey ? "bg-(--color-accent)" : "bg-neutral-200 dark:bg-neutral-800"
                                                 )}
-                                            </Button>
+                                            >
+                                                <span
+                                                    aria-hidden="true"
+                                                    className={cn(
+                                                        "pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out",
+                                                        shouldUseOwnKey ? "translate-x-5" : "translate-x-0"
+                                                    )}
+                                                />
+                                            </button>
                                         </div>
-                                        {errors.gemini_api_key && (
-                                            <p className="text-[11px] text-red-500 font-medium">
-                                                {errors.gemini_api_key.message}
-                                            </p>
-                                        )}
+
+                                        <div className="space-y-2">
+                                            <div className="flex gap-2">
+                                                <div className="relative flex-1">
+                                                    <Input
+                                                        id="gemini-api-key"
+                                                        type={showApiKey ? 'text' : 'password'}
+                                                        {...register('gemini_api_key')}
+                                                        placeholder="AIza..."
+                                                        disabled={!shouldUseOwnKey}
+                                                        className="h-10 pr-10 text-[13px] font-mono bg-(--color-bg) border-(--color-border) disabled:opacity-50"
+                                                    />
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => setShowApiKey(!showApiKey)}
+                                                        className="absolute right-3 top-1/2 -translate-y-1/2 text-(--color-text-tertiary) hover:text-(--color-text-primary) transition-colors"
+                                                    >
+                                                        {showApiKey ? (
+                                                            <LucideEyeOff className="h-4 w-4" />
+                                                        ) : (
+                                                            <LucideEye className="h-4 w-4" />
+                                                        )}
+                                                    </button>
+                                                </div>
+                                                <Button
+                                                    type="submit"
+                                                    size="sm"
+                                                    className="h-10 px-5 text-[13px]"
+                                                    disabled={isPending || !isDirty}
+                                                >
+                                                    {isPending ? (
+                                                        <>
+                                                            <LucideLoader2 className="mr-2 h-4 w-4 animate-spin" />
+                                                            Saving...
+                                                        </>
+                                                    ) : (
+                                                        'Save'
+                                                    )}
+                                                </Button>
+                                            </div>
+                                            {errors.gemini_api_key && (
+                                                <p className="text-[11px] text-red-500 font-medium">
+                                                    {errors.gemini_api_key.message}
+                                                </p>
+                                            )}
+                                        </div>
                                     </div>
                                 </div>
                             </div>

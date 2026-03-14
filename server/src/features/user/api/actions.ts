@@ -16,8 +16,8 @@ export const getCurrentUser = async (req: AuthRequest, res: Response, next: Next
 
 export const updateCurrentUser = async (req: AuthRequest, res: Response, next: NextFunction) => {
     try {
-        const { gemini_api_key } = req.body;
-        const user = await userRepository.updateUser(req.user_id!, { gemini_api_key });
+        const { gemini_api_key, settings } = req.body;
+        const user = await userRepository.updateUser(req.user_id!, { gemini_api_key, settings });
         const { password: _, ...userWithoutPassword } = user;
         return sendResponse({ res, status: HTTP_STATUS_CODES.OK })(userWithoutPassword)
     } catch (error) {
