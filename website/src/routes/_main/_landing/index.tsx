@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { Button } from '@/components/ui/button'
-import { LucidePlus, LucideMic, LucideChevronDown, LucidePenLine, LucideFileSearch, LucideCode2, LucideInfo, LucideSparkles } from 'lucide-react'
+import { LucidePlus, LucideFileSearch, LucideCode2, LucideInfo, LucideSparkles } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 export const Route = createFileRoute('/_main/_landing/')({
     component: LandingPage,
@@ -27,82 +28,85 @@ function LandingPage() {
 
     return (
         <div className="flex flex-col min-h-screen bg-(--color-bg)">
-            <section className="relative pt-24 pb-32 md:pt-40 md:pb-48 flex flex-col items-center px-6">
-                <div className="w-full max-w-4xl flex flex-col items-center">
+            <section className="relative pt-24 pb-32 md:pt-30 flex flex-col items-center px-6">
+                <div className="w-full max-w-3xl flex flex-col items-center">
 
-                    <div className="animate-in fade-in duration-700">
-                        <span className="px-3 py-1 rounded-full bg-(--color-bg-muted) text-(--color-text-secondary) text-[11px] font-bold">
-                            Beta
-                        </span>
-                    </div>
-
-                    <div className="flex items-center gap-4 mb-10 animate-in fade-in slide-in-from-bottom-4 duration-700">
-                        <div className="w-10 h-10 md:w-12 md:h-12 bg-(--color-accent) rounded-xl flex items-center justify-center text-white shadow-sm">
-                            <LucideSparkles className="w-6 h-6 md:w-7 md:h-7" />
+                    <div className="flex flex-col items-center text-center mb-24 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                        <div className="w-[100px]">
+                            <img src="/logo.png" alt="DodoChat Logo" className="w-full h-full object-contain" />
                         </div>
-                        <h1 className="text-[32px] md:text-[48px] font-bold tracking-tight text-(--color-text-primary)">
+                        <h1 className="text-[32px] md:text-[42px] font-bold tracking-tight text-(--color-text-primary) mb-2">
                             DodoChat
                         </h1>
+                        <p className="text-(--color-text-tertiary) text-[15px] font-medium tracking-wide uppercase">
+                            Open Source AI Workbench
+                        </p>
                     </div>
 
-                    <form
-                        onSubmit={handleStart}
-                        className="w-full max-w-3xl mb-6 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100"
-                    >
-                        <div className="bg-(--color-bg-elevated) border border-(--color-border) rounded-[24px] p-6 shadow-sm transition-all hover:border-(--color-border-subtle) min-h-[140px] flex flex-col justify-between focus-within:border-(--color-text-tertiary)/30">
-                            <textarea
-                                value={inputValue}
-                                onChange={(e) => setInputValue(e.target.value)}
-                                onKeyDown={(e) => {
-                                    if (e.key === 'Enter' && !e.shiftKey) {
-                                        handleStart()
-                                    }
-                                }}
-                                placeholder="How can I help you today?"
-                                className="w-full bg-transparent border-none outline-none resize-none text-[17px] md:text-[19px] text-(--color-text-primary) placeholder:text-(--color-text-tertiary) font-medium px-2 py-1 min-h-[80px]"
-                                autoFocus
-                            />
-
-                            <div className="flex items-center justify-between mt-4">
-                                <div className="p-2 rounded-lg hover:bg-(--color-bg-subtle) text-(--color-text-tertiary) cursor-not-allowed transition-colors">
+                    {/* Interaction Portal (Strict Workbench Style) */}
+                    <div className="w-full flex flex-col gap-10 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100">
+                        <div className="bg-(--color-bg-elevated) border border-(--color-border) rounded-2xl p-3 md:p-4 shadow-sm">
+                            <form
+                                onSubmit={handleStart}
+                                className="flex items-end gap-2 p-2 rounded-lg bg-(--color-bg) border border-(--color-border) focus-within:border-(--color-accent)/30 transition-all"
+                            >
+                                <div className="p-2 mb-0.5 text-(--color-text-tertiary) cursor-not-allowed">
                                     <LucidePlus className="w-5 h-5" />
                                 </div>
-                                <div className="flex items-center gap-3">
-                                    <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-(--color-border) bg-(--color-bg-subtle) text-(--color-text-secondary) text-[12px] font-bold cursor-not-allowed">
-                                        Gemini 2.0 Flash <LucideChevronDown className="w-3.5 h-3.5" />
-                                    </div>
-                                    <button
-                                        type="submit"
-                                        className="p-2.5 rounded-lg bg-(--color-accent) text-white hover:bg-(--color-accent-hover) transition-all shadow-sm active:scale-95"
-                                    >
-                                        <LucideMic className="w-5 h-5" />
-                                    </button>
-                                </div>
-                            </div>
+
+                                <textarea
+                                    value={inputValue}
+                                    onChange={(e) => setInputValue(e.target.value)}
+                                    onKeyDown={(e) => {
+                                        if (e.key === 'Enter' && !e.shiftKey) {
+                                            handleStart()
+                                        }
+                                    }}
+                                    placeholder="Ask anything..."
+                                    className="flex-1 max-h-[160px] min-h-[44px] py-2.5 px-2 text-[15px] md:text-[16px] bg-transparent outline-none resize-none text-(--color-text-primary) placeholder:text-(--color-text-tertiary) overflow-y-auto"
+                                    rows={1}
+                                    autoFocus
+                                />
+
+                                <button
+                                    type="submit"
+                                    disabled={!inputValue.trim()}
+                                    className={cn(
+                                        "shrink-0 mb-0.5 w-[36px] h-[36px] rounded-md flex items-center justify-center transition-all",
+                                        inputValue.trim()
+                                            ? "bg-(--color-accent) text-white shadow-sm"
+                                            : "bg-(--color-bg-muted) text-(--color-text-quaternary) cursor-not-allowed"
+                                    )}
+                                >
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                    </svg>
+                                </button>
+                            </form>
                         </div>
-                    </form>
 
-                    <div className="flex flex-wrap justify-center gap-2 mb-16 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200">
-                        {[
-                            { label: 'Write', icon: LucidePenLine },
-                            { label: 'Analyze', icon: LucideFileSearch },
-                            { label: 'Code', icon: LucideCode2 },
-                            { label: 'Gaming', icon: LucideSparkles },
-                            { label: 'Explore', icon: LucideInfo },
-                        ].map((cat, i) => (
-                            <button key={i} className="flex items-center gap-2 px-4 py-2 rounded-xl border border-(--color-border) bg-(--color-bg-subtle) text-(--color-text-secondary) text-[13px] font-bold hover:text-(--color-text-primary) hover:border-(--color-text-tertiary)/30 transition-all">
-                                <cat.icon className="w-3.5 h-3.5 opacity-60" />
-                                {cat.label}
-                            </button>
-                        ))}
-                    </div>
-
-                    <div className="animate-in fade-in slide-in-from-bottom-10 duration-700 delay-300">
-                        <Button size="lg" asChild className="h-14 px-10 text-[15px] font-bold rounded-2xl bg-(--color-accent) hover:bg-(--color-accent-hover) text-white border-none shadow-sm transition-transform hover:scale-[1.01] active:scale-[0.99]">
-                            <Link to={isLoggedIn ? '/conversations' : '/login'}>
-                                {isLoggedIn ? 'Jump into Workbench' : 'Enter Playground'}
-                            </Link>
-                        </Button>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-w-[540px] mx-auto w-full">
+                            {[
+                                { q: "How do black holes work?", icon: LucideSparkles },
+                                { q: "Explain the concept of 'time dilation'.", icon: LucideFileSearch },
+                                { q: "Where can I find the answer to everything?", icon: LucideInfo },
+                                { q: "Show me a code example for a custom hook.", icon: LucideCode2 }
+                            ].map((suggest, i) => (
+                                <button
+                                    key={i}
+                                    onClick={() => {
+                                        setInputValue(suggest.q)
+                                        const target = isLoggedIn ? '/conversations' : '/login'
+                                        navigate({ to: target, search: { q: suggest.q } })
+                                    }}
+                                    className="px-4 py-3.5 rounded-xl bg-(--color-bg-subtle) border border-(--color-border) text-[13px] text-(--color-text-secondary) hover:text-(--color-text-primary) hover:border-(--color-text-tertiary)/30 transition-all text-left flex items-start gap-3 group"
+                                >
+                                    <suggest.icon className="w-4 h-4 mt-0.5 opacity-40 group-hover:opacity-100 transition-opacity" />
+                                    <span className="flex-1">{suggest.q}</span>
+                                </button>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </section>

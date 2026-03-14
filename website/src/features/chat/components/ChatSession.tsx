@@ -22,7 +22,7 @@ export const ChatSession = ({ conversationId, initialMessages = [], initialQuery
         (id: string) => {
             invalidateConversations();
             if (id && id !== 'refresh') {
-                navigate({ to: '/conversations/$id', params: { id } });
+                navigate({ to: '/conversations/$id', params: { id }, replace: true });
             }
         },
         [invalidateConversations, navigate]
