@@ -1,4 +1,4 @@
-import { useMemo, useState, useCallback } from 'react';
+import { useMemo, useState, useCallback, useEffect, useRef } from 'react';
 import { useChat } from '@ai-sdk/react';
 import { DefaultChatTransport } from 'ai';
 import { ChatContext, type CustomMessage } from '../context/ChatContext';
@@ -10,10 +10,11 @@ import envConfig from '@/lib/env';
 type ChatSessionProps = {
     conversationId?: string | null;
     initialMessages?: ChatMessage[];
+    initialQuery?: string;
     children: React.ReactNode;
 };
 
-export const ChatSession = ({ conversationId, initialMessages = [], children }: ChatSessionProps) => {
+export const ChatSession = ({ conversationId, initialMessages = [], initialQuery, children }: ChatSessionProps) => {
     const navigate = useNavigate();
     const invalidateConversations = useInvalidateConversations();
 
@@ -29,8 +30,6 @@ export const ChatSession = ({ conversationId, initialMessages = [], children }: 
 
     const [input, setInput] = useState('');
     const [activeId, setActiveId] = useState<string | null>(conversationId || null);
-
-
 
     const transport = useMemo(
         () => new DefaultChatTransport({
@@ -53,6 +52,19 @@ export const ChatSession = ({ conversationId, initialMessages = [], children }: 
             }
         },
     });
+
+    const { sendMessage, messages } = chatData;
+    const hasSentInitial = useRef(false);
+
+    // to handle initial query from landing page or shared links
+    useEffect(() => {
+        if (initialQuery && messages.length === 0 && !activeId && !hasSentInitial.current) {
+            hasSentInitial.current = true;
+            sendMessage({
+                parts: [{ type: 'text', text: initialQuery }]
+            });
+        }
+    }, [initialQuery, activeId, sendMessage, messages.length]);
 
     const isLoadingStatus = chatData.status === 'streaming' || chatData.status === 'submitted';
 

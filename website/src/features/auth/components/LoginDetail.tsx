@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useNavigate } from '@tanstack/react-router'
+import { Link, useNavigate, useSearch } from '@tanstack/react-router'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -21,6 +21,7 @@ type LoginFormValues = z.infer<typeof loginSchema>
 
 export const LoginDetail = () => {
     const navigate = useNavigate()
+    const search = useSearch({ from: '/_main/_landing/login' }) as { q?: string }
     const loginMutation = useLogin()
     const [isLoading, setIsLoading] = useState(false)
 
@@ -38,7 +39,11 @@ export const LoginDetail = () => {
 
             loginMutation.mutate({ firebase_token: idToken }, {
                 onSuccess: () => {
-                    navigate({ to: '/conversations', reloadDocument: true })
+                    navigate({ 
+                        to: '/conversations', 
+                        search: search.q ? { q: search.q } : undefined,
+                        reloadDocument: true 
+                    })
                 },
                 onError: (error: Error) => {
                     setIsLoading(false)
@@ -63,7 +68,11 @@ export const LoginDetail = () => {
 
             loginMutation.mutate({ firebase_token: idToken }, {
                 onSuccess: () => {
-                    navigate({ to: '/conversations', reloadDocument: true })
+                    navigate({ 
+                        to: '/conversations', 
+                        search: search.q ? { q: search.q } : undefined,
+                        reloadDocument: true 
+                    })
                 },
                 onError: (error: Error) => {
                     setIsLoading(false)

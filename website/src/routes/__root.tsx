@@ -24,6 +24,38 @@ export const Route = createRootRouteWithContext<RouterContext>()({
         name: 'description',
         content: 'Your versatile AI assistant for every task.',
       },
+      {
+        property: 'og:title',
+        content: 'DodoChat',
+      },
+      {
+        property: 'og:description',
+        content: 'Your versatile AI assistant for every task.',
+      },
+      {
+        property: 'og:image',
+        content: '/og-image.png',
+      },
+      {
+        property: 'og:type',
+        content: 'website',
+      },
+      {
+        name: 'twitter:card',
+        content: 'summary_large_image',
+      },
+      {
+        name: 'twitter:title',
+        content: 'DodoChat',
+      },
+      {
+        name: 'twitter:description',
+        content: 'Your versatile AI assistant for every task.',
+      },
+      {
+        name: 'twitter:image',
+        content: '/og-image.png',
+      },
     ],
     link: [
       {
