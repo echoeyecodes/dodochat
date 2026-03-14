@@ -136,6 +136,7 @@ export const Conversation = ({ title }: ConversationProps) => {
     setDisplayTitle(title)
   }, [title])
 
+  const lastPinnedId = useRef<string | null>(null)
   const lastConversationId = useRef<string | null>(null)
 
   useEffect(() => {
@@ -171,15 +172,21 @@ export const Conversation = ({ title }: ConversationProps) => {
 
     if (messages.length > 0) {
       const lastMessage = messages[messages.length - 1]
+      const userMessage = lastMessage.role === 'user'
+        ? lastMessage
+        : [...messages].reverse().find(m => m.role === 'user')
 
-      if (lastMessage.role === 'user') {
-        setTimeout(() => {
-          scrollToMessage(lastMessage.id, 'smooth')
-        }, 50)
-      } else if (isLoading) {
-        const userMessage = [...messages].reverse().find(m => m.role === 'user')
-        if (userMessage) {
-          scrollToMessage(userMessage.id, 'auto')
+      if (userMessage && (userMessage.role === 'user' || isLoading)) {
+        const isNewTurn = lastPinnedId.current !== userMessage.id
+        const behavior = isNewTurn ? 'smooth' : 'auto'
+
+        if (isNewTurn) {
+          setTimeout(() => {
+            scrollToMessage(userMessage.id, behavior)
+            lastPinnedId.current = userMessage.id
+          }, 50)
+        } else if (isLoading) {
+          scrollToMessage(userMessage.id, behavior)
         }
       }
     }
