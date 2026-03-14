@@ -180,7 +180,7 @@ export const Conversation = ({ title }: ConversationProps) => {
     const container = scrollContainerRef.current
     if (!container) return
 
-    const scrollToBottom = (behavior: ScrollBehavior = 'smooth') => {
+    const scrollToBottom = (behavior: ScrollBehavior = 'auto') => {
       container.scrollTo({
         top: container.scrollHeight,
         behavior
@@ -197,31 +197,34 @@ export const Conversation = ({ title }: ConversationProps) => {
       }
     }
 
-
-    if (messages.length > 0 && !lastPinnedId.current) {
-      scrollToBottom('auto')
+    if (messages.length === 0) {
+      lastPinnedId.current = null
+      return
     }
 
-    if (messages.length > 0) {
-      const lastMessage = messages[messages.length - 1]
-      const userMessage = lastMessage.role === 'user'
-        ? lastMessage
-        : [...messages].reverse().find(m => m.role === 'user')
+    const lastUserMessage = [...messages].reverse().find(m => m.role === 'user')
+    if (!lastUserMessage) return
 
-      if (userMessage && (userMessage.role === 'user' || isLoading)) {
-        const isNewTurn = lastPinnedId.current !== userMessage.id
-        const behavior = isNewTurn ? 'smooth' : 'auto'
+    if (!lastPinnedId.current) {
+      lastPinnedId.current = lastUserMessage.id
 
-        if (isNewTurn) {
-          const timer = setTimeout(() => {
-            scrollToMessage(userMessage.id, behavior)
-            lastPinnedId.current = userMessage.id
-          }, 50)
-          return () => clearTimeout(timer)
-        } else if (isLoading) {
-          scrollToMessage(userMessage.id, behavior)
-        }
+      if (!isLoading) {
+        scrollToBottom('auto')
+      } else {
+        scrollToMessage(lastUserMessage.id, 'auto')
       }
+      return
+    }
+    const isNewTurn = lastPinnedId.current !== lastUserMessage.id
+
+    if (isNewTurn) {
+      const timer = setTimeout(() => {
+        scrollToMessage(lastUserMessage.id, 'smooth')
+        lastPinnedId.current = lastUserMessage.id
+      }, 50)
+      return () => clearTimeout(timer)
+    } else if (isLoading) {
+      scrollToMessage(lastUserMessage.id, 'auto')
     }
   }, [messages.length, isLoading])
 
