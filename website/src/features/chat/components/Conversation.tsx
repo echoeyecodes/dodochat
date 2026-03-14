@@ -19,6 +19,7 @@ import { LucideMenu, LucideExternalLink, LucideCopy, LucideFiles, LucideDownload
 import { ConversationFiles } from './ConversationFiles'
 import { AudioAttachment } from './AudioAttachment'
 import { ChatTextArea } from './ChatTextArea'
+import { ConversationEmptyState } from './ConversationEmptyState'
 import { Sheet, SheetContent } from '@/components/ui/sheet'
 import { Link } from '@tanstack/react-router'
 import { toast } from 'sonner'
@@ -324,19 +325,8 @@ export const Conversation = ({ title }: ConversationProps) => {
               ref={scrollContainerRef}
               className="absolute inset-0 overflow-y-auto p-4 md:p-6 pb-8 md:pb-12 space-y-4 md:space-y-6"
             >
-              <div className="flex flex-col space-y-4 md:space-y-6">
-                {messages.length === 0 && (
-                  <div className="flex-1 flex items-center justify-center h-full">
-                    <div className="text-center">
-                      <div className="w-12 h-12 rounded-full bg-(--color-bg-muted) flex items-center justify-center mx-auto mb-3">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="text-(--color-text-tertiary)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                        </svg>
-                      </div>
-                      <p className="text-[14px] text-(--color-text-tertiary)">Send a message to start the conversation</p>
-                    </div>
-                  </div>
-                )}
+              <div className={cn("flex flex-col space-y-4 md:space-y-6", messages.length === 0 && "h-full justify-center")}>
+                {messages.length === 0 && <ConversationEmptyState />}
 
                 {messages.map((msg, i) => {
                   const isMe = msg.role === 'user'
@@ -456,12 +446,12 @@ export const Conversation = ({ title }: ConversationProps) => {
                                   }
 
                                   return (
-                                     <FileAttachment
-                                       key={partIdx}
-                                       name={part.file.name}
-                                       size={part.file.size}
-                                       isMe={isMe}
-                                     />
+                                    <FileAttachment
+                                      key={partIdx}
+                                      name={part.file.name}
+                                      size={part.file.size}
+                                      isMe={isMe}
+                                    />
                                   );
                                 }
                                 if (part.type === 'reasoning') {
