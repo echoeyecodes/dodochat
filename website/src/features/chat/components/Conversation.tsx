@@ -372,9 +372,9 @@ export const Conversation = ({ title }: ConversationProps) => {
                         )}
                         <div
                           className={cn(
-                            "px-4 py-3 text-[14px] max-w-full text-wrap wrap-break-word leading-relaxed shadow-sm min-h-[44px] whitespace-pre-wrap",
+                            "px-4 py-3 text-[14px] max-w-full text-wrap wrap-break-word leading-relaxed shadow-sm min-h-[44px]",
                             isMe
-                              ? "bg-(--color-text-primary) text-(--color-bg)"
+                              ? "bg-(--color-text-primary) text-(--color-bg) whitespace-pre-wrap"
                               : "bg-(--color-bg-subtle) text-(--color-text-primary) border border-(--color-border)",
                             isMe
                               ? isLastInGroup ? "rounded-[16px_16px_4px_16px]" : "rounded-[16px_16px_4px_16px]"
