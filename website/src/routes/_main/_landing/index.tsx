@@ -21,6 +21,14 @@ function LandingPage() {
                 <h1 className="text-[40px] md:text-[56px] font-bold tracking-tight text-(--color-text-primary) leading-[1.1]">
                     Building DodoChat
                 </h1>
+
+                <div className="mt-8 rounded-2xl overflow-hidden border border-(--color-border-subtle) bg-(--color-bg-subtle) shadow-2xl">
+                    <img
+                        src="/screenshot_87121.jpeg"
+                        alt="DodoChat Interface Overview"
+                        className="w-full object-cover"
+                    />
+                </div>
             </header>
 
             <div className="prose prose-neutral max-w-none prose-p:text-[17px] prose-p:leading-[1.7] prose-p:text-(--color-text-secondary) prose-headings:text-(--color-text-primary) prose-headings:font-bold prose-strong:text-(--color-text-primary)">
@@ -41,12 +49,12 @@ function LandingPage() {
                 <div className="my-12 flex flex-col gap-4">
                     <div className="rounded-xl overflow-hidden border border-(--color-border-subtle) bg-(--color-bg-subtle)">
                         <img
-                            src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1200"
-                            alt="Code exploration"
+                            src="/screenshot_8sadh1.jpeg"
+                            alt="Chat flow and tool calling"
                             className="w-full aspect-video object-cover"
                         />
                     </div>
-                    <span className="text-[13px] text-(--color-text-tertiary) italic text-center">Exploring complex tool-calling patterns within the chat runtime.</span>
+                    <span className="text-[13px] text-(--color-text-tertiary) italic text-center">A glimpse into the streaming interaction and tool execution.</span>
                 </div>
 
                 <h2 className="text-[24px] mt-12 mb-4">What DodoChat Supports</h2>
@@ -85,12 +93,19 @@ function LandingPage() {
                 <div className="my-12 flex flex-col gap-4">
                     <div className="rounded-xl overflow-hidden border border-(--color-border-subtle) bg-(--color-bg-subtle)">
                         <img
-                            src="https://images.unsplash.com/photo-1614741118887-7a4ee193a5fa?auto=format&fit=crop&q=80&w=1200"
-                            alt="Multi-modal interface"
+                            src="/screenshot_gewea.jpeg"
+                            alt="Technical implementation details"
                             className="w-full aspect-video object-cover"
                         />
                     </div>
-                    <span className="text-[13px] text-(--color-text-tertiary) italic text-center">Testing multi-modal reasoning and external data integrations.</span>
+                    <div className="rounded-xl overflow-hidden border border-(--color-border-subtle) bg-(--color-bg-subtle)">
+                        <img
+                            src="/screenshot_21772.jpeg"
+                            alt="File processing and RAG"
+                            className="w-full aspect-video object-cover"
+                        />
+                    </div>
+                    <span className="text-[13px] text-(--color-text-tertiary) italic text-center">Handling localized file context and multi-modal reasoning.</span>
                 </div>
 
                 <h2 className="text-[24px] mt-12 mb-4">The Technical Stack</h2>
@@ -111,6 +126,16 @@ function LandingPage() {
                 <p>
                     DodoChat is open source. You can find the full implementation, from the tool-calling logic to the streaming architecture, on <a href="https://github.com/echoeyecodes/dodochat" target="_blank" rel="noreferrer" className="text-(--color-text-primary) underline underline-offset-4 decoration-(--color-border) hover:decoration-(--color-text-primary) transition-colors font-medium">GitHub</a>.
                 </p>
+
+                <div className="my-12">
+                    <div className="rounded-xl overflow-hidden border border-(--color-border-subtle) bg-(--color-bg-subtle)">
+                        <img
+                            src="/screenshot_sadu.jpeg"
+                            alt="DodoChat UI in action"
+                            className="w-full aspect-video object-cover"
+                        />
+                    </div>
+                </div>
 
                 <p className="mt-12">
                     DodoChat is an ongoing experiment in AI interaction. It's a space where I explore new patterns for digital assistance, aiming to build tools that feel as responsive and capable as they are intelligent.
