@@ -14,7 +14,7 @@ import { ConfirmationDialog, type ConfirmationDialogHandle } from '@/components/
 import { useDeleteConversation } from '../hooks/useDeleteConversation'
 import { useSidebar } from '../context/SidebarContext'
 import { useFilesSidebar } from '../context/FilesSidebarContext'
-import { LucideMenu, LucideExternalLink, LucideCopy, LucideFiles, LucideDownload } from 'lucide-react'
+import { LucideMenu, LucideExternalLink, LucideCopy, LucideFiles, LucideDownload, LucideChevronDown } from 'lucide-react'
 import { ConversationFiles } from './ConversationFiles'
 import { Sheet, SheetContent } from '@/components/ui/sheet'
 import { toast } from 'sonner'
@@ -116,6 +116,7 @@ export const Conversation = ({ title }: ConversationProps) => {
   const { isDesktopFilesOpen, isMobileFilesOpen, setMobileFilesOpen, toggleFiles } = useFilesSidebar()
   const [isMobile, setIsMobile] = useState(false)
   const [displayTitle, setDisplayTitle] = useState(title)
+  const [showScrollButton, setShowScrollButton] = useState(false)
 
   useEffect(() => {
     // Reset mobile sheet on navigation between conversations
@@ -130,6 +131,20 @@ export const Conversation = ({ title }: ConversationProps) => {
     handleResize()
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  useEffect(() => {
+    const container = scrollContainerRef.current
+    if (!container) return
+
+    const handleScroll = () => {
+      const { scrollTop, scrollHeight, clientHeight } = container
+      const isNearBottom = scrollHeight - scrollTop - clientHeight < 200
+      setShowScrollButton(!isNearBottom)
+    }
+
+    container.addEventListener('scroll', handleScroll)
+    return () => container.removeEventListener('scroll', handleScroll)
   }, [])
 
   useEffect(() => {
@@ -484,6 +499,25 @@ export const Conversation = ({ title }: ConversationProps) => {
 
             <div ref={messagesEndRef} className="h-4 w-full shrink-0" />
           </div>
+
+          {/* Scroll to Bottom Button */}
+          {showScrollButton && (
+            <button
+              onClick={() => {
+                scrollContainerRef.current?.scrollTo({
+                  top: scrollContainerRef.current.scrollHeight,
+                  behavior: 'smooth'
+                })
+              }}
+              className="absolute bottom-6 left-1/2 -translate-x-1/2 p-2 rounded-full bg-(--color-bg-elevated) border border-(--color-border) text-(--color-text-secondary) shadow-sm hover:text-(--color-text-primary) hover:bg-(--color-bg-subtle) hover:border-(--color-text-tertiary)/30 transition-all duration-200 animate-in fade-in zoom-in-90 slide-in-from-bottom-2 z-20 group"
+              title="Scroll to bottom"
+            >
+              <LucideChevronDown className="w-4 h-4 transition-transform group-hover:translate-y-0.5" />
+              {isLoading && (
+                <span className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-(--color-accent) rounded-full border border-(--color-bg-elevated) animate-pulse" />
+              )}
+            </button>
+          )}
         </div>
 
         {/* Desktop Sidebar */}
