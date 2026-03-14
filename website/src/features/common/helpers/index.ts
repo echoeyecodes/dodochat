@@ -16,3 +16,17 @@ export function withCDN(url: string | undefined): string {
 
     return `${baseUrl}${cleanUrl}`;
 }
+
+export function isImage(filename: string, mimeType?: string): boolean {
+    return (
+        !!mimeType?.startsWith('image/') ||
+        /\.(jpg|jpeg|png|gif|webp)$/i.test(filename)
+    );
+}
+
+export function isAudio(filename: string, mimeType?: string): boolean {
+    return (
+        !!mimeType?.startsWith('audio/') ||
+        /\.(mp3|wav|ogg|m4a|aac)$/i.test(filename)
+    );
+}

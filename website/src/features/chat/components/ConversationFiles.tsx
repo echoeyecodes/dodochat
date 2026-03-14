@@ -1,6 +1,6 @@
 import { cn, formatFileSize, formatRelativeDate } from '@/lib/utils'
-import { withCDN } from '@/features/common/helpers'
-import { LucideFile, LucideImage, LucideFileText, LucideX, LucideDownload, LucideSearch, LucideLoader2 } from 'lucide-react'
+import { withCDN, isImage, isAudio } from '@/features/common/helpers'
+import { LucideFile, LucideImage, LucideFileText, LucideX, LucideDownload, LucideSearch, LucideLoader2, LucideMic } from 'lucide-react'
 import { useConversationFiles } from '../hooks/useConversationFiles'
 import { useState } from 'react'
 
@@ -8,6 +8,13 @@ type ConversationFilesProps = {
     isOpen: boolean
     onClose: () => void
     conversation_id?: string
+}
+
+const getFileIcon = (file: { name: string, type: string }) => {
+    if (isImage(file.name, file.type)) return <LucideImage className="w-4 h-4" />
+    if (isAudio(file.name, file.type)) return <LucideMic className="w-4 h-4" />
+    if (file.type === 'text/plain') return <LucideFileText className="w-4 h-4" />
+    return <LucideFile className="w-4 h-4" />
 }
 
 export const ConversationFiles = ({ isOpen, onClose, conversation_id }: ConversationFilesProps) => {
@@ -21,11 +28,7 @@ export const ConversationFiles = ({ isOpen, onClose, conversation_id }: Conversa
         file.name.toLowerCase().includes(searchQuery.toLowerCase())
     )
 
-    const getFileIcon = (type: string) => {
-        if (type.startsWith('image/')) return <LucideImage className="w-4 h-4" />
-        if (type === 'text/plain') return <LucideFileText className="w-4 h-4" />
-        return <LucideFile className="w-4 h-4" />
-    }
+
 
     const handleDownload = (url: string, name: string) => {
         const fullUrl = withCDN(url)
@@ -78,7 +81,7 @@ export const ConversationFiles = ({ isOpen, onClose, conversation_id }: Conversa
                                 >
                                     <div className="flex items-start gap-3">
                                         <div className="w-10 h-10 rounded-lg bg-(--color-bg-muted) flex items-center justify-center text-(--color-text-secondary) shrink-0 group-hover:bg-(--color-bg-elevated) transition-colors shadow-sm">
-                                            {getFileIcon(file.type)}
+                                            {getFileIcon(file)}
                                         </div>
                                         <div className="flex-1 min-w-0">
                                             <div className="text-[13px] font-medium text-(--color-text-primary) truncate">{file.name}</div>

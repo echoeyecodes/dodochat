@@ -15,10 +15,10 @@ const storage = multer.diskStorage({
     },
 });
 
-const upload = multer({ 
+const upload = multer({
     storage,
     fileFilter: (_req, file, cb) => {
-        const allowedTypes = ['text/plain', 'image/jpeg', 'image/png', 'image/webp', 'image/gif', 'application/pdf'];
+        const allowedTypes = ['text/plain', 'image/jpeg', 'image/png', 'image/webp', 'image/gif', 'application/pdf', 'audio/mpeg', 'audio/wav', 'audio/ogg', 'audio/m4a', 'audio/aac'];
         if (allowedTypes.includes(file.mimetype) || file.originalname.endsWith('.txt')) {
             cb(null, true);
         } else {

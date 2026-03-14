@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState, useCallback } from 'react'
 import { cn } from '@/lib/utils'
-import { withCDN } from '@/features/common/helpers'
+import { withCDN, isImage, isAudio } from '@/features/common/helpers'
 import { Streamdown } from 'streamdown'
 import { code } from '@streamdown/code'
 import { useChatContext } from '../context/ChatContext'
@@ -16,6 +16,7 @@ import { useSidebar } from '../context/SidebarContext'
 import { useFilesSidebar } from '../context/FilesSidebarContext'
 import { LucideMenu, LucideExternalLink, LucideCopy, LucideFiles, LucideDownload, LucideChevronDown, LucidePlus } from 'lucide-react'
 import { ConversationFiles } from './ConversationFiles'
+import { AudioAttachment } from './AudioAttachment'
 import { ChatTextArea } from './ChatTextArea'
 import { Sheet, SheetContent } from '@/components/ui/sheet'
 import { Link } from '@tanstack/react-router'
@@ -424,10 +425,10 @@ export const Conversation = ({ title }: ConversationProps) => {
                                   );
                                 }
                                 if (part.type === 'file' && 'file' in part) {
-                                  const isImage = part.media_type?.startsWith('image/') ||
-                                    part.file.name.match(/\.(jpg|jpeg|png|gif|webp)$/i);
+                                  const itIsImage = isImage(part.file.name, part.media_type);
+                                  const itIsAudio = isAudio(part.file.name, part.media_type);
 
-                                  if (isImage) {
+                                  if (itIsImage) {
                                     const imageUrl = withCDN(part.file.url);
                                     return (
                                       <div key={partIdx} className="my-2 max-w-full overflow-hidden rounded-lg border border-(--color-border) shadow-sm bg-(--color-bg-subtle)">
@@ -438,6 +439,17 @@ export const Conversation = ({ title }: ConversationProps) => {
                                           onClick={() => window.open(imageUrl, '_blank')}
                                         />
                                       </div>
+                                    );
+                                  }
+
+                                  if (itIsAudio) {
+                                    return (
+                                      <AudioAttachment
+                                        key={partIdx}
+                                        name={part.file.name}
+                                        url={withCDN(part.file.url)}
+                                        isMe={isMe}
+                                      />
                                     );
                                   }
 

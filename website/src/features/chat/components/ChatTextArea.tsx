@@ -207,7 +207,7 @@ export const ChatTextArea = () => {
                     type="file"
                     ref={fileInputRef}
                     className="hidden"
-                    accept=".txt,.pdf,image/*"
+                    accept=".txt,.pdf,image/*,audio/*"
                     onChange={handleFileChange}
                 />
                 <textarea

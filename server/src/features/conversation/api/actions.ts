@@ -84,7 +84,7 @@ const chat = async (req: Request, res: Response, next: NextFunction) => {
             await conversationRepository.autoTitle(conversation);
         }
 
-        const collectedImages: { msgIdx: number, buffer: Buffer, mimeType: string }[] = [];
+        const collectedMedia: { msgIdx: number, buffer: Buffer, mimeType: string, type: 'image' | 'file' }[] = [];
 
         const sanitizedMessages = await Promise.all(messages.map(async (m, msgIdx) => ({
             ...m,
@@ -96,13 +96,18 @@ const chat = async (req: Request, res: Response, next: NextFunction) => {
             ).map(async (p) => {
                 if (p.type === 'file' && (p as any).file?.id) {
                     const fileRecord = await mediaRepository.getFileById((p as any).file.id);
-                    // For images, collect the buffer and drop the part. We will inject it post-conversion
-                    if (fileRecord && fileRecord.type.startsWith('image/')) {
+                    // Handle images and audio for direct model processing
+                    if (fileRecord && (fileRecord.type.startsWith('image/') || fileRecord.type.startsWith('audio/'))) {
                         try {
                             const buffer = await fs.readFile(fileRecord.path);
-                            collectedImages.push({ msgIdx, buffer, mimeType: fileRecord.type });
+                            collectedMedia.push({
+                                msgIdx,
+                                buffer,
+                                mimeType: fileRecord.type,
+                                type: fileRecord.type.startsWith('image/') ? 'image' : 'file'
+                            });
                         } catch (err) {
-                            console.error('Failed to read image file:', err);
+                            console.error('Failed to read media file:', err);
                         }
                         return null;
                     }
@@ -114,18 +119,21 @@ const chat = async (req: Request, res: Response, next: NextFunction) => {
 
         const modelMessages = await convertToModelMessages(sanitizedMessages as any);
 
-        // Inject collected images as raw Uint8Array parts into the corresponding model messages
-        for (const img of collectedImages) {
-            const modelMsg = modelMessages[img.msgIdx];
+        // Inject collected media as raw Uint8Array parts into the corresponding model messages
+        for (const media of collectedMedia) {
+            const modelMsg = modelMessages[media.msgIdx];
             if (modelMsg && modelMsg.role === 'user') {
-                const imagePart = { type: 'image' as const, image: new Uint8Array(img.buffer), mimeType: img.mimeType };
+                const mediaPart = media.type === 'image'
+                    ? { type: 'image' as const, image: new Uint8Array(media.buffer), mimeType: media.mimeType }
+                    : { type: 'file' as const, data: new Uint8Array(media.buffer), mediaType: media.mimeType };
+
                 if (typeof modelMsg.content === 'string') {
                     modelMsg.content = [
                         { type: 'text' as const, text: modelMsg.content },
-                        imagePart,
+                        mediaPart,
                     ];
                 } else if (Array.isArray(modelMsg.content)) {
-                    modelMsg.content.push(imagePart);
+                    modelMsg.content.push(mediaPart);
                 }
             }
         }
