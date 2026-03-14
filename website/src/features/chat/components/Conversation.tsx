@@ -6,6 +6,7 @@ import { code } from '@streamdown/code'
 import { useChatContext } from '../context/ChatContext'
 import { FileAttachment } from './FileAttachment'
 import { ToolApplyImageEffect } from './tools/ToolApplyImageEffect'
+import { ToolGenerateFile } from './tools/ToolGenerateFile'
 import { ToolGetSystemInfo } from './tools/ToolGetSystemInfo'
 import { ChatOptions } from './ChatOptions'
 import { UpdateConversationDialog, type UpdateConversationDialogRef } from './UpdateConversationDialog'
@@ -481,6 +482,9 @@ export const Conversation = ({ title }: ConversationProps) => {
 
                                 if (part.type === 'tool-getSystemInfo') {
                                   return <ToolGetSystemInfo key={partIdx} part={part} />;
+                                }
+                                if (part.type === 'tool-generateFile') {
+                                  return <ToolGenerateFile key={partIdx} part={part} />;
                                 }
                                 return null;
                               })

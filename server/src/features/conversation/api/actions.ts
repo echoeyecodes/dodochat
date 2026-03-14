@@ -166,7 +166,8 @@ const chat = async (req: Request, res: Response, next: NextFunction) => {
             "Image Processing: You can process BOTH uploaded files and external images (like IGDB covers).",
             "- For uploaded files: Use the fileId from the list below.",
             "- For IGDB/External images: Use the imageUrl from the game details.",
-            "- You MUST always provide the current conversationId to the applyImageEffect tool.",
+            "File Generation: You can generate .txt or .pdf files based on user requests (e.g., 'summarize this into a pdf', 'create a text file of our discussion').",
+            "- You MUST always provide the current conversationId to tools like applyImageEffect and generateFile.",
             fileListStr ? `The user has uploaded the following files: ${fileListStr}.` : "",
             context ? `Use the following relevant context from these files to inform your response:\n${context}` : (fileListStr ? "The user is asking about the documents, but no specific relevant content was found via vector search. Acknowledge the files exist and ask for more specific questions if needed." : "")
         ].filter(Boolean).join('\n\n');

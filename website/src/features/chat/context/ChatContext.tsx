@@ -36,6 +36,21 @@ export type ChatTools = {
             message: string;
         };
     };
+    generateFile: {
+        input: {
+            content: string;
+            format: 'txt' | 'pdf';
+            filename: string;
+            conversationId: string;
+        };
+        output: {
+            success: boolean;
+            file_id: string;
+            file_url: string;
+            size: number;
+            message: string;
+        };
+    };
 };
 
 export type FilePart = {
