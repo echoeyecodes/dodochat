@@ -10,7 +10,6 @@ type AudioAttachmentProps = {
 }
 
 export const AudioAttachment = ({ name, url, isMe, duration, className }: AudioAttachmentProps) => {
-    console.log(withCDN(url))
     return (
         <div
             className={cn(
