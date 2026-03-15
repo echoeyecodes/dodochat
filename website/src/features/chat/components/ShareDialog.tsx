@@ -71,7 +71,7 @@ export const ShareDialog = forwardRef<ShareDialogRef>((_, ref) => {
     return (
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogContent className="sm:max-w-[420px]">
-                <DialogHeader>
+                <DialogHeader className="min-w-0">
                     <div className="w-12 h-12 rounded-full bg-(--color-accent-subtle) flex items-center justify-center mb-2">
                         <LucideLink className="w-6 h-6 text-(--color-accent)" />
                     </div>
@@ -82,13 +82,13 @@ export const ShareDialog = forwardRef<ShareDialogRef>((_, ref) => {
                     </DialogDescription>
                 </DialogHeader>
 
-                <div className="space-y-6 py-4">
-                    <div className="flex items-center justify-between p-4 rounded-xl border border-(--color-border) bg-(--color-bg-subtle)">
-                        <div className="flex flex-col gap-0.5">
+                <div className="space-y-6 py-4 min-w-0 w-full overflow-hidden">
+                    <div className="flex items-center justify-between p-4 rounded-xl border border-(--color-border) bg-(--color-bg-subtle) min-w-0">
+                        <div className="flex flex-col gap-0.5 min-w-0">
                             <span className="text-sm font-semibold text-(--color-text-primary)">
                                 Public Access
                             </span>
-                            <span className="text-xs text-(--color-text-secondary)">
+                            <span className="text-xs text-(--color-text-secondary) truncate">
                                 {isPublic ? "Anyone with the link can view" : "Only you can view"}
                             </span>
                         </div>
@@ -111,14 +111,14 @@ export const ShareDialog = forwardRef<ShareDialogRef>((_, ref) => {
                     </div>
 
                     {isPublic && data?.share_token && (
-                        <div className="animate-in fade-in slide-in-from-top-2 duration-300">
-                            <div className="flex flex-col gap-2">
+                        <div className="animate-in fade-in slide-in-from-top-2 duration-300 w-full overflow-hidden">
+                            <div className="flex flex-col gap-2 min-w-0">
                                 <label className="text-xs font-medium text-(--color-text-secondary) ml-1">
                                     Shared Link
                                 </label>
-                                <div className="flex gap-2 min-w-0">
-                                    <div className="flex-1 min-w-0 px-3 py-2 rounded-lg bg-(--color-bg-subtle) border border-(--color-border) text-sm text-(--color-text-primary) font-mono truncate">
-                                        {shareUrl}
+                                <div className="flex gap-2 w-full min-w-0">
+                                    <div className="flex-1 min-w-0 px-3 py-2 rounded-lg bg-(--color-bg-subtle) border border-(--color-border) text-sm text-(--color-text-primary) font-mono flex items-center overflow-hidden">
+                                        <span className="block truncate w-full">{shareUrl}</span>
                                     </div>
                                     <Button
                                         size="icon"
