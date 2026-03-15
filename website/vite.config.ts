@@ -16,6 +16,7 @@ export default defineConfig(({ mode }) => {
     ],
     preview: {
       port: parseInt(env.WEBSITE_PORT!, 10),
+      host: true,
     },
     define: {
       'import.meta.env.BASE_API_URL': JSON.stringify(env.BASE_API_URL),
