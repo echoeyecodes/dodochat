@@ -4,17 +4,18 @@ import { DefaultChatTransport } from 'ai';
 import { ChatContext, type CustomMessage } from '../context/ChatContext';
 import { useNavigate } from '@tanstack/react-router';
 import { useInvalidateConversations } from '../hooks/useInvalidateConversations';
-import { type ChatMessage } from '../types';
+import { type ChatMessage, type ConversationDetail } from '../types';
 import envConfig from '@/lib/env';
 
 type ChatSessionProps = {
     conversationId?: string | null;
     initialMessages?: ChatMessage[];
+    currentConversation?: ConversationDetail | null;
     initialQuery?: string;
     children: React.ReactNode;
 };
 
-export const ChatSession = ({ conversationId, initialMessages = [], initialQuery, children }: ChatSessionProps) => {
+export const ChatSession = ({ conversationId, initialMessages = [], currentConversation: initialConv, initialQuery, children }: ChatSessionProps) => {
     const navigate = useNavigate();
     const invalidateConversations = useInvalidateConversations();
 
@@ -75,7 +76,8 @@ export const ChatSession = ({ conversationId, initialMessages = [], initialQuery
             input,
             setInput,
             conversationId: activeId,
-            setConversationId: setActiveId
+            setConversationId: setActiveId,
+            currentConversation: initialConv
         }}>
             <div className="flex-1 flex flex-col relative w-full h-full overflow-hidden bg-(--color-bg-elevated)">
                 {children}

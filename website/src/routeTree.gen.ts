@@ -18,10 +18,12 @@ import { Route as MainLandingTermsRouteImport } from './routes/_main/_landing/te
 import { Route as MainLandingSignupRouteImport } from './routes/_main/_landing/signup'
 import { Route as MainLandingPrivacyRouteImport } from './routes/_main/_landing/privacy'
 import { Route as MainLandingLoginRouteImport } from './routes/_main/_landing/login'
-import { Route as MainAuthProfileRouteImport } from './routes/_main/_auth/profile'
-import { Route as MainAuthConversationsRouteRouteImport } from './routes/_main/_auth/conversations/route'
-import { Route as MainAuthConversationsIndexRouteImport } from './routes/_main/_auth/conversations/index'
-import { Route as MainAuthConversationsIdIndexRouteImport } from './routes/_main/_auth/conversations/$id/index'
+import { Route as MainAuthGuardedRouteRouteImport } from './routes/_main/_auth/_guarded/route'
+import { Route as MainAuthSTokenRouteImport } from './routes/_main/_auth/s/$token'
+import { Route as MainAuthGuardedProfileRouteImport } from './routes/_main/_auth/_guarded/profile'
+import { Route as MainAuthGuardedConversationsRouteRouteImport } from './routes/_main/_auth/_guarded/conversations/route'
+import { Route as MainAuthGuardedConversationsIndexRouteImport } from './routes/_main/_auth/_guarded/conversations/index'
+import { Route as MainAuthGuardedConversationsIdIndexRouteImport } from './routes/_main/_auth/_guarded/conversations/$id/index'
 
 const LogoutRoute = LogoutRouteImport.update({
   id: '/logout',
@@ -65,52 +67,63 @@ const MainLandingLoginRoute = MainLandingLoginRouteImport.update({
   path: '/login',
   getParentRoute: () => MainLandingRouteRoute,
 } as any)
-const MainAuthProfileRoute = MainAuthProfileRouteImport.update({
-  id: '/profile',
-  path: '/profile',
+const MainAuthGuardedRouteRoute = MainAuthGuardedRouteRouteImport.update({
+  id: '/_guarded',
   getParentRoute: () => MainAuthRouteRoute,
 } as any)
-const MainAuthConversationsRouteRoute =
-  MainAuthConversationsRouteRouteImport.update({
+const MainAuthSTokenRoute = MainAuthSTokenRouteImport.update({
+  id: '/s/$token',
+  path: '/s/$token',
+  getParentRoute: () => MainAuthRouteRoute,
+} as any)
+const MainAuthGuardedProfileRoute = MainAuthGuardedProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => MainAuthGuardedRouteRoute,
+} as any)
+const MainAuthGuardedConversationsRouteRoute =
+  MainAuthGuardedConversationsRouteRouteImport.update({
     id: '/conversations',
     path: '/conversations',
-    getParentRoute: () => MainAuthRouteRoute,
+    getParentRoute: () => MainAuthGuardedRouteRoute,
   } as any)
-const MainAuthConversationsIndexRoute =
-  MainAuthConversationsIndexRouteImport.update({
+const MainAuthGuardedConversationsIndexRoute =
+  MainAuthGuardedConversationsIndexRouteImport.update({
     id: '/',
     path: '/',
-    getParentRoute: () => MainAuthConversationsRouteRoute,
+    getParentRoute: () => MainAuthGuardedConversationsRouteRoute,
   } as any)
-const MainAuthConversationsIdIndexRoute =
-  MainAuthConversationsIdIndexRouteImport.update({
+const MainAuthGuardedConversationsIdIndexRoute =
+  MainAuthGuardedConversationsIdIndexRouteImport.update({
     id: '/$id/',
     path: '/$id/',
-    getParentRoute: () => MainAuthConversationsRouteRoute,
+    getParentRoute: () => MainAuthGuardedConversationsRouteRoute,
   } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof MainLandingIndexRoute
   '/logout': typeof LogoutRoute
-  '/conversations': typeof MainAuthConversationsRouteRouteWithChildren
-  '/profile': typeof MainAuthProfileRoute
   '/login': typeof MainLandingLoginRoute
   '/privacy': typeof MainLandingPrivacyRoute
   '/signup': typeof MainLandingSignupRoute
   '/terms': typeof MainLandingTermsRoute
-  '/conversations/': typeof MainAuthConversationsIndexRoute
-  '/conversations/$id/': typeof MainAuthConversationsIdIndexRoute
+  '/conversations': typeof MainAuthGuardedConversationsRouteRouteWithChildren
+  '/profile': typeof MainAuthGuardedProfileRoute
+  '/s/$token': typeof MainAuthSTokenRoute
+  '/conversations/': typeof MainAuthGuardedConversationsIndexRoute
+  '/conversations/$id/': typeof MainAuthGuardedConversationsIdIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof MainLandingIndexRoute
   '/logout': typeof LogoutRoute
-  '/profile': typeof MainAuthProfileRoute
   '/login': typeof MainLandingLoginRoute
   '/privacy': typeof MainLandingPrivacyRoute
   '/signup': typeof MainLandingSignupRoute
   '/terms': typeof MainLandingTermsRoute
-  '/conversations': typeof MainAuthConversationsIndexRoute
-  '/conversations/$id': typeof MainAuthConversationsIdIndexRoute
+  '/profile': typeof MainAuthGuardedProfileRoute
+  '/s/$token': typeof MainAuthSTokenRoute
+  '/conversations': typeof MainAuthGuardedConversationsIndexRoute
+  '/conversations/$id': typeof MainAuthGuardedConversationsIdIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -118,38 +131,42 @@ export interface FileRoutesById {
   '/logout': typeof LogoutRoute
   '/_main/_auth': typeof MainAuthRouteRouteWithChildren
   '/_main/_landing': typeof MainLandingRouteRouteWithChildren
-  '/_main/_auth/conversations': typeof MainAuthConversationsRouteRouteWithChildren
-  '/_main/_auth/profile': typeof MainAuthProfileRoute
+  '/_main/_auth/_guarded': typeof MainAuthGuardedRouteRouteWithChildren
   '/_main/_landing/login': typeof MainLandingLoginRoute
   '/_main/_landing/privacy': typeof MainLandingPrivacyRoute
   '/_main/_landing/signup': typeof MainLandingSignupRoute
   '/_main/_landing/terms': typeof MainLandingTermsRoute
   '/_main/_landing/': typeof MainLandingIndexRoute
-  '/_main/_auth/conversations/': typeof MainAuthConversationsIndexRoute
-  '/_main/_auth/conversations/$id/': typeof MainAuthConversationsIdIndexRoute
+  '/_main/_auth/_guarded/conversations': typeof MainAuthGuardedConversationsRouteRouteWithChildren
+  '/_main/_auth/_guarded/profile': typeof MainAuthGuardedProfileRoute
+  '/_main/_auth/s/$token': typeof MainAuthSTokenRoute
+  '/_main/_auth/_guarded/conversations/': typeof MainAuthGuardedConversationsIndexRoute
+  '/_main/_auth/_guarded/conversations/$id/': typeof MainAuthGuardedConversationsIdIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/logout'
-    | '/conversations'
-    | '/profile'
     | '/login'
     | '/privacy'
     | '/signup'
     | '/terms'
+    | '/conversations'
+    | '/profile'
+    | '/s/$token'
     | '/conversations/'
     | '/conversations/$id/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/logout'
-    | '/profile'
     | '/login'
     | '/privacy'
     | '/signup'
     | '/terms'
+    | '/profile'
+    | '/s/$token'
     | '/conversations'
     | '/conversations/$id'
   id:
@@ -158,15 +175,17 @@ export interface FileRouteTypes {
     | '/logout'
     | '/_main/_auth'
     | '/_main/_landing'
-    | '/_main/_auth/conversations'
-    | '/_main/_auth/profile'
+    | '/_main/_auth/_guarded'
     | '/_main/_landing/login'
     | '/_main/_landing/privacy'
     | '/_main/_landing/signup'
     | '/_main/_landing/terms'
     | '/_main/_landing/'
-    | '/_main/_auth/conversations/'
-    | '/_main/_auth/conversations/$id/'
+    | '/_main/_auth/_guarded/conversations'
+    | '/_main/_auth/_guarded/profile'
+    | '/_main/_auth/s/$token'
+    | '/_main/_auth/_guarded/conversations/'
+    | '/_main/_auth/_guarded/conversations/$id/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -239,61 +258,91 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MainLandingLoginRouteImport
       parentRoute: typeof MainLandingRouteRoute
     }
-    '/_main/_auth/profile': {
-      id: '/_main/_auth/profile'
+    '/_main/_auth/_guarded': {
+      id: '/_main/_auth/_guarded'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof MainAuthGuardedRouteRouteImport
+      parentRoute: typeof MainAuthRouteRoute
+    }
+    '/_main/_auth/s/$token': {
+      id: '/_main/_auth/s/$token'
+      path: '/s/$token'
+      fullPath: '/s/$token'
+      preLoaderRoute: typeof MainAuthSTokenRouteImport
+      parentRoute: typeof MainAuthRouteRoute
+    }
+    '/_main/_auth/_guarded/profile': {
+      id: '/_main/_auth/_guarded/profile'
       path: '/profile'
       fullPath: '/profile'
-      preLoaderRoute: typeof MainAuthProfileRouteImport
-      parentRoute: typeof MainAuthRouteRoute
+      preLoaderRoute: typeof MainAuthGuardedProfileRouteImport
+      parentRoute: typeof MainAuthGuardedRouteRoute
     }
-    '/_main/_auth/conversations': {
-      id: '/_main/_auth/conversations'
+    '/_main/_auth/_guarded/conversations': {
+      id: '/_main/_auth/_guarded/conversations'
       path: '/conversations'
       fullPath: '/conversations'
-      preLoaderRoute: typeof MainAuthConversationsRouteRouteImport
-      parentRoute: typeof MainAuthRouteRoute
+      preLoaderRoute: typeof MainAuthGuardedConversationsRouteRouteImport
+      parentRoute: typeof MainAuthGuardedRouteRoute
     }
-    '/_main/_auth/conversations/': {
-      id: '/_main/_auth/conversations/'
+    '/_main/_auth/_guarded/conversations/': {
+      id: '/_main/_auth/_guarded/conversations/'
       path: '/'
       fullPath: '/conversations/'
-      preLoaderRoute: typeof MainAuthConversationsIndexRouteImport
-      parentRoute: typeof MainAuthConversationsRouteRoute
+      preLoaderRoute: typeof MainAuthGuardedConversationsIndexRouteImport
+      parentRoute: typeof MainAuthGuardedConversationsRouteRoute
     }
-    '/_main/_auth/conversations/$id/': {
-      id: '/_main/_auth/conversations/$id/'
+    '/_main/_auth/_guarded/conversations/$id/': {
+      id: '/_main/_auth/_guarded/conversations/$id/'
       path: '/$id'
       fullPath: '/conversations/$id/'
-      preLoaderRoute: typeof MainAuthConversationsIdIndexRouteImport
-      parentRoute: typeof MainAuthConversationsRouteRoute
+      preLoaderRoute: typeof MainAuthGuardedConversationsIdIndexRouteImport
+      parentRoute: typeof MainAuthGuardedConversationsRouteRoute
     }
   }
 }
 
-interface MainAuthConversationsRouteRouteChildren {
-  MainAuthConversationsIndexRoute: typeof MainAuthConversationsIndexRoute
-  MainAuthConversationsIdIndexRoute: typeof MainAuthConversationsIdIndexRoute
+interface MainAuthGuardedConversationsRouteRouteChildren {
+  MainAuthGuardedConversationsIndexRoute: typeof MainAuthGuardedConversationsIndexRoute
+  MainAuthGuardedConversationsIdIndexRoute: typeof MainAuthGuardedConversationsIdIndexRoute
 }
 
-const MainAuthConversationsRouteRouteChildren: MainAuthConversationsRouteRouteChildren =
+const MainAuthGuardedConversationsRouteRouteChildren: MainAuthGuardedConversationsRouteRouteChildren =
   {
-    MainAuthConversationsIndexRoute: MainAuthConversationsIndexRoute,
-    MainAuthConversationsIdIndexRoute: MainAuthConversationsIdIndexRoute,
+    MainAuthGuardedConversationsIndexRoute:
+      MainAuthGuardedConversationsIndexRoute,
+    MainAuthGuardedConversationsIdIndexRoute:
+      MainAuthGuardedConversationsIdIndexRoute,
   }
 
-const MainAuthConversationsRouteRouteWithChildren =
-  MainAuthConversationsRouteRoute._addFileChildren(
-    MainAuthConversationsRouteRouteChildren,
+const MainAuthGuardedConversationsRouteRouteWithChildren =
+  MainAuthGuardedConversationsRouteRoute._addFileChildren(
+    MainAuthGuardedConversationsRouteRouteChildren,
   )
 
+interface MainAuthGuardedRouteRouteChildren {
+  MainAuthGuardedConversationsRouteRoute: typeof MainAuthGuardedConversationsRouteRouteWithChildren
+  MainAuthGuardedProfileRoute: typeof MainAuthGuardedProfileRoute
+}
+
+const MainAuthGuardedRouteRouteChildren: MainAuthGuardedRouteRouteChildren = {
+  MainAuthGuardedConversationsRouteRoute:
+    MainAuthGuardedConversationsRouteRouteWithChildren,
+  MainAuthGuardedProfileRoute: MainAuthGuardedProfileRoute,
+}
+
+const MainAuthGuardedRouteRouteWithChildren =
+  MainAuthGuardedRouteRoute._addFileChildren(MainAuthGuardedRouteRouteChildren)
+
 interface MainAuthRouteRouteChildren {
-  MainAuthConversationsRouteRoute: typeof MainAuthConversationsRouteRouteWithChildren
-  MainAuthProfileRoute: typeof MainAuthProfileRoute
+  MainAuthGuardedRouteRoute: typeof MainAuthGuardedRouteRouteWithChildren
+  MainAuthSTokenRoute: typeof MainAuthSTokenRoute
 }
 
 const MainAuthRouteRouteChildren: MainAuthRouteRouteChildren = {
-  MainAuthConversationsRouteRoute: MainAuthConversationsRouteRouteWithChildren,
-  MainAuthProfileRoute: MainAuthProfileRoute,
+  MainAuthGuardedRouteRoute: MainAuthGuardedRouteRouteWithChildren,
+  MainAuthSTokenRoute: MainAuthSTokenRoute,
 }
 
 const MainAuthRouteRouteWithChildren = MainAuthRouteRoute._addFileChildren(

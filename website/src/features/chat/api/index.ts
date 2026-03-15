@@ -39,6 +39,21 @@ const fetchConversationFiles = async (id: string): Promise<ConversationFile[]> =
     return data.data
 }
 
+const toggleConversationSharing = async ({ id, visibility }: { id: string, visibility: 'private' | 'public' }): Promise<ConversationDetail> => {
+    const { data } = await request({ path: `/api/conversations/${id}/share`, method: 'POST', body: { visibility } })
+    return data.data
+}
+
+const fetchSharedConversation = async (token: string): Promise<ConversationDetail> => {
+    const { data } = await request({ path: `/api/conversations/public/${token}`, method: 'GET' })
+    return data.data
+}
+
+const forkConversation = async (token: string): Promise<ConversationDetail> => {
+    const { data } = await request({ path: `/api/conversations/public/${token}/fork`, method: 'POST' })
+    return data.data
+}
+
 export const conversationApi = {
     fetchConversations,
     fetchConversationById,
@@ -47,4 +62,7 @@ export const conversationApi = {
     updateConversation,
     searchConversations,
     fetchConversationFiles,
+    toggleConversationSharing,
+    fetchSharedConversation,
+    forkConversation,
 }

@@ -21,7 +21,7 @@ type LoginFormValues = z.infer<typeof loginSchema>
 
 export const LoginDetail = () => {
     const navigate = useNavigate()
-    const search = useSearch({ from: '/_main/_landing/login' }) as { q?: string }
+    const search = useSearch({ from: '/_main/_landing/login' }) as { q?: string, redirect?: string }
     const loginMutation = useLogin()
     const [isLoading, setIsLoading] = useState(false)
 
@@ -39,11 +39,7 @@ export const LoginDetail = () => {
 
             loginMutation.mutate({ firebase_token: idToken }, {
                 onSuccess: () => {
-                    navigate({
-                        to: '/conversations',
-                        search: search.q ? { q: search.q } : undefined,
-                        reloadDocument: true
-                    })
+                    handleLoginSuccess()
                 },
                 onError: (error: Error) => {
                     setIsLoading(false)
@@ -68,11 +64,7 @@ export const LoginDetail = () => {
 
             loginMutation.mutate({ firebase_token: idToken }, {
                 onSuccess: () => {
-                    navigate({
-                        to: '/conversations',
-                        search: search.q ? { q: search.q } : undefined,
-                        reloadDocument: true
-                    })
+                    handleLoginSuccess()
                 },
                 onError: (error: Error) => {
                     setIsLoading(false)
@@ -83,6 +75,18 @@ export const LoginDetail = () => {
             setIsLoading(false)
             toast.error(error.message || 'Failed to sign in with Google')
         }
+    }
+
+    const handleLoginSuccess = () => {
+        if (search.redirect) {
+            navigate({ to: search.redirect as any, reloadDocument: true })
+            return
+        }
+        navigate({
+            to: '/conversations',
+            search: search.q ? { q: search.q } : undefined,
+            reloadDocument: true
+        })
     }
 
     return (

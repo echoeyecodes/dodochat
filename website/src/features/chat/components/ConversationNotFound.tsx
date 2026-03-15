@@ -1,55 +1,54 @@
 import { Link } from "@tanstack/react-router"
 import { Button } from "@/components/ui/button"
-import { LucideMessageSquareOff, LucideArrowLeft } from "lucide-react"
+import { LucideMessageSquareOff } from "lucide-react"
 
 export const ConversationNotFound = () => {
     return (
-        <div className="flex-1 flex flex-col items-center justify-center h-full bg-(--color-bg-elevated) px-6">
-            <div className="text-center w-full max-w-[400px] animate-in fade-in zoom-in-95 duration-500">
+        <div className="h-dvh w-full flex flex-col items-center justify-center bg-(--color-bg) px-6 relative overflow-hidden">
 
-                {/* Standard Icon - Matches Empty State size */}
-                <div className="w-12 h-12 rounded-full bg-(--color-bg-muted) flex items-center justify-center mx-auto mb-4">
-                    <LucideMessageSquareOff className="size-5 text-(--color-text-tertiary) stroke-[1.8px]" />
+            <div className="w-full max-w-[440px] flex flex-col items-center text-center">
+                <div className="mb-8">
+                    <div className="size-24 rounded-3xl bg-(--color-bg-subtle) border border-(--color-border) flex items-center justify-center">
+                        <LucideMessageSquareOff className="size-10 text-(--color-text-secondary) opacity-40" />
+                    </div>
                 </div>
 
-                {/* Content - Matches Empty State rhythm */}
-                <div className="space-y-2 mb-8">
-                    <h2 className="text-[16px] font-semibold text-(--color-text-primary)">
-                        Conversation not found
+                <div className="space-y-4 mb-10">
+                    <h2 className="text-[32px] font-bold tracking-tight text-(--color-text-primary)">
+                        Chat not found
                     </h2>
-                    <p className="text-[14px] text-(--color-text-tertiary) leading-relaxed">
-                        This chat doesn't exist or you don't have access to it.
-                        Let's get you back to the workbench.
+                    <p className="text-base text-(--color-text-secondary) leading-relaxed">
+                        This conversation might have been deleted, made private, or the sharing link has expired.
                     </p>
                 </div>
 
-                {/* Actions */}
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col sm:flex-row gap-3 w-full">
+                    <Button
+                        variant="outline"
+                        size="lg"
+                        roundness="xl"
+                        className="flex-1 h-12 font-semibold border-(--color-border) hover:bg-(--color-bg-subtle) active:scale-[0.98] transition-all"
+                        onClick={() => window.history.back()}
+                    >
+                        Go Back
+                    </Button>
                     <Button
                         asChild
                         variant="default"
                         size="lg"
                         roundness="xl"
-                        className="w-full h-11 text-[14px] font-semibold shadow-sm shadow-orange-500/10 active:scale-[0.98] transition-all"
-                    >
-                        <Link to="/conversations">
-                            Start New Chat
-                        </Link>
-                    </Button>
-                    <Button
-                        asChild
-                        variant="ghost"
-                        roundness="xl"
-                        className="w-full h-10 text-[13px] text-(--color-text-tertiary) hover:text-(--color-text-primary) transition-all"
+                        className="flex-1 h-12 font-semibold bg-(--color-accent) text-white hover:bg-(--color-accent-hover) active:scale-[0.98] transition-all"
                     >
                         <Link to="/">
-                            <div className="flex items-center gap-2">
-                                <LucideArrowLeft className="size-3.5" />
-                                Return Home
-                            </div>
+                            Home
                         </Link>
                     </Button>
                 </div>
+            </div>
+
+            <div className="absolute bottom-12 flex items-center gap-2 opacity-30 select-none">
+                <img src="/logo.png" alt="" className="size-6 grayscale" />
+                <span className="text-xs font-semibold tracking-widest uppercase">DodoChat</span>
             </div>
         </div>
     )

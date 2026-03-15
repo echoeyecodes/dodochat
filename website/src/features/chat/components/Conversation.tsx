@@ -9,6 +9,7 @@ import { ToolApplyImageEffect } from './tools/ToolApplyImageEffect'
 import { ToolGenerateFile } from './tools/ToolGenerateFile'
 import { ToolGetSystemInfo } from './tools/ToolGetSystemInfo'
 import { ChatOptions } from './ChatOptions'
+import { ShareDialog, type ShareDialogRef } from './ShareDialog'
 import { UpdateConversationDialog, type UpdateConversationDialogRef } from './UpdateConversationDialog'
 import { useUpdateConversation } from '../hooks/useUpdateConversation'
 import { ConfirmationDialog, type ConfirmationDialogHandle } from '@/components/ui/confirmation-dialog'
@@ -106,10 +107,12 @@ const STREAMDOWN_LINK_SAFETY = {
 
 type ConversationProps = {
   title?: string
+  isSharedView?: boolean
+  handleFork?: () => void
 }
 
-export const Conversation = ({ title }: ConversationProps) => {
-  const { messages, isLoading, error, clearError, conversationId } = useChatContext()
+export const Conversation = ({ title, isSharedView = false, handleFork }: ConversationProps) => {
+  const { messages, isLoading, error, clearError, conversationId, currentConversation } = useChatContext()
   const { mutate: updateConversation } = useUpdateConversation()
   const deleteMutation = useDeleteConversation({ active_id: conversationId })
   const { setIsOpen } = useSidebar()
@@ -117,6 +120,7 @@ export const Conversation = ({ title }: ConversationProps) => {
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
   const renameDialogRef = useRef<UpdateConversationDialogRef>(null)
+  const shareDialogRef = useRef<ShareDialogRef>(null)
   const confirmRef = useRef<ConfirmationDialogHandle>(null)
   const { isDesktopFilesOpen, isMobileFilesOpen, setMobileFilesOpen, toggleFiles } = useFilesSidebar()
   const [isMobile, setIsMobile] = useState(false)
@@ -302,6 +306,15 @@ export const Conversation = ({ title }: ConversationProps) => {
                     },
                   })
                 }} />
+                <ChatOptions.ShareAction onAction={() => {
+                  if (currentConversation) {
+                    shareDialogRef.current?.open({
+                      conversation_id: conversationId!,
+                      visibility: currentConversation.visibility ?? 'private',
+                      share_token: currentConversation.share_token,
+                    })
+                  }
+                }} />
                 <ChatOptions.DeleteAction onAction={() => {
                   confirmRef.current?.open({
                     title: 'Delete conversation?',
@@ -320,6 +333,7 @@ export const Conversation = ({ title }: ConversationProps) => {
       </div>
 
       <UpdateConversationDialog ref={renameDialogRef} />
+      <ShareDialog ref={shareDialogRef} />
       <ConfirmationDialog ref={confirmRef} />
 
       <div className="flex-1 flex flex-row min-h-0 relative overflow-hidden">
@@ -566,7 +580,20 @@ export const Conversation = ({ title }: ConversationProps) => {
               </button>
             )}
           </div>
-          <ChatTextArea />
+          {!isSharedView ? <ChatTextArea /> : (
+            <div className="px-4 py-6 bg-(--color-bg-elevated) border-t border-(--color-border) flex flex-col items-center gap-3">
+              <p className="text-sm text-(--color-text-secondary) mb-1">
+                You are viewing a shared conversation.
+              </p>
+              <Button
+                className="gap-2 bg-(--color-accent) text-white hover:bg-(--color-accent-hover) px-8 h-11 rounded-full shadow-lg transition-all hover:scale-[1.02]"
+                onClick={handleFork}
+              >
+                <LucidePlus className="w-5 h-5" />
+                Continue this conversation
+              </Button>
+            </div>
+          )}
         </div>
 
         {/* Desktop Sidebar */}

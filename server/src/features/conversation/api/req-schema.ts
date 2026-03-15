@@ -28,6 +28,29 @@ export const SearchConversationsSchema = z.object({
         q: z.string().min(1, 'Search query is required'),
     }),
 });
+ 
+import { CONVERSATION_VISIBILITY } from '../constants';
+
+export const ShareConversationSchema = z.object({
+    params: z.object({
+        id: z.string().min(1, 'Conversation ID is required'),
+    }),
+    body: z.object({
+        visibility: z.enum([CONVERSATION_VISIBILITY.PRIVATE, CONVERSATION_VISIBILITY.PUBLIC]),
+    }),
+});
+
+export const GetSharedConversationSchema = z.object({
+    params: z.object({
+        token: z.string().min(1, 'Share token is required'),
+    }),
+});
+
+export const ForkConversationSchema = z.object({
+    params: z.object({
+        token: z.string().min(1, 'Share token is required'),
+    }),
+});
 
 export const ChatSchema = z.object({
     body: z.object({

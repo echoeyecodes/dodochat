@@ -1,3 +1,7 @@
+import { CONVERSATION_VISIBILITY } from "../constants";
+
+export type ConversationVisibility = typeof CONVERSATION_VISIBILITY[keyof typeof CONVERSATION_VISIBILITY];
+
 export type MessagePart = {
     type: string;
     text?: string;
