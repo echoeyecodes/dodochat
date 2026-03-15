@@ -11,7 +11,7 @@ import attachIPAddress from "@/features/common/middlewares/attachIPAddress";
 
 const app = express();
 
-const allowedOrigins = ["https://dodochat.echoeyecodes.com"].filter(Boolean);
+const allowedOrigins = [process.env.WEBSITE_URL!];
 
 app.use(
     cors({
