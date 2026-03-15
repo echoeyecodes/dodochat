@@ -1,6 +1,6 @@
-import { useContext } from 'react'
-import { AuthUserContext } from '../components/AuthUserProvider'
+import { useContext } from "react";
+import { AuthUserContext } from "../components/AuthUserProvider";
 
 export const useCurrentUser = () => {
-    return useContext(AuthUserContext)
-}
+    return useContext(AuthUserContext);
+};

@@ -1,11 +1,10 @@
-import { Link } from "@tanstack/react-router"
-import { Button } from "@/components/ui/button"
-import { LucideMessageSquareOff } from "lucide-react"
+import { Link } from "@tanstack/react-router";
+import { Button } from "@/components/ui/button";
+import { LucideMessageSquareOff } from "lucide-react";
 
 export const ConversationNotFound = () => {
     return (
         <div className="h-dvh w-full flex flex-col items-center justify-center bg-(--color-bg) px-6 relative overflow-hidden">
-
             <div className="w-full max-w-[440px] flex flex-col items-center text-center">
                 <div className="mb-8">
                     <div className="size-24 rounded-3xl bg-(--color-bg-subtle) border border-(--color-border) flex items-center justify-center">
@@ -18,7 +17,8 @@ export const ConversationNotFound = () => {
                         Chat not found
                     </h2>
                     <p className="text-base text-(--color-text-secondary) leading-relaxed">
-                        This conversation might have been deleted, made private, or the sharing link has expired.
+                        This conversation might have been deleted, made private, or the sharing link
+                        has expired.
                     </p>
                 </div>
 
@@ -39,9 +39,7 @@ export const ConversationNotFound = () => {
                         roundness="xl"
                         className="flex-1 h-12 font-semibold bg-(--color-accent) text-white hover:bg-(--color-accent-hover) active:scale-[0.98] transition-all"
                     >
-                        <Link to="/">
-                            Home
-                        </Link>
+                        <Link to="/">Home</Link>
                     </Button>
                 </div>
             </div>
@@ -51,5 +49,5 @@ export const ConversationNotFound = () => {
                 <span className="text-xs font-semibold tracking-widest uppercase">DodoChat</span>
             </div>
         </div>
-    )
-}
+    );
+};

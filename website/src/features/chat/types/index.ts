@@ -1,52 +1,55 @@
-export type MessagePart = {
-  type: 'text';
-  text: string;
-} | {
-  type: 'file';
-  file: {
-    id: string;
-    name: string;
-    url: string;
-    size?: number;
-    metadata?: {
-      duration?: number;
-      [key: string]: any;
-    };
-  };
-  media_type?: string;
-} | {
-  type: 'image';
-  image: string;
-  media_type?: string;
-}
+export type MessagePart =
+    | {
+          type: "text";
+          text: string;
+      }
+    | {
+          type: "file";
+          file: {
+              id: string;
+              name: string;
+              url: string;
+              size?: number;
+              metadata?: {
+                  duration?: number;
+                  [key: string]: string | number | boolean | object | undefined | null;
+              };
+          };
+          media_type?: string;
+      }
+    | {
+          type: "image";
+          image: string;
+          media_type?: string;
+      };
 
 export type ChatMessage = {
-  id: string;
-  role: 'user' | 'assistant';
-  parts: MessagePart[];
-  created_at?: string;
-}
+    id: string;
+    role: "user" | "assistant";
+    parts: MessagePart[];
+    created_at?: string;
+};
 
 export type ConversationDetail = {
-  _id: string;
-  title: string;
-  preview?: string;
-  messages: ChatMessage[];
-  created_at: string;
-  updated_at: string;
-  visibility?: 'private' | 'public';
-  share_token?: string;
-}
+    _id: string;
+    title: string;
+    preview?: string;
+    messages: ChatMessage[];
+    created_at: string;
+    updated_at: string;
+    visibility?: "private" | "public";
+    share_token?: string;
+};
 
 export type ConversationFile = {
-  id: string;
-  name: string;
-  type: string;
-  size: number;
-  url: string;
-  metadata?: {
-    duration?: number;
-    [key: string]: any;
-  };
-  created_at: string;
-}
+    id: string;
+    name: string;
+    type: string;
+    size: number;
+    url: string;
+    metadata?: {
+        duration?: number;
+        [key: string]: string | number | boolean | object | undefined | null;
+    };
+    created_at: string;
+};

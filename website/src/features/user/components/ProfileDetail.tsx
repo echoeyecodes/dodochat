@@ -1,27 +1,39 @@
-import { useSelectCurrentUser } from '@/features/user/hooks/useSelectCurrentUser'
-import { cn } from '@/lib/utils'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
-import { LucideArrowLeft, LucideEye, LucideEyeOff, LucideKey, LucideMail, LucideUser, LucideLoader2 } from 'lucide-react'
-import { useState, useEffect } from 'react'
-import { Link } from '@tanstack/react-router'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import * as z from 'zod'
-import { useUpdateProfile } from '../hooks/useUpdateProfile'
-import { toast } from 'sonner'
+import { useSelectCurrentUser } from "@/features/user/hooks/useSelectCurrentUser";
+import { cn } from "@/lib/utils";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import {
+    LucideArrowLeft,
+    LucideEye,
+    LucideEyeOff,
+    LucideKey,
+    LucideMail,
+    LucideUser,
+    LucideLoader2,
+} from "lucide-react";
+import { useState, useEffect } from "react";
+import { Link } from "@tanstack/react-router";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { useUpdateProfile } from "../hooks/useUpdateProfile";
+import { toast } from "sonner";
 
 const profileSchema = z.object({
-    gemini_api_key: z.string().startsWith('AIza', 'Invalid Gemini API key format').optional().or(z.literal('')),
+    gemini_api_key: z
+        .string()
+        .startsWith("AIza", "Invalid Gemini API key format")
+        .optional()
+        .or(z.literal("")),
     should_use_own_gemini_key: z.boolean(),
-})
+});
 
-type ProfileFormValues = z.infer<typeof profileSchema>
+type ProfileFormValues = z.infer<typeof profileSchema>;
 
 export const ProfileDetail = () => {
-    const user = useSelectCurrentUser()
-    const [showApiKey, setShowApiKey] = useState(false)
-    const { mutate: updateProfile, isPending } = useUpdateProfile()
+    const user = useSelectCurrentUser();
+    const [showApiKey, setShowApiKey] = useState(false);
+    const { mutate: updateProfile, isPending } = useUpdateProfile();
 
     const {
         register,
@@ -33,49 +45,53 @@ export const ProfileDetail = () => {
     } = useForm<ProfileFormValues>({
         resolver: zodResolver(profileSchema),
         defaultValues: {
-            gemini_api_key: user?.gemini_api_key || '',
+            gemini_api_key: user?.gemini_api_key || "",
             should_use_own_gemini_key: user?.settings?.should_use_own_gemini_key || false,
         },
-    })
+    });
 
-    const shouldUseOwnKey = watch('should_use_own_gemini_key')
+    const shouldUseOwnKey = watch("should_use_own_gemini_key");
 
     useEffect(() => {
         if (user) {
             reset({
-                gemini_api_key: user.gemini_api_key || '',
+                gemini_api_key: user.gemini_api_key || "",
                 should_use_own_gemini_key: user.settings?.should_use_own_gemini_key || false,
-            })
+            });
         }
-    }, [user, reset])
+    }, [user, reset]);
 
     const onSubmit = (data: ProfileFormValues) => {
-        updateProfile({
-            gemini_api_key: data.gemini_api_key,
-            settings: {
-                should_use_own_gemini_key: data.should_use_own_gemini_key
-            }
-        }, {
-            onSuccess: () => {
-                toast.success('Profile updated successfully')
-                reset(data)
+        updateProfile(
+            {
+                gemini_api_key: data.gemini_api_key,
+                settings: {
+                    should_use_own_gemini_key: data.should_use_own_gemini_key,
+                },
             },
-            onError: (error: any) => {
-                toast.error(error.message || 'Failed to update profile')
-            }
-        })
-    }
+            {
+                onSuccess: () => {
+                    toast.success("Profile updated successfully");
+                    reset(data);
+                },
+                onError: (error: Error) => {
+                    toast.error(error.message || "Failed to update profile");
+                },
+            },
+        );
+    };
 
     const initials = user?.display_name
         ? user.display_name.substring(0, 2).toUpperCase()
-        : user?.email?.substring(0, 2).toUpperCase() || '??'
+        : user?.email?.substring(0, 2).toUpperCase() || "??";
 
     return (
         <div className="flex-1 flex items-start justify-center overflow-y-auto py-8 px-4">
             <div className="w-full max-w-lg space-y-8">
                 {/* Back link */}
                 <Link
-                    to="/conversations" className="inline-flex items-center gap-2 text-[13px] text-(--color-text-tertiary) hover:text-(--color-text-primary) transition-colors"
+                    to="/conversations"
+                    className="inline-flex items-center gap-2 text-[13px] text-(--color-text-tertiary) hover:text-(--color-text-primary) transition-colors"
                 >
                     <LucideArrowLeft className="h-3.5 w-3.5" />
                     Back to chats
@@ -115,7 +131,7 @@ export const ProfileDetail = () => {
                                     Name
                                 </p>
                                 <p className="text-[14px] text-(--color-text-primary) truncate">
-                                    {user?.display_name || '—'}
+                                    {user?.display_name || "—"}
                                 </p>
                             </div>
                         </div>
@@ -130,7 +146,7 @@ export const ProfileDetail = () => {
                                     Email
                                 </p>
                                 <p className="text-[14px] text-(--color-text-primary) truncate">
-                                    {user?.email || '—'}
+                                    {user?.email || "—"}
                                 </p>
                             </div>
                         </div>
@@ -157,7 +173,8 @@ export const ProfileDetail = () => {
                                             Gemini API Key
                                         </p>
                                         <p className="text-[12px] text-(--color-text-tertiary) leading-relaxed">
-                                            Your API key is used to authenticate with Google's Gemini API. It is stored securely and never shared.
+                                            Your API key is used to authenticate with Google's
+                                            Gemini API. It is stored securely and never shared.
                                         </p>
                                     </div>
 
@@ -176,17 +193,27 @@ export const ProfileDetail = () => {
                                             </div>
                                             <button
                                                 type="button"
-                                                onClick={() => setValue('should_use_own_gemini_key', !shouldUseOwnKey, { shouldDirty: true })}
+                                                onClick={() =>
+                                                    setValue(
+                                                        "should_use_own_gemini_key",
+                                                        !shouldUseOwnKey,
+                                                        { shouldDirty: true },
+                                                    )
+                                                }
                                                 className={cn(
                                                     "relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-(--color-accent) focus:ring-offset-2",
-                                                    shouldUseOwnKey ? "bg-(--color-accent)" : "bg-neutral-200 dark:bg-neutral-800"
+                                                    shouldUseOwnKey
+                                                        ? "bg-(--color-accent)"
+                                                        : "bg-neutral-200 dark:bg-neutral-800",
                                                 )}
                                             >
                                                 <span
                                                     aria-hidden="true"
                                                     className={cn(
                                                         "pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out",
-                                                        shouldUseOwnKey ? "translate-x-5" : "translate-x-0"
+                                                        shouldUseOwnKey
+                                                            ? "translate-x-5"
+                                                            : "translate-x-0",
                                                     )}
                                                 />
                                             </button>
@@ -197,8 +224,8 @@ export const ProfileDetail = () => {
                                                 <div className="relative flex-1">
                                                     <Input
                                                         id="gemini-api-key"
-                                                        type={showApiKey ? 'text' : 'password'}
-                                                        {...register('gemini_api_key')}
+                                                        type={showApiKey ? "text" : "password"}
+                                                        {...register("gemini_api_key")}
                                                         placeholder="AIza..."
                                                         disabled={!shouldUseOwnKey}
                                                         className="h-10 pr-10 text-base font-mono bg-(--color-bg) border-(--color-border) disabled:opacity-50"
@@ -227,7 +254,7 @@ export const ProfileDetail = () => {
                                                             Saving...
                                                         </>
                                                     ) : (
-                                                        'Save'
+                                                        "Save"
                                                     )}
                                                 </Button>
                                             </div>
@@ -245,5 +272,5 @@ export const ProfileDetail = () => {
                 </form>
             </div>
         </div>
-    )
-}
+    );
+};

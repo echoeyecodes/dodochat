@@ -1,19 +1,23 @@
-import { HTTP_STATUS_CODES } from '@/features/common/constants/http-status-codes'
-import { notFound, redirect } from '@tanstack/react-router'
+import { HTTP_STATUS_CODES } from "@/features/common/constants/http-status-codes";
+import { notFound, redirect } from "@tanstack/react-router";
+import { ErrorBody } from "./ErrorBody";
 
-export const withClientRequestHandler: <T>(
-    callback: () => Promise<T>,
-) => Promise<T> = async (callback) => {
+export const withClientRequestHandler: <T>(callback: () => Promise<T>) => Promise<T> = async (
+    callback,
+) => {
     try {
-        const response = await callback()
-        return response
-    } catch (error: any) {
-        if (error.code === HTTP_STATUS_CODES.NOT_FOUND) {
-            throw notFound()
+        const response = await callback();
+        return response;
+    } catch (error: unknown) {
+        if (error instanceof ErrorBody) {
+            if (error.code === HTTP_STATUS_CODES.NOT_FOUND) {
+                throw notFound();
+            }
+            if (error.code === HTTP_STATUS_CODES.UNAUTHORIZED) {
+                throw redirect({ to: "/login" });
+            }
+            throw error;
         }
-        if (error.code === HTTP_STATUS_CODES.UNAUTHORIZED) {
-            throw redirect({ to: '/login' })
-        }
-        throw error
+        throw error;
     }
-}
+};

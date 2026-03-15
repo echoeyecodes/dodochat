@@ -1,17 +1,12 @@
-import { Link } from "@tanstack/react-router"
-import { Button } from "@/components/ui/button"
+import { Link } from "@tanstack/react-router";
+import { Button } from "@/components/ui/button";
 
 export const NotFound = () => {
     return (
         <div className="h-dvh w-full flex flex-col items-center justify-center bg-(--color-bg) px-6">
             <div className="w-full max-w-[440px] flex flex-col items-center text-center">
-
                 <div>
-                    <img
-                        src="/logo.png"
-                        alt="DodoChat"
-                        className="size-32 object-contain"
-                    />
+                    <img src="/logo.png" alt="DodoChat" className="size-32 object-contain" />
                 </div>
 
                 <div className="space-y-4 mb-10">
@@ -22,8 +17,8 @@ export const NotFound = () => {
                         Page not found
                     </h2>
                     <p className="text-base text-(--color-text-secondary) leading-relaxed">
-                        The page you're looking for doesn't exist or has been moved.
-                        Let's get you back to the workbench.
+                        The page you're looking for doesn't exist or has been moved. Let's get you
+                        back to the workbench.
                     </p>
                 </div>
 
@@ -35,12 +30,10 @@ export const NotFound = () => {
                         roundness="xl"
                         className="w-full h-12 font-semibold shadow-sm shadow-orange-500/10 active:scale-[0.98] transition-all"
                     >
-                        <Link to="/">
-                            Return to Home
-                        </Link>
+                        <Link to="/">Return to Home</Link>
                     </Button>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};

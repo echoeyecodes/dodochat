@@ -1,15 +1,16 @@
-export const objectToQueryParams = (params: Record<string, any>) => {
-    const flattenObject = (obj: any, prefix = ""): Record<string, any> => {
-        return Object.keys(obj).reduce((acc: Record<string, any>, key: string) => {
+export const objectToQueryParams = (params: Record<string, unknown>) => {
+    const flattenObject = (obj: Record<string, unknown>, prefix = ""): Record<string, unknown> => {
+        return Object.keys(obj).reduce((acc: Record<string, unknown>, key: string) => {
             const propName = prefix ? `${prefix}.${key}` : key;
-            if (typeof obj[key] === "object" && obj[key] !== null) {
-                if (Array.isArray(obj[key])) {
-                    acc[propName] = obj[key].join(",");
+            const value = obj[key];
+            if (typeof value === "object" && value !== null) {
+                if (Array.isArray(value)) {
+                    acc[propName] = value.join(",");
                 } else {
-                    Object.assign(acc, flattenObject(obj[key], propName));
+                    Object.assign(acc, flattenObject(value as Record<string, unknown>, propName));
                 }
             } else {
-                acc[propName] = obj[key];
+                acc[propName] = value;
             }
             return acc;
         }, {});
@@ -22,11 +23,13 @@ export const objectToQueryParams = (params: Record<string, any>) => {
                 flatParams[key] !== undefined &&
                 flatParams[key] !== null &&
                 flatParams[key] !== "" &&
-                !(Array.isArray(flatParams[key]) && flatParams[key].length === 0)
+                !(Array.isArray(flatParams[key]) && flatParams[key].length === 0),
         )
         .map(
             (key) =>
-                encodeURIComponent(key) + "=" + encodeURIComponent(flatParams[key])
+                encodeURIComponent(key) +
+                "=" +
+                encodeURIComponent(flatParams[key] as string | number | boolean),
         )
         .join("&");
 

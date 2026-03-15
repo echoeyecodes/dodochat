@@ -1,9 +1,9 @@
-import { useCallback, useEffect } from 'react';
-import { useNavigate } from '@tanstack/react-router';
-import { ConversationList } from './ConversationList';
-import { SidebarProvider, useSidebar } from '../context/SidebarContext';
-import { FilesSidebarProvider } from '../context/FilesSidebarContext';
-import { Sheet, SheetContent } from '@/components/ui/sheet';
+import { useCallback, useEffect } from "react";
+import { useNavigate } from "@tanstack/react-router";
+import { ConversationList } from "./ConversationList";
+import { SidebarProvider, useSidebar } from "../context/SidebarContext";
+import { FilesSidebarProvider } from "../context/FilesSidebarContext";
+import { Sheet, SheetContent } from "@/components/ui/sheet";
 type ChatLayoutProps = {
     activeConversationId?: string | null;
     children?: React.ReactNode;
@@ -15,10 +15,10 @@ export const ChatLayoutInner = ({ activeConversationId, children }: ChatLayoutPr
 
     const handleSelectConversation = useCallback(
         (id: string) => {
-            navigate({ to: '/conversations/$id', params: { id } });
+            navigate({ to: "/conversations/$id", params: { id } });
             setIsOpen(false);
         },
-        [navigate, setIsOpen]
+        [navigate, setIsOpen],
     );
 
     useEffect(() => {
@@ -27,8 +27,8 @@ export const ChatLayoutInner = ({ activeConversationId, children }: ChatLayoutPr
                 setIsOpen(false);
             }
         };
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
     }, [setIsOpen]);
 
     return (
@@ -53,9 +53,7 @@ export const ChatLayoutInner = ({ activeConversationId, children }: ChatLayoutPr
                 </SheetContent>
             </Sheet>
 
-            <div className="flex-1 flex flex-col min-w-0 bg-(--color-bg-elevated)">
-                {children}
-            </div>
+            <div className="flex-1 flex flex-col min-w-0 bg-(--color-bg-elevated)">{children}</div>
         </div>
     );
 };
