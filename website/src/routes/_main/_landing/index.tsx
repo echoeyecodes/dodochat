@@ -63,7 +63,7 @@ function LandingPage() {
                                         }
                                     }}
                                     placeholder="Ask anything..."
-                                    className="flex-1 max-h-[160px] min-h-[44px] py-2.5 px-2 text-[15px] md:text-[16px] bg-transparent outline-none resize-none text-(--color-text-primary) placeholder:text-(--color-text-tertiary) overflow-y-auto"
+                                    className="flex-1 max-h-[160px] min-h-[44px] py-2.5 px-2 text-base bg-transparent outline-none resize-none text-(--color-text-primary) placeholder:text-(--color-text-tertiary) overflow-y-auto"
                                     rows={1}
                                     autoFocus
                                 />
