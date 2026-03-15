@@ -160,6 +160,26 @@ const executeRequest = async (
     const isJson = response.headers.get("Content-Type")?.includes("application/json");
     const data = isJson ? await response.json() : await response.text();
 
+    if (typeof window === "undefined") {
+        try {
+            const { setResponseHeader, getResponseHeader } =
+                await import("@tanstack/react-start/server");
+
+            const setCookie = response.headers.get("set-cookie");
+
+            if (setCookie) {
+                const existing = getResponseHeader("set-cookie") as string | string[] | undefined;
+                const merged = existing
+                    ? Array.isArray(existing)
+                        ? [...existing, setCookie]
+                        : [existing, setCookie]
+                    : setCookie;
+
+                setResponseHeader("set-cookie", merged);
+            }
+        } catch {}
+    }
+
     return { data, response };
 };
 
@@ -206,13 +226,6 @@ export const request = async ({
                 if (typeof window === "undefined") {
                     requestHeaders["cookie"] =
                         `access_token=${refreshed.access_token}; refresh_token=${refreshed.refresh_token}`;
-                    const { updateAuthSession } = await import("@/features/auth/helpers");
-                    await updateAuthSession({
-                        data: {
-                            access_token: refreshed.access_token,
-                            refresh_token: refreshed.refresh_token,
-                        },
-                    }).catch(() => {});
                 }
 
                 return await executeRequest(url, method, requestHeaders, body, isFormData);
