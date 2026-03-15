@@ -71,7 +71,6 @@ const getServerHeaders = async (): Promise<Record<string, string>> => {
         if (allHeaders["x-forwarded-for"]) {
             serverHeaders["x-website-x-forwarded-for"] = allHeaders["x-forwarded-for"];
         }
-
         return serverHeaders;
     } catch {
         return {};
@@ -210,13 +209,6 @@ export const request = async ({
                 if (typeof window === "undefined") {
                     requestHeaders["cookie"] =
                         `access_token=${refreshed.access_token}; refresh_token=${refreshed.refresh_token}`;
-                    const { updateAuthSession } = await import("@/features/auth/helpers");
-                    await updateAuthSession({
-                        data: {
-                            access_token: refreshed.access_token,
-                            refresh_token: refreshed.refresh_token,
-                        },
-                    }).catch(() => {});
                 }
 
                 return await executeRequest(url, method, requestHeaders, body, isFormData);
