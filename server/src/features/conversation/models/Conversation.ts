@@ -1,10 +1,13 @@
 import mongoose, { Schema, Document } from 'mongoose';
-import type { MessagePart, Message } from '../types/index';
+import { CONVERSATION_VISIBILITY } from '../constants';
+import type { MessagePart, Message, ConversationVisibility } from '../types/index';
 
 export type ConversationDoc = {
     user_id: string;
     title: string;
     messages: Message[];
+    visibility: ConversationVisibility;
+    share_token?: string;
     created_at: Date;
     updated_at: Date;
 } & Document;
@@ -32,15 +35,21 @@ const conversationSchema = new Schema(
         user_id: { type: Schema.Types.ObjectId, ref: 'User', required: true, index: true },
         title: { type: String, default: 'New Chat' },
         messages: [messageSchema],
+        visibility: {
+            type: String,
+            enum: Object.values(CONVERSATION_VISIBILITY),
+            default: CONVERSATION_VISIBILITY.PRIVATE
+        },
+        share_token: { type: String, unique: true, sparse: true, index: true },
     },
     {
         timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
     }
 );
 
-conversationSchema.index({ 
-    title: 'text', 
-    'messages.parts.text': 'text' 
+conversationSchema.index({
+    title: 'text',
+    'messages.parts.text': 'text'
 });
 
 export const Conversation = mongoose.model<ConversationDoc>('Conversation', conversationSchema);

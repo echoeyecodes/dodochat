@@ -303,6 +303,39 @@ const getConversationFiles = async (req: Request, res: Response, next: NextFunct
     }
 };
 
+const shareConversation = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const authReq = req as AuthRequest;
+        const id = req.params.id as string;
+        const { visibility } = req.body;
+        const conversation = await conversationRepository.toggleSharing({ user_id: authReq.user_id!, id, visibility });
+        return sendResponse({ res, status: HTTP_STATUS_CODES.OK })(conversation);
+    } catch (error) {
+        return next(error);
+    }
+};
+
+const getSharedConversation = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const token = req.params.token as string;
+        const conversation = await conversationRepository.getSharedConversation({ token });
+        return sendResponse({ res, status: HTTP_STATUS_CODES.OK })(conversation);
+    } catch (error) {
+        return next(error);
+    }
+};
+
+const forkConversation = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const authReq = req as AuthRequest;
+        const token = req.params.token as string;
+        const conversation = await conversationRepository.forkConversation({ user_id: authReq.user_id!, share_token: token });
+        return sendResponse({ res, status: HTTP_STATUS_CODES.CREATED })(conversation);
+    } catch (error) {
+        return next(error);
+    }
+};
+
 export const conversationActions = {
     listConversations,
     getConversation,
@@ -312,4 +345,7 @@ export const conversationActions = {
     searchConversations,
     getConversationFiles,
     chat,
+    shareConversation,
+    getSharedConversation,
+    forkConversation,
 };

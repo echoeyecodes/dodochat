@@ -1,5 +1,6 @@
 import { createContext, useContext, type Dispatch, type SetStateAction } from 'react';
 import { type UIMessage, type UseChatHelpers } from '@ai-sdk/react';
+import { type ConversationDetail } from '../types';
 import { type UIMessagePart } from 'ai';
 
 export type ChatTools = {
@@ -83,6 +84,7 @@ export type ChatContextType = UseChatHelpers<CustomMessage> & {
     setInput: Dispatch<SetStateAction<string>>;
     conversationId?: string | null;
     setConversationId?: (id: string) => void;
+    currentConversation?: ConversationDetail | null;
 };
 
 export const ChatContext = createContext<ChatContextType | null>(null);

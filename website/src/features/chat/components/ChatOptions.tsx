@@ -6,7 +6,7 @@ import {
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { cn } from '@/lib/utils'
-import { LucidePencil, LucideTrash2 } from 'lucide-react'
+import { LucidePencil, LucideTrash2, LucideLink } from 'lucide-react'
 
 /**
  * 1. TYPES & CONTEXT
@@ -124,6 +124,22 @@ const RenameAction = ({ onAction, className }: ActionProps) => {
     )
 }
 
+const ShareAction = ({ onAction, className }: ActionProps) => {
+    const { conversationId, setIsOpen } = useChatOptions()
+
+    const handlePress = () => {
+        setIsOpen(false)
+        onAction?.(conversationId)
+    }
+
+    return (
+        <Item onClick={handlePress} className={className}>
+            <LucideLink className="w-4 h-4 opacity-60" />
+            <span>Share</span>
+        </Item>
+    )
+}
+
 const DeleteAction = ({ onAction, className }: ActionProps) => {
     const { conversationId, setIsOpen } = useChatOptions()
 
@@ -153,5 +169,6 @@ export const ChatOptions = {
     Content,
     Item,
     RenameAction,
+    ShareAction,
     DeleteAction,
 }

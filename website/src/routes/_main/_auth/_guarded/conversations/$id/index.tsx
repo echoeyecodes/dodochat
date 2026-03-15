@@ -6,7 +6,7 @@ import { conversationApi } from '@/features/chat/api'
 import { withClientRequestHandler } from '@/lib/request/helpers'
 import { ConversationNotFound } from '@/features/chat/components/ConversationNotFound'
 
-export const Route = createFileRoute('/_main/_auth/conversations/$id/')({
+export const Route = createFileRoute('/_main/_auth/_guarded/conversations/$id/')({
     pendingComponent: ConversationSessionSkeleton,
     component: ConversationRoute,
     notFoundComponent: ConversationNotFound,
@@ -40,6 +40,7 @@ function ConversationRoute() {
             key={conversation._id}
             conversationId={conversation._id}
             initialMessages={conversation.messages}
+            currentConversation={conversation}
         >
             <Conversation title={conversation.title} />
         </ChatSession>

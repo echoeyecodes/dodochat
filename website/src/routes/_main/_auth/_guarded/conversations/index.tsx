@@ -8,7 +8,7 @@ const searchSchema = z.object({
     q: z.string().optional(),
 })
 
-export const Route = createFileRoute('/_main/_auth/conversations/')({
+export const Route = createFileRoute('/_main/_auth/_guarded/conversations/')({
     validateSearch: searchSchema,
     pendingComponent: ConversationSessionSkeleton,
     component: RouteComponent,

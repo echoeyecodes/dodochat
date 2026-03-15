@@ -34,6 +34,8 @@ export type ConversationDetail = {
   messages: ChatMessage[];
   created_at: string;
   updated_at: string;
+  visibility?: 'private' | 'public';
+  share_token?: string;
 }
 
 export type ConversationFile = {
