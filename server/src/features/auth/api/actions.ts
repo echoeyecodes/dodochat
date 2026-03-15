@@ -15,6 +15,7 @@ import { AUTH_ERRORS, invalidCredentialsError } from "../constants/errors";
 import { USER_ERRORS } from "../../user/constants/errors";
 import type { AuthRequest } from "../../common/types/request";
 import { sendResponse } from "../../common/helpers";
+import envConfig from "@/lib/env";
 import { HTTP_STATUS_CODES } from "@/features/common/constants/http-status-codes";
 import { notAuthenticatedError } from "@/features/common/constants/errors";
 import { hashToken } from "../helpers";
@@ -32,16 +33,21 @@ const generateTokens = (userId: string) => {
 };
 
 const setTokenCookies = (res: Response, access_token: string, refresh_token: string) => {
-    res.cookie("access_token", access_token, {
+    const domain = envConfig.get("COOKIE_DOMAIN");
+    const cookieOptions = {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
+        sameSite: "lax" as const,
+        path: "/",
+        domain: domain || undefined,
+    };
+
+    res.cookie("access_token", access_token, {
+        ...cookieOptions,
         maxAge: ACCESS_TOKEN_MAX_AGE,
     });
     res.cookie("refresh_token", refresh_token, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
+        ...cookieOptions,
         maxAge: REFRESH_TOKEN_MAX_AGE,
     });
 };

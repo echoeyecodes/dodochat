@@ -11,17 +11,16 @@ const attachUserToRequest = async (req: AuthRequest, _: Response, next: NextFunc
         : undefined;
 
     if (!token) {
-        const cookieToken = req.cookies?.access_token;
-        if (!cookieToken) return next();
-        token = cookieToken;
+        token = req.cookies?.access_token;
     }
 
+    if (!token) return next();
+
     try {
-        const decoded = jwt.verify(token!, ACCESS_TOKEN_SECRET) as { sub: string };
+        const decoded = jwt.verify(token, ACCESS_TOKEN_SECRET) as { sub: string };
         if (!decoded.sub) return next();
 
-        // Confirm token exists in DB/Cache and is not expired
-        const authToken = await authCache.getAuthToken(hashToken(token!));
+        const authToken = await authCache.getAuthToken(hashToken(token));
         if (!authToken) return next();
 
         const isExpired = new Date(authToken.access_token_expires_at) < new Date();
