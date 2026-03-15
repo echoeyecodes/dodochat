@@ -1,6 +1,6 @@
-import type { StorageProvider } from './types';
-import aws from 'aws-sdk';
-import envConfig from '../env';
+import type { StorageProvider } from "./types";
+import aws from "aws-sdk";
+import envConfig from "../env";
 
 export class S3StorageProvider implements StorageProvider {
     private s3: aws.S3;
@@ -20,27 +20,33 @@ export class S3StorageProvider implements StorageProvider {
     }
 
     async upload(params: { key: string; body: Buffer; contentType: string }): Promise<string> {
-        await this.s3.upload({
-            Bucket: this.bucket,
-            Key: params.key,
-            Body: params.body,
-            ContentType: params.contentType,
-        }).promise();
+        await this.s3
+            .upload({
+                Bucket: this.bucket,
+                Key: params.key,
+                Body: params.body,
+                ContentType: params.contentType,
+            })
+            .promise();
         return params.key;
     }
 
     async get(key: string): Promise<Buffer> {
-        const data = await this.s3.getObject({
-            Bucket: this.bucket,
-            Key: key,
-        }).promise();
+        const data = await this.s3
+            .getObject({
+                Bucket: this.bucket,
+                Key: key,
+            })
+            .promise();
         return data.Body as Buffer;
     }
 
     async delete(key: string): Promise<void> {
-        await this.s3.deleteObject({
-            Bucket: this.bucket,
-            Key: key,
-        }).promise();
+        await this.s3
+            .deleteObject({
+                Bucket: this.bucket,
+                Key: key,
+            })
+            .promise();
     }
 }

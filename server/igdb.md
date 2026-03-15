@@ -3,131 +3,131 @@ Title: Getting Started
 URL Source: https://api-docs.igdb.com/
 
 Markdown Content:
-[  NAV ](#) 
+[ NAV ](#)
 
-[  API](https://api-docs.igdb.com) 
+[ API](https://api-docs.igdb.com)
 
-[Shell](#) [Javascript](#) [Java/Unirest](#) [Kotlin/Fuel](#) [Swift](#) [Ruby](#) [Python](#) 
+[Shell](#) [Javascript](#) [Java/Unirest](#) [Kotlin/Fuel](#) [Swift](#) [Ruby](#) [Python](#)
 
-* [Getting Started](#getting-started)  
-   * [Account Creation](#account-creation)  
-   * [Authentication](#authentication)  
-   * [Requests](#requests)  
-   * [Rate Limits](#rate-limits)  
-   * [Wrappers](#wrappers)
-* [Examples](#examples)
-* [Endpoints](#endpoints)  
-   * [Age Rating](#age-rating)  
-   * [Age Rating Category](#age-rating-category)  
-   * [Age Rating Content Description](#age-rating-content-description)  
-   * [Age Rating Content Description Type](#age-rating-content-description-type)  
-   * [Age Rating Content Description V2](#age-rating-content-description-v2)  
-   * [Age Rating Organization](#age-rating-organization)  
-   * [Alternative Name](#alternative-name)  
-   * [Artwork](#artwork)  
-   * [Artwork Type](#artwork-type)  
-   * [Character](#character)  
-   * [Character Gender](#character-gender)  
-   * [Character Mug Shot](#character-mug-shot)  
-   * [Character Specie](#character-specie)  
-   * [Collection](#collection)  
-   * [Collection Membership](#collection-membership)  
-   * [Collection Membership Type](#collection-membership-type)  
-   * [Collection Relation](#collection-relation)  
-   * [Collection Relation Type](#collection-relation-type)  
-   * [Collection Type](#collection-type)  
-   * [Company](#company)  
-   * [Company Logo](#company-logo)  
-   * [Company Size](#company-size)  
-   * [Company Status](#company-status)  
-   * [Company Type](#company-type)  
-   * [Company Type History](#company-type-history)  
-   * [Company Website](#company-website)  
-   * [Cover](#cover)  
-   * [Date Format](#date-format)  
-   * [Entity Type](#entity-type)  
-   * [Event](#event)  
-   * [Event Logo](#event-logo)  
-   * [Event Network](#event-network)  
-   * [External Game](#external-game)  
-   * [External Game Source](#external-game-source)  
-   * [Franchise](#franchise)  
-   * [Game](#game)  
-   * [Game Engine](#game-engine)  
-   * [Game Engine Logo](#game-engine-logo)  
-   * [Game Localization](#game-localization)  
-   * [Game Mode](#game-mode)  
-   * [Game Release Format](#game-release-format)  
-   * [Game Status](#game-status)  
-   * [Game Time To Beat](#game-time-to-beat)  
-   * [Game Type](#game-type)  
-   * [Game Version](#game-version)  
-   * [Game Version Feature](#game-version-feature)  
-   * [Game Version Feature Value](#game-version-feature-value)  
-   * [Game Video](#game-video)  
-   * [Genre](#genre)  
-   * [Involved Company](#involved-company)  
-   * [Keyword](#keyword)  
-   * [Language](#language)  
-   * [Language Support](#language-support)  
-   * [Language Support Type](#language-support-type)  
-   * [Multiplayer Mode](#multiplayer-mode)  
-   * [Network Type](#network-type)  
-   * [Platform](#platform)  
-   * [Platform Family](#platform-family)  
-   * [Platform Logo](#platform-logo)  
-   * [Platform Type](#platform-type)  
-   * [Platform Version](#platform-version)  
-   * [Platform Version Company](#platform-version-company)  
-   * [Platform Version Release Date](#platform-version-release-date)  
-   * [Platform Website](#platform-website)  
-   * [Player Perspective](#player-perspective)  
-   * [Popularity Primitive](#popularity-primitive)  
-   * [Popularity Type](#popularity-type)  
-   * [Region](#region)  
-   * [Release Date](#release-date)  
-   * [Release Date Region](#release-date-region)  
-   * [Release Date Status](#release-date-status)  
-   * [Report](#report)  
-   * [Report Type](#report-type)  
-   * [Screenshot](#screenshot)  
-   * [Search](#search)  
-   * [Theme](#theme)  
-   * [Website](#website)  
-   * [Website Type](#website-type)
-* [PopScore](#popscore)  
-   * [Introducing IGDB PopScore - Your key to tracking the latest trends in the video game market.](#introducing-igdb-popscore---your-key-to-tracking-the-latest-trends-in-the-video-game-market)  
-   * [Currently available PopScore primitives](#currently-available-popscore-primitives)  
-   * [How to use Popularity API](#how-to-use-popularity-api)
-* [Webhooks](#webhooks)
-* [CORS Proxy](#cors-proxy)  
-   * [CORS](#cors)  
-   * [Proxy](#proxy)
-* [Reference](#reference)  
-   * [Images](#images)  
-   * [Fields](#fields)  
-   * [Exclude](#exclude)  
-   * [Expander](#expander)  
-   * [Filters](#filters)  
-   * [Sorting](#sorting)  
-   * [Search](#search-1)  
-   * [Pagination](#pagination)  
-   * [Protocol Buffers](#protocol-buffers)  
-   * [Tag Numbers](#tag-numbers)  
-   * [Multi-Query](#multi-query)  
-   * [APICalypse](#apicalypse-1)
-* [Migration Enums to Tables](#migration-enums-to-tables)  
-   * [Important Changes Coming to the IGDB API](#important-changes-coming-to-the-igdb-api)  
-   * [What is Changing?](#what-is-changing)  
-   * [Migration Timeline](#migration-timeline)  
-   * [Questions or Concerns?](#questions-or-concerns)
-* [Partnership](#partnership)  
-   * [Data Dumps](#data-dumps)
-* [FAQ](#faq)  
-   * [Business related FAQ](#business-related-faq)  
-   * [Technical related FAQ](#technical-related-faq)
-* [Support](#support)
-* [License](#license)
+- [Getting Started](#getting-started)
+    - [Account Creation](#account-creation)
+    - [Authentication](#authentication)
+    - [Requests](#requests)
+    - [Rate Limits](#rate-limits)
+    - [Wrappers](#wrappers)
+- [Examples](#examples)
+- [Endpoints](#endpoints)
+    - [Age Rating](#age-rating)
+    - [Age Rating Category](#age-rating-category)
+    - [Age Rating Content Description](#age-rating-content-description)
+    - [Age Rating Content Description Type](#age-rating-content-description-type)
+    - [Age Rating Content Description V2](#age-rating-content-description-v2)
+    - [Age Rating Organization](#age-rating-organization)
+    - [Alternative Name](#alternative-name)
+    - [Artwork](#artwork)
+    - [Artwork Type](#artwork-type)
+    - [Character](#character)
+    - [Character Gender](#character-gender)
+    - [Character Mug Shot](#character-mug-shot)
+    - [Character Specie](#character-specie)
+    - [Collection](#collection)
+    - [Collection Membership](#collection-membership)
+    - [Collection Membership Type](#collection-membership-type)
+    - [Collection Relation](#collection-relation)
+    - [Collection Relation Type](#collection-relation-type)
+    - [Collection Type](#collection-type)
+    - [Company](#company)
+    - [Company Logo](#company-logo)
+    - [Company Size](#company-size)
+    - [Company Status](#company-status)
+    - [Company Type](#company-type)
+    - [Company Type History](#company-type-history)
+    - [Company Website](#company-website)
+    - [Cover](#cover)
+    - [Date Format](#date-format)
+    - [Entity Type](#entity-type)
+    - [Event](#event)
+    - [Event Logo](#event-logo)
+    - [Event Network](#event-network)
+    - [External Game](#external-game)
+    - [External Game Source](#external-game-source)
+    - [Franchise](#franchise)
+    - [Game](#game)
+    - [Game Engine](#game-engine)
+    - [Game Engine Logo](#game-engine-logo)
+    - [Game Localization](#game-localization)
+    - [Game Mode](#game-mode)
+    - [Game Release Format](#game-release-format)
+    - [Game Status](#game-status)
+    - [Game Time To Beat](#game-time-to-beat)
+    - [Game Type](#game-type)
+    - [Game Version](#game-version)
+    - [Game Version Feature](#game-version-feature)
+    - [Game Version Feature Value](#game-version-feature-value)
+    - [Game Video](#game-video)
+    - [Genre](#genre)
+    - [Involved Company](#involved-company)
+    - [Keyword](#keyword)
+    - [Language](#language)
+    - [Language Support](#language-support)
+    - [Language Support Type](#language-support-type)
+    - [Multiplayer Mode](#multiplayer-mode)
+    - [Network Type](#network-type)
+    - [Platform](#platform)
+    - [Platform Family](#platform-family)
+    - [Platform Logo](#platform-logo)
+    - [Platform Type](#platform-type)
+    - [Platform Version](#platform-version)
+    - [Platform Version Company](#platform-version-company)
+    - [Platform Version Release Date](#platform-version-release-date)
+    - [Platform Website](#platform-website)
+    - [Player Perspective](#player-perspective)
+    - [Popularity Primitive](#popularity-primitive)
+    - [Popularity Type](#popularity-type)
+    - [Region](#region)
+    - [Release Date](#release-date)
+    - [Release Date Region](#release-date-region)
+    - [Release Date Status](#release-date-status)
+    - [Report](#report)
+    - [Report Type](#report-type)
+    - [Screenshot](#screenshot)
+    - [Search](#search)
+    - [Theme](#theme)
+    - [Website](#website)
+    - [Website Type](#website-type)
+- [PopScore](#popscore)
+    - [Introducing IGDB PopScore - Your key to tracking the latest trends in the video game market.](#introducing-igdb-popscore---your-key-to-tracking-the-latest-trends-in-the-video-game-market)
+    - [Currently available PopScore primitives](#currently-available-popscore-primitives)
+    - [How to use Popularity API](#how-to-use-popularity-api)
+- [Webhooks](#webhooks)
+- [CORS Proxy](#cors-proxy)
+    - [CORS](#cors)
+    - [Proxy](#proxy)
+- [Reference](#reference)
+    - [Images](#images)
+    - [Fields](#fields)
+    - [Exclude](#exclude)
+    - [Expander](#expander)
+    - [Filters](#filters)
+    - [Sorting](#sorting)
+    - [Search](#search-1)
+    - [Pagination](#pagination)
+    - [Protocol Buffers](#protocol-buffers)
+    - [Tag Numbers](#tag-numbers)
+    - [Multi-Query](#multi-query)
+    - [APICalypse](#apicalypse-1)
+- [Migration Enums to Tables](#migration-enums-to-tables)
+    - [Important Changes Coming to the IGDB API](#important-changes-coming-to-the-igdb-api)
+    - [What is Changing?](#what-is-changing)
+    - [Migration Timeline](#migration-timeline)
+    - [Questions or Concerns?](#questions-or-concerns)
+- [Partnership](#partnership)
+    - [Data Dumps](#data-dumps)
+- [FAQ](#faq)
+    - [Business related FAQ](#business-related-faq)
+    - [Technical related FAQ](#technical-related-faq)
+- [Support](#support)
+- [License](#license)
 
 # Getting Started
 
@@ -145,16 +145,16 @@ In order to use our API, you must have a Twitch Account.
 
 1. Sign Up with [Twitch](https://dev.twitch.tv/login) for a free account
 2. Ensure you have Two Factor Authentication [enabled](https://www.twitch.tv/settings/security)
-3. Register your application in the [Twitch Developer Portal](https://dev.twitch.tv/console/apps/create)  
-   * The OAuth Redirect URL field is not used by IGDB. Please add ’localhost’ to continue.  
-   * The Client Type must be set to `Confidential` to generate Client Secrets
+3. Register your application in the [Twitch Developer Portal](https://dev.twitch.tv/console/apps/create)
+    - The OAuth Redirect URL field is not used by IGDB. Please add ’localhost’ to continue.
+    - The Client Type must be set to `Confidential` to generate Client Secrets
 4. [Manage](https://dev.twitch.tv/console/apps) your newly created application
 5. Generate a Client Secret by pressing \[New Secret\]
 6. Take note of the Client ID and Client Secret
 
 The IGDB.com API is free for **non-commercial** usage under the terms of the [Twitch Developer Service Agreement](https://www.twitch.tv/p/legal/developer-agreement/).
 
-**Note:** We offer commercial partnership for users with a commercial need in their projects. For more details on that process please reach out to [partner@igdb.com](mailto: partner@igdb.com) 
+**Note:** We offer commercial partnership for users with a commercial need in their projects. For more details on that process please reach out to [partner@igdb.com](mailto: partner@igdb.com)
 
 ## Authentication
 
@@ -175,48 +175,44 @@ If your Client ID is `abcdefg12345` and your Client Secret is `hijklmn67890`, th
 
 ```yaml
 POST: https://id.twitch.tv/oauth2/token?client_id=abcdefg12345&client_secret=hijklmn67890&grant_type=client_credentials
-
 ```
 
 The response from this will be a json object containing the access token and the number of second until the token expires.
 
 ```json
 {
-  "access_token": "access12345token",
-  "expires_in": 5587808,
-  "token_type": "bearer"
+    "access_token": "access12345token",
+    "expires_in": 5587808,
+    "token_type": "bearer"
 }
-
 ```
 
-**Note:** The _expires\_in_ shows you the number of seconds before the _access\_token_ will expire and must be refreshed.
+**Note:** The _expires_in_ shows you the number of seconds before the _access_token_ will expire and must be refreshed.
 
 ## Requests
 
-* Most of the requests to the API will use the `POST` method
-* The base URL is: **<https://api.igdb.com/v4>**
-* You define which endpoint you wish to query by appending `/{endpoint name}` to the base URL eg. **<https://api.igdb.com/v4/games>**
-* Include your `Client ID` and `Access Token` in the `HEADER` of your request so that your headers look like the following.  
-   * Take special care of the capitalisation. `Bearer` should be hard-coded infront of your `access_token`
+- Most of the requests to the API will use the `POST` method
+- The base URL is: **<https://api.igdb.com/v4>**
+- You define which endpoint you wish to query by appending `/{endpoint name}` to the base URL eg. **<https://api.igdb.com/v4/games>**
+- Include your `Client ID` and `Access Token` in the `HEADER` of your request so that your headers look like the following.
+    - Take special care of the capitalisation. `Bearer` should be hard-coded infront of your `access_token`
 
 ```yaml
 Client-ID: Client ID
 Authorization: Bearer access_token
-
 ```
 
-* You use the `BODY` of your request to specify the fields you want to retrieve as well as any other filters, sorting etc
+- You use the `BODY` of your request to specify the fields you want to retrieve as well as any other filters, sorting etc
 
 ### Example
 
-If your Client ID is `abcdefg12345` and your access\_token is `access12345token`, a simple request to get information about 10 games would be.
+If your Client ID is `abcdefg12345` and your access_token is `access12345token`, a simple request to get information about 10 games would be.
 
 ```yaml
 POST: https://api.igdb.com/v4/games
 Client-ID: abcdefg12345
 Authorization: Bearer access12345token
 Body: "fields *;"
-
 ```
 
 **Note:** If you are trying to make these requests via the Browser you will run into CORS errors as the API does not allow requests directly from browsers. You can read more about CORS and how to go around this issue in the [CORS Proxy](#cors-proxy) section
@@ -237,33 +233,29 @@ Get setup quickly by using one of these wrappers!
 
 ### Apicalypse
 
-* [NodeJS](https://github.com/igdb/node-apicalypse)
-* [JVM/Kotlin/Java](https://github.com/husnjak/IGDB-API-JVM)
-* [Swift](https://github.com/husnjak/IGDB-SWIFT-API)
-* [Python](https://github.com/twitchtv/igdb-api-python)
+- [NodeJS](https://github.com/igdb/node-apicalypse)
+- [JVM/Kotlin/Java](https://github.com/husnjak/IGDB-API-JVM)
+- [Swift](https://github.com/husnjak/IGDB-SWIFT-API)
+- [Python](https://github.com/twitchtv/igdb-api-python)
 
 ### Third Party
 
-* [PHP/Laravel](https://github.com/marcreichel/igdb-laravel)
-* [GO](https://github.com/Henry-Sarabia/apicalypse)
-* [Ruby](https://github.com/ad2games/ruby-apicalypse)
-* [C#/.NET](https://github.com/kamranayub/igdb-dotnet)
-* [Deno](https://github.com/killoblanco/igdb-api-deno)
+- [PHP/Laravel](https://github.com/marcreichel/igdb-laravel)
+- [GO](https://github.com/Henry-Sarabia/apicalypse)
+- [Ruby](https://github.com/ad2games/ruby-apicalypse)
+- [C#/.NET](https://github.com/kamranayub/igdb-dotnet)
+- [Deno](https://github.com/killoblanco/igdb-api-deno)
 
 ### Third Party Documentation
 
-* [OpenAPI Documentation](https://igdb-openapi.s-crypt.co/)
-* [Postman Collection](https://www.postman.com/aceprosports/workspace/public/collection/18853756-4367eb1d-3f6b-41ee-96cb-3ccb3d094a5c)
+- [OpenAPI Documentation](https://igdb-openapi.s-crypt.co/)
+- [Postman Collection](https://www.postman.com/aceprosports/workspace/public/collection/18853756-4367eb1d-3f6b-41ee-96cb-3ccb3d094a5c)
 
 # Examples
 
 It’s recommended to try out your queries in an API viewer like [Postman](https://www.postman.com/) or [Insomnia](https://insomnia.rest/) before using code. This helps you find problems a lot sooner!
 
 Postman setup example
-
-
-
-
 
 ### A very basic example to retrieve the name for 10 games.
 
@@ -287,7 +279,7 @@ fields *; where id = 1942;
 
 ### Exclude irrelevant data from your query
 
-Remove alternative\_name from your result query
+Remove alternative_name from your result query
 
 **<https://api.igdb.com/v4/platforms/>**
 
@@ -438,23 +430,21 @@ curl 'https://api.igdb.com/v4/age_ratings' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/age_ratings",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/age_ratings", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields category,checksum,content_descriptions,organization,rating,rating_category,rating_content_descriptions,rating_cover_url,synopsis;"
+    body: "fields category,checksum,content_descriptions,organization,rating,rating_category,rating_content_descriptions,rating_cover_url,synopsis;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -505,9 +495,9 @@ print ("response: %s" % str(response.json()))
 
 **Deprecated Fields:**
 
-* `category`: DEPRECATED! Use `organization` instead
-* `content_descriptions`: DEPRECATED! Use `rating_content_descriptions` instead
-* `rating`: DEPRECATED! Use `rating_category` instead
+- `category`: DEPRECATED! Use `organization` instead
+- `content_descriptions`: DEPRECATED! Use `rating_content_descriptions` instead
+- `rating`: DEPRECATED! Use `rating_category` instead
 
 Age Rating according to various rating organisations
 
@@ -515,75 +505,75 @@ Age Rating according to various rating organisations
 
 `https://api.igdb.com/v4/age_ratings`
 
-| field                         | type                                                                                  | description                                           |
-| ----------------------------- | ------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| category                      | [Category Enum](#age-rating-enums)                                                    | DEPRECATED! Use organization instead                  |
-| checksum                      | uuid                                                                                  | Hash of the object                                    |
-| content\_descriptions         | Array of [ Age Rating Content Description](#age-rating-content-description) IDs       | DEPRECATED! Use rating\_content\_descriptions instead |
-| organization                  | Reference ID for [ Age Rating Organization](#age-rating-organization)                 | The organization that has issued a specific rating    |
-| rating                        | [Rating Enum](#age-rating-enums)                                                      | DEPRECATED! Use rating\_category instead              |
-| rating\_category              | Reference ID for [ Age Rating Category](#age-rating-category)                         | The category of a rating                              |
-| rating\_content\_descriptions | Array of [ Age Rating Content Description V2](#age-rating-content-description-v2) IDs | The rating content descriptions                       |
-| rating\_cover\_url            | String                                                                                | The url for the image of a age rating                 |
-| synopsis                      | String                                                                                | A free text motivating a rating                       |
+| field                       | type                                                                                  | description                                         |
+| --------------------------- | ------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| category                    | [Category Enum](#age-rating-enums)                                                    | DEPRECATED! Use organization instead                |
+| checksum                    | uuid                                                                                  | Hash of the object                                  |
+| content_descriptions        | Array of [ Age Rating Content Description](#age-rating-content-description) IDs       | DEPRECATED! Use rating_content_descriptions instead |
+| organization                | Reference ID for [ Age Rating Organization](#age-rating-organization)                 | The organization that has issued a specific rating  |
+| rating                      | [Rating Enum](#age-rating-enums)                                                      | DEPRECATED! Use rating_category instead             |
+| rating_category             | Reference ID for [ Age Rating Category](#age-rating-category)                         | The category of a rating                            |
+| rating_content_descriptions | Array of [ Age Rating Content Description V2](#age-rating-content-description-v2) IDs | The rating content descriptions                     |
+| rating_cover_url            | String                                                                                | The url for the image of a age rating               |
+| synopsis                    | String                                                                                | A free text motivating a rating                     |
 
 ### Age Rating Enums
 
 category
 
-| name       | value |
-| ---------- | ----- |
-| ESRB       | 1     |
-| PEGI       | 2     |
-| CERO       | 3     |
-| USK        | 4     |
-| GRAC       | 5     |
-| CLASS\_IND | 6     |
-| ACB        | 7     |
+| name      | value |
+| --------- | ----- |
+| ESRB      | 1     |
+| PEGI      | 2     |
+| CERO      | 3     |
+| USK       | 4     |
+| GRAC      | 5     |
+| CLASS_IND | 6     |
+| ACB       | 7     |
 
 rating
 
-| name                 | value |
-| -------------------- | ----- |
-| Three                | 1     |
-| Seven                | 2     |
-| Twelve               | 3     |
-| Sixteen              | 4     |
-| Eighteen             | 5     |
-| RP                   | 6     |
-| EC                   | 7     |
-| E                    | 8     |
-| E10                  | 9     |
-| T                    | 10    |
-| M                    | 11    |
-| AO                   | 12    |
-| CERO\_A              | 13    |
-| CERO\_B              | 14    |
-| CERO\_C              | 15    |
-| CERO\_D              | 16    |
-| CERO\_Z              | 17    |
-| USK\_0               | 18    |
-| USK\_6               | 19    |
-| USK\_12              | 20    |
-| USK\_16              | 21    |
-| USK\_18              | 22    |
-| GRAC\_ALL            | 23    |
-| GRAC\_Twelve         | 24    |
-| GRAC\_Fifteen        | 25    |
-| GRAC\_Eighteen       | 26    |
-| GRAC\_TESTING        | 27    |
-| CLASS\_IND\_L        | 28    |
-| CLASS\_IND\_Ten      | 29    |
-| CLASS\_IND\_Twelve   | 30    |
-| CLASS\_IND\_Fourteen | 31    |
-| CLASS\_IND\_Sixteen  | 32    |
-| CLASS\_IND\_Eighteen | 33    |
-| ACB\_G               | 34    |
-| ACB\_PG              | 35    |
-| ACB\_M               | 36    |
-| ACB\_MA15            | 37    |
-| ACB\_R18             | 38    |
-| ACB\_RC              | 39    |
+| name               | value |
+| ------------------ | ----- |
+| Three              | 1     |
+| Seven              | 2     |
+| Twelve             | 3     |
+| Sixteen            | 4     |
+| Eighteen           | 5     |
+| RP                 | 6     |
+| EC                 | 7     |
+| E                  | 8     |
+| E10                | 9     |
+| T                  | 10    |
+| M                  | 11    |
+| AO                 | 12    |
+| CERO_A             | 13    |
+| CERO_B             | 14    |
+| CERO_C             | 15    |
+| CERO_D             | 16    |
+| CERO_Z             | 17    |
+| USK_0              | 18    |
+| USK_6              | 19    |
+| USK_12             | 20    |
+| USK_16             | 21    |
+| USK_18             | 22    |
+| GRAC_ALL           | 23    |
+| GRAC_Twelve        | 24    |
+| GRAC_Fifteen       | 25    |
+| GRAC_Eighteen      | 26    |
+| GRAC_TESTING       | 27    |
+| CLASS_IND_L        | 28    |
+| CLASS_IND_Ten      | 29    |
+| CLASS_IND_Twelve   | 30    |
+| CLASS_IND_Fourteen | 31    |
+| CLASS_IND_Sixteen  | 32    |
+| CLASS_IND_Eighteen | 33    |
+| ACB_G              | 34    |
+| ACB_PG             | 35    |
+| ACB_M              | 36    |
+| ACB_MA15           | 37    |
+| ACB_R18            | 38    |
+| ACB_RC             | 39    |
 
 ## Age Rating Category
 
@@ -597,23 +587,21 @@ curl 'https://api.igdb.com/v4/age_rating_categories' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/age_rating_categories",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/age_rating_categories", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,organization,rating,updated_at;"
+    body: "fields checksum,created_at,organization,rating,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -671,10 +659,10 @@ The rating category from the organization
 | field        | type                                                                  | description                                               |
 | ------------ | --------------------------------------------------------------------- | --------------------------------------------------------- |
 | checksum     | uuid                                                                  | Hash of the object                                        |
-| created\_at  | datetime                                                              | Date this was initially added to the IGDB database        |
+| created_at   | datetime                                                              | Date this was initially added to the IGDB database        |
 | organization | Reference ID for [ Age Rating Organization](#age-rating-organization) | The rating organization                                   |
 | rating       | String                                                                | The rating name                                           |
-| updated\_at  | datetime                                                              | The last date this entry was updated in the IGDB database |
+| updated_at   | datetime                                                              | The last date this entry was updated in the IGDB database |
 
 ## Age Rating Content Description
 
@@ -688,23 +676,21 @@ curl 'https://api.igdb.com/v4/age_rating_content_descriptions' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/age_rating_content_descriptions",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/age_rating_content_descriptions", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields category,checksum,description;"
+    body: "fields category,checksum,description;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -755,7 +741,7 @@ print ("response: %s" % str(response.json()))
 
 **Deprecated Fields:**
 
-* `category`: DEPRECATED!
+- `category`: DEPRECATED!
 
 DEPRECATED! Use `age_rating_content_descriptions_v2` instead
 
@@ -773,93 +759,93 @@ DEPRECATED! Use `age_rating_content_descriptions_v2` instead
 
 category
 
-| name                                 | value |
-| ------------------------------------ | ----- |
-| ESRB\_alcohol\_reference             | 1     |
-| ESRB\_animated\_blood                | 2     |
-| ESRB\_blood                          | 3     |
-| ESRB\_blood\_and gore                | 4     |
-| ESRB\_cartoon\_violence              | 5     |
-| ESRB\_comic\_mischief                | 6     |
-| ESRB\_crude\_humor                   | 7     |
-| ESRB\_drug\_reference                | 8     |
-| ESRB\_fantasy\_violence              | 9     |
-| ESRB\_intense\_violence              | 10    |
-| ESRB\_language                       | 11    |
-| ESRB\_lyrics                         | 12    |
-| ESRB\_mature\_humor                  | 13    |
-| ESRB\_nudity                         | 14    |
-| ESRB\_partial\_nudity                | 15    |
-| ESRB\_real\_gambling                 | 16    |
-| ESRB\_sexual\_content                | 17    |
-| ESRB\_sexual\_themes                 | 18    |
-| ESRB\_sexual\_violence               | 19    |
-| ESRB\_simulated\_gambling            | 20    |
-| ESRB\_strong\_language               | 21    |
-| ESRB\_strong\_lyrics                 | 22    |
-| ESRB\_strong\_sexual content         | 23    |
-| ESRB\_suggestive\_themes             | 24    |
-| ESRB\_tobacco\_reference             | 25    |
-| ESRB\_use\_of alcohol                | 26    |
-| ESRB\_use\_of drugs                  | 27    |
-| ESRB\_use\_of tobacco                | 28    |
-| ESRB\_violence                       | 29    |
-| ESRB\_violent\_references            | 30    |
-| ESRB\_animated\_violence             | 31    |
-| ESRB\_mild\_language                 | 32    |
-| ESRB\_mild\_violence                 | 33    |
-| ESRB\_use\_of drugs and alcohol      | 34    |
-| ESRB\_drug\_and alcohol reference    | 35    |
-| ESRB\_mild\_suggestive themes        | 36    |
-| ESRB\_mild\_cartoon violence         | 37    |
-| ESRB\_mild\_blood                    | 38    |
-| ESRB\_realistic\_blood and gore      | 39    |
-| ESRB\_realistic\_violence            | 40    |
-| ESRB\_alcohol\_and tobacco reference | 41    |
-| ESRB\_mature\_sexual themes          | 42    |
-| ESRB\_mild\_animated violence        | 43    |
-| ESRB\_mild\_sexual themes            | 44    |
-| ESRB\_use\_of alcohol and tobacco    | 45    |
-| ESRB\_animated\_blood and gore       | 46    |
-| ESRB\_mild\_fantasy violence         | 47    |
-| ESRB\_mild\_lyrics                   | 48    |
-| ESRB\_realistic\_blood               | 49    |
-| PEGI\_violence                       | 50    |
-| PEGI\_sex                            | 51    |
-| PEGI\_drugs                          | 52    |
-| PEGI\_fear                           | 53    |
-| PEGI\_discrimination                 | 54    |
-| PEGI\_bad\_language                  | 55    |
-| PEGI\_gambling                       | 56    |
-| PEGI\_online\_gameplay               | 57    |
-| PEGI\_in\_game\_purchases            | 58    |
-| CERO\_love                           | 59    |
-| CERO\_sexual\_content                | 60    |
-| CERO\_violence                       | 61    |
-| CERO\_horror                         | 62    |
-| CERO\_drinking\_smoking              | 63    |
-| CERO\_gambling                       | 64    |
-| CERO\_crime                          | 65    |
-| CERO\_controlled\_substances         | 66    |
-| CERO\_languages\_and others          | 67    |
-| GRAC\_sexuality                      | 68    |
-| GRAC\_violence                       | 69    |
-| GRAC\_fear\_horror\_threatening      | 70    |
-| GRAC\_language                       | 71    |
-| GRAC\_alcohol\_tobacco\_drug         | 72    |
-| GRAC\_crime\_anti\_social            | 73    |
-| GRAC\_gambling                       | 74    |
-| CLASS\_IND\_violencia                | 75    |
-| CLASS\_IND\_violencia\_extrema       | 76    |
-| CLASS\_IND\_conteudo\_sexual         | 77    |
-| CLASS\_IND\_nudez                    | 78    |
-| CLASS\_IND\_sexo                     | 79    |
-| CLASS\_IND\_sexo\_explicito          | 80    |
-| CLASS\_IND\_drogas                   | 81    |
-| CLASS\_IND\_drogas\_licitas          | 82    |
-| CLASS\_IND\_drogas\_ilicitas         | 83    |
-| CLASS\_IND\_linguagem\_impropria     | 84    |
-| CLASS\_IND\_atos\_criminosos         | 85    |
+| name                               | value |
+| ---------------------------------- | ----- |
+| ESRB_alcohol_reference             | 1     |
+| ESRB_animated_blood                | 2     |
+| ESRB_blood                         | 3     |
+| ESRB_blood_and gore                | 4     |
+| ESRB_cartoon_violence              | 5     |
+| ESRB_comic_mischief                | 6     |
+| ESRB_crude_humor                   | 7     |
+| ESRB_drug_reference                | 8     |
+| ESRB_fantasy_violence              | 9     |
+| ESRB_intense_violence              | 10    |
+| ESRB_language                      | 11    |
+| ESRB_lyrics                        | 12    |
+| ESRB_mature_humor                  | 13    |
+| ESRB_nudity                        | 14    |
+| ESRB_partial_nudity                | 15    |
+| ESRB_real_gambling                 | 16    |
+| ESRB_sexual_content                | 17    |
+| ESRB_sexual_themes                 | 18    |
+| ESRB_sexual_violence               | 19    |
+| ESRB_simulated_gambling            | 20    |
+| ESRB_strong_language               | 21    |
+| ESRB_strong_lyrics                 | 22    |
+| ESRB_strong_sexual content         | 23    |
+| ESRB_suggestive_themes             | 24    |
+| ESRB_tobacco_reference             | 25    |
+| ESRB_use_of alcohol                | 26    |
+| ESRB_use_of drugs                  | 27    |
+| ESRB_use_of tobacco                | 28    |
+| ESRB_violence                      | 29    |
+| ESRB_violent_references            | 30    |
+| ESRB_animated_violence             | 31    |
+| ESRB_mild_language                 | 32    |
+| ESRB_mild_violence                 | 33    |
+| ESRB_use_of drugs and alcohol      | 34    |
+| ESRB_drug_and alcohol reference    | 35    |
+| ESRB_mild_suggestive themes        | 36    |
+| ESRB_mild_cartoon violence         | 37    |
+| ESRB_mild_blood                    | 38    |
+| ESRB_realistic_blood and gore      | 39    |
+| ESRB_realistic_violence            | 40    |
+| ESRB_alcohol_and tobacco reference | 41    |
+| ESRB_mature_sexual themes          | 42    |
+| ESRB_mild_animated violence        | 43    |
+| ESRB_mild_sexual themes            | 44    |
+| ESRB_use_of alcohol and tobacco    | 45    |
+| ESRB_animated_blood and gore       | 46    |
+| ESRB_mild_fantasy violence         | 47    |
+| ESRB_mild_lyrics                   | 48    |
+| ESRB_realistic_blood               | 49    |
+| PEGI_violence                      | 50    |
+| PEGI_sex                           | 51    |
+| PEGI_drugs                         | 52    |
+| PEGI_fear                          | 53    |
+| PEGI_discrimination                | 54    |
+| PEGI_bad_language                  | 55    |
+| PEGI_gambling                      | 56    |
+| PEGI_online_gameplay               | 57    |
+| PEGI_in_game_purchases             | 58    |
+| CERO_love                          | 59    |
+| CERO_sexual_content                | 60    |
+| CERO_violence                      | 61    |
+| CERO_horror                        | 62    |
+| CERO_drinking_smoking              | 63    |
+| CERO_gambling                      | 64    |
+| CERO_crime                         | 65    |
+| CERO_controlled_substances         | 66    |
+| CERO_languages_and others          | 67    |
+| GRAC_sexuality                     | 68    |
+| GRAC_violence                      | 69    |
+| GRAC_fear_horror_threatening       | 70    |
+| GRAC_language                      | 71    |
+| GRAC_alcohol_tobacco_drug          | 72    |
+| GRAC_crime_anti_social             | 73    |
+| GRAC_gambling                      | 74    |
+| CLASS_IND_violencia                | 75    |
+| CLASS_IND_violencia_extrema        | 76    |
+| CLASS_IND_conteudo_sexual          | 77    |
+| CLASS_IND_nudez                    | 78    |
+| CLASS_IND_sexo                     | 79    |
+| CLASS_IND_sexo_explicito           | 80    |
+| CLASS_IND_drogas                   | 81    |
+| CLASS_IND_drogas_licitas           | 82    |
+| CLASS_IND_drogas_ilicitas          | 83    |
+| CLASS_IND_linguagem_impropria      | 84    |
+| CLASS_IND_atos_criminosos          | 85    |
 
 ## Age Rating Content Description Type
 
@@ -873,23 +859,21 @@ curl 'https://api.igdb.com/v4/age_rating_content_description_types' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/age_rating_content_description_types",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/age_rating_content_description_types", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,name,slug,updated_at;"
+    body: "fields checksum,created_at,name,slug,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -944,13 +928,13 @@ Age Rating Content Description Types
 
 `https://api.igdb.com/v4/age_rating_content_description_types`
 
-| field       | type     | description                                               |
-| ----------- | -------- | --------------------------------------------------------- |
-| checksum    | uuid     | Hash of the object                                        |
-| created\_at | datetime | Date this was initially added to the IGDB database        |
-| name        | String   |                                                           |
-| slug        | String   | A url-safe, unique, lower-case version of the name        |
-| updated\_at | datetime | The last date this entry was updated in the IGDB database |
+| field      | type     | description                                               |
+| ---------- | -------- | --------------------------------------------------------- |
+| checksum   | uuid     | Hash of the object                                        |
+| created_at | datetime | Date this was initially added to the IGDB database        |
+| name       | String   |                                                           |
+| slug       | String   | A url-safe, unique, lower-case version of the name        |
+| updated_at | datetime | The last date this entry was updated in the IGDB database |
 
 ## Age Rating Content Description V2
 
@@ -964,23 +948,21 @@ curl 'https://api.igdb.com/v4/age_rating_content_descriptions_v2' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/age_rating_content_descriptions_v2",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/age_rating_content_descriptions_v2", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,description,description_type,organization,updated_at;"
+    body: "fields checksum,created_at,description,description_type,organization,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -1035,14 +1017,14 @@ Age Rating Content Descriptions
 
 `https://api.igdb.com/v4/age_rating_content_descriptions_v2`
 
-| field             | type                                                                                          | description                                               |
-| ----------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
-| checksum          | uuid                                                                                          | Hash of the object                                        |
-| created\_at       | datetime                                                                                      | Date this was initially added to the IGDB database        |
-| description       | String                                                                                        |                                                           |
-| description\_type | Reference ID for [ Age Rating Content Description Type](#age-rating-content-description-type) | The age rating content description type                   |
-| organization      | Reference ID for [ Age Rating Organization](#age-rating-organization)                         | The rating organization                                   |
-| updated\_at       | datetime                                                                                      | The last date this entry was updated in the IGDB database |
+| field            | type                                                                                          | description                                               |
+| ---------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| checksum         | uuid                                                                                          | Hash of the object                                        |
+| created_at       | datetime                                                                                      | Date this was initially added to the IGDB database        |
+| description      | String                                                                                        |                                                           |
+| description_type | Reference ID for [ Age Rating Content Description Type](#age-rating-content-description-type) | The age rating content description type                   |
+| organization     | Reference ID for [ Age Rating Organization](#age-rating-organization)                         | The rating organization                                   |
+| updated_at       | datetime                                                                                      | The last date this entry was updated in the IGDB database |
 
 ## Age Rating Organization
 
@@ -1056,23 +1038,21 @@ curl 'https://api.igdb.com/v4/age_rating_organizations' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/age_rating_organizations",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/age_rating_organizations", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,name,updated_at;"
+    body: "fields checksum,created_at,name,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -1127,12 +1107,12 @@ Age Rating according to various rating organisations
 
 `https://api.igdb.com/v4/age_rating_organizations`
 
-| field       | type     | description                                               |
-| ----------- | -------- | --------------------------------------------------------- |
-| checksum    | uuid     | Hash of the object                                        |
-| created\_at | datetime | Date this was initially added to the IGDB database        |
-| name        | String   | The title of an age rating organization                   |
-| updated\_at | datetime | The last date this entry was updated in the IGDB database |
+| field      | type     | description                                               |
+| ---------- | -------- | --------------------------------------------------------- |
+| checksum   | uuid     | Hash of the object                                        |
+| created_at | datetime | Date this was initially added to the IGDB database        |
+| name       | String   | The title of an age rating organization                   |
+| updated_at | datetime | The last date this entry was updated in the IGDB database |
 
 ## Alternative Name
 
@@ -1146,23 +1126,21 @@ curl 'https://api.igdb.com/v4/alternative_names' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/alternative_names",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/alternative_names", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,comment,game,name;"
+    body: "fields checksum,comment,game,name;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -1236,23 +1214,21 @@ curl 'https://api.igdb.com/v4/artworks' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/artworks",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/artworks", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields alpha_channel,animated,artwork_type,checksum,game,height,image_id,url,width;"
+    body: "fields alpha_channel,animated,artwork_type,checksum,game,height,image_id,url,width;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -1307,17 +1283,17 @@ Official artworks (resolution and aspect ratio may vary)
 
 `https://api.igdb.com/v4/artworks`
 
-| field          | type                                            | description                                              |
-| -------------- | ----------------------------------------------- | -------------------------------------------------------- |
-| alpha\_channel | boolean                                         |                                                          |
-| animated       | boolean                                         |                                                          |
-| artwork\_type  | Reference ID for [ Artwork Type](#artwork-type) | The artwork type                                         |
-| checksum       | uuid                                            | Hash of the object                                       |
-| game           | Reference ID for [Game](#game)                  | The game this artwork is associated with                 |
-| height         | Integer                                         | The height of the image in pixels                        |
-| image\_id      | String                                          | The ID of the image used to construct an IGDB image link |
-| url            | String                                          | The website address (URL) of the item                    |
-| width          | Integer                                         | The width of the image in pixels                         |
+| field         | type                                            | description                                              |
+| ------------- | ----------------------------------------------- | -------------------------------------------------------- |
+| alpha_channel | boolean                                         |                                                          |
+| animated      | boolean                                         |                                                          |
+| artwork_type  | Reference ID for [ Artwork Type](#artwork-type) | The artwork type                                         |
+| checksum      | uuid                                            | Hash of the object                                       |
+| game          | Reference ID for [Game](#game)                  | The game this artwork is associated with                 |
+| height        | Integer                                         | The height of the image in pixels                        |
+| image_id      | String                                          | The ID of the image used to construct an IGDB image link |
+| url           | String                                          | The website address (URL) of the item                    |
+| width         | Integer                                         | The width of the image in pixels                         |
 
 ## Artwork Type
 
@@ -1331,23 +1307,21 @@ curl 'https://api.igdb.com/v4/artwork_types' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/artwork_types",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/artwork_types", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,name,slug,updated_at;"
+    body: "fields checksum,created_at,name,slug,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -1402,13 +1376,13 @@ Artwork Types
 
 `https://api.igdb.com/v4/artwork_types`
 
-| field       | type     | description                                               |
-| ----------- | -------- | --------------------------------------------------------- |
-| checksum    | uuid     | Hash of the object                                        |
-| created\_at | datetime | Date this was initially added to the IGDB database        |
-| name        | String   |                                                           |
-| slug        | String   | A url-safe, unique, lower-case version of the name        |
-| updated\_at | datetime | The last date this entry was updated in the IGDB database |
+| field      | type     | description                                               |
+| ---------- | -------- | --------------------------------------------------------- |
+| checksum   | uuid     | Hash of the object                                        |
+| created_at | datetime | Date this was initially added to the IGDB database        |
+| name       | String   |                                                           |
+| slug       | String   | A url-safe, unique, lower-case version of the name        |
+| updated_at | datetime | The last date this entry was updated in the IGDB database |
 
 ## Character
 
@@ -1422,23 +1396,21 @@ curl 'https://api.igdb.com/v4/characters' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/characters",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/characters", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields akas,character_gender,character_species,checksum,country_name,created_at,description,games,gender,mug_shot,name,slug,species,updated_at,url;"
+    body: "fields akas,character_gender,character_species,checksum,country_name,created_at,description,games,gender,mug_shot,name,slug,species,updated_at,url;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -1489,8 +1461,8 @@ print ("response: %s" % str(response.json()))
 
 **Deprecated Fields:**
 
-* `gender`: DEPRECATED! Use `character_gender` instead
-* `species`: DEPRECATED! Use `character_species` instead
+- `gender`: DEPRECATED! Use `character_gender` instead
+- `species`: DEPRECATED! Use `character_species` instead
 
 Video game characters
 
@@ -1498,23 +1470,23 @@ Video game characters
 
 `https://api.igdb.com/v4/characters`
 
-| field              | type                                                        | description                                               |
-| ------------------ | ----------------------------------------------------------- | --------------------------------------------------------- |
-| akas               | Array of Strings                                            | Alternative names for a character                         |
-| character\_gender  | Reference ID for [ Character Gender](#character-gender)     |                                                           |
-| character\_species | Reference ID for [ Character Specie](#character-specie)     |                                                           |
-| checksum           | uuid                                                        | Hash of the object                                        |
-| country\_name      | String                                                      | A characters country of origin                            |
-| created\_at        | datetime                                                    | Date this was initially added to the IGDB database        |
-| description        | String                                                      | A text describing a character                             |
-| games              | Array of [Game](#game) IDs                                  |                                                           |
-| gender             | [Gender Enum](#character-enums)                             | DEPRECATED! Use character\_gender instead                 |
-| mug\_shot          | Reference ID for [ Character Mug Shot](#character-mug-shot) | An image depicting a character                            |
-| name               | String                                                      |                                                           |
-| slug               | String                                                      | A url-safe, unique, lower-case version of the name        |
-| species            | [Species Enum](#character-enums)                            | DEPRECATED! Use character\_species instead                |
-| updated\_at        | datetime                                                    | The last date this entry was updated in the IGDB database |
-| url                | String                                                      | The website address (URL) of the item                     |
+| field             | type                                                        | description                                               |
+| ----------------- | ----------------------------------------------------------- | --------------------------------------------------------- |
+| akas              | Array of Strings                                            | Alternative names for a character                         |
+| character_gender  | Reference ID for [ Character Gender](#character-gender)     |                                                           |
+| character_species | Reference ID for [ Character Specie](#character-specie)     |                                                           |
+| checksum          | uuid                                                        | Hash of the object                                        |
+| country_name      | String                                                      | A characters country of origin                            |
+| created_at        | datetime                                                    | Date this was initially added to the IGDB database        |
+| description       | String                                                      | A text describing a character                             |
+| games             | Array of [Game](#game) IDs                                  |                                                           |
+| gender            | [Gender Enum](#character-enums)                             | DEPRECATED! Use character_gender instead                  |
+| mug_shot          | Reference ID for [ Character Mug Shot](#character-mug-shot) | An image depicting a character                            |
+| name              | String                                                      |                                                           |
+| slug              | String                                                      | A url-safe, unique, lower-case version of the name        |
+| species           | [Species Enum](#character-enums)                            | DEPRECATED! Use character_species instead                 |
+| updated_at        | datetime                                                    | The last date this entry was updated in the IGDB database |
+| url               | String                                                      | The website address (URL) of the item                     |
 
 ### Character Enums
 
@@ -1548,23 +1520,21 @@ curl 'https://api.igdb.com/v4/character_genders' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/character_genders",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/character_genders", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,name,updated_at;"
+    body: "fields checksum,created_at,name,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -1619,12 +1589,12 @@ Character Genders
 
 `https://api.igdb.com/v4/character_genders`
 
-| field       | type     | description                                               |
-| ----------- | -------- | --------------------------------------------------------- |
-| checksum    | uuid     | Hash of the object                                        |
-| created\_at | datetime | Date this was initially added to the IGDB database        |
-| name        | String   |                                                           |
-| updated\_at | datetime | The last date this entry was updated in the IGDB database |
+| field      | type     | description                                               |
+| ---------- | -------- | --------------------------------------------------------- |
+| checksum   | uuid     | Hash of the object                                        |
+| created_at | datetime | Date this was initially added to the IGDB database        |
+| name       | String   |                                                           |
+| updated_at | datetime | The last date this entry was updated in the IGDB database |
 
 ## Character Mug Shot
 
@@ -1638,23 +1608,21 @@ curl 'https://api.igdb.com/v4/character_mug_shots' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/character_mug_shots",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/character_mug_shots", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields alpha_channel,animated,checksum,height,image_id,url,width;"
+    body: "fields alpha_channel,animated,checksum,height,image_id,url,width;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -1709,15 +1677,15 @@ Images depicting game characters
 
 `https://api.igdb.com/v4/character_mug_shots`
 
-| field          | type    | description                                              |
-| -------------- | ------- | -------------------------------------------------------- |
-| alpha\_channel | boolean |                                                          |
-| animated       | boolean |                                                          |
-| checksum       | uuid    | Hash of the object                                       |
-| height         | Integer | The height of the image in pixels                        |
-| image\_id      | String  | The ID of the image used to construct an IGDB image link |
-| url            | String  | The website address (URL) of the item                    |
-| width          | Integer | The width of the image in pixels                         |
+| field         | type    | description                                              |
+| ------------- | ------- | -------------------------------------------------------- |
+| alpha_channel | boolean |                                                          |
+| animated      | boolean |                                                          |
+| checksum      | uuid    | Hash of the object                                       |
+| height        | Integer | The height of the image in pixels                        |
+| image_id      | String  | The ID of the image used to construct an IGDB image link |
+| url           | String  | The website address (URL) of the item                    |
+| width         | Integer | The width of the image in pixels                         |
 
 ## Character Specie
 
@@ -1731,23 +1699,21 @@ curl 'https://api.igdb.com/v4/character_species' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/character_species",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/character_species", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,name,updated_at;"
+    body: "fields checksum,created_at,name,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -1802,12 +1768,12 @@ Character Species
 
 `https://api.igdb.com/v4/character_species`
 
-| field       | type     | description                                               |
-| ----------- | -------- | --------------------------------------------------------- |
-| checksum    | uuid     | Hash of the object                                        |
-| created\_at | datetime | Date this was initially added to the IGDB database        |
-| name        | String   |                                                           |
-| updated\_at | datetime | The last date this entry was updated in the IGDB database |
+| field      | type     | description                                               |
+| ---------- | -------- | --------------------------------------------------------- |
+| checksum   | uuid     | Hash of the object                                        |
+| created_at | datetime | Date this was initially added to the IGDB database        |
+| name       | String   |                                                           |
+| updated_at | datetime | The last date this entry was updated in the IGDB database |
 
 ## Collection
 
@@ -1821,23 +1787,21 @@ curl 'https://api.igdb.com/v4/collections' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/collections",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/collections", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields as_child_relations,as_parent_relations,checksum,created_at,games,name,slug,type,updated_at,url;"
+    body: "fields as_child_relations,as_parent_relations,checksum,created_at,games,name,slug,type,updated_at,url;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -1892,18 +1856,18 @@ Collection, AKA Series
 
 `https://api.igdb.com/v4/collections`
 
-| field                 | type                                                      | description                                               |
-| --------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
-| as\_child\_relations  | Array of [ Collection Relation](#collection-relation) IDs |                                                           |
-| as\_parent\_relations | Array of [ Collection Relation](#collection-relation) IDs |                                                           |
-| checksum              | uuid                                                      | Hash of the object                                        |
-| created\_at           | datetime                                                  | Date this was initially added to the IGDB database        |
-| games                 | Array of [Game](#game) IDs                                | The games that are associated with this collection        |
-| name                  | String                                                    | Umbrella term for a collection of games                   |
-| slug                  | String                                                    | A url-safe, unique, lower-case version of the name        |
-| type                  | Reference ID for [ Collection Type](#collection-type)     | The type of collection                                    |
-| updated\_at           | datetime                                                  | The last date this entry was updated in the IGDB database |
-| url                   | String                                                    | The website address (URL) of the item                     |
+| field               | type                                                      | description                                               |
+| ------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
+| as_child_relations  | Array of [ Collection Relation](#collection-relation) IDs |                                                           |
+| as_parent_relations | Array of [ Collection Relation](#collection-relation) IDs |                                                           |
+| checksum            | uuid                                                      | Hash of the object                                        |
+| created_at          | datetime                                                  | Date this was initially added to the IGDB database        |
+| games               | Array of [Game](#game) IDs                                | The games that are associated with this collection        |
+| name                | String                                                    | Umbrella term for a collection of games                   |
+| slug                | String                                                    | A url-safe, unique, lower-case version of the name        |
+| type                | Reference ID for [ Collection Type](#collection-type)     | The type of collection                                    |
+| updated_at          | datetime                                                  | The last date this entry was updated in the IGDB database |
+| url                 | String                                                    | The website address (URL) of the item                     |
 
 ## Collection Membership
 
@@ -1917,23 +1881,21 @@ curl 'https://api.igdb.com/v4/collection_memberships' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/collection_memberships",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/collection_memberships", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,collection,created_at,game,type,updated_at;"
+    body: "fields checksum,collection,created_at,game,type,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -1988,14 +1950,14 @@ The Collection Memberships.
 
 `https://api.igdb.com/v4/collection_memberships`
 
-| field       | type                                                                        | description                                               |
-| ----------- | --------------------------------------------------------------------------- | --------------------------------------------------------- |
-| checksum    | uuid                                                                        | Hash of the object                                        |
-| collection  | Reference ID for [Collection](#collection)                                  | The collection that is associated with this membership    |
-| created\_at | datetime                                                                    | Date this was initially added to the IGDB database        |
-| game        | Reference ID for [Game](#game)                                              | The game that is associated with this membership          |
-| type        | Reference ID for [ Collection Membership Type](#collection-membership-type) | The Collection Membership Type                            |
-| updated\_at | datetime                                                                    | The last date this entry was updated in the IGDB database |
+| field      | type                                                                        | description                                               |
+| ---------- | --------------------------------------------------------------------------- | --------------------------------------------------------- |
+| checksum   | uuid                                                                        | Hash of the object                                        |
+| collection | Reference ID for [Collection](#collection)                                  | The collection that is associated with this membership    |
+| created_at | datetime                                                                    | Date this was initially added to the IGDB database        |
+| game       | Reference ID for [Game](#game)                                              | The game that is associated with this membership          |
+| type       | Reference ID for [ Collection Membership Type](#collection-membership-type) | The Collection Membership Type                            |
+| updated_at | datetime                                                                    | The last date this entry was updated in the IGDB database |
 
 ## Collection Membership Type
 
@@ -2009,23 +1971,21 @@ curl 'https://api.igdb.com/v4/collection_membership_types' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/collection_membership_types",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/collection_membership_types", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields allowed_collection_type,checksum,created_at,description,name,updated_at;"
+    body: "fields allowed_collection_type,checksum,created_at,description,name,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -2080,14 +2040,14 @@ Enums for collection membership types.
 
 `https://api.igdb.com/v4/collection_membership_types`
 
-| field                     | type                                                  | description                                               |
-| ------------------------- | ----------------------------------------------------- | --------------------------------------------------------- |
-| allowed\_collection\_type | Reference ID for [ Collection Type](#collection-type) | The allowed collection type                               |
-| checksum                  | uuid                                                  | Hash of the object                                        |
-| created\_at               | datetime                                              | Date this was initially added to the IGDB database        |
-| description               | String                                                | Description of the membership type.                       |
-| name                      | String                                                | The membership type name                                  |
-| updated\_at               | datetime                                              | The last date this entry was updated in the IGDB database |
+| field                   | type                                                  | description                                               |
+| ----------------------- | ----------------------------------------------------- | --------------------------------------------------------- |
+| allowed_collection_type | Reference ID for [ Collection Type](#collection-type) | The allowed collection type                               |
+| checksum                | uuid                                                  | Hash of the object                                        |
+| created_at              | datetime                                              | Date this was initially added to the IGDB database        |
+| description             | String                                                | Description of the membership type.                       |
+| name                    | String                                                | The membership type name                                  |
+| updated_at              | datetime                                              | The last date this entry was updated in the IGDB database |
 
 ## Collection Relation
 
@@ -2101,23 +2061,21 @@ curl 'https://api.igdb.com/v4/collection_relations' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/collection_relations",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/collection_relations", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,child_collection,created_at,parent_collection,type,updated_at;"
+    body: "fields checksum,child_collection,created_at,parent_collection,type,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -2172,14 +2130,14 @@ Describes Relationship between Collections.
 
 `https://api.igdb.com/v4/collection_relations`
 
-| field              | type                                                                    | description                                               |
-| ------------------ | ----------------------------------------------------------------------- | --------------------------------------------------------- |
-| checksum           | uuid                                                                    | Hash of the object                                        |
-| child\_collection  | Reference ID for [ Collection](#collection)                             | The child collection of this collection.                  |
-| created\_at        | datetime                                                                | Date this was initially added to the IGDB database        |
-| parent\_collection | Reference ID for [ Collection](#collection)                             | The parent collection of this collection.                 |
-| type               | Reference ID for [ Collection Relation Type](#collection-relation-type) | The collection relationship type                          |
-| updated\_at        | datetime                                                                | The last date this entry was updated in the IGDB database |
+| field             | type                                                                    | description                                               |
+| ----------------- | ----------------------------------------------------------------------- | --------------------------------------------------------- |
+| checksum          | uuid                                                                    | Hash of the object                                        |
+| child_collection  | Reference ID for [ Collection](#collection)                             | The child collection of this collection.                  |
+| created_at        | datetime                                                                | Date this was initially added to the IGDB database        |
+| parent_collection | Reference ID for [ Collection](#collection)                             | The parent collection of this collection.                 |
+| type              | Reference ID for [ Collection Relation Type](#collection-relation-type) | The collection relationship type                          |
+| updated_at        | datetime                                                                | The last date this entry was updated in the IGDB database |
 
 ## Collection Relation Type
 
@@ -2193,23 +2151,21 @@ curl 'https://api.igdb.com/v4/collection_relation_types' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/collection_relation_types",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/collection_relation_types", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields allowed_child_type,allowed_parent_type,checksum,created_at,description,name,updated_at;"
+    body: "fields allowed_child_type,allowed_parent_type,checksum,created_at,description,name,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -2264,15 +2220,15 @@ Collection Relation Types
 
 `https://api.igdb.com/v4/collection_relation_types`
 
-| field                 | type                                                  | description                                               |
-| --------------------- | ----------------------------------------------------- | --------------------------------------------------------- |
-| allowed\_child\_type  | Reference ID for [ Collection Type](#collection-type) | The allowed child collection type                         |
-| allowed\_parent\_type | Reference ID for [ Collection Type](#collection-type) | The allowed child collection type                         |
-| checksum              | uuid                                                  | Hash of the object                                        |
-| created\_at           | datetime                                              | Date this was initially added to the IGDB database        |
-| description           | String                                                | The relationship type description                         |
-| name                  | String                                                | The relationship type name                                |
-| updated\_at           | datetime                                              | The last date this entry was updated in the IGDB database |
+| field               | type                                                  | description                                               |
+| ------------------- | ----------------------------------------------------- | --------------------------------------------------------- |
+| allowed_child_type  | Reference ID for [ Collection Type](#collection-type) | The allowed child collection type                         |
+| allowed_parent_type | Reference ID for [ Collection Type](#collection-type) | The allowed child collection type                         |
+| checksum            | uuid                                                  | Hash of the object                                        |
+| created_at          | datetime                                              | Date this was initially added to the IGDB database        |
+| description         | String                                                | The relationship type description                         |
+| name                | String                                                | The relationship type name                                |
+| updated_at          | datetime                                              | The last date this entry was updated in the IGDB database |
 
 ## Collection Type
 
@@ -2286,23 +2242,21 @@ curl 'https://api.igdb.com/v4/collection_types' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/collection_types",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/collection_types", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,description,name,updated_at;"
+    body: "fields checksum,created_at,description,name,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -2360,10 +2314,10 @@ Enums for collection types.
 | field       | type     | description                                               |
 | ----------- | -------- | --------------------------------------------------------- |
 | checksum    | uuid     | Hash of the object                                        |
-| created\_at | datetime | Date this was initially added to the IGDB database        |
+| created_at  | datetime | Date this was initially added to the IGDB database        |
 | description | String   | Description of the collection type.                       |
 | name        | String   | The name of the collection type                           |
-| updated\_at | datetime | The last date this entry was updated in the IGDB database |
+| updated_at  | datetime | The last date this entry was updated in the IGDB database |
 
 ## Company
 
@@ -2377,23 +2331,21 @@ curl 'https://api.igdb.com/v4/companies' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/companies",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/companies", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields change_date,change_date_category,change_date_format,changed_company_id,checksum,company_size,company_type_histories,country,created_at,description,developed,logo,name,parent,published,slug,start_date,start_date_category,start_date_format,status,updated_at,url,websites;"
+    body: "fields change_date,change_date_category,change_date_format,changed_company_id,checksum,company_size,company_type_histories,country,created_at,description,developed,logo,name,parent,published,slug,start_date,start_date_category,start_date_format,status,updated_at,url,websites;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -2444,8 +2396,8 @@ print ("response: %s" % str(response.json()))
 
 **Deprecated Fields:**
 
-* `change_date_category`: DEPRECATED! Use `change_date_format` instead
-* `start_date_category`: DEPRECATED! Use `start_date_format` instead
+- `change_date_category`: DEPRECATED! Use `change_date_format` instead
+- `start_date_category`: DEPRECATED! Use `start_date_format` instead
 
 Video game companies. Both publishers & developers
 
@@ -2453,35 +2405,35 @@ Video game companies. Both publishers & developers
 
 `https://api.igdb.com/v4/companies`
 
-| field                    | type                                                        | description                                                              |
-| ------------------------ | ----------------------------------------------------------- | ------------------------------------------------------------------------ |
-| change\_date             | Unix Time Stamp                                             | The data when a company got a new ID                                     |
-| change\_date\_category   | [Change Date Category Enum](#company-enums)                 | DEPRECATED! Use change\_date\_format instead                             |
-| change\_date\_format     | Reference ID for [ Date Format](#date-format)               | The format of the change date                                            |
-| changed\_company\_id     | Reference ID for [ Company](#company)                       | The new ID for a company that has gone through a merger or restructuring |
-| checksum                 | uuid                                                        | Hash of the object                                                       |
-| company\_size            | Reference ID for [ Company Size](#company-size)             | The size of the company                                                  |
-| company\_type\_histories | Array of [ Company Type History](#company-type-history) IDs | The history of company types                                             |
-| country                  | Integer                                                     | ISO 3166-1 country code                                                  |
-| created\_at              | datetime                                                    | Date this was initially added to the IGDB database                       |
-| description              | String                                                      | A free text description of a company                                     |
-| developed                | Array of [ Game](#game) IDs                                 | An array of games that a company has developed                           |
-| logo                     | Reference ID for [ Company Logo](#company-logo)             | The company’s logo                                                       |
-| name                     | String                                                      |                                                                          |
-| parent                   | Reference ID for [ Company](#company)                       | A company with a controlling interest in a specific company              |
-| published                | Array of [ Game](#game) IDs                                 | An array of games that a company has published                           |
-| slug                     | String                                                      | A url-safe, unique, lower-case version of the name                       |
-| start\_date              | Unix Time Stamp                                             | The date a company was founded                                           |
-| start\_date\_category    | [Start Date Category Enum](#company-enums)                  | DEPRECATED! Use start\_date\_format instead                              |
-| start\_date\_format      | Reference ID for [ Date Format](#date-format)               | The format of the start date                                             |
-| status                   | Reference ID for [ Company Status](#company-status)         | The status of the company                                                |
-| updated\_at              | datetime                                                    | The last date this entry was updated in the IGDB database                |
-| url                      | String                                                      | The website address (URL) of the item                                    |
-| websites                 | Array of [ Company Website](#company-website) IDs           | The companies official websites                                          |
+| field                  | type                                                        | description                                                              |
+| ---------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------ |
+| change_date            | Unix Time Stamp                                             | The data when a company got a new ID                                     |
+| change_date_category   | [Change Date Category Enum](#company-enums)                 | DEPRECATED! Use change_date_format instead                               |
+| change_date_format     | Reference ID for [ Date Format](#date-format)               | The format of the change date                                            |
+| changed_company_id     | Reference ID for [ Company](#company)                       | The new ID for a company that has gone through a merger or restructuring |
+| checksum               | uuid                                                        | Hash of the object                                                       |
+| company_size           | Reference ID for [ Company Size](#company-size)             | The size of the company                                                  |
+| company_type_histories | Array of [ Company Type History](#company-type-history) IDs | The history of company types                                             |
+| country                | Integer                                                     | ISO 3166-1 country code                                                  |
+| created_at             | datetime                                                    | Date this was initially added to the IGDB database                       |
+| description            | String                                                      | A free text description of a company                                     |
+| developed              | Array of [ Game](#game) IDs                                 | An array of games that a company has developed                           |
+| logo                   | Reference ID for [ Company Logo](#company-logo)             | The company’s logo                                                       |
+| name                   | String                                                      |                                                                          |
+| parent                 | Reference ID for [ Company](#company)                       | A company with a controlling interest in a specific company              |
+| published              | Array of [ Game](#game) IDs                                 | An array of games that a company has published                           |
+| slug                   | String                                                      | A url-safe, unique, lower-case version of the name                       |
+| start_date             | Unix Time Stamp                                             | The date a company was founded                                           |
+| start_date_category    | [Start Date Category Enum](#company-enums)                  | DEPRECATED! Use start_date_format instead                                |
+| start_date_format      | Reference ID for [ Date Format](#date-format)               | The format of the start date                                             |
+| status                 | Reference ID for [ Company Status](#company-status)         | The status of the company                                                |
+| updated_at             | datetime                                                    | The last date this entry was updated in the IGDB database                |
+| url                    | String                                                      | The website address (URL) of the item                                    |
+| websites               | Array of [ Company Website](#company-website) IDs           | The companies official websites                                          |
 
 ### Company Enums
 
-change\_date\_category
+change_date_category
 
 | name       | value |
 | ---------- | ----- |
@@ -2494,7 +2446,7 @@ change\_date\_category
 | YYYYQ4     | 6     |
 | TBD        | 7     |
 
-start\_date\_category
+start_date_category
 
 | name       | value |
 | ---------- | ----- |
@@ -2519,23 +2471,21 @@ curl 'https://api.igdb.com/v4/company_logos' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/company_logos",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/company_logos", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields alpha_channel,animated,checksum,height,image_id,url,width;"
+    body: "fields alpha_channel,animated,checksum,height,image_id,url,width;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -2590,15 +2540,15 @@ The logos of developers and publishers
 
 `https://api.igdb.com/v4/company_logos`
 
-| field          | type    | description                                              |
-| -------------- | ------- | -------------------------------------------------------- |
-| alpha\_channel | boolean |                                                          |
-| animated       | boolean |                                                          |
-| checksum       | uuid    | Hash of the object                                       |
-| height         | Integer | The height of the image in pixels                        |
-| image\_id      | String  | The ID of the image used to construct an IGDB image link |
-| url            | String  | The website address (URL) of the item                    |
-| width          | Integer | The width of the image in pixels                         |
+| field         | type    | description                                              |
+| ------------- | ------- | -------------------------------------------------------- |
+| alpha_channel | boolean |                                                          |
+| animated      | boolean |                                                          |
+| checksum      | uuid    | Hash of the object                                       |
+| height        | Integer | The height of the image in pixels                        |
+| image_id      | String  | The ID of the image used to construct an IGDB image link |
+| url           | String  | The website address (URL) of the item                    |
+| width         | Integer | The width of the image in pixels                         |
 
 ## Company Size
 
@@ -2612,23 +2562,21 @@ curl 'https://api.igdb.com/v4/company_sizes' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/company_sizes",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/company_sizes", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,name,updated_at;"
+    body: "fields checksum,created_at,name,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -2683,12 +2631,12 @@ Company Size
 
 `https://api.igdb.com/v4/company_sizes`
 
-| field       | type     | description                                               |
-| ----------- | -------- | --------------------------------------------------------- |
-| checksum    | uuid     | Hash of the object                                        |
-| created\_at | datetime | Date this was initially added to the IGDB database        |
-| name        | String   |                                                           |
-| updated\_at | datetime | The last date this entry was updated in the IGDB database |
+| field      | type     | description                                               |
+| ---------- | -------- | --------------------------------------------------------- |
+| checksum   | uuid     | Hash of the object                                        |
+| created_at | datetime | Date this was initially added to the IGDB database        |
+| name       | String   |                                                           |
+| updated_at | datetime | The last date this entry was updated in the IGDB database |
 
 ## Company Status
 
@@ -2702,23 +2650,21 @@ curl 'https://api.igdb.com/v4/company_statuses' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/company_statuses",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/company_statuses", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,name,updated_at;"
+    body: "fields checksum,created_at,name,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -2773,12 +2719,12 @@ Company Status
 
 `https://api.igdb.com/v4/company_statuses`
 
-| field       | type     | description                                               |
-| ----------- | -------- | --------------------------------------------------------- |
-| checksum    | uuid     | Hash of the object                                        |
-| created\_at | datetime | Date this was initially added to the IGDB database        |
-| name        | String   |                                                           |
-| updated\_at | datetime | The last date this entry was updated in the IGDB database |
+| field      | type     | description                                               |
+| ---------- | -------- | --------------------------------------------------------- |
+| checksum   | uuid     | Hash of the object                                        |
+| created_at | datetime | Date this was initially added to the IGDB database        |
+| name       | String   |                                                           |
+| updated_at | datetime | The last date this entry was updated in the IGDB database |
 
 ## Company Type
 
@@ -2792,23 +2738,21 @@ curl 'https://api.igdb.com/v4/company_types' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/company_types",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/company_types", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,name,updated_at;"
+    body: "fields checksum,created_at,name,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -2863,12 +2807,12 @@ Company Type
 
 `https://api.igdb.com/v4/company_types`
 
-| field       | type     | description                                               |
-| ----------- | -------- | --------------------------------------------------------- |
-| checksum    | uuid     | Hash of the object                                        |
-| created\_at | datetime | Date this was initially added to the IGDB database        |
-| name        | String   |                                                           |
-| updated\_at | datetime | The last date this entry was updated in the IGDB database |
+| field      | type     | description                                               |
+| ---------- | -------- | --------------------------------------------------------- |
+| checksum   | uuid     | Hash of the object                                        |
+| created_at | datetime | Date this was initially added to the IGDB database        |
+| name       | String   |                                                           |
+| updated_at | datetime | The last date this entry was updated in the IGDB database |
 
 ## Company Type History
 
@@ -2882,23 +2826,21 @@ curl 'https://api.igdb.com/v4/company_type_histories' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/company_type_histories",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/company_type_histories", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,company,company_type,created_at,parent_company,updated_at;"
+    body: "fields checksum,company,company_type,created_at,parent_company,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -2953,14 +2895,14 @@ Company type history
 
 `https://api.igdb.com/v4/company_type_histories`
 
-| field           | type                                            | description                                               |
-| --------------- | ----------------------------------------------- | --------------------------------------------------------- |
-| checksum        | uuid                                            | Hash of the object                                        |
-| company         | Reference ID for [ Company](#company)           | The company                                               |
-| company\_type   | Reference ID for [ Company Type](#company-type) | The company type                                          |
-| created\_at     | datetime                                        | Date this was initially added to the IGDB database        |
-| parent\_company | Reference ID for [ Company](#company)           | The parent company                                        |
-| updated\_at     | datetime                                        | The last date this entry was updated in the IGDB database |
+| field          | type                                            | description                                               |
+| -------------- | ----------------------------------------------- | --------------------------------------------------------- |
+| checksum       | uuid                                            | Hash of the object                                        |
+| company        | Reference ID for [ Company](#company)           | The company                                               |
+| company_type   | Reference ID for [ Company Type](#company-type) | The company type                                          |
+| created_at     | datetime                                        | Date this was initially added to the IGDB database        |
+| parent_company | Reference ID for [ Company](#company)           | The parent company                                        |
+| updated_at     | datetime                                        | The last date this entry was updated in the IGDB database |
 
 ## Company Website
 
@@ -2974,23 +2916,21 @@ curl 'https://api.igdb.com/v4/company_websites' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/company_websites",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/company_websites", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields category,checksum,trusted,type,url;"
+    body: "fields category,checksum,trusted,type,url;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -3041,7 +2981,7 @@ print ("response: %s" % str(response.json()))
 
 **Deprecated Fields:**
 
-* `category`: DEPRECATED! Use `type` instead
+- `category`: DEPRECATED! Use `type` instead
 
 Company Website
 
@@ -3094,23 +3034,21 @@ curl 'https://api.igdb.com/v4/covers' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/covers",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/covers", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields alpha_channel,animated,checksum,game,game_localization,height,image_id,url,width;"
+    body: "fields alpha_channel,animated,checksum,game,game_localization,height,image_id,url,width;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -3165,17 +3103,17 @@ The cover art of games
 
 `https://api.igdb.com/v4/covers`
 
-| field              | type                                                     | description                                                                                                                                               |
-| ------------------ | -------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| alpha\_channel     | boolean                                                  |                                                                                                                                                           |
-| animated           | boolean                                                  |                                                                                                                                                           |
-| checksum           | uuid                                                     | Hash of the object                                                                                                                                        |
-| game               | Reference ID for [Game](#game)                           | The game this cover is associated with. If it is empty then this cover belongs to a game\_localization, which can be found under game\_localization field |
-| game\_localization | Reference ID for [Game Localization](#game-localization) | The game localization this cover might be associated with                                                                                                 |
-| height             | Integer                                                  | The height of the image in pixels                                                                                                                         |
-| image\_id          | String                                                   | The ID of the image used to construct an IGDB image link                                                                                                  |
-| url                | String                                                   | The website address (URL) of the item                                                                                                                     |
-| width              | Integer                                                  | The width of the image in pixels                                                                                                                          |
+| field             | type                                                     | description                                                                                                                                             |
+| ----------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| alpha_channel     | boolean                                                  |                                                                                                                                                         |
+| animated          | boolean                                                  |                                                                                                                                                         |
+| checksum          | uuid                                                     | Hash of the object                                                                                                                                      |
+| game              | Reference ID for [Game](#game)                           | The game this cover is associated with. If it is empty then this cover belongs to a game_localization, which can be found under game_localization field |
+| game_localization | Reference ID for [Game Localization](#game-localization) | The game localization this cover might be associated with                                                                                               |
+| height            | Integer                                                  | The height of the image in pixels                                                                                                                       |
+| image_id          | String                                                   | The ID of the image used to construct an IGDB image link                                                                                                |
+| url               | String                                                   | The website address (URL) of the item                                                                                                                   |
+| width             | Integer                                                  | The width of the image in pixels                                                                                                                        |
 
 ## Date Format
 
@@ -3189,23 +3127,21 @@ curl 'https://api.igdb.com/v4/date_formats' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/date_formats",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/date_formats", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,format,updated_at;"
+    body: "fields checksum,created_at,format,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -3260,12 +3196,12 @@ The Date Format
 
 `https://api.igdb.com/v4/date_formats`
 
-| field       | type     | description                                               |
-| ----------- | -------- | --------------------------------------------------------- |
-| checksum    | uuid     | Hash of the object                                        |
-| created\_at | datetime | Date this was initially added to the IGDB database        |
-| format      | String   |                                                           |
-| updated\_at | datetime | The last date this entry was updated in the IGDB database |
+| field      | type     | description                                               |
+| ---------- | -------- | --------------------------------------------------------- |
+| checksum   | uuid     | Hash of the object                                        |
+| created_at | datetime | Date this was initially added to the IGDB database        |
+| format     | String   |                                                           |
+| updated_at | datetime | The last date this entry was updated in the IGDB database |
 
 ## Entity Type
 
@@ -3279,23 +3215,21 @@ curl 'https://api.igdb.com/v4/entity_types' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/entity_types",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/entity_types", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,description,name,updated_at;"
+    body: "fields checksum,created_at,description,name,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -3353,10 +3287,10 @@ EntityTypes are the subjects of Reports.
 | field       | type     | description                                               |
 | ----------- | -------- | --------------------------------------------------------- |
 | checksum    | uuid     | Hash of the object                                        |
-| created\_at | datetime | Date this was initially added to the IGDB database        |
+| created_at  | datetime | Date this was initially added to the IGDB database        |
 | description | String   |                                                           |
 | name        | String   |                                                           |
-| updated\_at | datetime | The last date this entry was updated in the IGDB database |
+| updated_at  | datetime | The last date this entry was updated in the IGDB database |
 
 ## Event
 
@@ -3370,23 +3304,21 @@ curl 'https://api.igdb.com/v4/events' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/events",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/events", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,description,end_time,event_logo,event_networks,games,live_stream_url,name,slug,start_time,time_zone,updated_at,videos;"
+    body: "fields checksum,created_at,description,end_time,event_logo,event_networks,games,live_stream_url,name,slug,start_time,time_zone,updated_at,videos;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -3441,22 +3373,22 @@ Gaming event like GamesCom, Tokyo Game Show, PAX or GSL
 
 `https://api.igdb.com/v4/events`
 
-| field             | type                                          | description                                               |
-| ----------------- | --------------------------------------------- | --------------------------------------------------------- |
-| checksum          | uuid                                          | Hash of the object                                        |
-| created\_at       | datetime                                      | Date this was initially added to the IGDB database        |
-| description       | String                                        | The description of the event                              |
-| end\_time         | datetime                                      | End time of the event in UTC                              |
-| event\_logo       | Reference ID for [ Event Logo](#event-logo)   | Logo of the event.                                        |
-| event\_networks   | Array of [ Event Network](#event-network) IDs | Urls associated with the event                            |
-| games             | Array of [ Game](#game) IDs                   | Games featured in the event                               |
-| live\_stream\_url | String                                        | URL to the livestream of the event.                       |
-| name              | String                                        | The name of the event                                     |
-| slug              | String                                        | A url-safe, unique, lower-case version of the name        |
-| start\_time       | datetime                                      | Start time of the event in UTC                            |
-| time\_zone        | String                                        | Timezone the event is in.                                 |
-| updated\_at       | datetime                                      | The last date this entry was updated in the IGDB database |
-| videos            | Array of [ Game Video](#game-video) IDs       | Trailers featured in the event                            |
+| field           | type                                          | description                                               |
+| --------------- | --------------------------------------------- | --------------------------------------------------------- |
+| checksum        | uuid                                          | Hash of the object                                        |
+| created_at      | datetime                                      | Date this was initially added to the IGDB database        |
+| description     | String                                        | The description of the event                              |
+| end_time        | datetime                                      | End time of the event in UTC                              |
+| event_logo      | Reference ID for [ Event Logo](#event-logo)   | Logo of the event.                                        |
+| event_networks  | Array of [ Event Network](#event-network) IDs | Urls associated with the event                            |
+| games           | Array of [ Game](#game) IDs                   | Games featured in the event                               |
+| live_stream_url | String                                        | URL to the livestream of the event.                       |
+| name            | String                                        | The name of the event                                     |
+| slug            | String                                        | A url-safe, unique, lower-case version of the name        |
+| start_time      | datetime                                      | Start time of the event in UTC                            |
+| time_zone       | String                                        | Timezone the event is in.                                 |
+| updated_at      | datetime                                      | The last date this entry was updated in the IGDB database |
+| videos          | Array of [ Game Video](#game-video) IDs       | Trailers featured in the event                            |
 
 ## Event Logo
 
@@ -3470,23 +3402,21 @@ curl 'https://api.igdb.com/v4/event_logos' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/event_logos",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/event_logos", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields alpha_channel,animated,checksum,created_at,event,height,image_id,updated_at,url,width;"
+    body: "fields alpha_channel,animated,checksum,created_at,event,height,image_id,updated_at,url,width;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -3541,18 +3471,18 @@ Logo for the event
 
 `https://api.igdb.com/v4/event_logos`
 
-| field          | type                             | description                                               |
-| -------------- | -------------------------------- | --------------------------------------------------------- |
-| alpha\_channel | boolean                          |                                                           |
-| animated       | boolean                          |                                                           |
-| checksum       | uuid                             | Hash of the object                                        |
-| created\_at    | datetime                         | Date this was initially added to the IGDB database        |
-| event          | Reference ID for [Event](#event) | The event associated with this logo.                      |
-| height         | Integer                          | The height of the image in pixels                         |
-| image\_id      | String                           | The ID of the image used to construct an IGDB image link  |
-| updated\_at    | datetime                         | The last date this entry was updated in the IGDB database |
-| url            | String                           | The website address (URL) of the item                     |
-| width          | Integer                          | The width of the image in pixels                          |
+| field         | type                             | description                                               |
+| ------------- | -------------------------------- | --------------------------------------------------------- |
+| alpha_channel | boolean                          |                                                           |
+| animated      | boolean                          |                                                           |
+| checksum      | uuid                             | Hash of the object                                        |
+| created_at    | datetime                         | Date this was initially added to the IGDB database        |
+| event         | Reference ID for [Event](#event) | The event associated with this logo.                      |
+| height        | Integer                          | The height of the image in pixels                         |
+| image_id      | String                           | The ID of the image used to construct an IGDB image link  |
+| updated_at    | datetime                         | The last date this entry was updated in the IGDB database |
+| url           | String                           | The website address (URL) of the item                     |
+| width         | Integer                          | The width of the image in pixels                          |
 
 ## Event Network
 
@@ -3566,23 +3496,21 @@ curl 'https://api.igdb.com/v4/event_networks' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/event_networks",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/event_networks", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,event,network_type,updated_at,url;"
+    body: "fields checksum,created_at,event,network_type,updated_at,url;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -3637,14 +3565,14 @@ Urls related to the event like twitter, facebook and youtube
 
 `https://api.igdb.com/v4/event_networks`
 
-| field         | type                                            | description                                               |
-| ------------- | ----------------------------------------------- | --------------------------------------------------------- |
-| checksum      | uuid                                            | Hash of the object                                        |
-| created\_at   | datetime                                        | Date this was initially added to the IGDB database        |
-| event         | Reference ID for [Event](#event)                | The event associated with this URL.                       |
-| network\_type | Reference ID for [ Network Type](#network-type) | Network type                                              |
-| updated\_at   | datetime                                        | The last date this entry was updated in the IGDB database |
-| url           | String                                          | The website address (URL) of the item                     |
+| field        | type                                            | description                                               |
+| ------------ | ----------------------------------------------- | --------------------------------------------------------- |
+| checksum     | uuid                                            | Hash of the object                                        |
+| created_at   | datetime                                        | Date this was initially added to the IGDB database        |
+| event        | Reference ID for [Event](#event)                | The event associated with this URL.                       |
+| network_type | Reference ID for [ Network Type](#network-type) | Network type                                              |
+| updated_at   | datetime                                        | The last date this entry was updated in the IGDB database |
+| url          | String                                          | The website address (URL) of the item                     |
 
 ## External Game
 
@@ -3658,23 +3586,21 @@ curl 'https://api.igdb.com/v4/external_games' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/external_games",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/external_games", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields category,checksum,countries,created_at,external_game_source,game,game_release_format,media,name,platform,uid,updated_at,url,year;"
+    body: "fields category,checksum,countries,created_at,external_game_source,game,game_release_format,media,name,platform,uid,updated_at,url,year;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -3725,8 +3651,8 @@ print ("response: %s" % str(response.json()))
 
 **Deprecated Fields:**
 
-* `category`: DEPRECATED! Use `external_game_source` instead
-* `media`: DEPRECATED! Use `game_release_format` instead
+- `category`: DEPRECATED! Use `external_game_source` instead
+- `media`: DEPRECATED! Use `game_release_format` instead
 
 Game IDs on other services
 
@@ -3734,49 +3660,49 @@ Game IDs on other services
 
 `https://api.igdb.com/v4/external_games`
 
-| field                  | type                                                            | description                                               |
-| ---------------------- | --------------------------------------------------------------- | --------------------------------------------------------- |
-| category               | [Category Enum](#external-game-enums)                           | DEPRECATED! Use external\_game\_source instead            |
-| checksum               | uuid                                                            | Hash of the object                                        |
-| countries              | Array of Integers                                               | The ISO country code of the external game product.        |
-| created\_at            | datetime                                                        | Date this was initially added to the IGDB database        |
-| external\_game\_source | Reference ID for [ External Game Source](#external-game-source) | The source of the external game.                          |
-| game                   | Reference ID for [Game](#game)                                  | The IGDB ID of the game                                   |
-| game\_release\_format  | Reference ID for [ Game Release Format](#game-release-format)   | The release format of the external game.                  |
-| media                  | [Media Enum](#external-game-enums)                              | DEPRECATED! Use game\_release\_format instead             |
-| name                   | String                                                          | The name of the game according to the other service       |
-| platform               | Reference ID for [Platform](#platform)                          | The platform of the external game product.                |
-| uid                    | String                                                          | The other services ID for this game                       |
-| updated\_at            | datetime                                                        | The last date this entry was updated in the IGDB database |
-| url                    | String                                                          | The website address (URL) of the item                     |
-| year                   | Integer                                                         | The year in full (2018)                                   |
+| field                | type                                                            | description                                               |
+| -------------------- | --------------------------------------------------------------- | --------------------------------------------------------- |
+| category             | [Category Enum](#external-game-enums)                           | DEPRECATED! Use external_game_source instead              |
+| checksum             | uuid                                                            | Hash of the object                                        |
+| countries            | Array of Integers                                               | The ISO country code of the external game product.        |
+| created_at           | datetime                                                        | Date this was initially added to the IGDB database        |
+| external_game_source | Reference ID for [ External Game Source](#external-game-source) | The source of the external game.                          |
+| game                 | Reference ID for [Game](#game)                                  | The IGDB ID of the game                                   |
+| game_release_format  | Reference ID for [ Game Release Format](#game-release-format)   | The release format of the external game.                  |
+| media                | [Media Enum](#external-game-enums)                              | DEPRECATED! Use game_release_format instead               |
+| name                 | String                                                          | The name of the game according to the other service       |
+| platform             | Reference ID for [Platform](#platform)                          | The platform of the external game product.                |
+| uid                  | String                                                          | The other services ID for this game                       |
+| updated_at           | datetime                                                        | The last date this entry was updated in the IGDB database |
+| url                  | String                                                          | The website address (URL) of the item                     |
+| year                 | Integer                                                         | The year in full (2018)                                   |
 
 ### External Game Enums
 
 category
 
-| name                              | value |
-| --------------------------------- | ----- |
-| steam                             | 1     |
-| gog                               | 5     |
-| youtube                           | 10    |
-| microsoft                         | 11    |
-| apple                             | 13    |
-| twitch                            | 14    |
-| android                           | 15    |
-| amazon\_asin                      | 20    |
-| amazon\_luna                      | 22    |
-| amazon\_adg                       | 23    |
-| epic\_game\_store                 | 26    |
-| oculus                            | 28    |
-| utomik                            | 29    |
-| itch\_io                          | 30    |
-| xbox\_marketplace                 | 31    |
-| kartridge                         | 32    |
-| playstation\_store\_us            | 36    |
-| focus\_entertainment              | 37    |
-| xbox\_game\_pass\_ultimate\_cloud | 54    |
-| gamejolt                          | 55    |
+| name                          | value |
+| ----------------------------- | ----- |
+| steam                         | 1     |
+| gog                           | 5     |
+| youtube                       | 10    |
+| microsoft                     | 11    |
+| apple                         | 13    |
+| twitch                        | 14    |
+| android                       | 15    |
+| amazon_asin                   | 20    |
+| amazon_luna                   | 22    |
+| amazon_adg                    | 23    |
+| epic_game_store               | 26    |
+| oculus                        | 28    |
+| utomik                        | 29    |
+| itch_io                       | 30    |
+| xbox_marketplace              | 31    |
+| kartridge                     | 32    |
+| playstation_store_us          | 36    |
+| focus_entertainment           | 37    |
+| xbox_game_pass_ultimate_cloud | 54    |
+| gamejolt                      | 55    |
 
 media
 
@@ -3797,23 +3723,21 @@ curl 'https://api.igdb.com/v4/external_game_sources' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/external_game_sources",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/external_game_sources", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,name,updated_at;"
+    body: "fields checksum,created_at,name,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -3868,12 +3792,12 @@ Sources for the external games
 
 `https://api.igdb.com/v4/external_game_sources`
 
-| field       | type     | description                                               |
-| ----------- | -------- | --------------------------------------------------------- |
-| checksum    | uuid     | Hash of the object                                        |
-| created\_at | datetime | Date this was initially added to the IGDB database        |
-| name        | String   |                                                           |
-| updated\_at | datetime | The last date this entry was updated in the IGDB database |
+| field      | type     | description                                               |
+| ---------- | -------- | --------------------------------------------------------- |
+| checksum   | uuid     | Hash of the object                                        |
+| created_at | datetime | Date this was initially added to the IGDB database        |
+| name       | String   |                                                           |
+| updated_at | datetime | The last date this entry was updated in the IGDB database |
 
 ## Franchise
 
@@ -3887,23 +3811,21 @@ curl 'https://api.igdb.com/v4/franchises' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/franchises",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/franchises", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,games,name,slug,updated_at,url;"
+    body: "fields checksum,created_at,games,name,slug,updated_at,url;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -3958,15 +3880,15 @@ A list of video game franchises such as Star Wars.
 
 `https://api.igdb.com/v4/franchises`
 
-| field       | type                       | description                                               |
-| ----------- | -------------------------- | --------------------------------------------------------- |
-| checksum    | uuid                       | Hash of the object                                        |
-| created\_at | datetime                   | Date this was initially added to the IGDB database        |
-| games       | Array of [Game](#game) IDs | The games that are associated with this franchise         |
-| name        | String                     | The name of the franchise                                 |
-| slug        | String                     | A url-safe, unique, lower-case version of the name        |
-| updated\_at | datetime                   | The last date this entry was updated in the IGDB database |
-| url         | String                     | The website address (URL) of the item                     |
+| field      | type                       | description                                               |
+| ---------- | -------------------------- | --------------------------------------------------------- |
+| checksum   | uuid                       | Hash of the object                                        |
+| created_at | datetime                   | Date this was initially added to the IGDB database        |
+| games      | Array of [Game](#game) IDs | The games that are associated with this franchise         |
+| name       | String                     | The name of the franchise                                 |
+| slug       | String                     | A url-safe, unique, lower-case version of the name        |
+| updated_at | datetime                   | The last date this entry was updated in the IGDB database |
+| url        | String                     | The website address (URL) of the item                     |
 
 ## Game
 
@@ -3980,23 +3902,21 @@ curl 'https://api.igdb.com/v4/games' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/games",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/games", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields age_ratings,aggregated_rating,aggregated_rating_count,alternative_names,artworks,bundles,category,checksum,collection,collections,cover,created_at,dlcs,expanded_games,expansions,external_games,first_release_date,follows,forks,franchise,franchises,game_engines,game_localizations,game_modes,game_status,game_type,genres,hypes,involved_companies,keywords,language_supports,multiplayer_modes,name,parent_game,platforms,player_perspectives,ports,rating,rating_count,release_dates,remakes,remasters,screenshots,similar_games,slug,standalone_expansions,status,storyline,summary,tags,themes,total_rating,total_rating_count,updated_at,url,version_parent,version_title,videos,websites;"
+    body: "fields age_ratings,aggregated_rating,aggregated_rating_count,alternative_names,artworks,bundles,category,checksum,collection,collections,cover,created_at,dlcs,expanded_games,expansions,external_games,first_release_date,follows,forks,franchise,franchises,game_engines,game_localizations,game_modes,game_status,game_type,genres,hypes,involved_companies,keywords,language_supports,multiplayer_modes,name,parent_game,platforms,player_perspectives,ports,rating,rating_count,release_dates,remakes,remasters,screenshots,similar_games,slug,standalone_expansions,status,storyline,summary,tags,themes,total_rating,total_rating_count,updated_at,url,version_parent,version_title,videos,websites;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -4047,10 +3967,10 @@ print ("response: %s" % str(response.json()))
 
 **Deprecated Fields:**
 
-* `category`: DEPRECATED! Use `game_type` instead
-* `collection`: DEPRECATED! Use `collections` instead
-* `follows`: DEPRECATED! - To be removed
-* `status`: DEPRECATED! Use `game_status` instead
+- `category`: DEPRECATED! Use `game_type` instead
+- `collection`: DEPRECATED! Use `collections` instead
+- `follows`: DEPRECATED! - To be removed
+- `status`: DEPRECATED! Use `game_status` instead
 
 Video Games!
 
@@ -4058,102 +3978,102 @@ Video Games!
 
 `https://api.igdb.com/v4/games`
 
-| field                     | type                                                   | description                                                                                                  |
-| ------------------------- | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| age\_ratings              | Array of [ Age Rating](#age-rating) IDs                | The PEGI rating                                                                                              |
-| aggregated\_rating        | Double                                                 | Rating based on external critic scores                                                                       |
-| aggregated\_rating\_count | Integer                                                | Number of external critic scores                                                                             |
-| alternative\_names        | Array of [Alternative Name](#alternative-name) IDs     | Alternative names for this game                                                                              |
-| artworks                  | Array of [Artwork](#artwork) IDs                       | Artworks of this game                                                                                        |
-| bundles                   | Array of [ Game](#game) IDs                            | The bundles this game is a part of                                                                           |
-| category                  | [Category Enum](#game-enums)                           | DEPRECATED! Use game\_type instead                                                                           |
-| checksum                  | uuid                                                   | Hash of the object                                                                                           |
-| collection                | Reference ID for [Collection](#collection)             | DEPRECATED! Use collections instead                                                                          |
-| collections               | Array of [ Collection](#collection) IDs                | The collections that this game is in.                                                                        |
-| cover                     | Reference ID for [Cover](#cover)                       | The cover of this game                                                                                       |
-| created\_at               | datetime                                               | Date this was initially added to the IGDB database                                                           |
-| dlcs                      | Array of [ Game](#game) IDs                            | DLCs for this game                                                                                           |
-| expanded\_games           | Array of [ Game](#game) IDs                            | Expanded games of this game                                                                                  |
-| expansions                | Array of [ Game](#game) IDs                            | Expansions of this game                                                                                      |
-| external\_games           | Array of [External Game](#external-game) IDs           | External IDs this game has on other services                                                                 |
-| first\_release\_date      | Unix Time Stamp                                        | The first release date for this game                                                                         |
-| follows                   | Integer                                                | DEPRECATED! - To be removed                                                                                  |
-| forks                     | Array of [ Game](#game) IDs                            | Forks of this game                                                                                           |
-| franchise                 | Reference ID for [Franchise](#franchise)               | The main franchise                                                                                           |
-| franchises                | Array of [Franchise](#franchise) IDs                   | Other franchises the game belongs to                                                                         |
-| game\_engines             | Array of [Game Engine](#game-engine) IDs               | The game engine used in this game                                                                            |
-| game\_localizations       | Array of [Game Localization](#game-localization) IDs   | Supported game localizations for this game. A region can have at most one game localization for a given game |
-| game\_modes               | Array of [Game Mode](#game-mode) IDs                   | Modes of gameplay                                                                                            |
-| game\_status              | Reference ID for [ Game Status](#game-status)          | The status of the games release                                                                              |
-| game\_type                | Reference ID for [ Game Type](#game-type)              | The type of game                                                                                             |
-| genres                    | Array of [Genre](#genre) IDs                           | Genres of the game                                                                                           |
-| hypes                     | Integer                                                | Number of follows a game gets before release                                                                 |
-| involved\_companies       | Array of [Involved Company](#involved-company) IDs     | Companies who developed this game                                                                            |
-| keywords                  | Array of [Keyword](#keyword) IDs                       | Associated keywords                                                                                          |
-| language\_supports        | Array of [Language Support](#language-support) IDs     | Supported Languages for this game                                                                            |
-| multiplayer\_modes        | Array of [Multiplayer Mode](#multiplayer-mode) IDs     | Multiplayer modes for this game                                                                              |
-| name                      | String                                                 |                                                                                                              |
-| parent\_game              | Reference ID for [ Game](#game)                        | If a DLC, expansion or part of a bundle, this is the main game or bundle                                     |
-| platforms                 | Array of [Platform](#platform) IDs                     | Platforms this game was released on                                                                          |
-| player\_perspectives      | Array of [Player Perspective](#player-perspective) IDs | The main perspective of the player                                                                           |
-| ports                     | Array of [ Game](#game) IDs                            | Ports of this game                                                                                           |
-| rating                    | Double                                                 | Average IGDB user rating                                                                                     |
-| rating\_count             | Integer                                                | Total number of IGDB user ratings                                                                            |
-| release\_dates            | Array of [Release Date](#release-date) IDs             | Release dates of this game                                                                                   |
-| remakes                   | Array of [ Game](#game) IDs                            | Remakes of this game                                                                                         |
-| remasters                 | Array of [ Game](#game) IDs                            | Remasters of this game                                                                                       |
-| screenshots               | Array of [Screenshot](#screenshot) IDs                 | Screenshots of this game                                                                                     |
-| similar\_games            | Array of [ Game](#game) IDs                            | Similar games                                                                                                |
-| slug                      | String                                                 | A url-safe, unique, lower-case version of the name                                                           |
-| standalone\_expansions    | Array of [ Game](#game) IDs                            | Standalone expansions of this game                                                                           |
-| status                    | [Status Enum](#game-enums)                             | DEPRECATED! Use game\_status instead                                                                         |
-| storyline                 | String                                                 | A short description of a games story                                                                         |
-| summary                   | String                                                 | A description of the game                                                                                    |
-| tags                      | Array of [Tag Numbers](#tag-numbers)                   | Related entities in the IGDB API                                                                             |
-| themes                    | Array of [Theme](#theme) IDs                           | Themes of the game                                                                                           |
-| total\_rating             | Double                                                 | Average rating based on both IGDB user and external critic scores                                            |
-| total\_rating\_count      | Integer                                                | Total number of user and external critic scores                                                              |
-| updated\_at               | datetime                                               | The last date this entry was updated in the IGDB database                                                    |
-| url                       | String                                                 | The website address (URL) of the item                                                                        |
-| version\_parent           | Reference ID for [ Game](#game)                        | If a version, this is the main game                                                                          |
-| version\_title            | String                                                 | Title of this version (i.e Gold edition)                                                                     |
-| videos                    | Array of [ Game Video](#game-video) IDs                | Videos of this game                                                                                          |
-| websites                  | Array of [ Website](#website) IDs                      | Websites associated with this game                                                                           |
+| field                   | type                                                   | description                                                                                                  |
+| ----------------------- | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| age_ratings             | Array of [ Age Rating](#age-rating) IDs                | The PEGI rating                                                                                              |
+| aggregated_rating       | Double                                                 | Rating based on external critic scores                                                                       |
+| aggregated_rating_count | Integer                                                | Number of external critic scores                                                                             |
+| alternative_names       | Array of [Alternative Name](#alternative-name) IDs     | Alternative names for this game                                                                              |
+| artworks                | Array of [Artwork](#artwork) IDs                       | Artworks of this game                                                                                        |
+| bundles                 | Array of [ Game](#game) IDs                            | The bundles this game is a part of                                                                           |
+| category                | [Category Enum](#game-enums)                           | DEPRECATED! Use game_type instead                                                                            |
+| checksum                | uuid                                                   | Hash of the object                                                                                           |
+| collection              | Reference ID for [Collection](#collection)             | DEPRECATED! Use collections instead                                                                          |
+| collections             | Array of [ Collection](#collection) IDs                | The collections that this game is in.                                                                        |
+| cover                   | Reference ID for [Cover](#cover)                       | The cover of this game                                                                                       |
+| created_at              | datetime                                               | Date this was initially added to the IGDB database                                                           |
+| dlcs                    | Array of [ Game](#game) IDs                            | DLCs for this game                                                                                           |
+| expanded_games          | Array of [ Game](#game) IDs                            | Expanded games of this game                                                                                  |
+| expansions              | Array of [ Game](#game) IDs                            | Expansions of this game                                                                                      |
+| external_games          | Array of [External Game](#external-game) IDs           | External IDs this game has on other services                                                                 |
+| first_release_date      | Unix Time Stamp                                        | The first release date for this game                                                                         |
+| follows                 | Integer                                                | DEPRECATED! - To be removed                                                                                  |
+| forks                   | Array of [ Game](#game) IDs                            | Forks of this game                                                                                           |
+| franchise               | Reference ID for [Franchise](#franchise)               | The main franchise                                                                                           |
+| franchises              | Array of [Franchise](#franchise) IDs                   | Other franchises the game belongs to                                                                         |
+| game_engines            | Array of [Game Engine](#game-engine) IDs               | The game engine used in this game                                                                            |
+| game_localizations      | Array of [Game Localization](#game-localization) IDs   | Supported game localizations for this game. A region can have at most one game localization for a given game |
+| game_modes              | Array of [Game Mode](#game-mode) IDs                   | Modes of gameplay                                                                                            |
+| game_status             | Reference ID for [ Game Status](#game-status)          | The status of the games release                                                                              |
+| game_type               | Reference ID for [ Game Type](#game-type)              | The type of game                                                                                             |
+| genres                  | Array of [Genre](#genre) IDs                           | Genres of the game                                                                                           |
+| hypes                   | Integer                                                | Number of follows a game gets before release                                                                 |
+| involved_companies      | Array of [Involved Company](#involved-company) IDs     | Companies who developed this game                                                                            |
+| keywords                | Array of [Keyword](#keyword) IDs                       | Associated keywords                                                                                          |
+| language_supports       | Array of [Language Support](#language-support) IDs     | Supported Languages for this game                                                                            |
+| multiplayer_modes       | Array of [Multiplayer Mode](#multiplayer-mode) IDs     | Multiplayer modes for this game                                                                              |
+| name                    | String                                                 |                                                                                                              |
+| parent_game             | Reference ID for [ Game](#game)                        | If a DLC, expansion or part of a bundle, this is the main game or bundle                                     |
+| platforms               | Array of [Platform](#platform) IDs                     | Platforms this game was released on                                                                          |
+| player_perspectives     | Array of [Player Perspective](#player-perspective) IDs | The main perspective of the player                                                                           |
+| ports                   | Array of [ Game](#game) IDs                            | Ports of this game                                                                                           |
+| rating                  | Double                                                 | Average IGDB user rating                                                                                     |
+| rating_count            | Integer                                                | Total number of IGDB user ratings                                                                            |
+| release_dates           | Array of [Release Date](#release-date) IDs             | Release dates of this game                                                                                   |
+| remakes                 | Array of [ Game](#game) IDs                            | Remakes of this game                                                                                         |
+| remasters               | Array of [ Game](#game) IDs                            | Remasters of this game                                                                                       |
+| screenshots             | Array of [Screenshot](#screenshot) IDs                 | Screenshots of this game                                                                                     |
+| similar_games           | Array of [ Game](#game) IDs                            | Similar games                                                                                                |
+| slug                    | String                                                 | A url-safe, unique, lower-case version of the name                                                           |
+| standalone_expansions   | Array of [ Game](#game) IDs                            | Standalone expansions of this game                                                                           |
+| status                  | [Status Enum](#game-enums)                             | DEPRECATED! Use game_status instead                                                                          |
+| storyline               | String                                                 | A short description of a games story                                                                         |
+| summary                 | String                                                 | A description of the game                                                                                    |
+| tags                    | Array of [Tag Numbers](#tag-numbers)                   | Related entities in the IGDB API                                                                             |
+| themes                  | Array of [Theme](#theme) IDs                           | Themes of the game                                                                                           |
+| total_rating            | Double                                                 | Average rating based on both IGDB user and external critic scores                                            |
+| total_rating_count      | Integer                                                | Total number of user and external critic scores                                                              |
+| updated_at              | datetime                                               | The last date this entry was updated in the IGDB database                                                    |
+| url                     | String                                                 | The website address (URL) of the item                                                                        |
+| version_parent          | Reference ID for [ Game](#game)                        | If a version, this is the main game                                                                          |
+| version_title           | String                                                 | Title of this version (i.e Gold edition)                                                                     |
+| videos                  | Array of [ Game Video](#game-video) IDs                | Videos of this game                                                                                          |
+| websites                | Array of [ Website](#website) IDs                      | Websites associated with this game                                                                           |
 
 ### Game Enums
 
 category
 
-| name                  | value |
-| --------------------- | ----- |
-| main\_game            | 0     |
-| dlc\_addon            | 1     |
-| expansion             | 2     |
-| bundle                | 3     |
-| standalone\_expansion | 4     |
-| mod                   | 5     |
-| episode               | 6     |
-| season                | 7     |
-| remake                | 8     |
-| remaster              | 9     |
-| expanded\_game        | 10    |
-| port                  | 11    |
-| fork                  | 12    |
-| pack                  | 13    |
-| update                | 14    |
+| name                 | value |
+| -------------------- | ----- |
+| main_game            | 0     |
+| dlc_addon            | 1     |
+| expansion            | 2     |
+| bundle               | 3     |
+| standalone_expansion | 4     |
+| mod                  | 5     |
+| episode              | 6     |
+| season               | 7     |
+| remake               | 8     |
+| remaster             | 9     |
+| expanded_game        | 10    |
+| port                 | 11    |
+| fork                 | 12    |
+| pack                 | 13    |
+| update               | 14    |
 
 status
 
-| name          | value |
-| ------------- | ----- |
-| released      | 0     |
-| alpha         | 2     |
-| beta          | 3     |
-| early\_access | 4     |
-| offline       | 5     |
-| cancelled     | 6     |
-| rumored       | 7     |
-| delisted      | 8     |
+| name         | value |
+| ------------ | ----- |
+| released     | 0     |
+| alpha        | 2     |
+| beta         | 3     |
+| early_access | 4     |
+| offline      | 5     |
+| cancelled    | 6     |
+| rumored      | 7     |
+| delisted     | 8     |
 
 ## Game Engine
 
@@ -4167,23 +4087,21 @@ curl 'https://api.igdb.com/v4/game_engines' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/game_engines",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/game_engines", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,companies,created_at,description,logo,name,platforms,slug,updated_at,url;"
+    body: "fields checksum,companies,created_at,description,logo,name,platforms,slug,updated_at,url;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -4242,13 +4160,13 @@ Video game engines such as unreal engine.
 | ----------- | ------------------------------------------------------- | --------------------------------------------------------- |
 | checksum    | uuid                                                    | Hash of the object                                        |
 | companies   | Array of [Company](#company) IDs                        | Companies who used this game engine                       |
-| created\_at | datetime                                                | Date this was initially added to the IGDB database        |
+| created_at  | datetime                                                | Date this was initially added to the IGDB database        |
 | description | String                                                  | Description of the game engine                            |
 | logo        | Reference ID for [ Game Engine Logo](#game-engine-logo) | Logo of the game engine                                   |
 | name        | String                                                  | Name of the game engine                                   |
 | platforms   | Array of [Platform](#platform) IDs                      | Platforms this game engine was deployed on                |
 | slug        | String                                                  | A url-safe, unique, lower-case version of the name        |
-| updated\_at | datetime                                                | The last date this entry was updated in the IGDB database |
+| updated_at  | datetime                                                | The last date this entry was updated in the IGDB database |
 | url         | String                                                  | The website address (URL) of the item                     |
 
 ## Game Engine Logo
@@ -4263,23 +4181,21 @@ curl 'https://api.igdb.com/v4/game_engine_logos' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/game_engine_logos",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/game_engine_logos", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields alpha_channel,animated,checksum,height,image_id,url,width;"
+    body: "fields alpha_channel,animated,checksum,height,image_id,url,width;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -4334,15 +4250,15 @@ The logos of game engines
 
 `https://api.igdb.com/v4/game_engine_logos`
 
-| field          | type    | description                                              |
-| -------------- | ------- | -------------------------------------------------------- |
-| alpha\_channel | boolean |                                                          |
-| animated       | boolean |                                                          |
-| checksum       | uuid    | Hash of the object                                       |
-| height         | Integer | The height of the image in pixels                        |
-| image\_id      | String  | The ID of the image used to construct an IGDB image link |
-| url            | String  | The website address (URL) of the item                    |
-| width          | Integer | The width of the image in pixels                         |
+| field         | type    | description                                              |
+| ------------- | ------- | -------------------------------------------------------- |
+| alpha_channel | boolean |                                                          |
+| animated      | boolean |                                                          |
+| checksum      | uuid    | Hash of the object                                       |
+| height        | Integer | The height of the image in pixels                        |
+| image_id      | String  | The ID of the image used to construct an IGDB image link |
+| url           | String  | The website address (URL) of the item                    |
+| width         | Integer | The width of the image in pixels                         |
 
 ## Game Localization
 
@@ -4356,23 +4272,21 @@ curl 'https://api.igdb.com/v4/game_localizations' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/game_localizations",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/game_localizations", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,cover,created_at,game,name,region,updated_at;"
+    body: "fields checksum,cover,created_at,game,name,region,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -4427,15 +4341,15 @@ Game localization for a game
 
 `https://api.igdb.com/v4/game_localizations`
 
-| field       | type                                | description                                               |
-| ----------- | ----------------------------------- | --------------------------------------------------------- |
-| checksum    | uuid                                | Hash of the object                                        |
-| cover       | Reference ID for [Cover](#cover)    | The cover of this game localization                       |
-| created\_at | datetime                            | Date this was initially added to the IGDB database        |
-| game        | Reference ID for [ Game](#game)     | The Game the localization belongs to                      |
-| name        | String                              |                                                           |
-| region      | Reference ID for [ Region](#region) | The Region of the localization                            |
-| updated\_at | datetime                            | The last date this entry was updated in the IGDB database |
+| field      | type                                | description                                               |
+| ---------- | ----------------------------------- | --------------------------------------------------------- |
+| checksum   | uuid                                | Hash of the object                                        |
+| cover      | Reference ID for [Cover](#cover)    | The cover of this game localization                       |
+| created_at | datetime                            | Date this was initially added to the IGDB database        |
+| game       | Reference ID for [ Game](#game)     | The Game the localization belongs to                      |
+| name       | String                              |                                                           |
+| region     | Reference ID for [ Region](#region) | The Region of the localization                            |
+| updated_at | datetime                            | The last date this entry was updated in the IGDB database |
 
 ## Game Mode
 
@@ -4449,23 +4363,21 @@ curl 'https://api.igdb.com/v4/game_modes' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/game_modes",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/game_modes", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,name,slug,updated_at,url;"
+    body: "fields checksum,created_at,name,slug,updated_at,url;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -4520,14 +4432,14 @@ Single player, Multiplayer etc
 
 `https://api.igdb.com/v4/game_modes`
 
-| field       | type     | description                                               |
-| ----------- | -------- | --------------------------------------------------------- |
-| checksum    | uuid     | Hash of the object                                        |
-| created\_at | datetime | Date this was initially added to the IGDB database        |
-| name        | String   | The name of the game mode                                 |
-| slug        | String   | A url-safe, unique, lower-case version of the name        |
-| updated\_at | datetime | The last date this entry was updated in the IGDB database |
-| url         | String   | The website address (URL) of the item                     |
+| field      | type     | description                                               |
+| ---------- | -------- | --------------------------------------------------------- |
+| checksum   | uuid     | Hash of the object                                        |
+| created_at | datetime | Date this was initially added to the IGDB database        |
+| name       | String   | The name of the game mode                                 |
+| slug       | String   | A url-safe, unique, lower-case version of the name        |
+| updated_at | datetime | The last date this entry was updated in the IGDB database |
+| url        | String   | The website address (URL) of the item                     |
 
 ## Game Release Format
 
@@ -4541,23 +4453,21 @@ curl 'https://api.igdb.com/v4/game_release_formats' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/game_release_formats",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/game_release_formats", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,format,updated_at;"
+    body: "fields checksum,created_at,format,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -4612,12 +4522,12 @@ The format of the game release
 
 `https://api.igdb.com/v4/game_release_formats`
 
-| field       | type     | description                                               |
-| ----------- | -------- | --------------------------------------------------------- |
-| checksum    | uuid     | Hash of the object                                        |
-| created\_at | datetime | Date this was initially added to the IGDB database        |
-| format      | String   |                                                           |
-| updated\_at | datetime | The last date this entry was updated in the IGDB database |
+| field      | type     | description                                               |
+| ---------- | -------- | --------------------------------------------------------- |
+| checksum   | uuid     | Hash of the object                                        |
+| created_at | datetime | Date this was initially added to the IGDB database        |
+| format     | String   |                                                           |
+| updated_at | datetime | The last date this entry was updated in the IGDB database |
 
 ## Game Status
 
@@ -4631,23 +4541,21 @@ curl 'https://api.igdb.com/v4/game_statuses' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/game_statuses",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/game_statuses", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,status,updated_at;"
+    body: "fields checksum,created_at,status,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -4702,12 +4610,12 @@ The release status of the game
 
 `https://api.igdb.com/v4/game_statuses`
 
-| field       | type     | description                                               |
-| ----------- | -------- | --------------------------------------------------------- |
-| checksum    | uuid     | Hash of the object                                        |
-| created\_at | datetime | Date this was initially added to the IGDB database        |
-| status      | String   |                                                           |
-| updated\_at | datetime | The last date this entry was updated in the IGDB database |
+| field      | type     | description                                               |
+| ---------- | -------- | --------------------------------------------------------- |
+| checksum   | uuid     | Hash of the object                                        |
+| created_at | datetime | Date this was initially added to the IGDB database        |
+| status     | String   |                                                           |
+| updated_at | datetime | The last date this entry was updated in the IGDB database |
 
 ## Game Time To Beat
 
@@ -4721,23 +4629,21 @@ curl 'https://api.igdb.com/v4/game_time_to_beats' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/game_time_to_beats",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/game_time_to_beats", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,completely,count,created_at,game_id,hastily,normally,updated_at;"
+    body: "fields checksum,completely,count,created_at,game_id,hastily,normally,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -4792,16 +4698,16 @@ Average time to beat times for a game.
 
 `https://api.igdb.com/v4/game_time_to_beats`
 
-| field       | type     | description                                                                                                                 |
-| ----------- | -------- | --------------------------------------------------------------------------------------------------------------------------- |
-| checksum    | uuid     | Hash of the object                                                                                                          |
-| completely  | Integer  | Average time (in seconds) to finish the game to 100% completion.                                                            |
-| count       | Integer  | Total number of time to beat submissions for this game                                                                      |
-| created\_at | datetime | Date this was initially added to the IGDB database                                                                          |
-| game\_id    | Integer  | The ID of the game associated with the time to beat data                                                                    |
-| hastily     | Integer  | Average time (in seconds) to finish the game to its credits without spending notable time on extras such as side quests.    |
-| normally    | Integer  | Average time (in seconds) to finish the game while mixing in some extras such as side quests without being overly thorough. |
-| updated\_at | datetime | The last date this entry was updated in the IGDB database                                                                   |
+| field      | type     | description                                                                                                                 |
+| ---------- | -------- | --------------------------------------------------------------------------------------------------------------------------- |
+| checksum   | uuid     | Hash of the object                                                                                                          |
+| completely | Integer  | Average time (in seconds) to finish the game to 100% completion.                                                            |
+| count      | Integer  | Total number of time to beat submissions for this game                                                                      |
+| created_at | datetime | Date this was initially added to the IGDB database                                                                          |
+| game_id    | Integer  | The ID of the game associated with the time to beat data                                                                    |
+| hastily    | Integer  | Average time (in seconds) to finish the game to its credits without spending notable time on extras such as side quests.    |
+| normally   | Integer  | Average time (in seconds) to finish the game while mixing in some extras such as side quests without being overly thorough. |
+| updated_at | datetime | The last date this entry was updated in the IGDB database                                                                   |
 
 ## Game Type
 
@@ -4815,23 +4721,21 @@ curl 'https://api.igdb.com/v4/game_types' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/game_types",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/game_types", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,type,updated_at;"
+    body: "fields checksum,created_at,type,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -4886,12 +4790,12 @@ The type that this game is
 
 `https://api.igdb.com/v4/game_types`
 
-| field       | type     | description                                               |
-| ----------- | -------- | --------------------------------------------------------- |
-| checksum    | uuid     | Hash of the object                                        |
-| created\_at | datetime | Date this was initially added to the IGDB database        |
-| type        | String   |                                                           |
-| updated\_at | datetime | The last date this entry was updated in the IGDB database |
+| field      | type     | description                                               |
+| ---------- | -------- | --------------------------------------------------------- |
+| checksum   | uuid     | Hash of the object                                        |
+| created_at | datetime | Date this was initially added to the IGDB database        |
+| type       | String   |                                                           |
+| updated_at | datetime | The last date this entry was updated in the IGDB database |
 
 ## Game Version
 
@@ -4905,23 +4809,21 @@ curl 'https://api.igdb.com/v4/game_versions' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/game_versions",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/game_versions", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,features,game,games,updated_at,url;"
+    body: "fields checksum,created_at,features,game,games,updated_at,url;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -4976,15 +4878,15 @@ Details about game editions and versions.
 
 `https://api.igdb.com/v4/game_versions`
 
-| field       | type                                                        | description                                                                               |
-| ----------- | ----------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| checksum    | uuid                                                        | Hash of the object                                                                        |
-| created\_at | datetime                                                    | Date this was initially added to the IGDB database                                        |
-| features    | Array of [ Game Version Feature](#game-version-feature) IDs | Features and descriptions of what makes each version/edition different from the main game |
-| game        | Reference ID for [Game](#game)                              | The game these versions/editions are of                                                   |
-| games       | Array of [Game](#game) IDs                                  | Game Versions and Editions                                                                |
-| updated\_at | datetime                                                    | The last date this entry was updated in the IGDB database                                 |
-| url         | String                                                      | The website address (URL) of the item                                                     |
+| field      | type                                                        | description                                                                               |
+| ---------- | ----------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| checksum   | uuid                                                        | Hash of the object                                                                        |
+| created_at | datetime                                                    | Date this was initially added to the IGDB database                                        |
+| features   | Array of [ Game Version Feature](#game-version-feature) IDs | Features and descriptions of what makes each version/edition different from the main game |
+| game       | Reference ID for [Game](#game)                              | The game these versions/editions are of                                                   |
+| games      | Array of [Game](#game) IDs                                  | Game Versions and Editions                                                                |
+| updated_at | datetime                                                    | The last date this entry was updated in the IGDB database                                 |
+| url        | String                                                      | The website address (URL) of the item                                                     |
 
 ## Game Version Feature
 
@@ -4998,23 +4900,21 @@ curl 'https://api.igdb.com/v4/game_version_features' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/game_version_features",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/game_version_features", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields category,checksum,description,position,title,values;"
+    body: "fields category,checksum,description,position,title,values;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -5099,23 +4999,21 @@ curl 'https://api.igdb.com/v4/game_version_feature_values' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/game_version_feature_values",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/game_version_feature_values", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,game,game_feature,included_feature,note;"
+    body: "fields checksum,game,game_feature,included_feature,note;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -5170,23 +5068,23 @@ The bool/text value of the feature
 
 `https://api.igdb.com/v4/game_version_feature_values`
 
-| field             | type                                                            | description                              |
-| ----------------- | --------------------------------------------------------------- | ---------------------------------------- |
-| checksum          | uuid                                                            | Hash of the object                       |
-| game              | Reference ID for [Game](#game)                                  | The version/edition this value refers to |
-| game\_feature     | Reference ID for [ Game Version Feature](#game-version-feature) | The id of the game feature               |
-| included\_feature | [Included Feature Enum](#game-version-feature-value-enums)      | The boole value of this feature          |
-| note              | String                                                          | The text value of this feature           |
+| field            | type                                                            | description                              |
+| ---------------- | --------------------------------------------------------------- | ---------------------------------------- |
+| checksum         | uuid                                                            | Hash of the object                       |
+| game             | Reference ID for [Game](#game)                                  | The version/edition this value refers to |
+| game_feature     | Reference ID for [ Game Version Feature](#game-version-feature) | The id of the game feature               |
+| included_feature | [Included Feature Enum](#game-version-feature-value-enums)      | The boole value of this feature          |
+| note             | String                                                          | The text value of this feature           |
 
 ### Game Version Feature Value Enums
 
-included\_feature
+included_feature
 
-| name             | value |
-| ---------------- | ----- |
-| NOT\_INCLUDED    | 0     |
-| INCLUDED         | 1     |
-| PRE\_ORDER\_ONLY | 2     |
+| name           | value |
+| -------------- | ----- |
+| NOT_INCLUDED   | 0     |
+| INCLUDED       | 1     |
+| PRE_ORDER_ONLY | 2     |
 
 ## Game Video
 
@@ -5200,23 +5098,21 @@ curl 'https://api.igdb.com/v4/game_videos' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/game_videos",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/game_videos", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,game,name,video_id;"
+    body: "fields checksum,game,name,video_id;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -5271,12 +5167,12 @@ A video associated with a game
 
 `https://api.igdb.com/v4/game_videos`
 
-| field     | type                           | description                                  |
-| --------- | ------------------------------ | -------------------------------------------- |
-| checksum  | uuid                           | Hash of the object                           |
-| game      | Reference ID for [Game](#game) | The game this video is associated with       |
-| name      | String                         | The name of the video                        |
-| video\_id | String                         | The external ID of the video (YouTube Links) |
+| field    | type                           | description                                  |
+| -------- | ------------------------------ | -------------------------------------------- |
+| checksum | uuid                           | Hash of the object                           |
+| game     | Reference ID for [Game](#game) | The game this video is associated with       |
+| name     | String                         | The name of the video                        |
+| video_id | String                         | The external ID of the video (YouTube Links) |
 
 ## Genre
 
@@ -5290,23 +5186,21 @@ curl 'https://api.igdb.com/v4/genres' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/genres",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/genres", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,name,slug,updated_at,url;"
+    body: "fields checksum,created_at,name,slug,updated_at,url;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -5361,14 +5255,14 @@ Genres of video game
 
 `https://api.igdb.com/v4/genres`
 
-| field       | type     | description                                               |
-| ----------- | -------- | --------------------------------------------------------- |
-| checksum    | uuid     | Hash of the object                                        |
-| created\_at | datetime | Date this was initially added to the IGDB database        |
-| name        | String   |                                                           |
-| slug        | String   | A url-safe, unique, lower-case version of the name        |
-| updated\_at | datetime | The last date this entry was updated in the IGDB database |
-| url         | String   | The website address (URL) of the item                     |
+| field      | type     | description                                               |
+| ---------- | -------- | --------------------------------------------------------- |
+| checksum   | uuid     | Hash of the object                                        |
+| created_at | datetime | Date this was initially added to the IGDB database        |
+| name       | String   |                                                           |
+| slug       | String   | A url-safe, unique, lower-case version of the name        |
+| updated_at | datetime | The last date this entry was updated in the IGDB database |
+| url        | String   | The website address (URL) of the item                     |
 
 ## Involved Company
 
@@ -5382,23 +5276,21 @@ curl 'https://api.igdb.com/v4/involved_companies' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/involved_companies",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/involved_companies", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,company,created_at,developer,game,porting,publisher,supporting,updated_at;"
+    body: "fields checksum,company,created_at,developer,game,porting,publisher,supporting,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -5451,17 +5343,17 @@ print ("response: %s" % str(response.json()))
 
 `https://api.igdb.com/v4/involved_companies`
 
-| field       | type                                 | description                                               |
-| ----------- | ------------------------------------ | --------------------------------------------------------- |
-| checksum    | uuid                                 | Hash of the object                                        |
-| company     | Reference ID for [Company](#company) |                                                           |
-| created\_at | datetime                             | Date this was initially added to the IGDB database        |
-| developer   | boolean                              |                                                           |
-| game        | Reference ID for [Game](#game)       |                                                           |
-| porting     | boolean                              |                                                           |
-| publisher   | boolean                              |                                                           |
-| supporting  | boolean                              |                                                           |
-| updated\_at | datetime                             | The last date this entry was updated in the IGDB database |
+| field      | type                                 | description                                               |
+| ---------- | ------------------------------------ | --------------------------------------------------------- |
+| checksum   | uuid                                 | Hash of the object                                        |
+| company    | Reference ID for [Company](#company) |                                                           |
+| created_at | datetime                             | Date this was initially added to the IGDB database        |
+| developer  | boolean                              |                                                           |
+| game       | Reference ID for [Game](#game)       |                                                           |
+| porting    | boolean                              |                                                           |
+| publisher  | boolean                              |                                                           |
+| supporting | boolean                              |                                                           |
+| updated_at | datetime                             | The last date this entry was updated in the IGDB database |
 
 ## Keyword
 
@@ -5475,23 +5367,21 @@ curl 'https://api.igdb.com/v4/keywords' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/keywords",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/keywords", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,name,slug,updated_at,url;"
+    body: "fields checksum,created_at,name,slug,updated_at,url;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -5546,14 +5436,14 @@ Keywords are words or phrases that get tagged to a game such as “world war 2�
 
 `https://api.igdb.com/v4/keywords`
 
-| field       | type     | description                                               |
-| ----------- | -------- | --------------------------------------------------------- |
-| checksum    | uuid     | Hash of the object                                        |
-| created\_at | datetime | Date this was initially added to the IGDB database        |
-| name        | String   |                                                           |
-| slug        | String   | A url-safe, unique, lower-case version of the name        |
-| updated\_at | datetime | The last date this entry was updated in the IGDB database |
-| url         | String   | The website address (URL) of the item                     |
+| field      | type     | description                                               |
+| ---------- | -------- | --------------------------------------------------------- |
+| checksum   | uuid     | Hash of the object                                        |
+| created_at | datetime | Date this was initially added to the IGDB database        |
+| name       | String   |                                                           |
+| slug       | String   | A url-safe, unique, lower-case version of the name        |
+| updated_at | datetime | The last date this entry was updated in the IGDB database |
+| url        | String   | The website address (URL) of the item                     |
 
 ## Language
 
@@ -5567,23 +5457,21 @@ curl 'https://api.igdb.com/v4/languages' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/languages",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/languages", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,locale,name,native_name,updated_at;"
+    body: "fields checksum,created_at,locale,name,native_name,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -5638,14 +5526,14 @@ Languages that are used in the Language Support endpoint.
 
 `https://api.igdb.com/v4/languages`
 
-| field        | type     | description                                               |
-| ------------ | -------- | --------------------------------------------------------- |
-| checksum     | uuid     | Hash of the object                                        |
-| created\_at  | datetime | Date this was initially added to the IGDB database        |
-| locale       | String   | The combination of Language code and Country code         |
-| name         | String   | The English name of the Language                          |
-| native\_name | String   | The Native Name of the Language                           |
-| updated\_at  | datetime | The last date this entry was updated in the IGDB database |
+| field       | type     | description                                               |
+| ----------- | -------- | --------------------------------------------------------- |
+| checksum    | uuid     | Hash of the object                                        |
+| created_at  | datetime | Date this was initially added to the IGDB database        |
+| locale      | String   | The combination of Language code and Country code         |
+| name        | String   | The English name of the Language                          |
+| native_name | String   | The Native Name of the Language                           |
+| updated_at  | datetime | The last date this entry was updated in the IGDB database |
 
 ## Language Support
 
@@ -5659,23 +5547,21 @@ curl 'https://api.igdb.com/v4/language_supports' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/language_supports",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/language_supports", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,game,language,language_support_type,updated_at;"
+    body: "fields checksum,created_at,game,language,language_support_type,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -5730,14 +5616,14 @@ Games can be played with different languages for voice acting, subtitles, or the
 
 `https://api.igdb.com/v4/language_supports`
 
-| field                   | type                                                              | description                                               |
-| ----------------------- | ----------------------------------------------------------------- | --------------------------------------------------------- |
-| checksum                | uuid                                                              | Hash of the object                                        |
-| created\_at             | datetime                                                          | Date this was initially added to the IGDB database        |
-| game                    | Reference ID for [ Game](#game)                                   |                                                           |
-| language                | Reference ID for [ Language](#language)                           |                                                           |
-| language\_support\_type | Reference ID for [ Language Support Type](#language-support-type) |                                                           |
-| updated\_at             | datetime                                                          | The last date this entry was updated in the IGDB database |
+| field                 | type                                                              | description                                               |
+| --------------------- | ----------------------------------------------------------------- | --------------------------------------------------------- |
+| checksum              | uuid                                                              | Hash of the object                                        |
+| created_at            | datetime                                                          | Date this was initially added to the IGDB database        |
+| game                  | Reference ID for [ Game](#game)                                   |                                                           |
+| language              | Reference ID for [ Language](#language)                           |                                                           |
+| language_support_type | Reference ID for [ Language Support Type](#language-support-type) |                                                           |
+| updated_at            | datetime                                                          | The last date this entry was updated in the IGDB database |
 
 ## Language Support Type
 
@@ -5751,23 +5637,21 @@ curl 'https://api.igdb.com/v4/language_support_types' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/language_support_types",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/language_support_types", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,name,updated_at;"
+    body: "fields checksum,created_at,name,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -5822,12 +5706,12 @@ Language Support Types contains the identifiers for the support types that Langu
 
 `https://api.igdb.com/v4/language_support_types`
 
-| field       | type     | description                                               |
-| ----------- | -------- | --------------------------------------------------------- |
-| checksum    | uuid     | Hash of the object                                        |
-| created\_at | datetime | Date this was initially added to the IGDB database        |
-| name        | String   |                                                           |
-| updated\_at | datetime | The last date this entry was updated in the IGDB database |
+| field      | type     | description                                               |
+| ---------- | -------- | --------------------------------------------------------- |
+| checksum   | uuid     | Hash of the object                                        |
+| created_at | datetime | Date this was initially added to the IGDB database        |
+| name       | String   |                                                           |
+| updated_at | datetime | The last date this entry was updated in the IGDB database |
 
 ## Multiplayer Mode
 
@@ -5841,23 +5725,21 @@ curl 'https://api.igdb.com/v4/multiplayer_modes' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/multiplayer_modes",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/multiplayer_modes", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields campaigncoop,checksum,dropin,game,lancoop,offlinecoop,offlinecoopmax,offlinemax,onlinecoop,onlinecoopmax,onlinemax,platform,splitscreen,splitscreenonline;"
+    body: "fields campaigncoop,checksum,dropin,game,lancoop,offlinecoop,offlinecoopmax,offlinemax,onlinecoop,onlinecoopmax,onlinemax,platform,splitscreen,splitscreenonline;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -5941,23 +5823,21 @@ curl 'https://api.igdb.com/v4/network_types' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/network_types",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/network_types", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,event_networks,name,updated_at;"
+    body: "fields checksum,created_at,event_networks,name,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -6012,13 +5892,13 @@ Social networks related to the event like twitter, facebook and youtube
 
 `https://api.igdb.com/v4/network_types`
 
-| field           | type                                          | description                                               |
-| --------------- | --------------------------------------------- | --------------------------------------------------------- |
-| checksum        | uuid                                          | Hash of the object                                        |
-| created\_at     | datetime                                      | Date this was initially added to the IGDB database        |
-| event\_networks | Array of [ Event Network](#event-network) IDs | Urls associated with the event type                       |
-| name            | String                                        |                                                           |
-| updated\_at     | datetime                                      | The last date this entry was updated in the IGDB database |
+| field          | type                                          | description                                               |
+| -------------- | --------------------------------------------- | --------------------------------------------------------- |
+| checksum       | uuid                                          | Hash of the object                                        |
+| created_at     | datetime                                      | Date this was initially added to the IGDB database        |
+| event_networks | Array of [ Event Network](#event-network) IDs | Urls associated with the event type                       |
+| name           | String                                        |                                                           |
+| updated_at     | datetime                                      | The last date this entry was updated in the IGDB database |
 
 ## Platform
 
@@ -6032,23 +5912,21 @@ curl 'https://api.igdb.com/v4/platforms' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/platforms",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/platforms", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields abbreviation,alternative_name,category,checksum,created_at,generation,name,platform_family,platform_logo,platform_type,slug,summary,updated_at,url,versions,websites;"
+    body: "fields abbreviation,alternative_name,category,checksum,created_at,generation,name,platform_family,platform_logo,platform_type,slug,summary,updated_at,url,versions,websites;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -6099,7 +5977,7 @@ print ("response: %s" % str(response.json()))
 
 **Deprecated Fields:**
 
-* `category`: DEPRECATED! Use `platform_type` instead
+- `category`: DEPRECATED! Use `platform_type` instead
 
 The hardware used to run the game or game delivery network
 
@@ -6107,37 +5985,37 @@ The hardware used to run the game or game delivery network
 
 `https://api.igdb.com/v4/platforms`
 
-| field             | type                                                 | description                                               |
-| ----------------- | ---------------------------------------------------- | --------------------------------------------------------- |
-| abbreviation      | String                                               | An abbreviation of the platform name                      |
-| alternative\_name | String                                               | An alternative name for the platform                      |
-| category          | [Category Enum](#platform-enums)                     | DEPRECATED! Use platform\_type instead                    |
-| checksum          | uuid                                                 | Hash of the object                                        |
-| created\_at       | datetime                                             | Date this was initially added to the IGDB database        |
-| generation        | Integer                                              | The generation of the platform                            |
-| name              | String                                               | The name of the platform                                  |
-| platform\_family  | Reference ID for [Platform Family](#platform-family) | The family of platforms this one belongs to               |
-| platform\_logo    | Reference ID for [Platform Logo](#platform-logo)     | The logo of the first Version of this platform            |
-| platform\_type    | Reference ID for [ Platform Type](#platform-type)    | The type of the platform                                  |
-| slug              | String                                               | A url-safe, unique, lower-case version of the name        |
-| summary           | String                                               | The summary of the first Version of this platform         |
-| updated\_at       | datetime                                             | The last date this entry was updated in the IGDB database |
-| url               | String                                               | The website address (URL) of the item                     |
-| versions          | Array of [ Platform Version](#platform-version) IDs  | Associated versions of this platform                      |
-| websites          | Array of [ Platform Website](#platform-website) IDs  | The main website                                          |
+| field            | type                                                 | description                                               |
+| ---------------- | ---------------------------------------------------- | --------------------------------------------------------- |
+| abbreviation     | String                                               | An abbreviation of the platform name                      |
+| alternative_name | String                                               | An alternative name for the platform                      |
+| category         | [Category Enum](#platform-enums)                     | DEPRECATED! Use platform_type instead                     |
+| checksum         | uuid                                                 | Hash of the object                                        |
+| created_at       | datetime                                             | Date this was initially added to the IGDB database        |
+| generation       | Integer                                              | The generation of the platform                            |
+| name             | String                                               | The name of the platform                                  |
+| platform_family  | Reference ID for [Platform Family](#platform-family) | The family of platforms this one belongs to               |
+| platform_logo    | Reference ID for [Platform Logo](#platform-logo)     | The logo of the first Version of this platform            |
+| platform_type    | Reference ID for [ Platform Type](#platform-type)    | The type of the platform                                  |
+| slug             | String                                               | A url-safe, unique, lower-case version of the name        |
+| summary          | String                                               | The summary of the first Version of this platform         |
+| updated_at       | datetime                                             | The last date this entry was updated in the IGDB database |
+| url              | String                                               | The website address (URL) of the item                     |
+| versions         | Array of [ Platform Version](#platform-version) IDs  | Associated versions of this platform                      |
+| websites         | Array of [ Platform Website](#platform-website) IDs  | The main website                                          |
 
 ### Platform Enums
 
 category
 
-| name              | value |
-| ----------------- | ----- |
-| console           | 1     |
-| arcade            | 2     |
-| platform          | 3     |
-| operating\_system | 4     |
-| portable\_console | 5     |
-| computer          | 6     |
+| name             | value |
+| ---------------- | ----- |
+| console          | 1     |
+| arcade           | 2     |
+| platform         | 3     |
+| operating_system | 4     |
+| portable_console | 5     |
+| computer         | 6     |
 
 ## Platform Family
 
@@ -6151,23 +6029,21 @@ curl 'https://api.igdb.com/v4/platform_families' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/platform_families",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/platform_families", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,name,slug;"
+    body: "fields checksum,name,slug;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -6240,23 +6116,21 @@ curl 'https://api.igdb.com/v4/platform_logos' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/platform_logos",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/platform_logos", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields alpha_channel,animated,checksum,height,image_id,url,width;"
+    body: "fields alpha_channel,animated,checksum,height,image_id,url,width;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -6311,15 +6185,15 @@ Logo for a platform
 
 `https://api.igdb.com/v4/platform_logos`
 
-| field          | type    | description                                              |
-| -------------- | ------- | -------------------------------------------------------- |
-| alpha\_channel | boolean |                                                          |
-| animated       | boolean |                                                          |
-| checksum       | uuid    | Hash of the object                                       |
-| height         | Integer | The height of the image in pixels                        |
-| image\_id      | String  | The ID of the image used to construct an IGDB image link |
-| url            | String  | The website address (URL) of the item                    |
-| width          | Integer | The width of the image in pixels                         |
+| field         | type    | description                                              |
+| ------------- | ------- | -------------------------------------------------------- |
+| alpha_channel | boolean |                                                          |
+| animated      | boolean |                                                          |
+| checksum      | uuid    | Hash of the object                                       |
+| height        | Integer | The height of the image in pixels                        |
+| image_id      | String  | The ID of the image used to construct an IGDB image link |
+| url           | String  | The website address (URL) of the item                    |
+| width         | Integer | The width of the image in pixels                         |
 
 ## Platform Type
 
@@ -6333,23 +6207,21 @@ curl 'https://api.igdb.com/v4/platform_types' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/platform_types",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/platform_types", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,name,updated_at;"
+    body: "fields checksum,created_at,name,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -6404,12 +6276,12 @@ Types of platforms
 
 `https://api.igdb.com/v4/platform_types`
 
-| field       | type     | description                                               |
-| ----------- | -------- | --------------------------------------------------------- |
-| checksum    | uuid     | Hash of the object                                        |
-| created\_at | datetime | Date this was initially added to the IGDB database        |
-| name        | String   |                                                           |
-| updated\_at | datetime | The last date this entry was updated in the IGDB database |
+| field      | type     | description                                               |
+| ---------- | -------- | --------------------------------------------------------- |
+| checksum   | uuid     | Hash of the object                                        |
+| created_at | datetime | Date this was initially added to the IGDB database        |
+| name       | String   |                                                           |
+| updated_at | datetime | The last date this entry was updated in the IGDB database |
 
 ## Platform Version
 
@@ -6423,23 +6295,21 @@ curl 'https://api.igdb.com/v4/platform_versions' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/platform_versions",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/platform_versions", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,companies,connectivity,cpu,graphics,main_manufacturer,media,memory,name,os,output,platform_logo,platform_version_release_dates,resolutions,slug,sound,storage,summary,url;"
+    body: "fields checksum,companies,connectivity,cpu,graphics,main_manufacturer,media,memory,name,os,output,platform_logo,platform_version_release_dates,resolutions,slug,sound,storage,summary,url;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -6492,27 +6362,27 @@ print ("response: %s" % str(response.json()))
 
 `https://api.igdb.com/v4/platform_versions`
 
-| field                             | type                                                                         | description                                            |
-| --------------------------------- | ---------------------------------------------------------------------------- | ------------------------------------------------------ |
-| checksum                          | uuid                                                                         | Hash of the object                                     |
-| companies                         | Array of [ Platform Version Company](#platform-version-company) IDs          | Who developed this platform version                    |
-| connectivity                      | String                                                                       | The network capabilities                               |
-| cpu                               | String                                                                       | The integrated control processing unit                 |
-| graphics                          | String                                                                       | The graphics chipset                                   |
-| main\_manufacturer                | Reference ID for [ Platform Version Company](#platform-version-company)      | Who manufactured this version of the platform          |
-| media                             | String                                                                       | The type of media this version accepted                |
-| memory                            | String                                                                       | How much memory there is                               |
-| name                              | String                                                                       | The name of the platform version                       |
-| os                                | String                                                                       | The operating system installed on the platform version |
-| output                            | String                                                                       | The output video rate                                  |
-| platform\_logo                    | Reference ID for [Platform Logo](#platform-logo)                             | The logo of this platform version                      |
-| platform\_version\_release\_dates | Array of [Platform Version Release Date](#platform-version-release-date) IDs | When this platform was released                        |
-| resolutions                       | String                                                                       | The maximum resolution                                 |
-| slug                              | String                                                                       | A url-safe, unique, lower-case version of the name     |
-| sound                             | String                                                                       | The sound chipset                                      |
-| storage                           | String                                                                       | How much storage there is                              |
-| summary                           | String                                                                       | A short summary                                        |
-| url                               | String                                                                       | The website address (URL) of the item                  |
+| field                          | type                                                                         | description                                            |
+| ------------------------------ | ---------------------------------------------------------------------------- | ------------------------------------------------------ |
+| checksum                       | uuid                                                                         | Hash of the object                                     |
+| companies                      | Array of [ Platform Version Company](#platform-version-company) IDs          | Who developed this platform version                    |
+| connectivity                   | String                                                                       | The network capabilities                               |
+| cpu                            | String                                                                       | The integrated control processing unit                 |
+| graphics                       | String                                                                       | The graphics chipset                                   |
+| main_manufacturer              | Reference ID for [ Platform Version Company](#platform-version-company)      | Who manufactured this version of the platform          |
+| media                          | String                                                                       | The type of media this version accepted                |
+| memory                         | String                                                                       | How much memory there is                               |
+| name                           | String                                                                       | The name of the platform version                       |
+| os                             | String                                                                       | The operating system installed on the platform version |
+| output                         | String                                                                       | The output video rate                                  |
+| platform_logo                  | Reference ID for [Platform Logo](#platform-logo)                             | The logo of this platform version                      |
+| platform_version_release_dates | Array of [Platform Version Release Date](#platform-version-release-date) IDs | When this platform was released                        |
+| resolutions                    | String                                                                       | The maximum resolution                                 |
+| slug                           | String                                                                       | A url-safe, unique, lower-case version of the name     |
+| sound                          | String                                                                       | The sound chipset                                      |
+| storage                        | String                                                                       | How much storage there is                              |
+| summary                        | String                                                                       | A short summary                                        |
+| url                            | String                                                                       | The website address (URL) of the item                  |
 
 ## Platform Version Company
 
@@ -6526,23 +6396,21 @@ curl 'https://api.igdb.com/v4/platform_version_companies' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/platform_version_companies",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/platform_version_companies", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,comment,company,developer,manufacturer;"
+    body: "fields checksum,comment,company,developer,manufacturer;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -6617,23 +6485,21 @@ curl 'https://api.igdb.com/v4/platform_version_release_dates' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/platform_version_release_dates",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/platform_version_release_dates", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields category,checksum,created_at,date,date_format,human,m,platform_version,region,release_region,updated_at,y;"
+    body: "fields category,checksum,created_at,date,date_format,human,m,platform_version,region,release_region,updated_at,y;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -6684,8 +6550,8 @@ print ("response: %s" % str(response.json()))
 
 **Deprecated Fields:**
 
-* `category`: DEPRECATED! Use `date_format` instead
-* `region`: DEPRECATED! Use `release_region` instead
+- `category`: DEPRECATED! Use `date_format` instead
+- `region`: DEPRECATED! Use `release_region` instead
 
 A handy endpoint that extends platform release dates. Used to dig deeper into release dates, platforms and versions.
 
@@ -6693,20 +6559,20 @@ A handy endpoint that extends platform release dates. Used to dig deeper into re
 
 `https://api.igdb.com/v4/platform_version_release_dates`
 
-| field             | type                                                          | description                                               |
-| ----------------- | ------------------------------------------------------------- | --------------------------------------------------------- |
-| category          | [Category Enum](#platform-version-release-date-enums)         | DEPRECATED! Use date\_format instead                      |
-| checksum          | uuid                                                          | Hash of the object                                        |
-| created\_at       | datetime                                                      | Date this was initially added to the IGDB database        |
-| date              | Unix Time Stamp                                               | The release date                                          |
-| date\_format      | Reference ID for [ Date Format](#date-format)                 | The format of the change date                             |
-| human             | String                                                        | A human readable version of the release date              |
-| m                 | Integer                                                       | The month as an integer starting at 1 (January)           |
-| platform\_version | Reference ID for [Platform Version](#platform-version)        | The platform this release date is for                     |
-| region            | [Region Enum](#platform-version-release-date-enums)           | DEPRECATED! Use release\_region instead                   |
-| release\_region   | Reference ID for [ Release Date Region](#release-date-region) | The region of the release                                 |
-| updated\_at       | datetime                                                      | The last date this entry was updated in the IGDB database |
-| y                 | Integer                                                       | The year in full (2018)                                   |
+| field            | type                                                          | description                                               |
+| ---------------- | ------------------------------------------------------------- | --------------------------------------------------------- |
+| category         | [Category Enum](#platform-version-release-date-enums)         | DEPRECATED! Use date_format instead                       |
+| checksum         | uuid                                                          | Hash of the object                                        |
+| created_at       | datetime                                                      | Date this was initially added to the IGDB database        |
+| date             | Unix Time Stamp                                               | The release date                                          |
+| date_format      | Reference ID for [ Date Format](#date-format)                 | The format of the change date                             |
+| human            | String                                                        | A human readable version of the release date              |
+| m                | Integer                                                       | The month as an integer starting at 1 (January)           |
+| platform_version | Reference ID for [Platform Version](#platform-version)        | The platform this release date is for                     |
+| region           | [Region Enum](#platform-version-release-date-enums)           | DEPRECATED! Use release_region instead                    |
+| release_region   | Reference ID for [ Release Date Region](#release-date-region) | The region of the release                                 |
+| updated_at       | datetime                                                      | The last date this entry was updated in the IGDB database |
+| y                | Integer                                                       | The year in full (2018)                                   |
 
 ### Platform Version Release Date Enums
 
@@ -6725,18 +6591,18 @@ category
 
 region
 
-| name           | value |
-| -------------- | ----- |
-| europe         | 1     |
-| north\_america | 2     |
-| australia      | 3     |
-| new\_zealand   | 4     |
-| japan          | 5     |
-| china          | 6     |
-| asia           | 7     |
-| worldwide      | 8     |
-| korea          | 9     |
-| brazil         | 10    |
+| name          | value |
+| ------------- | ----- |
+| europe        | 1     |
+| north_america | 2     |
+| australia     | 3     |
+| new_zealand   | 4     |
+| japan         | 5     |
+| china         | 6     |
+| asia          | 7     |
+| worldwide     | 8     |
+| korea         | 9     |
+| brazil        | 10    |
 
 ## Platform Website
 
@@ -6750,23 +6616,21 @@ curl 'https://api.igdb.com/v4/platform_websites' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/platform_websites",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/platform_websites", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields category,checksum,trusted,type,url;"
+    body: "fields category,checksum,trusted,type,url;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -6817,7 +6681,7 @@ print ("response: %s" % str(response.json()))
 
 **Deprecated Fields:**
 
-* `category`: DEPRECATED! Use `type` instead
+- `category`: DEPRECATED! Use `type` instead
 
 The main website for the platform
 
@@ -6837,27 +6701,27 @@ The main website for the platform
 
 category
 
-| name         | value |
-| ------------ | ----- |
-| official     | 1     |
-| wikia        | 2     |
-| wikipedia    | 3     |
-| facebook     | 4     |
-| twitter      | 5     |
-| twitch       | 6     |
-| instagram    | 8     |
-| youtube      | 9     |
-| iphone       | 10    |
-| ipad         | 11    |
-| android      | 12    |
-| steam        | 13    |
-| reddit       | 14    |
-| discord      | 15    |
-| google\_plus | 16    |
-| tumblr       | 17    |
-| linkedin     | 18    |
-| pinterest    | 19    |
-| soundcloud   | 20    |
+| name        | value |
+| ----------- | ----- |
+| official    | 1     |
+| wikia       | 2     |
+| wikipedia   | 3     |
+| facebook    | 4     |
+| twitter     | 5     |
+| twitch      | 6     |
+| instagram   | 8     |
+| youtube     | 9     |
+| iphone      | 10    |
+| ipad        | 11    |
+| android     | 12    |
+| steam       | 13    |
+| reddit      | 14    |
+| discord     | 15    |
+| google_plus | 16    |
+| tumblr      | 17    |
+| linkedin    | 18    |
+| pinterest   | 19    |
+| soundcloud  | 20    |
 
 ## Player Perspective
 
@@ -6871,23 +6735,21 @@ curl 'https://api.igdb.com/v4/player_perspectives' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/player_perspectives",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/player_perspectives", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,name,slug,updated_at,url;"
+    body: "fields checksum,created_at,name,slug,updated_at,url;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -6942,14 +6804,14 @@ Player perspectives describe the view/perspective of the player in a video game.
 
 `https://api.igdb.com/v4/player_perspectives`
 
-| field       | type     | description                                               |
-| ----------- | -------- | --------------------------------------------------------- |
-| checksum    | uuid     | Hash of the object                                        |
-| created\_at | datetime | Date this was initially added to the IGDB database        |
-| name        | String   |                                                           |
-| slug        | String   | A url-safe, unique, lower-case version of the name        |
-| updated\_at | datetime | The last date this entry was updated in the IGDB database |
-| url         | String   | The website address (URL) of the item                     |
+| field      | type     | description                                               |
+| ---------- | -------- | --------------------------------------------------------- |
+| checksum   | uuid     | Hash of the object                                        |
+| created_at | datetime | Date this was initially added to the IGDB database        |
+| name       | String   |                                                           |
+| slug       | String   | A url-safe, unique, lower-case version of the name        |
+| updated_at | datetime | The last date this entry was updated in the IGDB database |
+| url        | String   | The website address (URL) of the item                     |
 
 ## Popularity Primitive
 
@@ -6963,23 +6825,21 @@ curl 'https://api.igdb.com/v4/popularity_primitives' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/popularity_primitives",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/popularity_primitives", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields calculated_at,checksum,created_at,external_popularity_source,game_id,popularity_source,popularity_type,updated_at,value;"
+    body: "fields calculated_at,checksum,created_at,external_popularity_source,game_id,popularity_source,popularity_type,updated_at,value;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -7030,7 +6890,7 @@ print ("response: %s" % str(response.json()))
 
 **Deprecated Fields:**
 
-* `popularity_source`: DEPRECATED! Use `external_popularity_source` instead
+- `popularity_source`: DEPRECATED! Use `external_popularity_source` instead
 
 Popularity Primitives, this endpoint lists available primitives with their source and popularity type.
 
@@ -7038,21 +6898,21 @@ Popularity Primitives, this endpoint lists available primitives with their sourc
 
 `https://api.igdb.com/v4/popularity_primitives`
 
-| field                        | type                                                            | description                                               |
-| ---------------------------- | --------------------------------------------------------------- | --------------------------------------------------------- |
-| calculated\_at               | datetime                                                        |                                                           |
-| checksum                     | uuid                                                            | Hash of the object                                        |
-| created\_at                  | datetime                                                        | Date this was initially added to the IGDB database        |
-| external\_popularity\_source | Reference ID for [ External Game Source](#external-game-source) |                                                           |
-| game\_id                     | Integer                                                         |                                                           |
-| popularity\_source           | [Popularity Source Enum](#popularity-primitive-enums)           | DEPRECATED! Use external\_popularity\_source instead      |
-| popularity\_type             | Reference ID for [ Popularity Type](#popularity-type)           |                                                           |
-| updated\_at                  | datetime                                                        | The last date this entry was updated in the IGDB database |
-| value                        | bigdecimal                                                      |                                                           |
+| field                      | type                                                            | description                                               |
+| -------------------------- | --------------------------------------------------------------- | --------------------------------------------------------- |
+| calculated_at              | datetime                                                        |                                                           |
+| checksum                   | uuid                                                            | Hash of the object                                        |
+| created_at                 | datetime                                                        | Date this was initially added to the IGDB database        |
+| external_popularity_source | Reference ID for [ External Game Source](#external-game-source) |                                                           |
+| game_id                    | Integer                                                         |                                                           |
+| popularity_source          | [Popularity Source Enum](#popularity-primitive-enums)           | DEPRECATED! Use external_popularity_source instead        |
+| popularity_type            | Reference ID for [ Popularity Type](#popularity-type)           |                                                           |
+| updated_at                 | datetime                                                        | The last date this entry was updated in the IGDB database |
+| value                      | bigdecimal                                                      |                                                           |
 
 ### Popularity Primitive Enums
 
-popularity\_source
+popularity_source
 
 | name | value |
 | ---- | ----- |
@@ -7070,23 +6930,21 @@ curl 'https://api.igdb.com/v4/popularity_types' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/popularity_types",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/popularity_types", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,external_popularity_source,name,popularity_source,updated_at;"
+    body: "fields checksum,created_at,external_popularity_source,name,popularity_source,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -7137,7 +6995,7 @@ print ("response: %s" % str(response.json()))
 
 **Deprecated Fields:**
 
-* `popularity_source`: DEPRECATED! Use `external_popularity_source` instead
+- `popularity_source`: DEPRECATED! Use `external_popularity_source` instead
 
 This describes what type of popularity primitive or popularity indicator the popularity value is.
 
@@ -7145,18 +7003,18 @@ This describes what type of popularity primitive or popularity indicator the pop
 
 `https://api.igdb.com/v4/popularity_types`
 
-| field                        | type                                                            | description                                               |
-| ---------------------------- | --------------------------------------------------------------- | --------------------------------------------------------- |
-| checksum                     | uuid                                                            | Hash of the object                                        |
-| created\_at                  | datetime                                                        | Date this was initially added to the IGDB database        |
-| external\_popularity\_source | Reference ID for [ External Game Source](#external-game-source) |                                                           |
-| name                         | String                                                          |                                                           |
-| popularity\_source           | [Popularity Source Enum](#popularity-type-enums)                | DEPRECATED! Use external\_popularity\_source instead      |
-| updated\_at                  | datetime                                                        | The last date this entry was updated in the IGDB database |
+| field                      | type                                                            | description                                               |
+| -------------------------- | --------------------------------------------------------------- | --------------------------------------------------------- |
+| checksum                   | uuid                                                            | Hash of the object                                        |
+| created_at                 | datetime                                                        | Date this was initially added to the IGDB database        |
+| external_popularity_source | Reference ID for [ External Game Source](#external-game-source) |                                                           |
+| name                       | String                                                          |                                                           |
+| popularity_source          | [Popularity Source Enum](#popularity-type-enums)                | DEPRECATED! Use external_popularity_source instead        |
+| updated_at                 | datetime                                                        | The last date this entry was updated in the IGDB database |
 
 ### Popularity Type Enums
 
-popularity\_source
+popularity_source
 
 | name  | value |
 | ----- | ----- |
@@ -7175,23 +7033,21 @@ curl 'https://api.igdb.com/v4/regions' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/regions",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/regions", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields category,checksum,created_at,identifier,name,updated_at;"
+    body: "fields category,checksum,created_at,identifier,name,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -7246,14 +7102,14 @@ Region for game localization
 
 `https://api.igdb.com/v4/regions`
 
-| field       | type     | description                                               |
-| ----------- | -------- | --------------------------------------------------------- |
-| category    | String   | This can be either ’locale’ or ‘continent’                |
-| checksum    | uuid     | Hash of the object                                        |
-| created\_at | datetime | Date this was initially added to the IGDB database        |
-| identifier  | String   | This is the identifier of each region                     |
-| name        | String   |                                                           |
-| updated\_at | datetime | The last date this entry was updated in the IGDB database |
+| field      | type     | description                                               |
+| ---------- | -------- | --------------------------------------------------------- |
+| category   | String   | This can be either ’locale’ or ‘continent’                |
+| checksum   | uuid     | Hash of the object                                        |
+| created_at | datetime | Date this was initially added to the IGDB database        |
+| identifier | String   | This is the identifier of each region                     |
+| name       | String   |                                                           |
+| updated_at | datetime | The last date this entry was updated in the IGDB database |
 
 ## Release Date
 
@@ -7267,23 +7123,21 @@ curl 'https://api.igdb.com/v4/release_dates' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/release_dates",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/release_dates", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields category,checksum,created_at,d,date,date_format,game,human,m,platform,region,release_region,status,updated_at,y;"
+    body: "fields category,checksum,created_at,d,date,date_format,game,human,m,platform,region,release_region,status,updated_at,y;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -7334,8 +7188,8 @@ print ("response: %s" % str(response.json()))
 
 **Deprecated Fields:**
 
-* `category`: DEPRECATED! Use `date_format` instead
-* `region`: DEPRECATED! Use `release_region` instead
+- `category`: DEPRECATED! Use `date_format` instead
+- `region`: DEPRECATED! Use `release_region` instead
 
 A handy endpoint that extends game release dates. Used to dig deeper into release dates, platforms and versions.
 
@@ -7343,23 +7197,23 @@ A handy endpoint that extends game release dates. Used to dig deeper into releas
 
 `https://api.igdb.com/v4/release_dates`
 
-| field           | type                                                          | description                                               |
-| --------------- | ------------------------------------------------------------- | --------------------------------------------------------- |
-| category        | [Category Enum](#release-date-enums)                          | DEPRECATED! Use date\_format instead                      |
-| checksum        | uuid                                                          | Hash of the object                                        |
-| created\_at     | datetime                                                      | Date this was initially added to the IGDB database        |
-| d               | Integer                                                       | The day of the month as an integer                        |
-| date            | datetime                                                      | The date of the release                                   |
-| date\_format    | Reference ID for [ Date Format](#date-format)                 | The format of the change date                             |
-| game            | Reference ID for [Game](#game)                                |                                                           |
-| human           | String                                                        | A human readable representation of the date               |
-| m               | Integer                                                       | The month as an integer starting at 1 (January)           |
-| platform        | Reference ID for [Platform](#platform)                        | The platform of the release                               |
-| region          | [Region Enum](#release-date-enums)                            | DEPRECATED! Use release\_region instead                   |
-| release\_region | Reference ID for [ Release Date Region](#release-date-region) | The region of the release                                 |
-| status          | Reference ID for [ Release Date Status](#release-date-status) | The status of the release.                                |
-| updated\_at     | datetime                                                      | The last date this entry was updated in the IGDB database |
-| y               | Integer                                                       | The year in full (2018)                                   |
+| field          | type                                                          | description                                               |
+| -------------- | ------------------------------------------------------------- | --------------------------------------------------------- |
+| category       | [Category Enum](#release-date-enums)                          | DEPRECATED! Use date_format instead                       |
+| checksum       | uuid                                                          | Hash of the object                                        |
+| created_at     | datetime                                                      | Date this was initially added to the IGDB database        |
+| d              | Integer                                                       | The day of the month as an integer                        |
+| date           | datetime                                                      | The date of the release                                   |
+| date_format    | Reference ID for [ Date Format](#date-format)                 | The format of the change date                             |
+| game           | Reference ID for [Game](#game)                                |                                                           |
+| human          | String                                                        | A human readable representation of the date               |
+| m              | Integer                                                       | The month as an integer starting at 1 (January)           |
+| platform       | Reference ID for [Platform](#platform)                        | The platform of the release                               |
+| region         | [Region Enum](#release-date-enums)                            | DEPRECATED! Use release_region instead                    |
+| release_region | Reference ID for [ Release Date Region](#release-date-region) | The region of the release                                 |
+| status         | Reference ID for [ Release Date Status](#release-date-status) | The status of the release.                                |
+| updated_at     | datetime                                                      | The last date this entry was updated in the IGDB database |
+| y              | Integer                                                       | The year in full (2018)                                   |
 
 ### Release Date Enums
 
@@ -7378,18 +7232,18 @@ category
 
 region
 
-| name           | value |
-| -------------- | ----- |
-| europe         | 1     |
-| north\_america | 2     |
-| australia      | 3     |
-| new\_zealand   | 4     |
-| japan          | 5     |
-| china          | 6     |
-| asia           | 7     |
-| worldwide      | 8     |
-| korea          | 9     |
-| brazil         | 10    |
+| name          | value |
+| ------------- | ----- |
+| europe        | 1     |
+| north_america | 2     |
+| australia     | 3     |
+| new_zealand   | 4     |
+| japan         | 5     |
+| china         | 6     |
+| asia          | 7     |
+| worldwide     | 8     |
+| korea         | 9     |
+| brazil        | 10    |
 
 ## Release Date Region
 
@@ -7403,23 +7257,21 @@ curl 'https://api.igdb.com/v4/release_date_regions' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/release_date_regions",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/release_date_regions", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,region,updated_at;"
+    body: "fields checksum,created_at,region,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -7474,12 +7326,12 @@ Regions for release dates
 
 `https://api.igdb.com/v4/release_date_regions`
 
-| field       | type     | description                                               |
-| ----------- | -------- | --------------------------------------------------------- |
-| checksum    | uuid     | Hash of the object                                        |
-| created\_at | datetime | Date this was initially added to the IGDB database        |
-| region      | String   |                                                           |
-| updated\_at | datetime | The last date this entry was updated in the IGDB database |
+| field      | type     | description                                               |
+| ---------- | -------- | --------------------------------------------------------- |
+| checksum   | uuid     | Hash of the object                                        |
+| created_at | datetime | Date this was initially added to the IGDB database        |
+| region     | String   |                                                           |
+| updated_at | datetime | The last date this entry was updated in the IGDB database |
 
 ## Release Date Status
 
@@ -7493,23 +7345,21 @@ curl 'https://api.igdb.com/v4/release_date_statuses' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/release_date_statuses",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/release_date_statuses", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,description,name,updated_at;"
+    body: "fields checksum,created_at,description,name,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -7567,10 +7417,10 @@ An endpoint to provide definition of all of the current release date statuses.
 | field       | type     | description                                               |
 | ----------- | -------- | --------------------------------------------------------- |
 | checksum    | uuid     | Hash of the object                                        |
-| created\_at | datetime | Date this was initially added to the IGDB database        |
+| created_at  | datetime | Date this was initially added to the IGDB database        |
 | description | String   | The description of the release date status.               |
 | name        | String   | The name of the release date status.                      |
-| updated\_at | datetime | The last date this entry was updated in the IGDB database |
+| updated_at  | datetime | The last date this entry was updated in the IGDB database |
 
 ## Report
 
@@ -7584,23 +7434,21 @@ curl 'https://api.igdb.com/v4/reports' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/reports",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/reports", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,entity_type,report_type,source_item_id,target_item_id,updated_at;"
+    body: "fields checksum,created_at,entity_type,report_type,source_item_id,target_item_id,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -7655,15 +7503,15 @@ A Report provides context about an issue (such as a duplicate or policy violatio
 
 `https://api.igdb.com/v4/reports`
 
-| field            | type                                          | description                                                                                             |
-| ---------------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| checksum         | uuid                                          | Hash of the object                                                                                      |
-| created\_at      | datetime                                      | Date this was initially added to the IGDB database                                                      |
-| entity\_type     | Reference ID for [ Entity Type](#entity-type) | The type of entity that the report refers to                                                            |
-| report\_type     | Reference ID for [ Report Type](#report-type) | The type of the report                                                                                  |
-| source\_item\_id | Integer                                       | The entity that the report refers to                                                                    |
-| target\_item\_id | Integer                                       | The entity that the report targets (if applicable), example: replacement game for a Duplicate violation |
-| updated\_at      | datetime                                      | The last date this entry was updated in the IGDB database                                               |
+| field          | type                                          | description                                                                                             |
+| -------------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| checksum       | uuid                                          | Hash of the object                                                                                      |
+| created_at     | datetime                                      | Date this was initially added to the IGDB database                                                      |
+| entity_type    | Reference ID for [ Entity Type](#entity-type) | The type of entity that the report refers to                                                            |
+| report_type    | Reference ID for [ Report Type](#report-type) | The type of the report                                                                                  |
+| source_item_id | Integer                                       | The entity that the report refers to                                                                    |
+| target_item_id | Integer                                       | The entity that the report targets (if applicable), example: replacement game for a Duplicate violation |
+| updated_at     | datetime                                      | The last date this entry was updated in the IGDB database                                               |
 
 ## Report Type
 
@@ -7677,23 +7525,21 @@ curl 'https://api.igdb.com/v4/report_types' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/report_types",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/report_types", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,name,updated_at;"
+    body: "fields checksum,created_at,name,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -7748,12 +7594,12 @@ ReportTypes are classifications of the issue within a Report, identifying the sp
 
 `https://api.igdb.com/v4/report_types`
 
-| field       | type     | description                                               |
-| ----------- | -------- | --------------------------------------------------------- |
-| checksum    | uuid     | Hash of the object                                        |
-| created\_at | datetime | Date this was initially added to the IGDB database        |
-| name        | String   |                                                           |
-| updated\_at | datetime | The last date this entry was updated in the IGDB database |
+| field      | type     | description                                               |
+| ---------- | -------- | --------------------------------------------------------- |
+| checksum   | uuid     | Hash of the object                                        |
+| created_at | datetime | Date this was initially added to the IGDB database        |
+| name       | String   |                                                           |
+| updated_at | datetime | The last date this entry was updated in the IGDB database |
 
 ## Screenshot
 
@@ -7767,23 +7613,21 @@ curl 'https://api.igdb.com/v4/screenshots' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/screenshots",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/screenshots", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields alpha_channel,animated,checksum,game,height,image_id,url,width;"
+    body: "fields alpha_channel,animated,checksum,game,height,image_id,url,width;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -7838,16 +7682,16 @@ Screenshots of games
 
 `https://api.igdb.com/v4/screenshots`
 
-| field          | type                           | description                                              |
-| -------------- | ------------------------------ | -------------------------------------------------------- |
-| alpha\_channel | boolean                        |                                                          |
-| animated       | boolean                        |                                                          |
-| checksum       | uuid                           | Hash of the object                                       |
-| game           | Reference ID for [Game](#game) | The game this video is associated with                   |
-| height         | Integer                        | The height of the image in pixels                        |
-| image\_id      | String                         | The ID of the image used to construct an IGDB image link |
-| url            | String                         | The website address (URL) of the item                    |
-| width          | Integer                        | The width of the image in pixels                         |
+| field         | type                           | description                                              |
+| ------------- | ------------------------------ | -------------------------------------------------------- |
+| alpha_channel | boolean                        |                                                          |
+| animated      | boolean                        |                                                          |
+| checksum      | uuid                           | Hash of the object                                       |
+| game          | Reference ID for [Game](#game) | The game this video is associated with                   |
+| height        | Integer                        | The height of the image in pixels                        |
+| image_id      | String                         | The ID of the image used to construct an IGDB image link |
+| url           | String                         | The website address (URL) of the item                    |
+| width         | Integer                        | The width of the image in pixels                         |
 
 ## Search
 
@@ -7861,23 +7705,21 @@ curl 'https://api.igdb.com/v4/search' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/search",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/search", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields alternative_name,character,checksum,collection,company,description,game,name,platform,published_at,test_dummy,theme;"
+    body: "fields alternative_name,character,checksum,collection,company,description,game,name,platform,published_at,test_dummy,theme;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -7930,20 +7772,20 @@ print ("response: %s" % str(response.json()))
 
 `https://api.igdb.com/v4/search`
 
-| field             | type                                       | description                                                   |
-| ----------------- | ------------------------------------------ | ------------------------------------------------------------- |
-| alternative\_name | String                                     |                                                               |
-| character         | Reference ID for [Character](#character)   |                                                               |
-| checksum          | uuid                                       | Hash of the object                                            |
-| collection        | Reference ID for [Collection](#collection) |                                                               |
-| company           | Reference ID for [Company](#company)       |                                                               |
-| description       | String                                     |                                                               |
-| game              | Reference ID for [Game](#game)             |                                                               |
-| name              | String                                     |                                                               |
-| platform          | Reference ID for [Platform](#platform)     |                                                               |
-| published\_at     | Unix Time Stamp                            | The date this item was initially published by the third party |
-| test\_dummy       | Reference ID for [Test Dummy](#test-dummy) |                                                               |
-| theme             | Reference ID for [Theme](#theme)           |                                                               |
+| field            | type                                       | description                                                   |
+| ---------------- | ------------------------------------------ | ------------------------------------------------------------- |
+| alternative_name | String                                     |                                                               |
+| character        | Reference ID for [Character](#character)   |                                                               |
+| checksum         | uuid                                       | Hash of the object                                            |
+| collection       | Reference ID for [Collection](#collection) |                                                               |
+| company          | Reference ID for [Company](#company)       |                                                               |
+| description      | String                                     |                                                               |
+| game             | Reference ID for [Game](#game)             |                                                               |
+| name             | String                                     |                                                               |
+| platform         | Reference ID for [Platform](#platform)     |                                                               |
+| published_at     | Unix Time Stamp                            | The date this item was initially published by the third party |
+| test_dummy       | Reference ID for [Test Dummy](#test-dummy) |                                                               |
+| theme            | Reference ID for [Theme](#theme)           |                                                               |
 
 ## Theme
 
@@ -7957,23 +7799,21 @@ curl 'https://api.igdb.com/v4/themes' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/themes",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/themes", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,name,slug,updated_at,url;"
+    body: "fields checksum,created_at,name,slug,updated_at,url;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -8028,14 +7868,14 @@ Video game themes
 
 `https://api.igdb.com/v4/themes`
 
-| field       | type     | description                                               |
-| ----------- | -------- | --------------------------------------------------------- |
-| checksum    | uuid     | Hash of the object                                        |
-| created\_at | datetime | Date this was initially added to the IGDB database        |
-| name        | String   |                                                           |
-| slug        | String   | A url-safe, unique, lower-case version of the name        |
-| updated\_at | datetime | The last date this entry was updated in the IGDB database |
-| url         | String   | The website address (URL) of the item                     |
+| field      | type     | description                                               |
+| ---------- | -------- | --------------------------------------------------------- |
+| checksum   | uuid     | Hash of the object                                        |
+| created_at | datetime | Date this was initially added to the IGDB database        |
+| name       | String   |                                                           |
+| slug       | String   | A url-safe, unique, lower-case version of the name        |
+| updated_at | datetime | The last date this entry was updated in the IGDB database |
+| url        | String   | The website address (URL) of the item                     |
 
 ## Website
 
@@ -8049,23 +7889,21 @@ curl 'https://api.igdb.com/v4/websites' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/websites",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/websites", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields category,checksum,game,trusted,type,url;"
+    body: "fields category,checksum,game,trusted,type,url;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -8116,7 +7954,7 @@ print ("response: %s" % str(response.json()))
 
 **Deprecated Fields:**
 
-* `category`: DEPRECATED! Use `type` instead
+- `category`: DEPRECATED! Use `type` instead
 
 A website url, usually associated with a game
 
@@ -8170,23 +8008,21 @@ curl 'https://api.igdb.com/v4/website_types' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/website_types",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/website_types", {
+    method: "POST",
     headers: {
-      'Accept': 'application/json',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        Accept: "application/json",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
-    body: "fields checksum,created_at,type,updated_at;"
+    body: "fields checksum,created_at,type,updated_at;",
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -8241,12 +8077,12 @@ A website type, usually the name of the website
 
 `https://api.igdb.com/v4/website_types`
 
-| field       | type     | description                                               |
-| ----------- | -------- | --------------------------------------------------------- |
-| checksum    | uuid     | Hash of the object                                        |
-| created\_at | datetime | Date this was initially added to the IGDB database        |
-| type        | String   | The website type                                          |
-| updated\_at | datetime | The last date this entry was updated in the IGDB database |
+| field      | type     | description                                               |
+| ---------- | -------- | --------------------------------------------------------- |
+| checksum   | uuid     | Hash of the object                                        |
+| created_at | datetime | Date this was initially added to the IGDB database        |
+| type       | String   | The website type                                          |
+| updated_at | datetime | The last date this entry was updated in the IGDB database |
 
 # PopScore
 
@@ -8288,48 +8124,47 @@ Result:
 
 ```json
 [
-	{
-		"id": 1,
-		"popularity_source": 121,
-		"name": "Visits",
-	},
-	{
-		"id": 2,
-		"popularity_source": 121,
-		"name": "Want to Play",
-	},
-	{
-		"id": 3,
-		"popularity_source": 121,
-		"name": "Playing",
-	},
-	{
-		"id": 4,
-		"popularity_source": 121,
-		"name": "Played",
-	},
-	{
-		"id": 5,
-		"popularity_source": 1,
-		"name": "24hr Peak Players",
-	},
-	{
-		"id": 6,
-		"popularity_source": 1,
-		"name": "Postitive Reviews",
-	},
-	{
-		"id": 7,
-		"popularity_source": 1,
-		"name": "Negative Reviews",
-	},
-	{
-		"id": 8,
-		"popularity_source": 1,
-		"name": "Total Reviews",
-	}
+    {
+        "id": 1,
+        "popularity_source": 121,
+        "name": "Visits"
+    },
+    {
+        "id": 2,
+        "popularity_source": 121,
+        "name": "Want to Play"
+    },
+    {
+        "id": 3,
+        "popularity_source": 121,
+        "name": "Playing"
+    },
+    {
+        "id": 4,
+        "popularity_source": 121,
+        "name": "Played"
+    },
+    {
+        "id": 5,
+        "popularity_source": 1,
+        "name": "24hr Peak Players"
+    },
+    {
+        "id": 6,
+        "popularity_source": 1,
+        "name": "Postitive Reviews"
+    },
+    {
+        "id": 7,
+        "popularity_source": 1,
+        "name": "Negative Reviews"
+    },
+    {
+        "id": 8,
+        "popularity_source": 1,
+        "name": "Total Reviews"
+    }
 ]
-
 ```
 
 Below you can find some example use case of how you can use popularity primitives
@@ -8390,15 +8225,15 @@ Define your own trend metrics. For example, by combining two or more primitives 
 
 In our use case here we want to combine “Want to play” with a weight of 0.6 and “Playing” with a remaining weight of 0.4.
 
-For each game we would need to calculate this in a matter of: 0.6 \* (“Want to play” -> value) + 0.4 \* (“Playing” -> value) = custom\_popularity\_value
+For each game we would need to calculate this in a matter of: 0.6 \* (“Want to play” -> value) + 0.4 \* (“Playing” -> value) = custom_popularity_value
 
 To do that you would have to pull the values for each popularity type in your own system and then combine them accordingly.
 
 To pull the date you’ll need locally a data structure similar to the existing popularity primitive where it will have the attributes.
 
-game\_id, popularity\_type, value The Want to Play maps to the popularity\_type = 2 while Playing = 3
+game_id, popularity_type, value The Want to Play maps to the popularity_type = 2 while Playing = 3
 
-An example SQL query that would give you the top 100 of your custom\_popularity would be
+An example SQL query that would give you the top 100 of your custom_popularity would be
 
 ```sql
 SELECT igdb_game_id,
@@ -8434,26 +8269,25 @@ curl -X POST 'https://api.igdb.com/v4/ENDPOINT/webhooks/' \
 ```
 
 ```javascript
-fetch( "https://api.igdb.com/v4/ENDPOINT/webhooks/",
-  { method: 'POST',
+fetch("https://api.igdb.com/v4/ENDPOINT/webhooks/", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
     },
     body: new URLSearchParams({
-      'url': 'YOUR_WEBHOOK_URL',
-      'secret': 'YOUR_WEBHOOK_SECRET',
-      'method': 'create'
-    })
+        url: "YOUR_WEBHOOK_URL",
+        secret: "YOUR_WEBHOOK_SECRET",
+        method: "create",
+    }),
 })
-  .then(response => {
-      console.log(response.json());
-  })
-  .catch(err => {
-      console.error(err);
-  });
-
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -8516,16 +8350,16 @@ To register a new webhook you need to send a `POST` request to `ENDPOINT/webhook
 
 The post request should contain `x-www-form-urlencoded` body with three parameters:
 
-* `url` this is your prepared url that is ready to accept data from us.
-* `method` this is the type of data you are expecting to your url, there are three types of methods  
-   * `create`, sends new items from the API  
-   * `delete`, sends deleted items from the API  
-   * `update`, sends updated items from the API
-* `secret` this is your “secret” password for your webhook. Every request from the webhook service will have your secret in the header called `X-Secret`.
+- `url` this is your prepared url that is ready to accept data from us.
+- `method` this is the type of data you are expecting to your url, there are three types of methods
+    - `create`, sends new items from the API
+    - `delete`, sends deleted items from the API
+    - `update`, sends updated items from the API
+- `secret` this is your “secret” password for your webhook. Every request from the webhook service will have your secret in the header called `X-Secret`.
 
 ```yaml
 // Example response upon registering your webhook
-{ 
+{
     "id": WEBHOOK_ID, // A unique ID for the webhook
     "url": "YOUR_WEBHOOK_URL", // Your chosen URL
     "category": 1, // Based on the endpoint you chose
@@ -8539,7 +8373,6 @@ The post request should contain `x-www-form-urlencoded` body with three paramete
 
 ```
 
-  
 Registering your webhook in Postman Once your webhook is registered you will receive a response with the new webhook object
 
 ```yaml
@@ -8554,13 +8387,13 @@ That’s it!
 The data will now be sent to your webhook in the body of a post request. The data is a single json object representing an **unexpanded entity**.  
 Webhooks from **DELETE** do not send the entire object but only the **ID**.
 
-**Tip!** Always validate your received data with you secret! 
+**Tip!** Always validate your received data with you secret!
 
 Webhooks have an `active` field, as you can see in the JSON response above, The service will keep the webhook active as long as the webhook url is capable of receiving data from the service. If the url fails **5** times the webhook will be set to inactive (`active: false`) and the service will stop to send data to this webhook.
 
 Reactivating the webhook is done by re-registering it, this will update the `active` status to true.
 
-**Tip!** Re-register your webhook on service start, to make sure it's always active! 
+**Tip!** Re-register your webhook on service start, to make sure it's always active!
 
 ```shell
 # Get ALL registered Webhooks
@@ -8572,21 +8405,19 @@ curl 'https://api.igdb.com/v4/webhooks/' \
 
 ```javascript
 // Get ALL registered Webhooks
-fetch(
-  "https://api.igdb.com/v4/webhooks/",
-  {
-    method: 'GET',
+fetch("https://api.igdb.com/v4/webhooks/", {
+    method: "GET",
     headers: {
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
-    }
-  }).then(response => {
-    console.log(response.json());
-  }).catch(err => {
-    console.error(err);
-  }
-);
-
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
+    },
+})
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -8649,21 +8480,19 @@ curl -X DELETE 'https://api.igdb.com/v4/webhooks/WEBHOOK_ID' \
 ```
 
 ```javascript
-fetch(
-  "https://api.igdb.com/v4/webhooks/WEBHOOK_ID",
-  {
-    method: 'DELETE',
+fetch("https://api.igdb.com/v4/webhooks/WEBHOOK_ID", {
+    method: "DELETE",
     headers: {
-      'Client-ID': 'Client ID',
-      'Authorization': 'Bearer access_token',
-    }
-  }).then(response => {
-    console.log(response.json());
-  }).catch(err => {
-    console.error(err);
-  }
-);
-
+        "Client-ID": "Client ID",
+        Authorization: "Bearer access_token",
+    },
+})
+    .then((response) => {
+        console.log(response.json());
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 ```
 
 ```java
@@ -8809,18 +8638,16 @@ See the guide for [setting up a proxy](#proxy) or set up a proxy using [CORS Any
 
 There are a number of reasons why you may wish to proxy requests to the IGDB API.
 
-* To have a backend that keeps track of your Oauth Application Tokens
-* Caching requests to the API for better performance
-* Enable application logging to track/debug usage
-* Enable CORS between the proxy and applications
+- To have a backend that keeps track of your Oauth Application Tokens
+- Caching requests to the API for better performance
+- Enable application logging to track/debug usage
+- Enable CORS between the proxy and applications
 
 ### How do I set up a proxy?
 
 Proxies can be complex, but to get you started we have a simple guide to get you up and running quickly through AWS.
 
 We have provided a single link that will let you deploy an AWS Api Gateway in your own AWS account that will serve as a proxy. This Stack will also handle your Access Token rotations automatically for you, so you don’t need to think about that.
-
-
 
 ### What will it cost?
 
@@ -8831,42 +8658,40 @@ AWS has a [very generous free-tier](https://aws.amazon.com/api-gateway/pricing/)
 **Prerequisites:** You need to have an AWS account with permissions to deploy CloudFormation stacks.
 
 1. Click this [link](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/stacks/create/review?stackName=simple-igdb-proxy&templateURL=https://api-simple-proxy-bucket.s3.amazonaws.com/api-simple-proxy.yml) to get started.
-2. Go over the Stack Details  
-   * You have to agree to the terms and conditions.  
-   * You have to fill in your [Twitch Application Credentials](https://dev.twitch.tv/)  
-   * It’s recommended to protect your proxy by enabling Api Keys  
-   * **NOTE:** Enabling Caching will come with extra costs as this is NOT covered by the Free-tier  
-   * **NOTE:** Enabling CORS will ‘break’ Protobuf responses, some libraries might not work.
+2. Go over the Stack Details
+    - You have to agree to the terms and conditions.
+    - You have to fill in your [Twitch Application Credentials](https://dev.twitch.tv/)
+    - It’s recommended to protect your proxy by enabling Api Keys
+    - **NOTE:** Enabling Caching will come with extra costs as this is NOT covered by the Free-tier
+    - **NOTE:** Enabling CORS will ‘break’ Protobuf responses, some libraries might not work.
 3. Click Next
 4. Configure Stack Options - Nothing is required here, you can click Next
 5. Verify Settings, click the checkbox at the bottom, then click “Create Stack”
-6. You will now see the “Stack Details” screen, hit the refresh arrow button on the right until your stack name on the left says “UPDATE\_COMPLETE”
-7. Click on the “Outputs” tab to get the URL to your new proxy.  
-   * The “Resources” tab summarises all the services deployed on your account.  
-   * The “Template” tab displays the template used for deployment.
-8. You can now post requests to your URL and it will proxy to our API  
-   * If you enabled Api Keys you will need to specify the header `x-api-key` and the key can be found via a link through the “Resources” tab for “ApiDefaultKey”
+6. You will now see the “Stack Details” screen, hit the refresh arrow button on the right until your stack name on the left says “UPDATE_COMPLETE”
+7. Click on the “Outputs” tab to get the URL to your new proxy.
+    - The “Resources” tab summarises all the services deployed on your account.
+    - The “Template” tab displays the template used for deployment.
+8. You can now post requests to your URL and it will proxy to our API
+    - If you enabled Api Keys you will need to specify the header `x-api-key` and the key can be found via a link through the “Resources” tab for “ApiDefaultKey”
 
 **Important Note:** The url generated will end in `production`, so you will want to post to  
 `​​https://<your-api-gateway-unique-id>.execute-api.us-west-2.amazonaws.com/production/v4/games`
-
-
 
 ### What’s next?
 
 You can do a lot of things via [API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started.html).
 
-* You can improve the security of your proxy by creating another sort of [Authentication](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html), to prevent others from using up your RPS quota.
-* You can also setup your own Domain name and SSL with [Route53](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html)
-* You can modify the path of the proxy to have it serve as the front-end to your own APIs  
-   * Perform a calculation? [Lambda Integration](https://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-with-lambda-integration.html)  
-   * Just want to store some records? [DynamoDB Integration](https://aws.amazon.com/blogs/compute/using-amazon-api-gateway-as-a-proxy-for-dynamodb/)  
-   * Want users to be able to upload/download files? [S3 Integration](https://docs.aws.amazon.com/apigateway/latest/developerguide/integrating-api-with-aws-services-s3.html)
-* Enable request [logging](https://docs.aws.amazon.com/apigateway/latest/developerguide/security-monitoring.html)
+- You can improve the security of your proxy by creating another sort of [Authentication](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html), to prevent others from using up your RPS quota.
+- You can also setup your own Domain name and SSL with [Route53](https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-custom-domains.html)
+- You can modify the path of the proxy to have it serve as the front-end to your own APIs
+    - Perform a calculation? [Lambda Integration](https://docs.aws.amazon.com/apigateway/latest/developerguide/getting-started-with-lambda-integration.html)
+    - Just want to store some records? [DynamoDB Integration](https://aws.amazon.com/blogs/compute/using-amazon-api-gateway-as-a-proxy-for-dynamodb/)
+    - Want users to be able to upload/download files? [S3 Integration](https://docs.aws.amazon.com/apigateway/latest/developerguide/integrating-api-with-aws-services-s3.html)
+- Enable request [logging](https://docs.aws.amazon.com/apigateway/latest/developerguide/security-monitoring.html)
 
 ### Alternatives
 
-* CORS: Setup a proxy using [CORS Anywhere](https://github.com/Rob--W/cors-anywhere)
+- CORS: Setup a proxy using [CORS Anywhere](https://github.com/Rob--W/cors-anywhere)
 
 # Reference
 
@@ -8876,36 +8701,37 @@ You can do a lot of things via [API Gateway](https://docs.aws.amazon.com/apigate
 
 ### Examples
 
-* Address:  
-   * `https://api.igdb.com/v4/games/`
-* Body:  
-   * `fields screenshots.*;  
-   where id = 1942;`
+- Address:
+    - `https://api.igdb.com/v4/games/`
+- Body: - `fields screenshots.*;  
+where id = 1942;`
 
 Here we retrieve the image properties of the game with the id “1942”
 
 ```json
-[{
-	"id": 1942,
-	"screenshots": [{
-			"id": 9742,
-			"game": 1942,
-			"height": 1080,
-			"image_id": "mnljdjtrh44x4snmierh",
-			"url": "//images.igdb.com/igdb/image/upload/t_thumb/mnljdjtrh44x4snmierh.jpg",
-			"width": 1920
-		},
-		{
-			"id": 9743,
-			"game": 1942,
-			"height": 1080,
-			"image_id": "em1y2ugcwy2myuhvb9db",
-			"url": "//images.igdb.com/igdb/image/upload/t_thumb/em1y2ugcwy2myuhvb9db.jpg",
-			"width": 1920
-		}
-	]
-}]
-
+[
+    {
+        "id": 1942,
+        "screenshots": [
+            {
+                "id": 9742,
+                "game": 1942,
+                "height": 1080,
+                "image_id": "mnljdjtrh44x4snmierh",
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/mnljdjtrh44x4snmierh.jpg",
+                "width": 1920
+            },
+            {
+                "id": 9743,
+                "game": 1942,
+                "height": 1080,
+                "image_id": "em1y2ugcwy2myuhvb9db",
+                "url": "//images.igdb.com/igdb/image/upload/t_thumb/em1y2ugcwy2myuhvb9db.jpg",
+                "width": 1920
+            }
+        ]
+    }
+]
 ```
 
 **Response example on the right –>**
@@ -8920,18 +8746,18 @@ Here we retrieve the image properties of the game with the id “1942”
 
 `size` is one of the interchangeable size types listed below.`hash` is the id of the image. The image sizes are all maximum size but by appending `_2x` to any size, you can get retina (DPR 2.0) sizes (`cover_small_2x`).
 
-| Name             | Size        | Extra                 |
-| ---------------- | ----------- | --------------------- |
-| cover\_small     | 90 x 128    | Fit                   |
-| screenshot\_med  | 569 x 320   | Lfill, Center gravity |
-| cover\_big       | 264 x 374   | Fit                   |
-| logo\_med        | 284 x 160   | Fit                   |
-| screenshot\_big  | 889 x 500   | Lfill, Center gravity |
-| screenshot\_huge | 1280 x 720  | Lfill, Center gravity |
-| thumb            | 90 x 90     | Thumb, Center gravity |
-| micro            | 35 x 35     | Thumb, Center gravity |
-| 720p             | 1280 x 720  | Fit, Center gravity   |
-| 1080p            | 1920 x 1080 | Fit, Center gravity   |
+| Name            | Size        | Extra                 |
+| --------------- | ----------- | --------------------- |
+| cover_small     | 90 x 128    | Fit                   |
+| screenshot_med  | 569 x 320   | Lfill, Center gravity |
+| cover_big       | 264 x 374   | Fit                   |
+| logo_med        | 284 x 160   | Fit                   |
+| screenshot_big  | 889 x 500   | Lfill, Center gravity |
+| screenshot_huge | 1280 x 720  | Lfill, Center gravity |
+| thumb           | 90 x 90     | Thumb, Center gravity |
+| micro           | 35 x 35     | Thumb, Center gravity |
+| 720p            | 1280 x 720  | Fit, Center gravity   |
+| 1080p           | 1920 x 1080 | Fit, Center gravity   |
 
 ## Fields
 
@@ -9101,11 +8927,10 @@ Filters are used to sift through results to get what you want. You can exclude a
 
 Filters are parameter arrays so must be added using special keys like this:
 
-* Address:  
-   * `https://api.igdb.com/v4/games/`
-* Body:  
-   * `search “zelda”;  
-   where rating >= 80 & release_dates.date > 631152000;`
+- Address:
+    - `https://api.igdb.com/v4/games/`
+- Body: - `search “zelda”;  
+where rating >= 80 & release_dates.date > 631152000;`
 
 ### Where?
 
@@ -9113,25 +8938,25 @@ Filters can be used on any entity that has sub-properties such as Games, Compani
 
 ### Available Postfixes
 
-* `=` Equal: Exact match equal.
-* `!=` Not Equal: Exact match equal.
-* `>` Greater than (works only on numbers).
-* `>=` Greater than or equal to (works only on numbers).
-* `<` Less than (works only on numbers).
-* `<=` Less than or equal to (works only on numbers).
-* `= "Your input string"*` Prefix: Exact match on the beginning of the string, can end with anything. (Case sensitive).
-* `~ "Your input string"*` Prefix: Exact match on the beginning of the string, can end with anything. (Case insensitive).
-* `= *"Your input string"` Postfix: Exact match at the end of the string, can start with anything. (Case sensitive).
-* `~ *"Your input string"` Postfix: Exact match at the end of the string, can start with anything. (Case insensitive).
-* `= *"Your input string"*` Infix Exact match in the middle of the string, can start and end with anything. (Case sensitive).
-* `~ *"Your input string"*` Infix Exact match in the middle of the string, can start and end with anything. (Case insensitive).
-* `!= null` The value is not null.
-* `= null` The value is null.
-* `[V1,V2,...Vn]` The value exists within the (comma separated) array (AND between values).
-* `![V1,V2,...Vn]` The values must not exist within the (comma separated) array (AND between values).
-* `(V1,V2,...Vn)` The value has any within the (comma separated) array (OR between values).
-* `!(V1,V2,...Vn)` The values must not exist within the (comma separated) array (OR between values).
-* `{V1,V2,...V2}` Exact match on arrays. (Does not work on ids, strings, etc).
+- `=` Equal: Exact match equal.
+- `!=` Not Equal: Exact match equal.
+- `>` Greater than (works only on numbers).
+- `>=` Greater than or equal to (works only on numbers).
+- `<` Less than (works only on numbers).
+- `<=` Less than or equal to (works only on numbers).
+- `= "Your input string"*` Prefix: Exact match on the beginning of the string, can end with anything. (Case sensitive).
+- `~ "Your input string"*` Prefix: Exact match on the beginning of the string, can end with anything. (Case insensitive).
+- `= *"Your input string"` Postfix: Exact match at the end of the string, can start with anything. (Case sensitive).
+- `~ *"Your input string"` Postfix: Exact match at the end of the string, can start with anything. (Case insensitive).
+- `= *"Your input string"*` Infix Exact match in the middle of the string, can start and end with anything. (Case sensitive).
+- `~ *"Your input string"*` Infix Exact match in the middle of the string, can start and end with anything. (Case insensitive).
+- `!= null` The value is not null.
+- `= null` The value is null.
+- `[V1,V2,...Vn]` The value exists within the (comma separated) array (AND between values).
+- `![V1,V2,...Vn]` The values must not exist within the (comma separated) array (AND between values).
+- `(V1,V2,...Vn)` The value has any within the (comma separated) array (OR between values).
+- `!(V1,V2,...Vn)` The values must not exist within the (comma separated) array (OR between values).
+- `{V1,V2,...V2}` Exact match on arrays. (Does not work on ids, strings, etc).
 
 ### Examples
 
@@ -9139,50 +8964,45 @@ Filters can be used on any entity that has sub-properties such as Games, Compani
 
 To get games that are released on PS4 OR XBOX ONE OR PC
 
-* Address:  
-   * `https://api.igdb.com/v4/games/`
-* Body:  
-   * `fields name;  
-   where release_dates.platform = (48,49,6);`
+- Address:
+    - `https://api.igdb.com/v4/games/`
+- Body: - `fields name;  
+where release_dates.platform = (48,49,6);`
 
 Similarly if you want games released on PS4 AND XBOX ONE AND PC
 
-* Address:  
-   * `https://api.igdb.com/v4/games/`
-* Body:  
-   * `fields name;  
-   where release_dates.platform = [48,49,6];`
+- Address:
+    - `https://api.igdb.com/v4/games/`
+- Body: - `fields name;  
+where release_dates.platform = [48,49,6];`
 
 If you want games released only on PC
 
-* Address:  
-   * `https://api.igdb.com/v4/games/`
-* Body:  
-   * `fields name;  
-   where release_dates.platform = 6;`
+- Address:
+    - `https://api.igdb.com/v4/games/`
+- Body: - `fields name;  
+where release_dates.platform = 6;`
 
 And if you want games released for PC OR any other platform
 
-* Address:  
-   * `https://api.igdb.com/v4/games/`
-* Body:  
-   * `fields name;  
-   where release_dates.platform = (6);`
+- Address:
+    - `https://api.igdb.com/v4/games/`
+- Body: - `fields name;  
+where release_dates.platform = (6);`
 
 ### Combining Multiple Filters
 
 It is possible to to use logical operators between filters, which could look something like this:
 
-* Address:  
-   * `https://api.igdb.com/v4/games/`
-* Body:  
-   * `fields name,platforms,genres.name;  
-   where (platforms = [6,48] & genres = 13) | (platforms = [130,48] & genres = 12);`
+- Address:
+    - `https://api.igdb.com/v4/games/`
+- Body: - `fields name,platforms,genres.name;  
+where (platforms = [6,48] & genres = 13) | (platforms = [130,48] & genres = 12);`
 
 The response from this example query will be games that fulfil one or both of two sets or requirements:
 
-* Games released for for both PC (6), and PS4 (48) and also has the genre simulator (13).
-* Games released for for both Switch (130), and PS4 (48) and also has the genre Role-Playing (13).
+- Games released for for both PC (6), and PS4 (48) and also has the genre simulator (13).
+- Games released for for both Switch (130), and PS4 (48) and also has the genre Role-Playing (13).
 
 ### Prefix, Postfix and Infix
 
@@ -9190,51 +9010,46 @@ The response from this example query will be games that fulfil one or both of tw
 
 Filtering for game names beginning with “Super” (this will return games such as for example Super Mario World)
 
-* Address:  
-   * `https://api.igdb.com/v4/games/`
-* Body:  
-   * `fields name;  
-   where name = "Super"*;`
+- Address:
+    - `https://api.igdb.com/v4/games/`
+- Body: - `fields name;  
+where name = "Super"*;`
 
 **Postfix**
 
 Filtering for game names ending with with “World” (this will also return games such as for example Super Mario World)
 
-* Address:  
-   * `https://api.igdb.com/v4/games/`
-* Body:  
-   * `fields name;  
-   where name = *"World";`
+- Address:
+    - `https://api.igdb.com/v4/games/`
+- Body: - `fields name;  
+where name = *"World";`
 
 **Infix**
 
 Filtering for game names containing the string “Smash” anywhere (this will return games such as for example Super Smash Bros)
 
-* Address:  
-   * `https://api.igdb.com/v4/games/`
-* Body:  
-   * `fields name;  
-   where name = *"Smash"*;`
+- Address:
+    - `https://api.igdb.com/v4/games/`
+- Body: - `fields name;  
+where name = *"Smash"*;`
 
 **case insensitive version**
 
 Filtering for game names containing the string “Smash” (this will return games such as for example Super Smash Bros)
 
-* Address:  
-   * `https://api.igdb.com/v4/games/`
-* Body:  
-   * `fields name;  
-   where name ~ *"Smash"*;`
+- Address:
+    - `https://api.igdb.com/v4/games/`
+- Body: - `fields name;  
+where name ~ *"Smash"*;`
 
 ### Removing erotic games from API responses
 
 Some queries may return games with erotic themes. All erotic games in the database has the theme ’erotic’ (id = 42). So by adding a simple filter like the one below you can remove them from your responses.
 
-* Address:  
-   * `https://api.igdb.com/v4/games/`
-* Body:  
-   * `fields name;  
-   where themes != (42);`
+- Address:
+    - `https://api.igdb.com/v4/games/`
+- Body: - `fields name;  
+where themes != (42);`
 
 ## Sorting
 
@@ -9246,12 +9061,11 @@ Sorting is used to order results by a specific field.
 
 You can order results like this:
 
-* Address:  
-   * `https://api.igdb.com/v4/games/`
-* Body:  
-   * `sort release_dates.date desc;  
-   where rating >= 80;  
-   `
+- Address:
+    - `https://api.igdb.com/v4/games/`
+- Body: - `sort release_dates.date desc;  
+where rating >= 80;  
+`
 
 Notice the appended `:desc` (descending) which could also be `:asc` (ascending) if required.
 
@@ -9259,12 +9073,11 @@ Notice the appended `:desc` (descending) which could also be `:asc` (ascending) 
 
 Rating parameter for games. You can access it like this:
 
-* Address:  
-   * ` https://api.igdb.com/v4/games/`
-* Body:  
-   * `fields name,rating;  
-   sort rating desc;  
-   where rating != null;`
+- Address:
+    - ` https://api.igdb.com/v4/games/`
+- Body: - `fields name,rating;  
+sort rating desc;  
+where rating != null;`
 
 ### Where?
 
@@ -9280,38 +9093,37 @@ Search based on name, results are sorted by similarity to the given search strin
 
 Searchable endpoints:
 
-* Characters
-* Collections
-* Games
-* People
-* Platforms
-* Themes
+- Characters
+- Collections
+- Games
+- People
+- Platforms
+- Themes
 
 ### How?
 
 You specify which endpoint to search through in the Address field of your request. The search string is then entered in the body of the request by typing `search`, blank space followed by the string you wish to search for.
 
-* Address:  
-   * `https://api.igdb.com/v4/games/`
-* Body:  
-   * `search “zelda”;`
+- Address:
+    - `https://api.igdb.com/v4/games/`
+- Body:
+    - `search “zelda”;`
 
 ## Pagination
 
 Here is an example for how to use **limit**. The default limit is 10\. The maximum value you can set for limit is 500.
 
-* Address:  
-   * `https://api.igdb.com/v4/platforms/`
-* Body:  
-   * `limit 33;`
+- Address:
+    - `https://api.igdb.com/v4/platforms/`
+- Body:
+    - `limit 33;`
 
 There is also an **offset**. This will start the list at position 22 and give 33 results.
 
-* Address:  
-   * `https://api.igdb.com/v4/platforms/`
-* Body:  
-   * `limit 33;  
-   offset 22;`
+- Address:
+    - `https://api.igdb.com/v4/platforms/`
+- Body: - `limit 33;  
+offset 22;`
 
 ## Protocol Buffers
 
@@ -9359,18 +9171,16 @@ const genreTypeID = 1; // The type ID from the table above
 const shooterGenreID = 5; // The Shooter genre's ID, coming from the genres endpoint.
 let tagNumber = genreTypeID << 28; // Bit-shifting the genre's type ID by 28 bits, ensuring that it will get into the first four bits. The result will be 268435456
 tagNumber |= shooterGenreID; // Adding the Shooter genre ID to the tag number with a bitwise OR operation. The result will be 268435461.
-
 ```
 
 We try to find all the games which relate to the Shooter genre. The tag number generation in Javascript would look something like the example on the right.
 
 Javascript example query:
 
-* Address:  
-   * `https://api.igdb.com/v4/games/`
-* Body:  
-   * `where tags = (268435461);  
-   `
+- Address:
+    - `https://api.igdb.com/v4/games/`
+- Body: - `where tags = (268435461);  
+`
 
 ```python
 # Python
@@ -9383,11 +9193,10 @@ tagNumber |= keywordID # Adding the keyword ID to the tag number with a bitwise 
 
 Python example query:
 
-* Address:  
-   * `https://api.igdb.com/v4/games/`
-* Body:  
-   * `where tags = (536871060);  
-   `
+- Address:
+    - `https://api.igdb.com/v4/games/`
+- Body: - `where tags = (536871060);  
+`
 
 ## Multi-Query
 
@@ -9414,12 +9223,11 @@ This above query will give us the following result:
 
 ```json
 [
-  {
-    "name": "Count of Platforms",
-    "count": 155
-  }
+    {
+        "name": "Count of Platforms",
+        "count": 155
+    }
 ]
-
 ```
 
 ### Example 2:
@@ -9605,62 +9413,62 @@ We’re announcing upcoming changes to the IGDB API that will affect how certain
 
 We’re moving away from using static enum values in our API to using more flexible table-based structures. While this is primarily an internal change, it affects how certain fields are named in our API. To ensure a smooth transition:
 
-* All current enum values will remain the same in the new table structure
-* Only the field names are changing, not the values they contain  
-   * **NOTE:** Changes are expected for the Age Rating Categories, IDs will not reflect the same enum values here.
-* This change will allow us to evolve our data structure more efficiently in the future
-* This change will allow you to expand these fields instead of keeping hardcoded enums
+- All current enum values will remain the same in the new table structure
+- Only the field names are changing, not the values they contain
+    - **NOTE:** Changes are expected for the Age Rating Categories, IDs will not reflect the same enum values here.
+- This change will allow us to evolve our data structure more efficiently in the future
+- This change will allow you to expand these fields instead of keeping hardcoded enums
 
 ## What is Changing?
 
 Several field names are being standardized across our endpoints for better clarity and consistency:
 
-| Endpoint         | Current Field          | New Field              |
-| ---------------- | ---------------------- | ---------------------- |
-| age\_rating      | category               | organization           |
-| age\_rating      | rating                 | rating\_category       |
-| character        | gender                 | character\_gender      |
-| character        | species                | character\_species     |
-| companies        | change\_date\_category | change\_date\_format   |
-| companies        | start\_date\_category  | start\_date\_format    |
-| company\_website | category               | type                   |
-| external\_game   | category               | external\_game\_source |
-| external\_game   | media                  | game\_release\_format  |
-| platform         | category               | platform\_type         |
-| website          | category               | type                   |
+| Endpoint        | Current Field        | New Field            |
+| --------------- | -------------------- | -------------------- |
+| age_rating      | category             | organization         |
+| age_rating      | rating               | rating_category      |
+| character       | gender               | character_gender     |
+| character       | species              | character_species    |
+| companies       | change_date_category | change_date_format   |
+| companies       | start_date_category  | start_date_format    |
+| company_website | category             | type                 |
+| external_game   | category             | external_game_source |
+| external_game   | media                | game_release_format  |
+| platform        | category             | platform_type        |
+| website         | category             | type                 |
 
 Additionally, we’re adding some new fields:
 
-* The `age_rating` endpoint will now use `rating_content_descriptions` instead of `content_descriptions` (replacing age\_rating\_content\_descriptions with age\_rating\_content\_descriptions\_v2)
-* The `companies` endpoint will have a `status` field for active,defunct,merged, or renamed.
+- The `age_rating` endpoint will now use `rating_content_descriptions` instead of `content_descriptions` (replacing age_rating_content_descriptions with age_rating_content_descriptions_v2)
+- The `companies` endpoint will have a `status` field for active,defunct,merged, or renamed.
 
 **New Endpoints replacing enum values**
 
-* age\_rating\_organizations
-* age\_rating\_categories
-* age\_rating\_content\_descriptions\_v2
-* character\_genders
-* character\_species
-* company\_status
-* company\_websites
-* date\_formats
-* external\_game\_sources
-* game\_release\_formats
-* game\_status
-* game\_types
-* platform\_types
-* release\_date\_regions
-* website\_types
+- age_rating_organizations
+- age_rating_categories
+- age_rating_content_descriptions_v2
+- character_genders
+- character_species
+- company_status
+- company_websites
+- date_formats
+- external_game_sources
+- game_release_formats
+- game_status
+- game_types
+- platform_types
+- release_date_regions
+- website_types
 
 **Datadumps**  
 All of these changes will be reflected in the daily data dumps.
 
 ## Migration Timeline
 
-* Migration Period: starting on February 18 to August 31 (6 months)
-* During this period, both old and new field names will be available
-* Monthly reminders will be sent to all API users about the upcoming deprecation
-* After the migration period, the old field names will be removed
+- Migration Period: starting on February 18 to August 31 (6 months)
+- During this period, both old and new field names will be available
+- Monthly reminders will be sent to all API users about the upcoming deprecation
+- After the migration period, the old field names will be removed
 
 ### How Does This Affect You?
 
@@ -9677,9 +9485,9 @@ If your application uses any of the fields listed above, you’ll need to update
 
 If you have any questions about these changes or need assistance with migration, please:
 
-* Review our updated [API documentation](https://api-docs.igdb.com/#getting-started)
-* Reach out to our support team
-* Join our [discord](https://discord.gg/igdb) community for discussions
+- Review our updated [API documentation](https://api-docs.igdb.com/#getting-started)
+- Reach out to our support team
+- Join our [discord](https://discord.gg/igdb) community for discussions
 
 We’re committed to making this transition as smooth as possible for all our API users.
 
@@ -9702,7 +9510,7 @@ All [endpoints](#endpoints) are available as CSV Data Dumps!
 
 Daily updated CSV Data Dumps which can be used to kick start your projects or keep your data up to date (within 24 hours).
 
-_Please note that data dumps are exclusively available to our Data Partners._ 
+_Please note that data dumps are exclusively available to our Data Partners._
 
 ```shell
 curl -X GET 'https://api.igdb.com/v4/dumps' \
@@ -9776,14 +9584,7 @@ This will return a list of available Data Dumps describing the `endpoint`, `file
 
 ```yaml
 # Example response from /dumps
-[
-    {
-		"endpoint": "games",
-		"file_name": "1234567890_games.csv",
-		"updated_at": 1234567890
-	}
-]
-
+[{ "endpoint": "games", "file_name": "1234567890_games.csv", "updated_at": 1234567890 }]
 ```
 
 ```shell
@@ -9865,23 +9666,23 @@ The schema version number will change when the `schema` changes, so if you are p
 ```yaml
 # Example response from /dumps/games
 {
-	"s3_url": "S3_DOWNLOAD_URL",
-	"endpoint": "games",
-	"file_name": "1234567890_games.csv",
-	"size_bytes": 123456789,
-	"updated_at": 1234567890,
-	"schema_version": "1234567890",
-	"schema": {
-		"id": "LONG",
-		"name": "STRING",
-		"url": "STRING",
-        "franchises": "LONG[]",
-        "rating": "DOUBLE",
-        "created_at": "TIMESTAMP",
-        "checksum": "UUID",
-	}
+    "s3_url": "S3_DOWNLOAD_URL",
+    "endpoint": "games",
+    "file_name": "1234567890_games.csv",
+    "size_bytes": 123456789,
+    "updated_at": 1234567890,
+    "schema_version": "1234567890",
+    "schema":
+        {
+            "id": "LONG",
+            "name": "STRING",
+            "url": "STRING",
+            "franchises": "LONG[]",
+            "rating": "DOUBLE",
+            "created_at": "TIMESTAMP",
+            "checksum": "UUID",
+        },
 }
-
 ```
 
 # FAQ
@@ -9968,4 +9769,4 @@ If you would like to report a bug you can do so in Discord or use [Uservoice](ht
 
 Any code examples or snippets found under [api-docs.igdb.com](https://api-docs.igdb.com/) are made available under the [Twitch Developer Services Agreement](https://www.twitch.tv/p/legal/developer-agreement/) as Program Materials.
 
-[Shell](#) [Javascript](#) [Java/Unirest](#) [Kotlin/Fuel](#) [Swift](#) [Ruby](#) [Python](#) 
+[Shell](#) [Javascript](#) [Java/Unirest](#) [Kotlin/Fuel](#) [Swift](#) [Ruby](#) [Python](#)

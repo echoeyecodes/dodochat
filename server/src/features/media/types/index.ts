@@ -1,5 +1,4 @@
-import type { FileDoc } from '../models/File';
-import { withCDN } from '../../common/helpers';
+import type { FileDoc } from "../models/File";
 
 export type FileResponse = {
     id: string;
@@ -16,7 +15,7 @@ export const mapFileToResponse = (file: FileDoc): FileResponse => ({
     name: file.name,
     type: file.type,
     size: file.size,
-    url: file.path.replace(/\\/g, '/'),
+    url: file.path.replace(/\\/g, "/"),
     metadata: file.metadata,
     created_at: file.created_at,
 });

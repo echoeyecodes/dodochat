@@ -1,4 +1,3 @@
-
 export const ConversationSessionSkeleton = () => {
     return (
         <div className="flex-1 flex flex-col min-h-0 bg-(--color-bg-elevated) relative animate-in fade-in duration-500">
@@ -26,7 +25,7 @@ export const ConversationSessionSkeleton = () => {
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-4">
                         {[1, 2, 3, 4].map((i) => (
-                            <div 
+                            <div
                                 key={i}
                                 className="h-[46px] rounded-xl bg-(--color-bg-subtle) border border-(--color-border) animate-pulse"
                                 style={{ animationDelay: `${i * 100}ms` }}
@@ -41,5 +40,5 @@ export const ConversationSessionSkeleton = () => {
                 <div className="w-full h-14 rounded-lg bg-(--color-bg-subtle) border border-(--color-border) animate-pulse" />
             </div>
         </div>
-    )
-}
+    );
+};

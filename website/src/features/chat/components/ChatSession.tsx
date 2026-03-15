@@ -1,11 +1,11 @@
-import { useMemo, useState, useCallback, useEffect, useRef } from 'react';
-import { useChat } from '@ai-sdk/react';
-import { DefaultChatTransport } from 'ai';
-import { ChatContext, type CustomMessage } from '../context/ChatContext';
-import { useNavigate } from '@tanstack/react-router';
-import { useInvalidateConversations } from '../hooks/useInvalidateConversations';
-import { type ChatMessage, type ConversationDetail } from '../types';
-import envConfig from '@/lib/env';
+import { useMemo, useState, useCallback, useEffect, useRef } from "react";
+import { useChat } from "@ai-sdk/react";
+import { DefaultChatTransport } from "ai";
+import { ChatContext, type CustomMessage } from "../context/ChatContext";
+import { useNavigate } from "@tanstack/react-router";
+import { useInvalidateConversations } from "../hooks/useInvalidateConversations";
+import { type ChatMessage, type ConversationDetail } from "../types";
+import envConfig from "@/lib/env";
 
 type ChatSessionProps = {
     conversationId?: string | null;
@@ -15,30 +15,37 @@ type ChatSessionProps = {
     children: React.ReactNode;
 };
 
-export const ChatSession = ({ conversationId, initialMessages = [], currentConversation: initialConv, initialQuery, children }: ChatSessionProps) => {
+export const ChatSession = ({
+    conversationId,
+    initialMessages = [],
+    currentConversation: initialConv,
+    initialQuery,
+    children,
+}: ChatSessionProps) => {
     const navigate = useNavigate();
     const invalidateConversations = useInvalidateConversations();
 
     const handleConversationCreated = useCallback(
         (id: string) => {
             invalidateConversations();
-            if (id && id !== 'refresh') {
-                navigate({ to: '/conversations/$id', params: { id }, replace: true });
+            if (id && id !== "refresh") {
+                navigate({ to: "/conversations/$id", params: { id }, replace: true });
             }
         },
-        [invalidateConversations, navigate]
+        [invalidateConversations, navigate],
     );
 
-    const [input, setInput] = useState('');
+    const [input, setInput] = useState("");
     const [activeId, setActiveId] = useState<string | null>(conversationId || null);
 
     const transport = useMemo(
-        () => new DefaultChatTransport({
-            api: `${envConfig.get("BASE_API_URL")}/api/conversations/chat`,
-            body: activeId ? { conversationId: activeId } : undefined,
-            credentials: 'include'
-        }),
-        [activeId]
+        () =>
+            new DefaultChatTransport({
+                api: `${envConfig.get("BASE_API_URL")}/api/conversations/chat`,
+                body: activeId ? { conversationId: activeId } : undefined,
+                credentials: "include",
+            }),
+        [activeId],
     );
 
     const chatData = useChat<CustomMessage>({
@@ -62,23 +69,25 @@ export const ChatSession = ({ conversationId, initialMessages = [], currentConve
         if (initialQuery && messages.length === 0 && !activeId && !hasSentInitial.current) {
             hasSentInitial.current = true;
             sendMessage({
-                parts: [{ type: 'text', text: initialQuery }]
+                parts: [{ type: "text", text: initialQuery }],
             });
         }
     }, [initialQuery, activeId, sendMessage, messages.length]);
 
-    const isLoadingStatus = chatData.status === 'streaming' || chatData.status === 'submitted';
+    const isLoadingStatus = chatData.status === "streaming" || chatData.status === "submitted";
 
     return (
-        <ChatContext.Provider value={{
-            ...chatData,
-            isLoading: isLoadingStatus,
-            input,
-            setInput,
-            conversationId: activeId,
-            setConversationId: setActiveId,
-            currentConversation: initialConv
-        }}>
+        <ChatContext.Provider
+            value={{
+                ...chatData,
+                isLoading: isLoadingStatus,
+                input,
+                setInput,
+                conversationId: activeId,
+                setConversationId: setActiveId,
+                currentConversation: initialConv,
+            }}
+        >
             <div className="flex-1 flex flex-col relative w-full h-full overflow-hidden bg-(--color-bg-elevated)">
                 {children}
             </div>

@@ -1,24 +1,27 @@
-import { Link, useNavigate } from "@tanstack/react-router"
-import { useSelectCurrentUser } from "@/features/user/hooks/useSelectCurrentUser"
+import { Link, useNavigate } from "@tanstack/react-router";
+import { useSelectCurrentUser } from "@/features/user/hooks/useSelectCurrentUser";
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuSeparator,
-    DropdownMenuTrigger
-} from "@/components/ui/dropdown-menu"
-import { LucideLogOut, LucideUser } from "lucide-react"
-import { useRef } from "react"
-import { ConfirmationDialog, type ConfirmationDialogHandle } from "@/components/ui/confirmation-dialog"
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { LucideLogOut, LucideUser } from "lucide-react";
+import { useRef } from "react";
+import {
+    ConfirmationDialog,
+    type ConfirmationDialogHandle,
+} from "@/components/ui/confirmation-dialog";
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
-    const user = useSelectCurrentUser()
-    const navigate = useNavigate()
-    const confirmRef = useRef<ConfirmationDialogHandle>(null)
+    const user = useSelectCurrentUser();
+    const navigate = useNavigate();
+    const confirmRef = useRef<ConfirmationDialogHandle>(null);
 
     const initials = user?.display_name
         ? user.display_name.substring(0, 2).toUpperCase()
-        : user?.email?.substring(0, 2).toUpperCase() || 'OO'
+        : user?.email?.substring(0, 2).toUpperCase() || "OO";
 
     const handleLogout = () => {
         confirmRef.current?.open({
@@ -27,10 +30,10 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
             confirmText: "Log out",
             variant: "destructive",
             onConfirm: () => {
-                navigate({ to: '/logout' })
-            }
-        })
-    }
+                navigate({ to: "/logout" });
+            },
+        });
+    };
 
     return (
         <div className="min-h-screen relative overflow-hidden grain">
@@ -90,12 +93,10 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
                     </div>
                 </header>
 
-                <main className="flex-1 min-h-0 h-full flex flex-col">
-                    {children}
-                </main>
+                <main className="flex-1 min-h-0 h-full flex flex-col">{children}</main>
             </div>
 
             <ConfirmationDialog ref={confirmRef} />
         </div>
-    )
-}
+    );
+};

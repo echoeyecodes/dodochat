@@ -1,11 +1,11 @@
-import { createContext, useContext, type Dispatch, type SetStateAction } from 'react';
-import { type UIMessage, type UseChatHelpers } from '@ai-sdk/react';
-import { type ConversationDetail } from '../types';
-import { type UIMessagePart } from 'ai';
+import { createContext, useContext, type Dispatch, type SetStateAction } from "react";
+import { type UIMessage, type UseChatHelpers } from "@ai-sdk/react";
+import { type ConversationDetail } from "../types";
+import { type UIMessagePart } from "ai";
 
 export type ChatTools = {
     getSystemInfo: {
-        input: {};
+        input: Record<string, never>;
         output: {
             node_version: string;
             platform: string;
@@ -27,7 +27,15 @@ export type ChatTools = {
     applyImageEffect: {
         input: {
             fileId: string;
-            effect: 'grayscale' | 'rotate_90' | 'rotate_180' | 'rotate_270' | 'flip' | 'tint_blue' | 'tint_red' | 'tint_green';
+            effect:
+                | "grayscale"
+                | "rotate_90"
+                | "rotate_180"
+                | "rotate_270"
+                | "flip"
+                | "tint_blue"
+                | "tint_red"
+                | "tint_green";
         };
         output: {
             success: boolean;
@@ -40,7 +48,7 @@ export type ChatTools = {
     generateFile: {
         input: {
             content: string;
-            format: 'txt' | 'pdf';
+            format: "txt" | "pdf";
             filename: string;
             conversationId: string;
         };
@@ -55,7 +63,7 @@ export type ChatTools = {
 };
 
 export type FilePart = {
-    type: 'file';
+    type: "file";
     mediaType: string;
     media_type: string;
     url: string;
@@ -66,7 +74,7 @@ export type FilePart = {
         size?: number;
         metadata?: {
             duration?: number;
-            [key: string]: any;
+            [key: string]: string | number | boolean | object | undefined | null;
         };
     };
 };
@@ -74,7 +82,10 @@ export type FilePart = {
 // Define the full part union used in this app
 export type AppMessagePart = UIMessagePart<Record<string, unknown>, ChatTools> | FilePart;
 
-export type CustomMessage = Omit<UIMessage<{ conversationId?: string }, Record<string, unknown>, ChatTools>, 'parts'> & {
+export type CustomMessage = Omit<
+    UIMessage<{ conversationId?: string }, Record<string, unknown>, ChatTools>,
+    "parts"
+> & {
     parts: AppMessagePart[];
 };
 
@@ -92,7 +103,7 @@ export const ChatContext = createContext<ChatContextType | null>(null);
 export const useChatContext = () => {
     const context = useContext(ChatContext);
     if (!context) {
-        throw new Error('useChatContext must be used within a ChatProvider');
+        throw new Error("useChatContext must be used within a ChatProvider");
     }
     return context;
 };

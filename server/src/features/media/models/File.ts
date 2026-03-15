@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, { Schema, Document } from "mongoose";
 
 export type FileChunk = {
     text: string;
@@ -21,7 +21,7 @@ const fileChunkSchema = new Schema<FileChunk>(
         text: { type: String, required: true },
         embedding: { type: [Number], required: true },
     },
-    { _id: false }
+    { _id: false },
 );
 
 const fileSchema = new Schema(
@@ -31,12 +31,12 @@ const fileSchema = new Schema(
         size: { type: Number, required: true },
         path: { type: String, required: true },
         metadata: { type: Schema.Types.Mixed },
-        conversation_id: { type: Schema.Types.ObjectId, ref: 'Conversation', required: true },
+        conversation_id: { type: Schema.Types.ObjectId, ref: "Conversation", required: true },
         chunks: [fileChunkSchema],
     },
     {
-        timestamps: { createdAt: 'created_at', updatedAt: false },
-    }
+        timestamps: { createdAt: "created_at", updatedAt: false },
+    },
 );
 
-export const File = mongoose.model<FileDoc>('File', fileSchema);
+export const File = mongoose.model<FileDoc>("File", fileSchema);

@@ -1,10 +1,16 @@
-import { useQuery } from '@tanstack/react-query';
-import mediaApi from '../api/index';
+import { useQuery } from "@tanstack/react-query";
+import mediaApi from "../api/index";
 
-export const useFiles = ({ conversation_id, enabled }: { conversation_id?: string, enabled?: boolean }) => {
+export const useFiles = ({
+    conversation_id,
+    enabled,
+}: {
+    conversation_id?: string;
+    enabled?: boolean;
+}) => {
     return useQuery({
-        queryKey: ['files', conversation_id],
+        queryKey: ["files", conversation_id],
         queryFn: () => mediaApi.getFiles(conversation_id!),
-        enabled
+        enabled,
     });
 };

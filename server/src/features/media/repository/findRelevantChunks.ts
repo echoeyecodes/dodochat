@@ -1,20 +1,22 @@
-import { File } from '../models/File';
+import { File } from "../models/File";
 
-export const findRelevantChunks = async (conversationId: string, queryEmbedding: number[], limit: number = 5) => {
+export const findRelevantChunks = async (
+    conversationId: string,
+    queryEmbedding: number[],
+    limit: number = 5,
+) => {
     const files = await File.find({ conversation_id: conversationId });
-    
+
     const allChunks: { text: string; score: number }[] = [];
-    
+
     for (const file of files) {
         for (const chunk of file.chunks) {
             const score = cosineSimilarity(queryEmbedding, chunk.embedding);
             allChunks.push({ text: chunk.text, score });
         }
     }
-    
-    return allChunks
-        .sort((a, b) => b.score - a.score)
-        .slice(0, limit);
+
+    return allChunks.sort((a, b) => b.score - a.score).slice(0, limit);
 };
 
 const cosineSimilarity = (vecA: number[], vecB: number[]): number => {

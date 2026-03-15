@@ -1,5 +1,5 @@
-import { createIsomorphicFn } from '@tanstack/react-start'
-import { z } from 'zod'
+import { createIsomorphicFn } from "@tanstack/react-start";
+import { z } from "zod";
 
 const envSchema = z.object({
     BASE_API_URL: z.url(),
@@ -10,21 +10,21 @@ const envSchema = z.object({
     FIREBASE_STORAGE_BUCKET: z.string().optional(),
     FIREBASE_MESSAGING_SENDER_ID: z.string().optional(),
     FIREBASE_APP_ID: z.string().optional(),
-})
+});
 
 const envConfig = (() => {
-    const env = envSchema.parse(process.env)
+    const env = envSchema.parse(process.env);
     return {
         get: createIsomorphicFn()
             .server((key: keyof typeof env) => {
-                const value = env[key]
-                return value
+                const value = env[key];
+                return value;
             })
             .client((key: keyof typeof env) => {
-                const value = (import.meta.env as any)[key]
-                return value
+                const value = (import.meta.env as Record<string, string | undefined>)[key];
+                return value;
             }),
-    }
-})()
+    };
+})();
 
-export default envConfig
+export default envConfig;

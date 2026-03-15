@@ -13,10 +13,10 @@ type RefreshResult = {
 export type RequestParams = {
     path: string;
     base?: string;
-    body?: any;
+    body?: unknown;
     method?: RequestType;
-    headers?: any;
-    query?: object;
+    headers?: Record<string, string>;
+    query?: Record<string, unknown>;
     exclude_trailing_slash?: boolean;
     skipAutoRefresh?: boolean;
 };
@@ -25,10 +25,15 @@ const BASE_API_URL = envConfig.get("BASE_API_URL");
 
 let refreshPromise: Promise<RefreshResult> | null = null;
 
-const buildUrl = (base: string, path: string, query?: object, excludeTrailingSlash?: boolean): string => {
+const buildUrl = (
+    base: string,
+    path: string,
+    query?: object,
+    excludeTrailingSlash?: boolean,
+): string => {
     const cleanBase = base.replace(/\/$/, "");
     const cleanPath = path.replace(/^\//, "");
-    const queryString = objectToQueryParams(query ?? {});
+    const queryString = objectToQueryParams((query as Record<string, unknown>) ?? {});
     let url = `${cleanBase}/${cleanPath}${queryString}`;
 
     if (excludeTrailingSlash) {
@@ -39,31 +44,31 @@ const buildUrl = (base: string, path: string, query?: object, excludeTrailingSla
 };
 
 const getServerHeaders = async (): Promise<Record<string, string>> => {
-    if (typeof window !== 'undefined') return {};
+    if (typeof window !== "undefined") return {};
 
     try {
-        const { getHeaders } = await import('./headers');
+        const { getHeaders } = await import("./headers");
         const allHeaders = await getHeaders({});
         const serverHeaders: Record<string, string> = {};
 
-        const cookieHeader = allHeaders['cookie'] || allHeaders['Cookie'];
+        const cookieHeader = allHeaders["cookie"] || allHeaders["Cookie"];
         if (cookieHeader) {
-            serverHeaders['cookie'] = cookieHeader;
+            serverHeaders["cookie"] = cookieHeader;
         }
 
         if (allHeaders["user-agent"]) {
-            serverHeaders["x-website-user-agent"] = allHeaders["user-agent"]
+            serverHeaders["x-website-user-agent"] = allHeaders["user-agent"];
         }
 
         // Forward Cloudflare headers for IP tracking
         if (allHeaders["cf-connecting-ip"]) {
-            serverHeaders["x-website-cf-connecting-ip"] = allHeaders["cf-connecting-ip"]
+            serverHeaders["x-website-cf-connecting-ip"] = allHeaders["cf-connecting-ip"];
         }
         if (allHeaders["cf-ipcountry"]) {
-            serverHeaders["x-website-cf-ipcountry"] = allHeaders["cf-ipcountry"]
+            serverHeaders["x-website-cf-ipcountry"] = allHeaders["cf-ipcountry"];
         }
         if (allHeaders["x-forwarded-for"]) {
-            serverHeaders["x-website-x-forwarded-for"] = allHeaders["x-forwarded-for"]
+            serverHeaders["x-website-x-forwarded-for"] = allHeaders["x-forwarded-for"];
         }
 
         return serverHeaders;
@@ -75,14 +80,14 @@ const getServerHeaders = async (): Promise<Record<string, string>> => {
 const attemptTokenRefresh = async (): Promise<RefreshResult> => {
     if (refreshPromise) return refreshPromise;
 
-    const cleanBase = BASE_API_URL.replace(/\/$/, "");
+    const cleanBase = (BASE_API_URL as string).replace(/\/$/, "");
     const serverHeaders = await getServerHeaders();
 
     refreshPromise = fetch(`${cleanBase}/api/auth/refresh-token`, {
-        method: 'POST',
-        credentials: 'include',
+        method: "POST",
+        credentials: "include",
         headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
             ...serverHeaders,
         },
     })
@@ -100,41 +105,42 @@ const attemptTokenRefresh = async (): Promise<RefreshResult> => {
 };
 
 const parseErrorResponse = async (response: Response): Promise<never> => {
-    let errorResponse: any;
+    let errorResponse: unknown;
 
     try {
         const isJson = response.headers.get("Content-Type")?.includes("application/json");
         errorResponse = isJson ? await response.json() : await response.text();
-    } catch (error: any) {
+    } catch (error: unknown) {
+        const err = error as Error;
         throw new ErrorBody(
             response.status,
-            error?.message?.toString() ?? response.statusText,
-            error?.name ?? "UNEXPECTED_ERROR",
-            error
+            err?.message?.toString() ?? response.statusText,
+            err?.name ?? "UNEXPECTED_ERROR",
+            error,
         );
     }
 
-    if (typeof errorResponse === "string") {
-        throw new ErrorBody(response.status, errorResponse, "UNEXPECTED_ERROR");
-    }
-
-    const message = errorResponse?.message ?? errorResponse?.error?.message ?? response.statusText;
+    const errorData = errorResponse as Record<string, unknown>;
+    const message =
+        errorData?.message ??
+        (errorData?.error as Record<string, unknown>)?.message ??
+        response.statusText;
 
     throw new ErrorBody(
-        errorResponse?.code ?? response.status,
+        (errorData?.code as number) ?? response.status,
         typeof message === "string" ? message : JSON.stringify(message),
-        errorResponse?.name ?? "UNEXPECTED_ERROR",
-        errorResponse
+        (errorData?.name as string) ?? "UNEXPECTED_ERROR",
+        errorResponse,
     );
 };
 
 const executeRequest = async (
     url: string,
     method: string,
-    requestHeaders: any,
-    body: any,
+    requestHeaders: Record<string, string>,
+    body: unknown,
     isFormData: boolean,
-): Promise<any> => {
+): Promise<{ data: unknown; response: Response }> => {
     let requestBody = undefined;
     if (body) {
         requestBody = isFormData ? body : JSON.stringify(body);
@@ -143,8 +149,8 @@ const executeRequest = async (
     const response = await fetch(url, {
         method,
         headers: requestHeaders,
-        credentials: 'include',
-        body: requestBody,
+        credentials: "include",
+        body: requestBody as BodyInit,
     });
 
     if (!response.ok) {
@@ -166,12 +172,17 @@ export const request = async ({
     query,
     exclude_trailing_slash = false,
     skipAutoRefresh = false,
-}: RequestParams): Promise<any> => {
-    const url = buildUrl(base, path, query, exclude_trailing_slash);
+}: RequestParams): Promise<{ data: unknown; response: Response }> => {
+    const url = buildUrl(
+        base as string,
+        path,
+        query as Record<string, unknown>,
+        exclude_trailing_slash,
+    );
     const serverHeaders = await getServerHeaders();
     const isFormData = body instanceof FormData;
 
-    const requestHeaders: any = {
+    const requestHeaders: Record<string, string> = {
         Accept: "application/json",
         ...serverHeaders,
         ...headers,
@@ -192,15 +203,16 @@ export const request = async ({
             const refreshed = await attemptTokenRefresh();
 
             if (refreshed) {
-                if (typeof window === 'undefined') {
-                    requestHeaders['cookie'] = `access_token=${refreshed.access_token}; refresh_token=${refreshed.refresh_token}`;
-                    const { updateAuthSession } = await import('@/features/auth/helpers');
+                if (typeof window === "undefined") {
+                    requestHeaders["cookie"] =
+                        `access_token=${refreshed.access_token}; refresh_token=${refreshed.refresh_token}`;
+                    const { updateAuthSession } = await import("@/features/auth/helpers");
                     await updateAuthSession({
                         data: {
                             access_token: refreshed.access_token,
                             refresh_token: refreshed.refresh_token,
                         },
-                    }).catch(() => { });
+                    }).catch(() => {});
                 }
 
                 return await executeRequest(url, method, requestHeaders, body, isFormData);

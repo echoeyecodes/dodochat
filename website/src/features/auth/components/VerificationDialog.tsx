@@ -1,72 +1,74 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react";
 import {
     Dialog,
     DialogContent,
     DialogDescription,
     DialogHeader,
     DialogTitle,
-} from '@/components/ui/dialog'
-import { Button } from '@/components/ui/button'
-import { auth } from '@/lib/firebase'
-import { sendEmailVerification, onAuthStateChanged } from 'firebase/auth'
-import { toast } from 'sonner'
-import { LucideMail, LucideLoader2, LucideCheckCircle } from 'lucide-react'
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { auth } from "@/lib/firebase";
+import { sendEmailVerification, onAuthStateChanged } from "firebase/auth";
+import { toast } from "sonner";
+import { LucideMail, LucideLoader2, LucideCheckCircle } from "lucide-react";
 
 export const VerificationDialog = () => {
-    const [isOpen, setIsOpen] = useState(false)
-    const [isResending, setIsResending] = useState(false)
-    const [isChecking, setIsChecking] = useState(false)
+    const [isOpen, setIsOpen] = useState(false);
+    const [isResending, setIsResending] = useState(false);
+    const [isChecking, setIsChecking] = useState(false);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
             if (user) {
                 if (!user.emailVerified) {
-                    setIsOpen(true)
+                    setIsOpen(true);
                 } else {
-                    setIsOpen(false)
+                    setIsOpen(false);
                 }
             }
-        })
+        });
 
-        return () => unsubscribe()
-    }, [])
+        return () => unsubscribe();
+    }, []);
 
     const handleResendEmail = async () => {
-        if (!auth.currentUser) return
+        if (!auth.currentUser) return;
 
-        setIsResending(true)
+        setIsResending(true);
         try {
-            await sendEmailVerification(auth.currentUser)
-            toast.success('Verification email sent! Please check your inbox.')
-        } catch (error: any) {
-            toast.error(error.message || 'Failed to resend verification email')
+            await sendEmailVerification(auth.currentUser);
+            toast.success("Verification email sent! Please check your inbox.");
+        } catch (error: unknown) {
+            const err = error as Error;
+            toast.error(err.message || "Failed to resend verification email");
         } finally {
-            setIsResending(false)
+            setIsResending(false);
         }
-    }
+    };
 
     const checkVerificationStatus = async () => {
-        if (!auth.currentUser) return
+        if (!auth.currentUser) return;
 
-        setIsChecking(true)
+        setIsChecking(true);
         try {
-            await auth.currentUser.reload()
+            await auth.currentUser.reload();
             if (auth.currentUser.emailVerified) {
-                setIsOpen(false)
-                toast.success('Email verified successfully!')
-                window.location.reload() // Reload to ensure everything is synced
+                setIsOpen(false);
+                toast.success("Email verified successfully!");
+                window.location.reload(); // Reload to ensure everything is synced
             } else {
-                toast.error('Account not verified yet. Please check your email.')
+                toast.error("Account not verified yet. Please check your email.");
             }
-        } catch (error: any) {
-            toast.error(error.message || 'Failed to check verification status')
+        } catch (error: unknown) {
+            const err = error as Error;
+            toast.error(err.message || "Failed to check verification status");
         } finally {
-            setIsChecking(false)
+            setIsChecking(false);
         }
-    }
+    };
 
     return (
-        <Dialog open={isOpen} onOpenChange={() => { }}>
+        <Dialog open={isOpen} onOpenChange={() => {}}>
             <DialogContent className="sm:max-w-[440px] [&>button]:hidden">
                 <DialogHeader className="flex flex-col items-center text-center gap-4">
                     <div className="w-16 h-16 rounded-full bg-(--color-accent-subtle) flex items-center justify-center text-(--color-accent) mb-2">
@@ -74,8 +76,11 @@ export const VerificationDialog = () => {
                     </div>
                     <DialogTitle className="text-2xl font-bold">Verify your email</DialogTitle>
                     <DialogDescription className="text-[15px] leading-relaxed">
-                        We've sent a verification link to <span className="font-bold text-(--color-text-primary)">{auth.currentUser?.email}</span>.
-                        Please click the link in your email to continue.
+                        We've sent a verification link to{" "}
+                        <span className="font-bold text-(--color-text-primary)">
+                            {auth.currentUser?.email}
+                        </span>
+                        . Please click the link in your email to continue.
                     </DialogDescription>
                 </DialogHeader>
 
@@ -111,5 +116,5 @@ export const VerificationDialog = () => {
                 </p>
             </DialogContent>
         </Dialog>
-    )
-}
+    );
+};

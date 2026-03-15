@@ -1,14 +1,14 @@
-import dotenv from 'dotenv';
-import bcrypt from 'bcryptjs';
-import { connectDB } from '@/lib/db';
-import { UserModel } from '@/features/user/models/User';
+import dotenv from "dotenv";
+import bcrypt from "bcryptjs";
+import { connectDB } from "@/lib/db";
+import { UserModel } from "@/features/user/models/User";
 
 dotenv.config();
 
 const seed = async () => {
     await connectDB();
 
-    const email = 'femiobajuluwa@gmail.com';
+    const email = "femiobajuluwa@gmail.com";
     const existing = await UserModel.findOne({ email });
 
     if (existing) {
@@ -16,12 +16,12 @@ const seed = async () => {
         process.exit(0);
     }
 
-    const hashedPassword = await bcrypt.hash('password', 10);
+    const hashedPassword = await bcrypt.hash("password", 10);
 
     const user = await UserModel.create({
         email,
         password: hashedPassword,
-        display_name: 'Femi',
+        display_name: "Femi",
     });
 
     console.log(`Seeded user: ${user.email} (id: ${user._id})`);
@@ -29,6 +29,6 @@ const seed = async () => {
 };
 
 seed().catch((err) => {
-    console.error('Seed failed:', err);
+    console.error("Seed failed:", err);
     process.exit(1);
 });

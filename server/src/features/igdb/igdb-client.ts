@@ -5,7 +5,7 @@ import type {
     IgdbQueryOptions,
     IgdbGame,
     IgdbImage,
-    IgdbMultiQueryResult
+    IgdbMultiQueryResult,
 } from "./types/index";
 
 export class IgdbClient {
@@ -37,7 +37,7 @@ export class IgdbClient {
                 client_secret: this.client_secret,
                 grant_type: "client_credentials",
             },
-            exclude_trailing_slash: true
+            exclude_trailing_slash: true,
         });
 
         const token_response = data as IgdbTokenResponse;
@@ -93,7 +93,7 @@ export class IgdbClient {
             method: "POST",
             headers: {
                 "Client-ID": this.client_id,
-                "Authorization": `Bearer ${token}`,
+                Authorization: `Bearer ${token}`,
                 "Content-Type": "text/plain",
             },
             body: query,
@@ -110,7 +110,7 @@ export class IgdbClient {
         const games = await this.getGames({
             fields,
             where: `id = ${id}`,
-            limit: 1
+            limit: 1,
         });
         return games.length > 0 ? games[0]! : null;
     }
@@ -143,7 +143,7 @@ export class IgdbClient {
             method: "POST",
             headers: {
                 "Client-ID": this.client_id,
-                "Authorization": `Bearer ${token}`,
+                Authorization: `Bearer ${token}`,
                 "Content-Type": "text/plain",
             },
             body: query,

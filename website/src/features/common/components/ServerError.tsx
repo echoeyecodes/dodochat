@@ -1,22 +1,17 @@
-import { Link } from "@tanstack/react-router"
-import { Button } from "@/components/ui/button"
-import { LucideRefreshCw } from "lucide-react"
+import { Link } from "@tanstack/react-router";
+import { Button } from "@/components/ui/button";
+import { LucideRefreshCw } from "lucide-react";
 
 export const ServerError = () => {
     const handleReset = () => {
-        window.location.reload()
-    }
+        window.location.reload();
+    };
 
     return (
         <div className="h-dvh w-full flex flex-col items-center justify-center bg-(--color-bg) px-6">
             <div className="w-full max-w-[440px] flex flex-col items-center text-center">
-
                 <div>
-                    <img
-                        src="/logo.png"
-                        alt="DodoChat"
-                        className="size-32 object-contain"
-                    />
+                    <img src="/logo.png" alt="DodoChat" className="size-32 object-contain" />
                 </div>
 
                 <div className="space-y-4 mb-10 relative">
@@ -27,8 +22,8 @@ export const ServerError = () => {
                         Unexpected error
                     </h2>
                     <p className="text-base text-(--color-text-secondary) leading-relaxed">
-                        Something went wrong on our end. We're already looking into it.
-                        Try refreshing the page or head back to home.
+                        Something went wrong on our end. We're already looking into it. Try
+                        refreshing the page or head back to home.
                     </p>
                 </div>
 
@@ -50,12 +45,10 @@ export const ServerError = () => {
                         roundness="xl"
                         className="w-full h-12 font-medium text-(--color-text-tertiary) hover:text-(--color-text-primary) active:scale-[0.98] transition-all"
                     >
-                        <Link to="/">
-                            Return to Home
-                        </Link>
+                        <Link to="/">Return to Home</Link>
                     </Button>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};

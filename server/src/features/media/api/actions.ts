@@ -1,13 +1,15 @@
-import type { Request, Response, NextFunction } from 'express';
-import { embedMany } from 'ai';
-import { google } from '@ai-sdk/google';
-import storageService from '@/lib/storage';
-import pdfParse from 'pdf-parse-new';
-import { mediaRepository } from '../repository/index';
-import { sendResponse } from '../../common/helpers';
-import { HTTP_STATUS_CODES } from '../../common/constants/http-status-codes';
-import { mapFileToResponse } from '../types/index';
-import { parseBuffer } from 'music-metadata';
+import type { Request, Response, NextFunction } from "express";
+import { embedMany } from "ai";
+import { google } from "@ai-sdk/google";
+import storageService from "@/lib/storage";
+import pdfParse from "pdf-parse-new";
+import { mediaRepository } from "../repository/index";
+import { sendResponse } from "../../common/helpers";
+import { HTTP_STATUS_CODES } from "../../common/constants/http-status-codes";
+import { mapFileToResponse } from "../types/index";
+import { parseBuffer } from "music-metadata";
+import mongoose from "mongoose";
+import type { FileChunk } from "../models/File";
 
 const chunkText = (text: string, chunkSize = 1000, chunkOverlap = 200): string[] => {
     const chunks: string[] = [];
@@ -23,14 +25,14 @@ const chunkText = (text: string, chunkSize = 1000, chunkOverlap = 200): string[]
             const searchRangeEnd = Math.min(chunkSize + chunkOverlap, searchWindow.length);
             const range = searchWindow.substring(searchRangeStart, searchRangeEnd);
 
-            const breakPoints = ['\n\n', '\n', ' '];
-            let foundBreak = false;
+            const breakPoints = ["\n\n", "\n", " "];
+            let _foundBreak = false;
 
             for (const sep of breakPoints) {
                 const index = range.lastIndexOf(sep);
                 if (index !== -1) {
                     end = start + searchRangeStart + index + sep.length;
-                    foundBreak = true;
+                    _foundBreak = true;
                     break;
                 }
             }
@@ -41,7 +43,7 @@ const chunkText = (text: string, chunkSize = 1000, chunkOverlap = 200): string[]
 
         const nextStart = end - chunkOverlap;
 
-        start = (nextStart <= start) ? end : nextStart;
+        start = nextStart <= start ? end : nextStart;
     }
 
     return chunks;
@@ -53,23 +55,25 @@ const uploadFile = async (req: Request, res: Response, next: NextFunction) => {
         const { conversation_id } = req.body;
 
         if (!file) {
-            return res.status(HTTP_STATUS_CODES.BAD_REQUEST).json({ message: 'No file uploaded' });
+            return res.status(HTTP_STATUS_CODES.BAD_REQUEST).json({ message: "No file uploaded" });
         }
 
         if (!conversation_id) {
-            return res.status(HTTP_STATUS_CODES.BAD_REQUEST).json({ message: 'conversation_id is required' });
+            return res
+                .status(HTTP_STATUS_CODES.BAD_REQUEST)
+                .json({ message: "conversation_id is required" });
         }
 
-        let fileChunks: any[] = [];
-        const isText = file.mimetype === 'text/plain' || file.originalname.endsWith('.txt');
-        const isPdf = file.mimetype === 'application/pdf' || file.originalname.endsWith('.pdf');
-        const isAudio = file.mimetype.startsWith('audio/');
+        let fileChunks: FileChunk[] = [];
+        const isText = file.mimetype === "text/plain" || file.originalname.endsWith(".txt");
+        const isPdf = file.mimetype === "application/pdf" || file.originalname.endsWith(".pdf");
+        const isAudio = file.mimetype.startsWith("audio/");
 
-        let extractedText = '';
+        let extractedText = "";
         const buffer = file.buffer;
 
         if (isText) {
-            extractedText = buffer.toString('utf-8');
+            extractedText = buffer.toString("utf-8");
         } else if (isPdf) {
             const data = await pdfParse(buffer);
             extractedText = data.text;
@@ -79,13 +83,13 @@ const uploadFile = async (req: Request, res: Response, next: NextFunction) => {
             const chunks = chunkText(extractedText);
 
             const { embeddings } = await embedMany({
-                model: google.textEmbeddingModel('gemini-embedding-001'),
+                model: google.textEmbeddingModel("gemini-embedding-001"),
                 values: chunks,
             });
 
             fileChunks = chunks.map((chunk, i) => ({
                 text: chunk,
-                embedding: embeddings[i],
+                embedding: embeddings[i] as number[],
             }));
         }
 
@@ -97,7 +101,7 @@ const uploadFile = async (req: Request, res: Response, next: NextFunction) => {
                     metadata.duration = audioMetadata.format.duration;
                 }
             } catch (err) {
-                console.error('Failed to parse audio metadata:', err);
+                console.error("Failed to parse audio metadata:", err);
             }
         }
 
@@ -115,7 +119,7 @@ const uploadFile = async (req: Request, res: Response, next: NextFunction) => {
             size: file.size,
             path: key,
             metadata,
-            conversation_id: conversation_id as any,
+            conversation_id: new mongoose.Types.ObjectId(conversation_id as string),
             chunks: fileChunks,
         });
 

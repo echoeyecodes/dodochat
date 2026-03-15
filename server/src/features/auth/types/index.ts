@@ -12,6 +12,6 @@ export type AuthToken = {
     updated_at: Date;
 };
 
-export type IAuthToken = Omit<AuthToken, 'user_id'> & {
+export type IAuthToken = Omit<AuthToken, "user_id"> & {
     user_id: mongoose.Types.ObjectId;
 };
