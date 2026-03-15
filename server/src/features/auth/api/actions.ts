@@ -37,7 +37,7 @@ const setTokenCookies = (res: Response, access_token: string, refresh_token: str
     const cookieOptions = {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "lax" as const,
+        sameSite: "none" as const,
         path: "/",
         domain: domain || undefined,
     };
