@@ -1,4 +1,4 @@
-import { Conversation } from '../models/Conversation';
+import { Conversation } from "../models/Conversation";
 
 export const createConversation = async ({ user_id }: { user_id: string }) => {
     const conversation = new Conversation({ user_id, messages: [] });

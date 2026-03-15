@@ -1,10 +1,11 @@
-import { tool } from 'ai';
-import { z } from 'zod';
-import process from 'node:process';
+import { tool } from "ai";
+import { z } from "zod";
+import process from "node:process";
 
 export const systemTools = {
     getSystemInfo: tool({
-        description: 'Get technical metrics about the system (CPU, memory, uptime, node version). Use ONLY when explicitly asked for system stats.',
+        description:
+            "Get technical metrics about the system (CPU, memory, uptime, node version). Use ONLY when explicitly asked for system stats.",
         inputSchema: z.object({}),
         outputSchema: z.object({
             node_version: z.string(),
@@ -31,10 +32,10 @@ export const systemTools = {
                 arch: process.arch,
                 uptime: Math.floor(process.uptime()),
                 memory_usage: {
-                    rss: `${Math.round(usage.rss / 1024 / 1024 * 100) / 100} MB`,
-                    heap_total: `${Math.round(usage.heapTotal / 1024 / 1024 * 100) / 100} MB`,
-                    heap_used: `${Math.round(usage.heapUsed / 1024 / 1024 * 100) / 100} MB`,
-                    external: `${Math.round(usage.external / 1024 / 1024 * 100) / 100} MB`,
+                    rss: `${Math.round((usage.rss / 1024 / 1024) * 100) / 100} MB`,
+                    heap_total: `${Math.round((usage.heapTotal / 1024 / 1024) * 100) / 100} MB`,
+                    heap_used: `${Math.round((usage.heapUsed / 1024 / 1024) * 100) / 100} MB`,
+                    external: `${Math.round((usage.external / 1024 / 1024) * 100) / 100} MB`,
                 },
                 cpu_usage: process.cpuUsage(),
                 pid: process.pid,

@@ -1,5 +1,5 @@
-import mongoose, { Schema } from 'mongoose';
-import { type User } from '../types/index';
+import mongoose, { Schema } from "mongoose";
+import { type User } from "../types/index";
 
 const userSchema = new Schema<User>(
     {
@@ -13,8 +13,8 @@ const userSchema = new Schema<User>(
         },
     },
     {
-        timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
-    }
+        timestamps: { createdAt: "created_at", updatedAt: "updated_at" },
+    },
 );
 
-export const UserModel = mongoose.model<User>('User', userSchema);
+export const UserModel = mongoose.model<User>("User", userSchema);

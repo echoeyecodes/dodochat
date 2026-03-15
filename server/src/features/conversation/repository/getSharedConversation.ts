@@ -1,9 +1,12 @@
-import { Conversation } from '../models/Conversation';
-import { conversationNotFoundError } from '../constants/errors';
-import { CONVERSATION_VISIBILITY } from '../constants';
+import { Conversation } from "../models/Conversation";
+import { conversationNotFoundError } from "../constants/errors";
+import { CONVERSATION_VISIBILITY } from "../constants";
 
 export const getSharedConversation = async ({ token }: { token: string }) => {
-    const conversation = await Conversation.findOne({ share_token: token, visibility: CONVERSATION_VISIBILITY.PUBLIC }).lean();
+    const conversation = await Conversation.findOne({
+        share_token: token,
+        visibility: CONVERSATION_VISIBILITY.PUBLIC,
+    }).lean();
     if (!conversation) throw conversationNotFoundError();
 
     return {

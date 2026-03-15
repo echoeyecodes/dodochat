@@ -1,5 +1,5 @@
-import { Conversation } from '../models/Conversation';
-import { conversationNotFoundError } from '../constants/errors';
+import { Conversation } from "../models/Conversation";
+import { conversationNotFoundError } from "../constants/errors";
 
 export const getConversationById = async ({ user_id, id }: { user_id: string; id: string }) => {
     const conversation = await Conversation.findOne({ _id: id, user_id }).lean();

@@ -1,5 +1,5 @@
-import { File } from '../models/File';
-import storageService from '@/lib/storage';
+import { File } from "../models/File";
+import storageService from "@/lib/storage";
 
 export const deleteFilesByConversationId = async (conversationId: string) => {
     const files = await File.find({ conversation_id: conversationId });

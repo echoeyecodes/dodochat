@@ -1,4 +1,4 @@
-import { UserModel } from '../models/User';
+import { UserModel } from "../models/User";
 
 type CachedUser = {
     gemini_api_key?: string;
@@ -13,16 +13,16 @@ const TTL = 1000 * 60 * 5; // 5 minutes cache
 export const userSettingsCache = {
     async getSettings(userId: string): Promise<CachedUser | null> {
         const cached = cache.get(userId);
-        if (cached && (Date.now() - cached.timestamp) < TTL) {
+        if (cached && Date.now() - cached.timestamp < TTL) {
             return cached.data;
         }
 
-        const user = await UserModel.findById(userId).select('gemini_api_key settings').lean();
+        const user = await UserModel.findById(userId).select("gemini_api_key settings").lean();
         if (!user) return null;
 
         const data = {
             gemini_api_key: user.gemini_api_key,
-            settings: user.settings
+            settings: user.settings,
         };
 
         cache.set(userId, { data, timestamp: Date.now() });
@@ -31,5 +31,5 @@ export const userSettingsCache = {
 
     invalidate(userId: string) {
         cache.delete(userId);
-    }
+    },
 };

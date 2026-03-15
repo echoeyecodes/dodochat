@@ -1,17 +1,13 @@
-import type { Response, NextFunction } from 'express';
-import jwt from 'jsonwebtoken';
-import type { AuthRequest } from '../types/request';
-import { hashToken } from '@/features/auth/helpers';
-import { ACCESS_TOKEN_SECRET } from '@/features/auth/constants';
-import { authCache } from '@/features/auth/helpers/auth-cache';
+import type { Response, NextFunction } from "express";
+import jwt from "jsonwebtoken";
+import type { AuthRequest } from "../types/request";
+import { hashToken } from "@/features/auth/helpers";
+import { ACCESS_TOKEN_SECRET } from "@/features/auth/constants";
+import { authCache } from "@/features/auth/helpers/auth-cache";
 
-const attachUserToRequest = async (
-    req: AuthRequest,
-    _: Response,
-    next: NextFunction
-) => {
+const attachUserToRequest = async (req: AuthRequest, _: Response, next: NextFunction) => {
     let token = req.headers.authorization
-        ? req.headers.authorization.replace('Bearer ', '')
+        ? req.headers.authorization.replace("Bearer ", "")
         : undefined;
 
     if (!token) {

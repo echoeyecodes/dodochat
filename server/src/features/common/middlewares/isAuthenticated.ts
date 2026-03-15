@@ -1,13 +1,9 @@
-import type { Response, NextFunction } from 'express';
-import type { AuthRequest } from '../types/request';
-import { notAuthenticatedError } from '../constants/errors';
-import { UserModel } from '../../user/models/User';
+import type { Response, NextFunction } from "express";
+import type { AuthRequest } from "../types/request";
+import { notAuthenticatedError } from "../constants/errors";
+import { UserModel } from "../../user/models/User";
 
-const isAuthenticated = async (
-    req: AuthRequest,
-    _: Response,
-    next: NextFunction
-) => {
+const isAuthenticated = async (req: AuthRequest, _: Response, next: NextFunction) => {
     const userId = req.user_id;
     if (!userId) return next(notAuthenticatedError());
 

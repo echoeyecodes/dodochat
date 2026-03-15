@@ -6,5 +6,5 @@ const client_secret = process.env.IGDB_CLIENT_SECRET!;
 
 export const igdbApi = new IgdbClient({
     client_id: client_id,
-    client_secret: client_secret
+    client_secret: client_secret,
 });

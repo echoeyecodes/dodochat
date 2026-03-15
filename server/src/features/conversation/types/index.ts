@@ -1,6 +1,7 @@
 import { CONVERSATION_VISIBILITY } from "../constants";
 
-export type ConversationVisibility = typeof CONVERSATION_VISIBILITY[keyof typeof CONVERSATION_VISIBILITY];
+export type ConversationVisibility =
+    (typeof CONVERSATION_VISIBILITY)[keyof typeof CONVERSATION_VISIBILITY];
 
 export type MessagePart = {
     type: string;
@@ -10,7 +11,7 @@ export type MessagePart = {
 
 export type Message = {
     id: string;
-    role: 'user' | 'assistant' | 'system';
+    role: "user" | "assistant" | "system";
     parts: MessagePart[];
     created_at: Date;
 };
