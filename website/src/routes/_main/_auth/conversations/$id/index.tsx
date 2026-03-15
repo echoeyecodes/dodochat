@@ -1,17 +1,16 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { ConversationLoading } from '@/features/chat/components/ConversationLoading'
+import { ConversationSessionSkeleton } from '@/features/chat/components/ConversationSessionSkeleton'
 import { Conversation } from '@/features/chat/components/Conversation'
 import { ChatSession } from '@/features/chat/components/ChatSession'
 import { conversationApi } from '@/features/chat/api'
 import { withClientRequestHandler } from '@/lib/request/helpers'
+import { ConversationNotFound } from '@/features/chat/components/ConversationNotFound'
 
 export const Route = createFileRoute('/_main/_auth/conversations/$id/')({
-    pendingComponent: ConversationLoading,
+    pendingComponent: ConversationSessionSkeleton,
     component: ConversationRoute,
-    loader: async ({ params }) => {
-        const { id } = params
-        return withClientRequestHandler(() => conversationApi.fetchConversationById(id))
-    },
+    notFoundComponent: ConversationNotFound,
+    loader: ({ params }) => withClientRequestHandler(() => conversationApi.fetchConversationById(params.id)),
     head: ({ loaderData }) => {
         if (!loaderData) return {}
 

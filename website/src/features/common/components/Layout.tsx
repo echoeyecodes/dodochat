@@ -34,8 +34,8 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
 
     return (
         <div className="min-h-screen relative overflow-hidden grain">
-            <div className="flex flex-col w-full h-dvh p-2 sm:p-4 md:p-6 lg:p-8">
-                <header className="mb-4 md:mb-6 flex items-center justify-between shrink-0">
+            <div className="flex flex-col w-full h-dvh p-2 sm:p-4 md:p-6 lg:p-8 lg:py-4">
+                <header className="mb-4 flex items-center justify-between shrink-0">
                     <Link to="/" className="flex items-center gap-3">
                         <img src="/logo.png" alt="DodoChat" className="size-10" />
                         <div className="flex items-center gap-2">

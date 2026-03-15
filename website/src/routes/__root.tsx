@@ -1,6 +1,8 @@
 import { Outlet, createRootRouteWithContext, HeadContent, Scripts, useRouter } from '@tanstack/react-router'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Toaster } from '@/components/ui/toaster'
+import { NotFound } from '@/features/common/components/NotFound'
+import { ServerError } from '@/features/common/components/ServerError'
 import '../styles.css'
 
 export type RouterContext = {
@@ -66,6 +68,8 @@ export const Route = createRootRouteWithContext<RouterContext>()({
     ],
   }),
   component: RootComponent,
+  notFoundComponent: NotFound,
+  errorComponent: ServerError,
 })
 
 function RootComponent() {

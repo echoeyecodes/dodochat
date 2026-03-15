@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { ChatSession } from '@/features/chat/components/ChatSession'
 import { Conversation } from '@/features/chat/components/Conversation'
+import { ConversationSessionSkeleton } from '@/features/chat/components/ConversationSessionSkeleton'
 import { z } from 'zod'
 
 const searchSchema = z.object({
@@ -9,6 +10,7 @@ const searchSchema = z.object({
 
 export const Route = createFileRoute('/_main/_auth/conversations/')({
     validateSearch: searchSchema,
+    pendingComponent: ConversationSessionSkeleton,
     component: RouteComponent,
 })
 

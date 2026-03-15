@@ -16,6 +16,8 @@ import { allTools } from '../tools';
 import { userSettingsCache } from '../../user/helpers/user-settings-cache';
 import { safeDecryptGeminiKey } from '../../user/helpers/safe-decrypt';
 import envConfig from '@/lib/env';
+import { isValidObjectId } from 'mongoose';
+import { conversationNotFoundError } from '../constants/errors';
 
 
 const listConversations = async (req: Request, res: Response, next: NextFunction) => {
@@ -31,6 +33,9 @@ const listConversations = async (req: Request, res: Response, next: NextFunction
 const getConversation = async (req: Request, res: Response, next: NextFunction) => {
     try {
         const authReq = req as AuthRequest;
+        if (!isValidObjectId(req.params.id)) {
+            return next(conversationNotFoundError())
+        }
         const conversation = await conversationRepository.getConversationById({ user_id: authReq.user_id!, id: req.params.id as string });
         return sendResponse({ res, status: HTTP_STATUS_CODES.OK })(conversation);
     } catch (error) {
