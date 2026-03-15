@@ -14,14 +14,8 @@ export default defineConfig(({ mode }) => {
       tsconfigPaths(),
       tailwindcss(),
     ],
-    server: {
-      port: 3000,
-      proxy: {
-        '/api': {
-          target: env.BASE_API_URL,
-          changeOrigin: true,
-        },
-      },
+    preview: {
+      port: parseInt(env.WEBSITE_PORT!, 10),
     },
     define: {
       'import.meta.env.BASE_API_URL': JSON.stringify(env.BASE_API_URL),
