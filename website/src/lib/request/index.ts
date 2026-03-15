@@ -1,6 +1,7 @@
 import { HTTP_STATUS_CODES } from "@/features/common/constants/http-status-codes";
 import { ErrorBody } from "./ErrorBody";
 import { objectToQueryParams } from "./object-to-query";
+import { applyCookiesFromResponse } from "./apply-cookies";
 import envConfig from "../env";
 
 type RequestType = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
@@ -160,25 +161,7 @@ const executeRequest = async (
     const isJson = response.headers.get("Content-Type")?.includes("application/json");
     const data = isJson ? await response.json() : await response.text();
 
-    if (typeof window === "undefined") {
-        try {
-            const { setResponseHeader, getResponseHeader } =
-                await import("@tanstack/react-start/server");
-
-            const setCookie = response.headers.get("set-cookie");
-
-            if (setCookie) {
-                const existing = getResponseHeader("set-cookie") as string | string[] | undefined;
-                const merged = existing
-                    ? Array.isArray(existing)
-                        ? [...existing, setCookie]
-                        : [existing, setCookie]
-                    : setCookie;
-
-                setResponseHeader("set-cookie", merged);
-            }
-        } catch {}
-    }
+    await applyCookiesFromResponse(response.headers.get("set-cookie"));
 
     return { data, response };
 };
