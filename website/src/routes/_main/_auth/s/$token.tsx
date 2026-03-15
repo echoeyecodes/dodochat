@@ -20,6 +20,28 @@ export const Route = createFileRoute("/_main/_auth/s/$token")({
             return { conversation };
         });
     },
+    head: ({ loaderData }) => {
+        if (!loaderData) return {};
+
+        const title = loaderData.conversation.title;
+        const description =
+            loaderData.conversation.messages[0]?.parts.find((item) => item.type === "text")?.text ??
+            "Chat intelligently with DodoChat. Your versatile AI assistant for every task.";
+
+        return {
+            meta: [
+                { title },
+                { name: "description", content: description },
+                { property: "og:title", content: title },
+                { property: "og:description", content: description },
+                { property: "og:type", content: "article" },
+                { property: "og:site_name", content: "DodoChat" },
+                { name: "twitter:card", content: "summary" },
+                { name: "twitter:title", content: title },
+                { name: "twitter:description", content: description },
+            ],
+        };
+    },
     component: SharedConversationPage,
     notFoundComponent: ConversationNotFound,
 });
