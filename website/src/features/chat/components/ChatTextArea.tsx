@@ -226,7 +226,7 @@ export const ChatTextArea = () => {
                     }}
                     placeholder="Send a message..."
                     autoFocus
-                    className="flex-1 max-h-[160px] min-h-[24px] py-2.5 px-2 text-[14px] bg-transparent outline-none resize-none text-(--color-text-primary) overflow-y-auto"
+                    className="flex-1 max-h-[160px] min-h-[24px] py-2.5 px-2 text-[16px] bg-transparent outline-none resize-none text-(--color-text-primary) overflow-y-auto"
                     rows={1}
                 />
 
