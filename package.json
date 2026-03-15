@@ -11,6 +11,9 @@
     "dev:srv": "bun run --filter server dev",
     "build": "bun run --filter '*' build",
     "start": "concurrently -n \"web,srv\" -c \"cyan,magenta\" \"bun run --filter website serve\" \"bun run --filter server start\"",
+    "format": "bun run --filter '*' format",
+    "format:check": "bun run --filter '*' format:check",
+    "lint": "bun run --filter '*' lint",
     "prepare": "husky"
   },
   "lint-staged": {
