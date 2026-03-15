@@ -210,6 +210,13 @@ export const request = async ({
                 if (typeof window === "undefined") {
                     requestHeaders["cookie"] =
                         `access_token=${refreshed.access_token}; refresh_token=${refreshed.refresh_token}`;
+                    const { updateAuthSession } = await import("@/features/auth/helpers");
+                    await updateAuthSession({
+                        data: {
+                            access_token: refreshed.access_token,
+                            refresh_token: refreshed.refresh_token,
+                        },
+                    }).catch(() => {});
                 }
 
                 return await executeRequest(url, method, requestHeaders, body, isFormData);
