@@ -14,6 +14,14 @@ function RouteComponent() {
     const { id } = useParams({ strict: false }) as { id?: string }
     const user = Route.useLoaderData()
 
+    const isDismissed = typeof window !== 'undefined' ? !!localStorage.getItem('dodochat_gemini_dialog_dismissed') : true
+
+    const handleDialogChange = (open: boolean) => {
+        if (!open) {
+            localStorage.setItem('dodochat_gemini_dialog_dismissed', 'true')
+        }
+    }
+
     return (
         <>
             <ChatLayout activeConversationId={id}>
@@ -21,7 +29,8 @@ function RouteComponent() {
             </ChatLayout>
             <VerificationDialog />
             <GeminiApiKeyDialog
-                defaultOpen={!user.gemini_api_key}
+                defaultOpen={!user.gemini_api_key && !isDismissed}
+                onOpenChange={handleDialogChange}
             />
         </>
     )

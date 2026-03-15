@@ -31,9 +31,10 @@ export type GeminiApiKeyDialogRef = {
 type GeminiApiKeyDialogProps = {
     defaultOpen?: boolean
     preventClose?: boolean
+    onOpenChange?: (open: boolean) => void
 }
 
-export const GeminiApiKeyDialog = forwardRef<GeminiApiKeyDialogRef, GeminiApiKeyDialogProps>(({ defaultOpen, preventClose }, ref) => {
+export const GeminiApiKeyDialog = forwardRef<GeminiApiKeyDialogRef, GeminiApiKeyDialogProps>(({ defaultOpen, preventClose, onOpenChange }, ref) => {
     const [isOpen, setIsOpen] = useState(defaultOpen)
     const currentUser = useCurrentUser()?.user
     const { mutate: updateProfile, isPending } = useUpdateProfile()
@@ -93,7 +94,10 @@ export const GeminiApiKeyDialog = forwardRef<GeminiApiKeyDialogRef, GeminiApiKey
     }
 
     return (
-        <Dialog open={isOpen} onOpenChange={preventClose ? () => { } : setIsOpen}>
+        <Dialog open={isOpen} onOpenChange={(open) => {
+            setIsOpen(open)
+            onOpenChange?.(open)
+        }}>
             <DialogContent
                 className={cn(
                     "sm:max-w-[440px] p-0 overflow-hidden border-(--color-border)",
