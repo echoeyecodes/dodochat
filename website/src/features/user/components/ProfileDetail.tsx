@@ -201,7 +201,7 @@ export const ProfileDetail = () => {
                                                         {...register('gemini_api_key')}
                                                         placeholder="AIza..."
                                                         disabled={!shouldUseOwnKey}
-                                                        className="h-10 pr-10 text-[13px] font-mono bg-(--color-bg) border-(--color-border) disabled:opacity-50"
+                                                        className="h-10 pr-10 text-base font-mono bg-(--color-bg) border-(--color-border) disabled:opacity-50"
                                                     />
                                                     <button
                                                         type="button"

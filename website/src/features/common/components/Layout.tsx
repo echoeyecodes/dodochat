@@ -37,11 +37,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
             <div className="flex flex-col w-full h-dvh p-2 sm:p-4 md:p-6 lg:p-8">
                 <header className="mb-4 md:mb-6 flex items-center justify-between shrink-0">
                     <Link to="/" className="flex items-center gap-3">
-                        <div className="flex items-center justify-center h-8 w-8 rounded-lg bg-(--color-text-primary) text-(--color-bg) shadow-sm shadow-(--color-text-primary)/10">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                            </svg>
-                        </div>
+                        <img src="/logo.png" alt="DodoChat" className="size-10" />
                         <div className="flex items-center gap-2">
                             <h1 className="text-[15px] font-semibold text-(--color-text-primary) tracking-tight">
                                 DodoChat

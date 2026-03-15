@@ -83,6 +83,7 @@ export const UpdateConversationDialog = forwardRef<UpdateConversationDialogRef>(
                         <div className="flex flex-col gap-2">
                             <Input
                                 placeholder="Conversation title"
+                                className="text-base"
                                 autoFocus
                                 {...register('title')}
                             />
