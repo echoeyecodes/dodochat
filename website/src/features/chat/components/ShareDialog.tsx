@@ -116,7 +116,7 @@ export const ShareDialog = forwardRef<ShareDialogRef>((_, ref) => {
                                 <label className="text-xs font-medium text-(--color-text-secondary) ml-1">
                                     Shared Link
                                 </label>
-                                <div className="flex gap-2">
+                                <div className="flex gap-2 min-w-0">
                                     <div className="flex-1 min-w-0 px-3 py-2 rounded-lg bg-(--color-bg-subtle) border border-(--color-border) text-sm text-(--color-text-primary) font-mono truncate">
                                         {shareUrl}
                                     </div>
