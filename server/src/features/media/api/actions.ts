@@ -10,6 +10,8 @@ import { mapFileToResponse } from "../types/index";
 import { parseBuffer } from "music-metadata";
 import mongoose from "mongoose";
 import type { FileChunk } from "../models/File";
+import { conversationRepository } from "../../conversation/repository";
+import type { AuthRequest } from "../../common/types/request";
 
 const chunkText = (text: string, chunkSize = 1000, chunkOverlap = 200): string[] => {
     const chunks: string[] = [];
@@ -51,6 +53,7 @@ const chunkText = (text: string, chunkSize = 1000, chunkOverlap = 200): string[]
 
 const uploadFile = async (req: Request, res: Response, next: NextFunction) => {
     try {
+        const authReq = req as AuthRequest;
         const file = req.file;
         const { conversation_id } = req.body;
 
@@ -63,6 +66,12 @@ const uploadFile = async (req: Request, res: Response, next: NextFunction) => {
                 .status(HTTP_STATUS_CODES.BAD_REQUEST)
                 .json({ message: "conversation_id is required" });
         }
+
+        // Verify ownership
+        await conversationRepository.getConversationById({
+            user_id: authReq.user_id!,
+            id: conversation_id,
+        });
 
         let fileChunks: FileChunk[] = [];
         const isText = file.mimetype === "text/plain" || file.originalname.endsWith(".txt");
@@ -131,7 +140,15 @@ const uploadFile = async (req: Request, res: Response, next: NextFunction) => {
 
 const getFiles = async (req: Request, res: Response, next: NextFunction) => {
     try {
+        const authReq = req as AuthRequest;
         const { conversationId } = req.params;
+
+        // Verify ownership
+        await conversationRepository.getConversationById({
+            user_id: authReq.user_id!,
+            id: conversationId as string,
+        });
+
         const files = await mediaRepository.getFilesByConversationId(conversationId as string);
         return sendResponse({ res, status: HTTP_STATUS_CODES.OK })(files.map(mapFileToResponse));
     } catch (error) {

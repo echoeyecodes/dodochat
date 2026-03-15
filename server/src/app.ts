@@ -11,9 +11,11 @@ import attachIPAddress from "@/features/common/middlewares/attachIPAddress";
 
 const app = express();
 
+const allowedOrigins = ["https://dodochat.echoeyecodes.com"].filter(Boolean);
+
 app.use(
     cors({
-        origin: true,
+        origin: process.env.NODE_ENV === "production" ? allowedOrigins : true,
         credentials: true,
     }),
 );
@@ -21,7 +23,6 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(attachIPAddress);
 app.use(attachUserToRequest);
-app.use("/uploads", express.static("uploads"));
 
 app.use("/api/conversations", conversationRoutes);
 app.use("/api/media", mediaRoutes);

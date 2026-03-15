@@ -1,5 +1,6 @@
 import express from "express";
 import multer from "multer";
+import isAuthenticated from "../../common/middlewares/isAuthenticated";
 import { mediaActions } from "./actions";
 const router = express.Router();
 const storage = multer.memoryStorage();
@@ -28,7 +29,7 @@ const upload = multer({
     },
 });
 
-router.post("/upload", upload.single("file"), mediaActions.uploadFile);
-router.get("/:conversationId", mediaActions.getFiles);
+router.post("/upload", isAuthenticated, upload.single("file"), mediaActions.uploadFile);
+router.get("/conversation/:conversationId", isAuthenticated, mediaActions.getFiles);
 
 export default router;
