@@ -1,6 +1,25 @@
 import { MongoMemoryServer } from "mongodb-memory-server";
 import mongoose from "mongoose";
-import { afterAll, beforeAll, beforeEach } from "vitest";
+import { afterAll, beforeAll, beforeEach, vi } from "vitest";
+
+vi.mock("firebase-admin", () => {
+    const mockAuth = {
+        verifyIdToken: vi.fn(),
+    };
+    const mockApp = {
+        auth: () => mockAuth,
+    };
+    return {
+        default: {
+            credential: {
+                cert: vi.fn(() => ({})),
+            },
+            initializeApp: vi.fn(() => mockApp),
+            apps: [],
+            auth: () => mockAuth,
+        },
+    };
+});
 
 let mongo: MongoMemoryServer;
 
