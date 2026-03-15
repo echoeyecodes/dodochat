@@ -161,7 +161,8 @@ const executeRequest = async (
     const isJson = response.headers.get("Content-Type")?.includes("application/json");
     const data = isJson ? await response.json() : await response.text();
 
-    await applyCookiesFromResponse(response.headers.get("set-cookie"));
+    const setCookie = response.headers.getSetCookie?.() ?? response.headers.get("set-cookie");
+    await applyCookiesFromResponse(setCookie);
 
     return { data, response };
 };
