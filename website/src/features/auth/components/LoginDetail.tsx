@@ -39,10 +39,10 @@ export const LoginDetail = () => {
 
             loginMutation.mutate({ firebase_token: idToken }, {
                 onSuccess: () => {
-                    navigate({ 
-                        to: '/conversations', 
+                    navigate({
+                        to: '/conversations',
                         search: search.q ? { q: search.q } : undefined,
-                        reloadDocument: true 
+                        reloadDocument: true
                     })
                 },
                 onError: (error: Error) => {
@@ -68,10 +68,10 @@ export const LoginDetail = () => {
 
             loginMutation.mutate({ firebase_token: idToken }, {
                 onSuccess: () => {
-                    navigate({ 
-                        to: '/conversations', 
+                    navigate({
+                        to: '/conversations',
                         search: search.q ? { q: search.q } : undefined,
-                        reloadDocument: true 
+                        reloadDocument: true
                     })
                 },
                 onError: (error: Error) => {
@@ -89,7 +89,10 @@ export const LoginDetail = () => {
         <div className="flex flex-col items-center justify-center p-6 py-20 bg-linear-to-b from-white to-(--color-bg-subtle)">
             <div className="w-full max-w-md flex flex-col gap-10">
                 <div className="flex flex-col items-center gap-4 text-center">
-                    <div className="w-16 h-16 rounded-2xl bg-(--color-accent) flex items-center justify-center text-white font-bold text-3xl shadow-xl rotate-3 mb-2">G</div>
+                    <div className="w-[100px]">
+                        <img src="/logo.png" alt="DodoChat Logo" className="w-full h-full object-contain" />
+                    </div>
+
                     <h1 className="text-[32px] font-bold tracking-tight text-(--color-text-primary)">Welcome back</h1>
                     <p className="text-(--color-text-secondary) font-medium">Log in to access your chat brain.</p>
                 </div>
