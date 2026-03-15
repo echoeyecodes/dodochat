@@ -24,7 +24,7 @@ app.use(attachIPAddress);
 app.use(attachUserToRequest);
 app.use('/uploads', express.static('uploads'));
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 await connectDB();
 
@@ -43,5 +43,5 @@ app.use((req, res, next) => {
 app.use(errorHandler);
 
 app.listen(PORT, () => {
-    console.log(`Backend server listening at http://localhost:${PORT}`);
+    console.log(`Backend server listening at ${PORT}`);
 });
