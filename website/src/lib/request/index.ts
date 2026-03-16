@@ -200,9 +200,15 @@ export const request = async ({
             const refreshed = await attemptTokenRefresh();
 
             if (refreshed) {
+                if (typeof window === "undefined") {
+                    requestHeaders["cookie"] =
+                        `access_token=${refreshed.access_token}; refresh_token=${refreshed.refresh_token}`;
+                }
+
                 return executeRequest(url, method, requestHeaders, body, isFormData);
             }
         }
+
         throw error;
     }
 };
