@@ -109,7 +109,7 @@ export const LoginDetail = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center p-6 py-20 bg-linear-to-b from-white to-(--color-bg-subtle)">
+        <div className="flex-1 flex flex-col items-center justify-center p-6 py-20">
             <div className="w-full max-w-md flex flex-col gap-10">
                 <div className="flex flex-col items-center gap-4 text-center">
                     <div className="w-[100px]">

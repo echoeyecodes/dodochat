@@ -12,60 +12,62 @@ function LandingLayout() {
     const isLoggedIn = !!Route.useLoaderData();
 
     return (
-        <div className="min-h-screen bg-(--color-bg) flex flex-col selection:bg-(--color-accent-subtle) selection:text-(--color-text-primary) grain">
-            {/* ─── Simple Navigation ─── */}
-            <header className="fixed top-0 left-0 right-0 z-50 bg-(--color-bg)/80 backdrop-blur-md border-b border-(--color-border-subtle)">
-                <div className="max-w-[700px] mx-auto px-6 h-16 flex items-center justify-between">
-                    <Link
-                        to="/"
-                        className="text-[14px] font-bold tracking-tight text-(--color-text-primary)"
-                    >
-                        DodoChat
-                    </Link>
-                    <div className="flex items-center gap-6">
-                        <Button
-                            asChild
-                            variant="ghost"
-                            size="sm"
-                            className="h-8 px-4 text-[12px] font-medium transition-all"
+        <div className="min-h-screen bg-(--color-bg) selection:bg-(--color-accent-subtle) selection:text-(--color-text-primary) grain overflow-x-hidden">
+            <div className="max-w-5xl mx-auto min-h-screen flex flex-col bg-(--color-bg) border-x border-(--color-border-subtle) relative shadow-[0_0_80px_rgba(0,0,0,0.02)]">
+                {/* ─── Simple Navigation ─── */}
+                <header className="sticky top-0 z-50 bg-(--color-bg)/80 backdrop-blur-md border-b border-(--color-border-subtle) lg:px-20">
+                    <div className="px-6 h-16 flex items-center justify-between">
+                        <Link
+                            to="/"
+                            className="text-[14px] font-bold tracking-tight text-(--color-text-primary)"
                         >
-                            <Link to={isLoggedIn ? "/conversations" : "/login"}>
-                                {isLoggedIn ? "Open App" : "Try it"}
-                            </Link>
-                        </Button>
-                    </div>
-                </div>
-            </header>
-
-            <main className="flex-1 pt-16">
-                <Outlet />
-            </main>
-
-            <footer className="py-20 px-6 border-t border-(--color-border-subtle)">
-                <div className="max-w-[700px] mx-auto flex flex-col gap-4">
-                    <div className="flex items-center justify-between">
-                        <p className="text-[12px] text-(--color-text-tertiary)">
-                            Built by Oluwafemi Obajuluwa.
-                        </p>
-                        <div className="flex gap-6 text-[12px] font-medium text-(--color-text-quaternary)">
-                            <a
-                                href="https://github.com/echoeyecodes/dodochat"
-                                target="_blank"
-                                rel="noreferrer"
-                                className="hover:text-(--color-text-primary)"
+                            DodoChat
+                        </Link>
+                        <div className="flex items-center gap-6">
+                            <Button
+                                asChild
+                                variant="ghost"
+                                size="sm"
+                                className="h-8 px-4 text-[12px] font-medium transition-all"
                             >
-                                GitHub
-                            </a>
-                            <Link to="/privacy" className="hover:text-(--color-text-primary)">
-                                Privacy
-                            </Link>
-                            <Link to="/terms" className="hover:text-(--color-text-primary)">
-                                Terms
-                            </Link>
+                                <Link to={isLoggedIn ? "/conversations" : "/login"}>
+                                    {isLoggedIn ? "Open App" : "Try it"}
+                                </Link>
+                            </Button>
                         </div>
                     </div>
-                </div>
-            </footer>
+                </header>
+
+                <main className="flex-1 flex flex-col px-6 lg:px-20">
+                    <Outlet />
+                </main>
+
+                <footer className="py-20 px-6 border-t border-(--color-border-subtle) lg:px-20">
+                    <div className="flex flex-col gap-4">
+                        <div className="flex items-center justify-between">
+                            <p className="text-[12px] text-(--color-text-tertiary)">
+                                Built by Oluwafemi Obajuluwa.
+                            </p>
+                            <div className="flex gap-6 text-[12px] font-medium text-(--color-text-quaternary)">
+                                <a
+                                    href="https://github.com/echoeyecodes/dodochat"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="hover:text-(--color-text-primary)"
+                                >
+                                    GitHub
+                                </a>
+                                <Link to="/privacy" className="hover:text-(--color-text-primary)">
+                                    Privacy
+                                </Link>
+                                <Link to="/terms" className="hover:text-(--color-text-primary)">
+                                    Terms
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
         </div>
     );
 }

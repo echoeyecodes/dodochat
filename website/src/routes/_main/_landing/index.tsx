@@ -33,9 +33,9 @@ function LandingPage() {
     };
 
     return (
-        <div className="flex flex-col min-h-screen bg-(--color-bg)">
-            <section className="relative pt-24 pb-32 md:pt-30 flex flex-col items-center px-6">
-                <div className="w-full max-w-3xl flex flex-col items-center">
+        <div className="flex flex-col">
+            <section className="relative pt-24 pb-32 md:pt-30 flex flex-col items-center">
+                <div className="w-full flex flex-col items-center">
                     <div className="flex flex-col items-center text-center mb-24 animate-in fade-in slide-in-from-bottom-4 duration-700">
                         <div className="w-[100px]">
                             <img
@@ -138,7 +138,7 @@ function LandingPage() {
                 </div>
             </section>
 
-            <article className="max-w-3xl mx-auto px-6 flex flex-col gap-14 scroll-mt-20">
+            <article className="w-full flex flex-col gap-14 scroll-mt-20">
                 <header className="flex flex-col gap-5">
                     <h2 className="text-[36px] md:text-[48px] font-bold tracking-tight text-(--color-text-primary) leading-[1.1]">
                         Welcome to <span className="text-(--color-accent)">DodoChat</span>.
@@ -316,7 +316,7 @@ function LandingPage() {
                     </p>
                 </div>
 
-                <section className="mt-16 pt-12 border-t border-(--color-border-subtle) flex flex-col items-start gap-8">
+                <section className="mt-16 py-12 flex flex-col items-start gap-8">
                     <div className="flex flex-col gap-2">
                         <h3 className="text-[18px] font-bold text-(--color-text-primary)">
                             Want to try it out?

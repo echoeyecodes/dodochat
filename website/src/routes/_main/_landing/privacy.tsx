@@ -6,7 +6,7 @@ export const Route = createFileRoute("/_main/_landing/privacy")({
 
 function PrivacyPage() {
     return (
-        <div className="max-w-4xl mx-auto px-6 pt-32 pb-24 font-sans">
+        <div className="w-full px-6 pt-32 pb-24 font-sans">
             <h1 className="text-[48px] font-bold tracking-tight text-(--color-text-primary) mb-8 leading-tight">
                 Privacy Policy
             </h1>

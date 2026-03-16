@@ -1,6 +1,5 @@
 import { createServerFn } from "@tanstack/react-start";
-import { setCookie, deleteCookie, getRequestHeaders } from "@tanstack/react-start/server";
-import { z } from "zod";
+import { deleteCookie, getRequestHeaders } from "@tanstack/react-start/server";
 
 export const ACCESS_TOKEN_KEY = "access_token";
 export const REFRESH_TOKEN_KEY = "refresh_token";
@@ -27,37 +26,6 @@ const getCookieOptions = () => {
         domain,
     };
 };
-
-export const updateAuthSession = createServerFn({ method: "POST" })
-    .inputValidator(
-        z.object({
-            access_token: z.string().optional(),
-            refresh_token: z.string().optional(),
-        }),
-    )
-    .handler(async ({ data }) => {
-        const options = getCookieOptions();
-        const setOptions = {
-            ...options,
-            maxAge: 60 * 60 * 24 * 30, // 30 days
-        };
-
-        if (data.access_token) {
-            deleteCookie(ACCESS_TOKEN_KEY, { ...options, domain: undefined });
-            if (options.domain) {
-                deleteCookie(ACCESS_TOKEN_KEY, options);
-            }
-            setCookie(ACCESS_TOKEN_KEY, data.access_token, setOptions);
-        }
-
-        if (data.refresh_token) {
-            deleteCookie(REFRESH_TOKEN_KEY, { ...options, domain: undefined });
-            if (options.domain) {
-                deleteCookie(REFRESH_TOKEN_KEY, options);
-            }
-            setCookie(REFRESH_TOKEN_KEY, data.refresh_token, setOptions);
-        }
-    });
 
 export const deleteAccessToken = createServerFn({ method: "POST" }).handler(async () => {
     const options = getCookieOptions();

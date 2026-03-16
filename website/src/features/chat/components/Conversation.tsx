@@ -262,118 +262,120 @@ export const Conversation = ({ title, isSharedView = false, handleFork }: Conver
     return (
         <div className="flex-1 flex flex-col min-h-0 bg-(--color-bg-elevated) relative">
             <div className="flex items-center justify-between px-4 md:px-6 py-4 bg-(--color-bg-elevated) z-10 border-b border-(--color-border)">
-                <div className="flex items-center gap-2 md:gap-3">
-                    <button
-                        onClick={() => setIsOpen(true)}
-                        className="md:hidden p-2 -ml-2 rounded-md text-(--color-text-secondary) hover:bg-(--color-bg-subtle) hover:text-(--color-text-primary) transition-colors"
-                    >
-                        <LucideMenu className="w-5 h-5" />
-                    </button>
-
-                    <div className="flex flex-col">
-                        <span className="text-[14px] font-semibold text-(--color-text-primary)">
-                            {displayTitle || "New Chat"}
-                        </span>
-                        <span className="text-[12px] text-(--color-text-tertiary)">
-                            {isLoading ? "Thinking..." : "Online"}
-                        </span>
-                    </div>
-                </div>
-                <div className="flex items-center gap-1 md:gap-2">
-                    {conversationId && (
-                        <Link
-                            to="/conversations"
-                            className="p-2 rounded-full text-(--color-text-tertiary) hover:bg-(--color-bg-subtle) hover:text-(--color-text-primary) transition-colors"
-                            title="New chat"
+                <div className="w-full flex items-center justify-between">
+                    <div className="flex items-center gap-2 md:gap-3">
+                        <button
+                            onClick={() => setIsOpen(true)}
+                            className="md:hidden p-2 -ml-2 rounded-md text-(--color-text-secondary) hover:bg-(--color-bg-subtle) hover:text-(--color-text-primary) transition-colors"
                         >
-                            <LucidePlus className="w-5 h-5 stroke-[1.5px]" />
-                        </Link>
-                    )}
-                    <button
-                        onClick={toggleFiles}
-                        className={cn(
-                            "p-2 rounded-full transition-all group relative",
-                            (isMobile ? isMobileFilesOpen : isDesktopFilesOpen)
-                                ? "text-(--color-text-primary) bg-(--color-bg-subtle)"
-                                : "text-(--color-text-tertiary) hover:bg-(--color-bg-subtle) hover:text-(--color-text-primary)",
+                            <LucideMenu className="w-5 h-5" />
+                        </button>
+
+                        <div className="flex flex-col">
+                            <span className="text-[14px] font-semibold text-(--color-text-primary)">
+                                {displayTitle || "New Chat"}
+                            </span>
+                            <span className="text-[12px] text-(--color-text-tertiary)">
+                                {isLoading ? "Thinking..." : "Online"}
+                            </span>
+                        </div>
+                    </div>
+                    <div className="flex items-center gap-1 md:gap-2">
+                        {conversationId && (
+                            <Link
+                                to="/conversations"
+                                className="p-2 rounded-full text-(--color-text-tertiary) hover:bg-(--color-bg-subtle) hover:text-(--color-text-primary) transition-colors"
+                                title="New chat"
+                            >
+                                <LucidePlus className="w-5 h-5 stroke-[1.5px]" />
+                            </Link>
                         )}
-                        title="Toggle files sidebar"
-                    >
-                        <LucideFiles className="w-5 h-5 stroke-[1.5px]" />
-                        {(isMobile ? isMobileFilesOpen : isDesktopFilesOpen) && (
-                            <span className="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-(--color-accent)" />
-                        )}
-                    </button>
-                    {conversationId && (
-                        <ChatOptions.Root conversationId={conversationId}>
-                            <ChatOptions.Trigger>
-                                <button className="p-2 rounded-full hover:bg-(--color-bg-subtle) transition-colors group">
-                                    <svg
-                                        width="16"
-                                        height="16"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        className="text-(--color-text-tertiary) group-hover:text-(--color-text-primary) transition-colors"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    >
-                                        <circle cx="12" cy="12" r="1"></circle>
-                                        <circle cx="12" cy="5" r="1"></circle>
-                                        <circle cx="12" cy="19" r="1"></circle>
-                                    </svg>
-                                </button>
-                            </ChatOptions.Trigger>
-                            <ChatOptions.Content>
-                                <ChatOptions.RenameAction
-                                    onAction={() => {
-                                        renameDialogRef.current?.open({
-                                            data: {
-                                                conversation_id: conversationId!,
-                                                current_title: displayTitle || "",
-                                            },
-                                            onConfirm: (_id, newTitle) => {
-                                                updateConversation(
-                                                    { id: _id, title: newTitle },
-                                                    {
-                                                        onSuccess: () => {
-                                                            setDisplayTitle(newTitle);
+                        <button
+                            onClick={toggleFiles}
+                            className={cn(
+                                "p-2 rounded-full transition-all group relative",
+                                (isMobile ? isMobileFilesOpen : isDesktopFilesOpen)
+                                    ? "text-(--color-text-primary) bg-(--color-bg-subtle)"
+                                    : "text-(--color-text-tertiary) hover:bg-(--color-bg-subtle) hover:text-(--color-text-primary)",
+                            )}
+                            title="Toggle files sidebar"
+                        >
+                            <LucideFiles className="w-5 h-5 stroke-[1.5px]" />
+                            {(isMobile ? isMobileFilesOpen : isDesktopFilesOpen) && (
+                                <span className="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-(--color-accent)" />
+                            )}
+                        </button>
+                        {conversationId && (
+                            <ChatOptions.Root conversationId={conversationId}>
+                                <ChatOptions.Trigger>
+                                    <button className="p-2 rounded-full hover:bg-(--color-bg-subtle) transition-colors group">
+                                        <svg
+                                            width="16"
+                                            height="16"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            className="text-(--color-text-tertiary) group-hover:text-(--color-text-primary) transition-colors"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        >
+                                            <circle cx="12" cy="12" r="1"></circle>
+                                            <circle cx="12" cy="5" r="1"></circle>
+                                            <circle cx="12" cy="19" r="1"></circle>
+                                        </svg>
+                                    </button>
+                                </ChatOptions.Trigger>
+                                <ChatOptions.Content>
+                                    <ChatOptions.RenameAction
+                                        onAction={() => {
+                                            renameDialogRef.current?.open({
+                                                data: {
+                                                    conversation_id: conversationId!,
+                                                    current_title: displayTitle || "",
+                                                },
+                                                onConfirm: (_id, newTitle) => {
+                                                    updateConversation(
+                                                        { id: _id, title: newTitle },
+                                                        {
+                                                            onSuccess: () => {
+                                                                setDisplayTitle(newTitle);
+                                                            },
                                                         },
-                                                    },
-                                                );
-                                            },
-                                        });
-                                    }}
-                                />
-                                <ChatOptions.ShareAction
-                                    onAction={() => {
-                                        if (currentConversation) {
-                                            shareDialogRef.current?.open({
-                                                conversation_id: conversationId!,
-                                                visibility:
-                                                    currentConversation.visibility ?? "private",
-                                                share_token: currentConversation.share_token,
+                                                    );
+                                                },
                                             });
-                                        }
-                                    }}
-                                />
-                                <ChatOptions.DeleteAction
-                                    onAction={() => {
-                                        confirmRef.current?.open({
-                                            title: "Delete conversation?",
-                                            description: `Target: "${displayTitle}". This will permanently delete the chat history and all processed files.`,
-                                            confirmText: "Delete",
-                                            variant: "destructive",
-                                            onConfirm: async () => {
-                                                deleteMutation.mutate(conversationId!);
-                                            },
-                                        });
-                                    }}
-                                />
-                            </ChatOptions.Content>
-                        </ChatOptions.Root>
-                    )}
+                                        }}
+                                    />
+                                    <ChatOptions.ShareAction
+                                        onAction={() => {
+                                            if (currentConversation) {
+                                                shareDialogRef.current?.open({
+                                                    conversation_id: conversationId!,
+                                                    visibility:
+                                                        currentConversation.visibility ?? "private",
+                                                    share_token: currentConversation.share_token,
+                                                });
+                                            }
+                                        }}
+                                    />
+                                    <ChatOptions.DeleteAction
+                                        onAction={() => {
+                                            confirmRef.current?.open({
+                                                title: "Delete conversation?",
+                                                description: `Target: "${displayTitle}". This will permanently delete the chat history and all processed files.`,
+                                                confirmText: "Delete",
+                                                variant: "destructive",
+                                                onConfirm: async () => {
+                                                    deleteMutation.mutate(conversationId!);
+                                                },
+                                            });
+                                        }}
+                                    />
+                                </ChatOptions.Content>
+                            </ChatOptions.Root>
+                        )}
+                    </div>
                 </div>
             </div>
 
@@ -391,7 +393,7 @@ export const Conversation = ({ title, isSharedView = false, handleFork }: Conver
                         >
                             <div
                                 className={cn(
-                                    "flex flex-col space-y-4 md:space-y-6",
+                                    "flex flex-col space-y-4 md:space-y-6 max-w-4xl mx-auto w-full",
                                     messages.length === 0 && "h-full justify-center",
                                 )}
                             >
@@ -711,8 +713,8 @@ export const Conversation = ({ title, isSharedView = false, handleFork }: Conver
                                                 <line x1="12" y1="16" x2="12.01" y2="16"></line>
                                             </svg>
                                         </div>
-                                        <div className="flex-1 flex flex-wrap items-center gap-x-2 text-(--color-text-secondary)">
-                                            <span>
+                                        <div className="flex-1 min-w-0 flex flex-wrap items-center gap-x-2 text-(--color-text-secondary)">
+                                            <span className="break-all">
                                                 {isRateLimitError
                                                     ? "You have reached the rate limit for the default Gemini API key. To continue chatting without interruptions, you can use your own API key, or wait a few minutes before trying again."
                                                     : error.message || "Something went wrong."}
@@ -720,7 +722,7 @@ export const Conversation = ({ title, isSharedView = false, handleFork }: Conver
                                             {isRateLimitError && (
                                                 <Link
                                                     to="/profile"
-                                                    className="text-(--color-accent) hover:underline font-medium"
+                                                    className="text-(--color-accent) hover:underline font-medium shrink-0"
                                                 >
                                                     Change API Key
                                                 </Link>

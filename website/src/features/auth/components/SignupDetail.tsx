@@ -107,12 +107,10 @@ export const SignupDetail = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center p-6 py-20 bg-linear-to-b from-white to-(--color-bg-subtle)">
+        <div className="flex-1 flex flex-col items-center justify-center p-6 py-20">
             <div className="w-full max-w-md flex flex-col gap-10">
                 <div className="flex flex-col items-center gap-4 text-center">
-                    <div className="w-16 h-16 rounded-2xl bg-(--color-accent) flex items-center justify-center text-white font-bold text-3xl shadow-xl -rotate-3 mb-2">
-                        G
-                    </div>
+                    <img src="/logo.png" alt="DodoChat" className="w-16 h-16" />
                     <h1 className="text-[32px] font-bold tracking-tight text-(--color-text-primary)">
                         Create account
                     </h1>
