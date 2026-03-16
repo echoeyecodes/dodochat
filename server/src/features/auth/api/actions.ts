@@ -8,20 +8,19 @@ import {
     ACCESS_TOKEN_EXPIRES_IN,
     ACCESS_TOKEN_MAX_AGE,
     ACCESS_TOKEN_SECRET,
-    REFRESH_TOKEN_MAX_AGE,
     REFRESH_TOKEN_SECRET,
 } from "../constants/index";
-import { AUTH_ERRORS, invalidCredentialsError } from "../constants/errors";
+import { invalidCredentialsError } from "../constants/errors";
 import { USER_ERRORS } from "../../user/constants/errors";
 import type { AuthRequest } from "../../common/types/request";
 import { sendResponse } from "../../common/helpers";
-import envConfig from "@/lib/env";
 import { HTTP_STATUS_CODES } from "@/features/common/constants/http-status-codes";
 import { notAuthenticatedError } from "@/features/common/constants/errors";
-import { hashToken } from "../helpers";
+import { hashToken, setTokenCookies } from "../helpers";
 
 import { verifyFirebaseToken } from "../helpers/firebase";
 import type { auth } from "firebase-admin";
+import { refreshTokens } from "@/features/common/middlewares/attachUserToRequest";
 
 const generateTokens = (userId: string) => {
     const access_token = jwt.sign({ sub: userId }, ACCESS_TOKEN_SECRET, {
@@ -30,26 +29,6 @@ const generateTokens = (userId: string) => {
     const refresh_token = jwt.sign({ sub: userId }, REFRESH_TOKEN_SECRET);
     const access_token_expires_at = new Date(Date.now() + ACCESS_TOKEN_MAX_AGE);
     return { access_token, refresh_token, access_token_expires_at };
-};
-
-const setTokenCookies = (res: Response, access_token: string, refresh_token: string) => {
-    const domain = envConfig.get("COOKIE_DOMAIN");
-    const cookieOptions = {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        sameSite: process.env.NODE_ENV === "production" ? ("none" as const) : ("lax" as const),
-        path: "/",
-        domain: domain || undefined,
-    };
-
-    res.cookie("access_token", access_token, {
-        ...cookieOptions,
-        maxAge: ACCESS_TOKEN_MAX_AGE,
-    });
-    res.cookie("refresh_token", refresh_token, {
-        ...cookieOptions,
-        maxAge: REFRESH_TOKEN_MAX_AGE,
-    });
 };
 
 export const login = async (req: AuthRequest, res: Response, next: NextFunction) => {
@@ -130,48 +109,9 @@ export const refreshAccessToken = async (req: AuthRequest, res: Response, next: 
             throw invalidCredentialsError();
         }
 
-        let decoded: { sub: string } | null = null;
+        const authToken = await refreshTokens(req, res, refresh_token);
 
-        try {
-            decoded = jwt.verify(refresh_token, REFRESH_TOKEN_SECRET) as { sub: string };
-        } catch {
-            // Ignore errors, we check decoded value next
-        }
-        if (!decoded) throw notAuthenticatedError();
-
-        const existingToken = await authRepository
-            .getAuthToken({ refresh_token: hashToken(refresh_token) })
-            .catch((error) => {
-                if (error.name === AUTH_ERRORS.AUTH_TOKEN_NOT_FOUND.name) {
-                    return null;
-                }
-                throw error;
-            });
-        if (!existingToken) throw notAuthenticatedError();
-
-        await authRepository.deleteAuthToken(existingToken.access_token);
-
-        const { access_token: newAccessToken, access_token_expires_at } = generateTokens(
-            decoded.sub,
-        );
-
-        const authToken = await authRepository.createAuthToken({
-            user_id: decoded.sub,
-            access_token: hashToken(newAccessToken),
-            refresh_token: hashToken(refresh_token),
-            access_token_expires_at: access_token_expires_at,
-            ip_address: req.ip_address,
-            device_name: req.device_name,
-            ip_country: req.ip_country,
-        });
-
-        setTokenCookies(res, newAccessToken, refresh_token);
-
-        return sendResponse({ res, status: HTTP_STATUS_CODES.OK })({
-            ...authToken,
-            access_token: newAccessToken,
-            refresh_token,
-        });
+        return sendResponse({ res, status: HTTP_STATUS_CODES.OK })(authToken);
     } catch (error) {
         return next(error);
     }

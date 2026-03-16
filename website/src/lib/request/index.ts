@@ -1,15 +1,9 @@
-import { HTTP_STATUS_CODES } from "@/features/common/constants/http-status-codes";
 import { ErrorBody } from "./ErrorBody";
 import { objectToQueryParams } from "./object-to-query";
 import { applyCookiesFromResponse } from "./apply-cookies";
 import envConfig from "../env";
 
 type RequestType = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
-
-type RefreshResult = {
-    access_token: string;
-    refresh_token: string;
-} | null;
 
 export type RequestParams = {
     path: string;
@@ -19,12 +13,9 @@ export type RequestParams = {
     headers?: Record<string, string>;
     query?: Record<string, unknown>;
     exclude_trailing_slash?: boolean;
-    skipAutoRefresh?: boolean;
 };
 
 const BASE_API_URL = envConfig.get("BASE_API_URL");
-
-let refreshPromise: Promise<RefreshResult> | null = null;
 
 const buildUrl = (
     base: string,
@@ -75,33 +66,6 @@ const getServerHeaders = async (): Promise<Record<string, string>> => {
     } catch {
         return {};
     }
-};
-
-const attemptTokenRefresh = async (): Promise<RefreshResult> => {
-    if (refreshPromise) return refreshPromise;
-
-    const cleanBase = (BASE_API_URL as string).replace(/\/$/, "");
-    const serverHeaders = await getServerHeaders();
-
-    refreshPromise = fetch(`${cleanBase}/api/auth/refresh-token`, {
-        method: "POST",
-        credentials: "include",
-        headers: {
-            "Content-Type": "application/json",
-            ...serverHeaders,
-        },
-    })
-        .then(async (res) => {
-            if (!res.ok) return null;
-            const body = await res.json();
-            return (body.data || body) as RefreshResult;
-        })
-        .catch(() => null)
-        .finally(() => {
-            refreshPromise = null;
-        });
-
-    return refreshPromise;
 };
 
 const parseErrorResponse = async (response: Response): Promise<never> => {
@@ -174,7 +138,6 @@ export const request = async ({
     body,
     query,
     exclude_trailing_slash = false,
-    skipAutoRefresh = false,
 }: RequestParams): Promise<{ data: unknown; response: Response }> => {
     const url = buildUrl(
         base as string,
@@ -198,22 +161,6 @@ export const request = async ({
     try {
         return await executeRequest(url, method, requestHeaders, body, isFormData);
     } catch (error) {
-        if (
-            error instanceof ErrorBody &&
-            error.code === HTTP_STATUS_CODES.UNAUTHORIZED &&
-            !skipAutoRefresh
-        ) {
-            const refreshed = await attemptTokenRefresh();
-
-            if (refreshed) {
-                if (typeof window === "undefined") {
-                    requestHeaders["cookie"] =
-                        `access_token=${refreshed.access_token}; refresh_token=${refreshed.refresh_token}`;
-                }
-
-                return await executeRequest(url, method, requestHeaders, body, isFormData);
-            }
-        }
         throw error;
     }
 };

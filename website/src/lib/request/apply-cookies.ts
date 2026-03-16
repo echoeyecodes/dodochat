@@ -20,6 +20,4 @@ export const applyCookiesFromResponse = createIsomorphicFn()
             setResponseHeader("set-cookie", merged);
         } catch {}
     })
-    .client(() => {
-        // No-op on client: browser handles cookies automatically
-    });
+    .client(() => {});
