@@ -2,6 +2,7 @@ import { ErrorBody } from "./ErrorBody";
 import { objectToQueryParams } from "./object-to-query";
 import { applyCookiesFromResponse } from "./apply-cookies";
 import envConfig from "../env";
+import { HTTP_STATUS_CODES } from "@/features/common/constants/http-status-codes";
 
 type RequestType = "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
 
@@ -130,6 +131,40 @@ const executeRequest = async (
     return { data, response };
 };
 
+type RefreshResult = {
+    access_token: string;
+    refresh_token: string;
+} | null;
+
+let refreshPromise: Promise<RefreshResult> | null = null;
+
+const attemptTokenRefresh = async (): Promise<RefreshResult> => {
+    if (refreshPromise) return refreshPromise;
+
+    const cleanBase = (BASE_API_URL as string).replace(/\/$/, "");
+    const serverHeaders = await getServerHeaders();
+
+    refreshPromise = fetch(`${cleanBase}/api/auth/refresh-token`, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+            "Content-Type": "application/json",
+            ...serverHeaders,
+        },
+    })
+        .then(async (res) => {
+            if (!res.ok) return null;
+            const body = await res.json();
+            return (body.data || body) as RefreshResult;
+        })
+        .catch(() => null)
+        .finally(() => {
+            refreshPromise = null;
+        });
+
+    return refreshPromise;
+};
+
 export const request = async ({
     base = BASE_API_URL,
     path,
@@ -161,6 +196,13 @@ export const request = async ({
     try {
         return await executeRequest(url, method, requestHeaders, body, isFormData);
     } catch (error) {
+        if (error instanceof ErrorBody && error.code === HTTP_STATUS_CODES.UNAUTHORIZED) {
+            const refreshed = await attemptTokenRefresh();
+
+            if (refreshed) {
+                return executeRequest(url, method, requestHeaders, body, isFormData);
+            }
+        }
         throw error;
     }
 };

@@ -6,14 +6,14 @@ type CachedAuthToken = {
 };
 
 const cache = new Map<string, { data: CachedAuthToken; timestamp: number }>();
-const TTL = 1000 * 60 * 5; // 5 minutes cache
+// const TTL = 1000 * 60 * 5; // 5 minutes cache
 
 export const authCache = {
     async getAuthToken(hashedToken: string): Promise<CachedAuthToken | null> {
-        const cached = cache.get(hashedToken);
-        if (cached && Date.now() - cached.timestamp < TTL) {
-            return cached.data;
-        }
+        // const cached = cache.get(hashedToken);
+        // if (cached && Date.now() - cached.timestamp < TTL) {
+        //     return cached.data;
+        // }
 
         try {
             const authToken = await authRepository.getAuthToken({ access_token: hashedToken });
