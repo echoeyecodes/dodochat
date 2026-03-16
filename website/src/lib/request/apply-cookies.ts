@@ -17,7 +17,9 @@ export const applyCookiesFromResponse = createIsomorphicFn()
                     : [existing, ...newCookies]
                 : newCookies;
 
-            setResponseHeader("set-cookie", merged);
+            if (merged.length > 0) {
+                setResponseHeader("set-cookie", merged);
+            }
         } catch {}
     })
     .client(() => {});
