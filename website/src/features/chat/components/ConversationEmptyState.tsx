@@ -4,10 +4,10 @@ export const ConversationEmptyState = () => {
     const { sendMessage, conversationId } = useChatContext();
 
     const suggestions = [
-        "How do black holes work?",
-        "Explain the concept of 'time dilation'.",
-        "What is the history of artificial intelligence?",
-        "How does photosynthesis actually work?",
+        "Find 5 random rock songs and summarize their artists",
+        "Get detailed info on Hades including platforms and genres",
+        "Generate a TXT file with a list of top 10 programming languages",
+        "Show me your technical metrics like CPU and RSS memory",
     ];
 
     const handleSuggestionClick = (q: string) => {

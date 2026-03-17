@@ -208,17 +208,6 @@ export const ToolMusicSearch: React.FC<ToolMusicSearchProps> = ({ part: p }) => 
                     </div>
                 </div>
             </div>
-
-            {/* Footer */}
-            <div className="mt-3 flex items-center justify-between px-1">
-                <span className="text-[9px] font-bold text-(--color-text-quaternary) uppercase tracking-widest">
-                    Metadata Output / MusicBrainz
-                </span>
-                <div className="h-px flex-1 mx-4 bg-(--color-border-subtle) opacity-30" />
-                <span className="text-[9px] font-mono text-(--color-text-quaternary) opacity-50">
-                    2.2_STABLE
-                </span>
-            </div>
         </div>
     );
 };

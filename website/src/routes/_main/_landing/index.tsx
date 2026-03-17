@@ -1,12 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
-import {
-    LucidePlus,
-    LucideFileSearch,
-    LucideCode2,
-    LucideInfo,
-    LucideSparkles,
-} from "lucide-react";
+import { LucideMusic, LucideGamepad2, LucideCpu, LucideFileDown, LucidePlus } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/_main/_landing/")({
@@ -106,18 +100,21 @@ function LandingPage() {
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-w-[540px] mx-auto w-full">
                             {[
-                                { q: "How do black holes work?", icon: LucideSparkles },
                                 {
-                                    q: "Explain the concept of 'time dilation'.",
-                                    icon: LucideFileSearch,
+                                    q: "Find some random official studio recordings by Radiohead",
+                                    icon: LucideMusic,
                                 },
                                 {
-                                    q: "Where can I find the answer to everything?",
-                                    icon: LucideInfo,
+                                    q: "Search for God of War on IGDB and show me its rating",
+                                    icon: LucideGamepad2,
                                 },
                                 {
-                                    q: "Show me a code example for a custom hook.",
-                                    icon: LucideCode2,
+                                    q: "Show me your current system uptime and memory usage",
+                                    icon: LucideCpu,
+                                },
+                                {
+                                    q: "Can you help me generate a PDF summary on a specific topic?",
+                                    icon: LucideFileDown,
                                 },
                             ].map((suggest, i) => (
                                 <button
