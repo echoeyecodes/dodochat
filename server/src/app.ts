@@ -6,6 +6,7 @@ import conversationRoutes from "@/features/conversation/api";
 import mediaRoutes from "@/features/media/api";
 import authRoutes from "@/features/auth/api";
 import userRoutes from "@/features/user/api";
+import musicResolveRoutes from "@/features/music-resolve/api";
 import attachUserToRequest from "@/features/common/middlewares/attachUserToRequest";
 import attachIPAddress from "@/features/common/middlewares/attachIPAddress";
 
@@ -28,6 +29,7 @@ app.use("/api/conversations", conversationRoutes);
 app.use("/api/media", mediaRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/music", musicResolveRoutes);
 
 app.use((req, res, next) => {
     res.status(404);

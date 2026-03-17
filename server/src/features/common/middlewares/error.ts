@@ -2,11 +2,13 @@ import type { Request, Response, NextFunction } from "express";
 import { HTTP_STATUS_CODES } from "../constants/http-status-codes";
 import { CONVERSATION_ERRORS } from "../../conversation/constants/errors";
 import { USER_ERRORS } from "../../user/constants/errors";
+import { MediaResourceErrorNames } from "@/features/music-resolve/constants/errors";
 
 const ERROR_NAME_MAPPING: Record<string, number> = {
     [CONVERSATION_ERRORS.CONVERSATION_NOT_FOUND.name]: HTTP_STATUS_CODES.NOT_FOUND,
     [USER_ERRORS.USER_NOT_FOUND.name]: HTTP_STATUS_CODES.NOT_FOUND,
     [USER_ERRORS.EMAIL_ALREADY_EXISTS.name]: HTTP_STATUS_CODES.BAD_REQUEST,
+    [MediaResourceErrorNames.MEDIA_RESOURCE_NOT_FOUND]: HTTP_STATUS_CODES.NOT_FOUND,
     VALIDATION_ERROR: HTTP_STATUS_CODES.BAD_REQUEST,
     RESOURCE_NOT_FOUND: HTTP_STATUS_CODES.NOT_FOUND,
     BAD_REQUEST: HTTP_STATUS_CODES.BAD_REQUEST,

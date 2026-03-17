@@ -60,6 +60,31 @@ export type ChatTools = {
             message: string;
         };
     };
+    randomSongs: {
+        input: {
+            genre?: string;
+            artist?: string;
+            title?: string;
+            release?: string;
+            country?: string;
+            date?: string;
+            limit?: number;
+            official_only?: boolean;
+        };
+        output: {
+            songs: Array<{
+                title: string;
+                artist: string;
+                id: string;
+                release?: string;
+                releaseId?: string;
+                date?: string;
+                duration?: number;
+                isrc?: string;
+            }>;
+            message: string;
+        };
+    };
 };
 
 export type FilePart = {

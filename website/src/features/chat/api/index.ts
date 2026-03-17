@@ -74,6 +74,27 @@ const forkConversation = async (token: string): Promise<ConversationDetail> => {
     return (data as { data: ConversationDetail }).data;
 };
 
+type MusicResolveResult = {
+    link: string;
+    platform: "apple" | "spotify" | "youtube";
+};
+export const musicApi = {
+    resolveLink: async ({
+        query,
+        platform,
+    }: {
+        query: string;
+        platform: "apple" | "spotify" | "youtube";
+    }): Promise<MusicResolveResult> => {
+        const { data } = await request({
+            path: "/api/music/resolve",
+            method: "GET",
+            query: { query, platform },
+        });
+        return (data as { data: MusicResolveResult }).data;
+    },
+};
+
 export const conversationApi = {
     fetchConversations,
     fetchConversationById,

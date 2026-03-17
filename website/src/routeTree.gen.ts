@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as LogoutRouteImport } from './routes/logout'
 import { Route as MainRouteRouteImport } from './routes/_main/route'
+import { Route as MusicResolveRouteImport } from './routes/music.resolve'
 import { Route as MainLandingRouteRouteImport } from './routes/_main/_landing/route'
 import { Route as MainAuthRouteRouteImport } from './routes/_main/_auth/route'
 import { Route as MainLandingIndexRouteImport } from './routes/_main/_landing/index'
@@ -32,6 +33,11 @@ const LogoutRoute = LogoutRouteImport.update({
 } as any)
 const MainRouteRoute = MainRouteRouteImport.update({
   id: '/_main',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MusicResolveRoute = MusicResolveRouteImport.update({
+  id: '/music/resolve',
+  path: '/music/resolve',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MainLandingRouteRoute = MainLandingRouteRouteImport.update({
@@ -103,6 +109,7 @@ const MainAuthGuardedConversationsIdIndexRoute =
 export interface FileRoutesByFullPath {
   '/': typeof MainLandingIndexRoute
   '/logout': typeof LogoutRoute
+  '/music/resolve': typeof MusicResolveRoute
   '/login': typeof MainLandingLoginRoute
   '/privacy': typeof MainLandingPrivacyRoute
   '/signup': typeof MainLandingSignupRoute
@@ -116,6 +123,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof MainLandingIndexRoute
   '/logout': typeof LogoutRoute
+  '/music/resolve': typeof MusicResolveRoute
   '/login': typeof MainLandingLoginRoute
   '/privacy': typeof MainLandingPrivacyRoute
   '/signup': typeof MainLandingSignupRoute
@@ -131,6 +139,7 @@ export interface FileRoutesById {
   '/logout': typeof LogoutRoute
   '/_main/_auth': typeof MainAuthRouteRouteWithChildren
   '/_main/_landing': typeof MainLandingRouteRouteWithChildren
+  '/music/resolve': typeof MusicResolveRoute
   '/_main/_auth/_guarded': typeof MainAuthGuardedRouteRouteWithChildren
   '/_main/_landing/login': typeof MainLandingLoginRoute
   '/_main/_landing/privacy': typeof MainLandingPrivacyRoute
@@ -148,6 +157,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/logout'
+    | '/music/resolve'
     | '/login'
     | '/privacy'
     | '/signup'
@@ -161,6 +171,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/logout'
+    | '/music/resolve'
     | '/login'
     | '/privacy'
     | '/signup'
@@ -175,6 +186,7 @@ export interface FileRouteTypes {
     | '/logout'
     | '/_main/_auth'
     | '/_main/_landing'
+    | '/music/resolve'
     | '/_main/_auth/_guarded'
     | '/_main/_landing/login'
     | '/_main/_landing/privacy'
@@ -191,6 +203,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   MainRouteRoute: typeof MainRouteRouteWithChildren
   LogoutRoute: typeof LogoutRoute
+  MusicResolveRoute: typeof MusicResolveRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -207,6 +220,13 @@ declare module '@tanstack/react-router' {
       path: ''
       fullPath: '/'
       preLoaderRoute: typeof MainRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/music/resolve': {
+      id: '/music/resolve'
+      path: '/music/resolve'
+      fullPath: '/music/resolve'
+      preLoaderRoute: typeof MusicResolveRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_main/_landing': {
@@ -385,6 +405,7 @@ const MainRouteRouteWithChildren = MainRouteRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   MainRouteRoute: MainRouteRouteWithChildren,
   LogoutRoute: LogoutRoute,
+  MusicResolveRoute: MusicResolveRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
