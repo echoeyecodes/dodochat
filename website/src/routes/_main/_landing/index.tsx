@@ -118,7 +118,7 @@ function LandingPage() {
                                 },
                             ].map((suggest, i) => (
                                 <Link
-                                    to="/conversations"
+                                    to={isLoggedIn ? "/conversations" : "/login"}
                                     search={{ q: suggest.q }}
                                     key={i}
                                     className="px-4 py-3.5 rounded-xl bg-(--color-bg-subtle) border border-(--color-border) text-[13px] text-(--color-text-secondary) hover:text-(--color-text-primary) hover:border-(--color-text-tertiary)/30 transition-all text-left flex items-start gap-3 group"
