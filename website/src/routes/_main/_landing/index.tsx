@@ -117,18 +117,15 @@ function LandingPage() {
                                     icon: LucideFileDown,
                                 },
                             ].map((suggest, i) => (
-                                <button
+                                <Link
+                                    to="/conversations"
+                                    search={{ q: suggest.q }}
                                     key={i}
-                                    onClick={() => {
-                                        setInputValue(suggest.q);
-                                        const target = isLoggedIn ? "/conversations" : "/login";
-                                        navigate({ to: target, search: { q: suggest.q } });
-                                    }}
                                     className="px-4 py-3.5 rounded-xl bg-(--color-bg-subtle) border border-(--color-border) text-[13px] text-(--color-text-secondary) hover:text-(--color-text-primary) hover:border-(--color-text-tertiary)/30 transition-all text-left flex items-start gap-3 group"
                                 >
                                     <suggest.icon className="w-4 h-4 mt-0.5 opacity-40 group-hover:opacity-100 transition-opacity" />
                                     <span className="flex-1">{suggest.q}</span>
-                                </button>
+                                </Link>
                             ))}
                         </div>
                     </div>
