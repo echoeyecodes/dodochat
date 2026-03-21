@@ -105,9 +105,7 @@ export const ToolCallDetails = React.forwardRef<
 
     return (
         <div ref={ref} className={cn("pl-6 mt-1.5 opacity-80", className)} {...props}>
-            <pre
-                className="whitespace-pre-wrap font-inherit text-[12px] opacity-80 leading-relaxed border-l-[1.5px] border-(--color-border-subtle) pl-3 -ml-0.5 my-1"
-            >
+            <pre className="whitespace-pre-wrap font-inherit text-[12px] opacity-80 leading-relaxed border-l-[1.5px] border-(--color-border-subtle) pl-3 -ml-0.5 my-1">
                 {children}
             </pre>
         </div>

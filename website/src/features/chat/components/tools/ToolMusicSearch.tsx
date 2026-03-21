@@ -1,13 +1,16 @@
 import React from "react";
 import { type UIMessagePart } from "ai";
 import { type ChatTools } from "../../context/ChatContext";
-import {
-    LucideMusic,
-    LucideDisc,
-    LucidePlus,
-} from "lucide-react";
+import { LucideMusic, LucideDisc, LucidePlus } from "lucide-react";
 import { useChatContext } from "../../context/ChatContext";
-import { ToolCall, ToolCallIcon, ToolCallMessage, ToolCallTrigger, ToolCallDetails, ToolCallChevron } from "./ToolStatus";
+import {
+    ToolCall,
+    ToolCallIcon,
+    ToolCallMessage,
+    ToolCallTrigger,
+    ToolCallDetails,
+    ToolCallChevron,
+} from "./ToolStatus";
 import { SpotifyIcon } from "../../../common/components/icons/SpotifyIcon";
 import { AppleMusicIcon } from "../../../common/components/icons/AppleMusicIcon";
 import { YoutubeMusicIcon } from "../../../common/components/icons/YoutubeMusicIcon";
@@ -43,7 +46,9 @@ export const ToolMusicSearch: React.FC<ToolMusicSearchProps> = ({ part: p }) => 
                 <ToolCallTrigger>
                     <ToolCallChevron />
                     <ToolCallIcon status="error" />
-                    <ToolCallMessage className="text-(--color-error)">Could not retrieve music facts.</ToolCallMessage>
+                    <ToolCallMessage className="text-(--color-error)">
+                        Could not retrieve music facts.
+                    </ToolCallMessage>
                 </ToolCallTrigger>
                 <ToolCallDetails>{p.errorText}</ToolCallDetails>
             </ToolCall>
@@ -92,8 +97,9 @@ export const ToolMusicSearch: React.FC<ToolMusicSearchProps> = ({ part: p }) => 
 
             <div className="border border-(--color-border) rounded-xl bg-(--color-bg-elevated) shadow-xs overflow-hidden">
                 <div className="divide-y divide-(--color-border-subtle)">
-                    {p.state === "output-available" && p.output?.songs && (
-                        p.output.songs.length > 0 ? (
+                    {p.state === "output-available" &&
+                        p.output?.songs &&
+                        (p.output.songs.length > 0 ? (
                             p.output.songs.map((song, i) => {
                                 const coverUrl = getCoverArtUrl(song.releaseId);
 
@@ -171,8 +177,7 @@ export const ToolMusicSearch: React.FC<ToolMusicSearchProps> = ({ part: p }) => 
                                 <LucideMusic className="h-6 w-6 opacity-30" />
                                 <p className="text-[13px] font-medium">No tracks found.</p>
                             </div>
-                        )
-                    )}
+                        ))}
                 </div>
             </div>
         </div>

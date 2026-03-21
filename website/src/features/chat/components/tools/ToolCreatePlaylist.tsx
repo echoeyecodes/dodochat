@@ -2,7 +2,14 @@ import React from "react";
 import { type UIMessagePart } from "ai";
 import { type ChatTools } from "../../context/ChatContext";
 import { LucideMusic, LucideExternalLink, LucideAlertCircle } from "lucide-react";
-import { ToolCall, ToolCallIcon, ToolCallMessage, ToolCallTrigger, ToolCallDetails, ToolCallChevron } from "./ToolStatus";
+import {
+    ToolCall,
+    ToolCallIcon,
+    ToolCallMessage,
+    ToolCallTrigger,
+    ToolCallDetails,
+    ToolCallChevron,
+} from "./ToolStatus";
 
 type ToolCreatePlaylistPart = Extract<
     UIMessagePart<Record<string, unknown>, ChatTools>,
@@ -20,7 +27,9 @@ export const ToolCreatePlaylist: React.FC<ToolCreatePlaylistProps> = ({ part: p 
                 <ToolCallTrigger>
                     <ToolCallChevron />
                     <ToolCallIcon status="error" />
-                    <ToolCallMessage className="text-(--color-error)">Could not create playlist.</ToolCallMessage>
+                    <ToolCallMessage className="text-(--color-error)">
+                        Could not create playlist.
+                    </ToolCallMessage>
                 </ToolCallTrigger>
                 <ToolCallDetails>{p.errorText}</ToolCallDetails>
             </ToolCall>

@@ -63,8 +63,14 @@ type Song = {
 export const musicTools = {
     randomSongs: tool({
         description:
-            "Fetch a list of songs from MusicBrainz. You can filter by genre, artist, release year, title, and other MusicBrainz fields. The AI can pass any combination of filters to get a random list.",
+            "Fetch a list of specific songs or a random list of songs from MusicBrainz. If you are recommending specific artists and tracks to the user in text, YOU MUST pass those exact tracks using the 'queries' array here to fetch their exact metadata instead of returning random unrelated tracks.",
         inputSchema: z.object({
+            queries: z
+                .array(z.object({ artist: z.string().optional(), title: z.string() }))
+                .optional()
+                .describe(
+                    "A list of explicit track lookups to perform. Use this to lookup the exact songs you recommended.",
+                ),
             genre: z.string().optional().describe("Genre tag, e.g., 'emo', 'rock'"),
             artist: z.string().optional().describe("Artist name"),
             title: z.string().optional().describe("Song title"),
@@ -93,6 +99,7 @@ export const musicTools = {
             message: z.string(),
         }),
         execute: async ({
+            queries,
             genre,
             artist,
             title,
@@ -104,6 +111,37 @@ export const musicTools = {
         }) => {
             try {
                 let songs: Song[] = [];
+
+                if (queries && queries.length > 0) {
+                    for (const q of queries) {
+                        const recRes = await mbClient.search("recording", {
+                            artist: q.artist,
+                            title: q.title,
+                            limit: 3,
+                            official_only,
+                        });
+                        const recs: MusicBrainzRecording[] = recRes.recordings || [];
+                        if (recs.length > 0 && recs[0]) {
+                            const r = recs[0];
+                            songs.push({
+                                title: r.title,
+                                artist:
+                                    r["artist-credit"]?.[0]?.artist?.name || q.artist || "Unknown",
+                                id: r.id,
+                                release: r.releases?.[0]?.title,
+                                releaseId: r.releases?.[0]?.id,
+                                date: r.releases?.[0]?.date,
+                                duration: r.length,
+                                isrc: r.isrcs?.filter(Boolean)[0],
+                            });
+                        }
+                    }
+
+                    return {
+                        songs,
+                        message: `Fetched ${songs.length} requested exact song(s) from MusicBrainz`,
+                    };
+                }
 
                 // If genre is specified, fetch a pool of artists first to avoid repeats
                 if (genre) {
