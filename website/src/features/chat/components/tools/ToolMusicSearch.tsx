@@ -6,10 +6,12 @@ import {
     LucideDisc,
     LucideLoader2,
     LucideAlertCircle,
-    LucidePlay,
     LucidePlus,
 } from "lucide-react";
 import { useChatContext } from "../../context/ChatContext";
+import { SpotifyIcon } from "../../../common/components/icons/SpotifyIcon";
+import { AppleMusicIcon } from "../../../common/components/icons/AppleMusicIcon";
+import { YoutubeMusicIcon } from "../../../common/components/icons/YoutubeMusicIcon";
 
 type ToolMusicSearchPart = Extract<
     UIMessagePart<Record<string, unknown>, ChatTools>,
@@ -132,24 +134,24 @@ export const ToolMusicSearch: React.FC<ToolMusicSearchProps> = ({ part: p }) => 
                                             </div>
                                         </div>
 
-                                        <div className="flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                                             {["spotify", "apple", "youtube"].map((platform) => (
                                                 <a
                                                     key={platform}
                                                     href={`/music/resolve?query=${encodeURIComponent(`${song.artist} ${song.title}`)}&platform=${platform}`}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    className="p-1 px-1.5 rounded-full hover:bg-(--color-bg-muted) text-(--color-text-tertiary) hover:text-(--color-accent) transition-colors text-[10px] uppercase font-black tracking-tighter"
+                                                    className="p-1 rounded-full hover:bg-(--color-bg-muted) text-(--color-text-tertiary) hover:text-(--color-accent) transition-colors text-[10px] uppercase font-black tracking-tighter"
                                                     title={`Listen on ${platform}`}
                                                 >
                                                     {platform === "spotify" && (
-                                                        <LucideDisc className="h-3 w-3" />
+                                                        <SpotifyIcon className="h-4 w-4" />
                                                     )}
                                                     {platform === "apple" && (
-                                                        <LucideMusic className="h-3 w-3" />
+                                                        <AppleMusicIcon className="h-4 w-4" />
                                                     )}
                                                     {platform === "youtube" && (
-                                                        <LucidePlay className="h-3 w-3" />
+                                                        <YoutubeMusicIcon className="h-4 w-4" />
                                                     )}
                                                 </a>
                                             ))}
