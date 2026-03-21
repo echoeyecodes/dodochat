@@ -1,17 +1,8 @@
 import { Router } from "express";
 import isAuthenticated from "../../common/middlewares/isAuthenticated";
 import { validate } from "../../common/middlewares/validate";
-import {
-    ConnectOAuthSchema,
-    OAuthCallbackSchema,
-    DisconnectAccountSchema,
-} from "./req-schema";
-import {
-    getConnectedAccounts,
-    connectProvider,
-    oauthCallback,
-    disconnectAccount,
-} from "./actions";
+import { ConnectOAuthSchema, OAuthCallbackSchema, DisconnectAccountSchema } from "./req-schema";
+import { getConnectedAccounts, connectProvider, oauthCallback, disconnectAccount } from "./actions";
 
 const router = Router();
 

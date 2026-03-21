@@ -6,7 +6,6 @@ const envFile: DotenvConfigOptions | undefined =
 
 dotenv.config(envFile);
 
-
 const envSchema = z.object({
     OAUTH_STATE_SECRET: z.string(),
     USER_GEMINI_TOKEN_SECRET: z.string(),
@@ -36,7 +35,6 @@ const envSchema = z.object({
 });
 
 const configs = envSchema.parse(process.env);
-
 
 const envConfig = {
     get: <K extends keyof typeof configs>(key: K): (typeof configs)[K] => {

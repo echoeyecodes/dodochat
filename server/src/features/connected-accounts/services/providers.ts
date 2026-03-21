@@ -2,12 +2,12 @@ import { spotifyClient } from "@/lib/spotify";
 import { type OAuthProvider } from "../types/provider";
 
 class SpotifyOAuthProvider implements OAuthProvider {
-    get_auth_url(state: string): string {
-        return spotifyClient.get_auth_url(state);
+    getAuthUrl(state: string): string {
+        return spotifyClient.getAuthUrl(state);
     }
 
-    async exchange_code(code: string) {
-        const tokens = await spotifyClient.exchange_code(code);
+    async exchangeCode(code: string) {
+        const tokens = await spotifyClient.exchangeCode(code);
         return {
             access_token: tokens.access_token,
             refresh_token: tokens.refresh_token,
@@ -15,8 +15,8 @@ class SpotifyOAuthProvider implements OAuthProvider {
         };
     }
 
-    async get_user_profile(access_token: string) {
-        return await spotifyClient.get_user_profile(access_token);
+    async getUserProfile(accessToken: string) {
+        return await spotifyClient.getUserProfile(accessToken);
     }
 }
 

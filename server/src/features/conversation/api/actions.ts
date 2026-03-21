@@ -11,7 +11,7 @@ import { HTTP_STATUS_CODES } from "../../common/constants/http-status-codes";
 import type { ChatInput, UpdateConversationInput } from "./req-schema";
 import type { Message } from "../types/index";
 import storageService from "../../../lib/storage";
-import { allTools } from "../tools";
+import { getAllTools } from "../tools";
 import { userSettingsCache } from "../../user/helpers/user-settings-cache";
 import { safeDecryptGeminiKey } from "../../user/helpers/safe-decrypt";
 import envConfig from "@/lib/env";
@@ -271,6 +271,11 @@ const chat = async (req: Request, res: Response, next: NextFunction) => {
             "- You can pass random queries for diversity, e.g., pick different genres or artists to return varied lists.",
             "- ALWAYS wrap results from the tool in a human-readable response before showing them to the user.",
 
+            "Spotify Playlist Tool: If the user asks to 'make a playlist', 'create a spotify playlist', or similar, you MUST use the createPlaylist tool.",
+            "- You should read the conversation history to gather the songs (title and artist) the user wants. If the user just says 'make a playlist of these', look at the previously suggested songs/results.",
+            "- You can also use randomSongs to find songs first if the user just asks for a 'playlist of [genre]'.",
+            "- The tool will return a Spotify URL and a success message upon completion.",
+
             fileListStr ? `The user has uploaded the following files: ${fileListStr}.` : "",
 
             context
@@ -286,7 +291,7 @@ const chat = async (req: Request, res: Response, next: NextFunction) => {
             model: googleProvider("gemini-3.1-flash-lite-preview"),
             messages: modelMessages,
             system: systemPrompt,
-            tools: allTools,
+            tools: getAllTools(authReq.user_id!),
             stopWhen: stepCountIs(5),
             onFinish: async (event) => {
                 const consolidatedParts: Message["parts"] = [];

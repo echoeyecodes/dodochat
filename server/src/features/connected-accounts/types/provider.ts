@@ -12,7 +12,7 @@ export type ProviderUserProfile = {
 };
 
 export type OAuthProvider = {
-    get_auth_url(state: string): string;
-    exchange_code(code: string): Promise<OAuthTokens>;
-    get_user_profile(access_token: string): Promise<ProviderUserProfile>;
+    getAuthUrl(state: string): string;
+    exchangeCode(code: string): Promise<OAuthTokens>;
+    getUserProfile(accessToken: string): Promise<ProviderUserProfile>;
 };

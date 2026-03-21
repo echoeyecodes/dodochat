@@ -85,6 +85,26 @@ export type ChatTools = {
             message: string;
         };
     };
+    createPlaylist: {
+        input: {
+            name?: string;
+            songs: Array<{
+                title: string;
+                artist: string;
+                isrc?: string;
+            }>;
+        };
+        output: {
+            success: boolean;
+            id?: string;
+            title?: string;
+            description?: string;
+            thumbnail?: string;
+            songCount?: number;
+            url?: string;
+            message: string;
+        };
+    };
 };
 
 export type FilePart = {

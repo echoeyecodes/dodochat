@@ -36,7 +36,7 @@ export const connectProvider = async (req: AuthRequest, res: Response, next: Nex
             }),
         });
 
-        const auth_url = provider.get_auth_url(state);
+        const authUrl = provider.getAuthUrl(state);
         res.cookie("oauth_auth_state", state, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production",
@@ -44,7 +44,7 @@ export const connectProvider = async (req: AuthRequest, res: Response, next: Nex
         });
 
         return sendResponse({ res, status: HTTP_STATUS_CODES.OK })({
-            auth_url,
+            authUrl,
         });
     } catch (error) {
         return next(error);
@@ -81,8 +81,8 @@ export const oauthCallback = async (req: AuthRequest, res: Response, next: NextF
 
         res.clearCookie("oauth_auth_state");
 
-        const tokens = await provider.exchange_code(code);
-        const profile = await provider.get_user_profile(tokens.access_token);
+        const tokens = await provider.exchangeCode(code);
+        const profile = await provider.getUserProfile(tokens.access_token);
 
         await connectedAccountRepository.upsertAccount({
             user_id: new mongoose.Types.ObjectId(req.user_id!),
@@ -107,9 +107,14 @@ export const oauthCallback = async (req: AuthRequest, res: Response, next: NextF
 export const disconnectAccount = async (req: AuthRequest, res: Response, next: NextFunction) => {
     try {
         const { id } = req.params;
-        await connectedAccountRepository.deleteById({ user_id: req.user_id!, account_id: id as string });
+        await connectedAccountRepository.deleteById({
+            user_id: req.user_id!,
+            account_id: id as string,
+        });
 
-        return sendResponse({ res, status: HTTP_STATUS_CODES.OK })({ message: "Account disconnected successfully" });
+        return sendResponse({ res, status: HTTP_STATUS_CODES.OK })({
+            message: "Account disconnected successfully",
+        });
     } catch (error) {
         return next(error);
     }

@@ -17,7 +17,8 @@ export const ConnectedAccounts = () => {
                     Connected Accounts
                 </h3>
                 <p className="text-[13px] text-(--color-text-tertiary)">
-                    Dodochat will use your connected accounts to personalize your experience with the app.
+                    Dodochat will use your connected accounts to personalize your experience with
+                    the app.
                 </p>
             </div>
 
@@ -55,10 +56,7 @@ export const ConnectedAccounts = () => {
                             Disconnect
                         </Button>
                     ) : (
-                        <Link
-                            to="/oauth/$platform/connect"
-                            params={{ platform: "spotify" }}
-                        >
+                        <Link to="/oauth/$platform/connect" params={{ platform: "spotify" }}>
                             <Button
                                 size="sm"
                                 className="h-8 px-4 bg-[#1DB954] hover:bg-[#1DB954]/90 text-white border-0 shadow-none font-bold text-[13px] rounded-full"

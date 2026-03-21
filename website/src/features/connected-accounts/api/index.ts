@@ -39,6 +39,6 @@ export const connectedAccountsApi = {
             path: `api/connected-accounts/${provider}/connect`,
             method: "GET",
         });
-        return (data as { data: { auth_url: string } }).data.auth_url;
+        return (data as { data: { authUrl: string } }).data.authUrl;
     },
 };
