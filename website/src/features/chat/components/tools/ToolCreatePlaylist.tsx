@@ -1,7 +1,8 @@
 import React from "react";
 import { type UIMessagePart } from "ai";
 import { type ChatTools } from "../../context/ChatContext";
-import { LucideMusic, LucideExternalLink, LucideLoader2, LucideAlertCircle } from "lucide-react";
+import { LucideMusic, LucideExternalLink, LucideAlertCircle } from "lucide-react";
+import { ToolCall, ToolCallIcon, ToolCallMessage, ToolCallTrigger, ToolCallDetails, ToolCallChevron } from "./ToolStatus";
 
 type ToolCreatePlaylistPart = Extract<
     UIMessagePart<Record<string, unknown>, ChatTools>,
@@ -15,33 +16,33 @@ type ToolCreatePlaylistProps = {
 export const ToolCreatePlaylist: React.FC<ToolCreatePlaylistProps> = ({ part: p }) => {
     if (p.state === "output-error") {
         return (
-            <div className="flex items-center gap-2 p-3 rounded-lg border border-(--color-border) bg-(--color-error-bg) text-(--color-error) my-4 max-w-[400px]">
-                <LucideAlertCircle className="h-4 w-4 shrink-0" />
-                <span className="text-[12px] font-medium">
-                    {p.errorText || "Could not create playlist."}
-                </span>
-            </div>
+            <ToolCall>
+                <ToolCallTrigger>
+                    <ToolCallChevron />
+                    <ToolCallIcon status="error" />
+                    <ToolCallMessage className="text-(--color-error)">Could not create playlist.</ToolCallMessage>
+                </ToolCallTrigger>
+                <ToolCallDetails>{p.errorText}</ToolCallDetails>
+            </ToolCall>
         );
     }
 
     if (p.output && p.output.status === "requires_auth") {
         return (
-            <div className="w-full max-w-[400px] my-4 p-4 rounded-xl border border-(--color-border) bg-(--color-bg-elevated) shadow-xs animate-in fade-in duration-300">
-                <div className="flex flex-col gap-3">
-                    <div className="flex items-center gap-3">
-                        <LucideAlertCircle className="h-4 w-4 text-(--color-error)" />
-                        <span className="text-[13px] font-medium text-(--color-text-primary)">
-                            {p.output.message || "Spotify account not connected."}
-                        </span>
-                    </div>
+            <div className="flex flex-col my-1.5 animate-in fade-in duration-300 text-[13px] font-mono tracking-tight">
+                <div className="flex items-center gap-2.5 text-(--color-warning)">
+                    <LucideAlertCircle className="h-3.5 w-3.5 shrink-0" strokeWidth={2.5} />
+                    <span>{p.output.message || "Spotify account not connected."}</span>
+                </div>
+                <div className="pl-6 mt-2 mb-1">
                     <a
                         href={p.output.authUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-lg bg-(--color-text-primary) text-(--color-bg) text-[13px] font-bold hover:opacity-90 transition-all active:scale-95"
+                        className="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md bg-(--color-text-primary) text-(--color-bg) text-[11px] font-bold hover:opacity-90 transition-all active:scale-95"
                     >
-                        Connect Spotify Account
-                        <LucideExternalLink className="h-3.5 w-3.5" />
+                        Connect Spotify
+                        <LucideExternalLink className="h-3 w-3" />
                     </a>
                 </div>
             </div>
@@ -54,22 +55,18 @@ export const ToolCreatePlaylist: React.FC<ToolCreatePlaylistProps> = ({ part: p 
         const isError = p.state === "output-available" && p.output?.success === false;
 
         return (
-            <div className="w-full max-w-[400px] my-4 p-4 rounded-xl border border-(--color-border) bg-(--color-bg-elevated) shadow-xs animate-in fade-in duration-300">
-                <div className="flex items-center gap-3">
-                    {isError ? (
-                        <LucideAlertCircle className="h-4 w-4 text-(--color-error)" />
-                    ) : (
-                        <LucideLoader2 className="h-4 w-4 text-(--color-text-secondary) animate-spin" />
-                    )}
-                    <span className="text-[13px] font-medium text-(--color-text-primary)">
+            <ToolCall>
+                <div className="flex items-center gap-2.5 text-left w-max">
+                    <ToolCallIcon status={isError ? "error" : "loading"} />
+                    <ToolCallMessage className={isError ? "text-(--color-error)" : ""}>
                         {isError
-                            ? p.output?.message
+                            ? p.output?.message || "Failed to create playlist"
                             : p.output?.status === "resuming"
-                              ? p.output?.message
+                              ? p.output?.message || "Resuming..."
                               : "Creating playlist..."}
-                    </span>
+                    </ToolCallMessage>
                 </div>
-            </div>
+            </ToolCall>
         );
     }
 

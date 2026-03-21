@@ -4,11 +4,10 @@ import { type ChatTools } from "../../context/ChatContext";
 import {
     LucideMusic,
     LucideDisc,
-    LucideLoader2,
-    LucideAlertCircle,
     LucidePlus,
 } from "lucide-react";
 import { useChatContext } from "../../context/ChatContext";
+import { ToolCall, ToolCallIcon, ToolCallMessage, ToolCallTrigger, ToolCallDetails, ToolCallChevron } from "./ToolStatus";
 import { SpotifyIcon } from "../../../common/components/icons/SpotifyIcon";
 import { AppleMusicIcon } from "../../../common/components/icons/AppleMusicIcon";
 import { YoutubeMusicIcon } from "../../../common/components/icons/YoutubeMusicIcon";
@@ -38,18 +37,31 @@ export const ToolMusicSearch: React.FC<ToolMusicSearchProps> = ({ part: p }) => 
         });
     };
 
-    if (p.state === "output-error") {
+    if ("errorText" in p && p.errorText) {
         return (
-            <div className="flex items-center gap-2 p-3 rounded-lg border border-(--color-border) bg-(--color-error-bg) text-(--color-error) my-4 max-w-[400px]">
-                <LucideAlertCircle className="h-4 w-4 shrink-0" />
-                <span className="text-[12px] font-medium leading-none">
-                    {p.errorText || "Could not retrieve songs."}
-                </span>
-            </div>
+            <ToolCall>
+                <ToolCallTrigger>
+                    <ToolCallChevron />
+                    <ToolCallIcon status="error" />
+                    <ToolCallMessage className="text-(--color-error)">Could not retrieve music facts.</ToolCallMessage>
+                </ToolCallTrigger>
+                <ToolCallDetails>{p.errorText}</ToolCallDetails>
+            </ToolCall>
         );
     }
 
-    const isLoading = p.state === "input-streaming" || p.state === "input-available";
+    const isLoading = p.state !== "output-available";
+
+    if (isLoading) {
+        return (
+            <ToolCall>
+                <div className="flex items-center gap-2.5 text-left w-max">
+                    <ToolCallIcon status="loading" />
+                    <ToolCallMessage>Searching for music...</ToolCallMessage>
+                </div>
+            </ToolCall>
+        );
+    }
 
     return (
         <div className="w-full max-w-[500px] my-5 font-body">
@@ -69,7 +81,7 @@ export const ToolMusicSearch: React.FC<ToolMusicSearchProps> = ({ part: p }) => 
                         className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-(--color-text-primary) text-(--color-bg) text-[11px] font-bold hover:opacity-90 disabled:opacity-40 transition-all active:scale-95 group/btn"
                     >
                         {chat.isLoading ? (
-                            <LucideLoader2 className="h-3 w-3 animate-spin" />
+                            <ToolCallIcon status="loading" className="h-3 w-3" />
                         ) : (
                             <LucidePlus className="h-3 w-3" />
                         )}
@@ -80,12 +92,7 @@ export const ToolMusicSearch: React.FC<ToolMusicSearchProps> = ({ part: p }) => 
 
             <div className="border border-(--color-border) rounded-xl bg-(--color-bg-elevated) shadow-xs overflow-hidden">
                 <div className="divide-y divide-(--color-border-subtle)">
-                    {isLoading ? (
-                        <div className="flex items-center justify-center py-16 gap-3 text-(--color-text-tertiary)">
-                            <LucideLoader2 className="h-4 w-4 animate-spin" />
-                            <span className="text-[13px] font-medium">Searching for music...</span>
-                        </div>
-                    ) : p.state === "output-available" && p.output?.songs ? (
+                    {p.state === "output-available" && p.output?.songs && (
                         p.output.songs.length > 0 ? (
                             p.output.songs.map((song, i) => {
                                 const coverUrl = getCoverArtUrl(song.releaseId);
@@ -165,7 +172,7 @@ export const ToolMusicSearch: React.FC<ToolMusicSearchProps> = ({ part: p }) => 
                                 <p className="text-[13px] font-medium">No tracks found.</p>
                             </div>
                         )
-                    ) : null}
+                    )}
                 </div>
             </div>
         </div>
