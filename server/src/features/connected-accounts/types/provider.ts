@@ -1,5 +1,3 @@
-import type { SpotifyTokenResponse } from "@/lib/spotify/types";
-
 export type OAuthTokens = {
     access_token: string;
     refresh_token?: string;

@@ -32,6 +32,7 @@ const envSchema = z.object({
     SPOTIFY_REDIRECT_URI: z.url(),
     YOUTUBE_API_KEY: z.string(),
     SERVER_PORT: z.coerce.number().default(3001),
+    COOKIE_DOMAIN: z.string().optional(),
 });
 
 const configs = envSchema.parse(process.env);

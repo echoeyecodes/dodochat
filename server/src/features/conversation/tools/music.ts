@@ -7,6 +7,48 @@ import { spotifyClient } from "@/lib/spotify";
 
 const mbClient = new MusicBrainzClient();
 
+export async function* waitForOAuthConnection({
+    userId,
+    provider,
+    authUrl,
+}: {
+    userId: string;
+    provider: "spotify";
+    authUrl: string;
+}): AsyncGenerator<unknown, string, unknown> {
+    try {
+        const tokenRes = await getValidAccessToken({ userId, provider });
+        return tokenRes.accessToken;
+    } catch {
+        yield {
+            status: "requires_auth",
+            authUrl,
+            message: `Please connect your ${provider} account.`,
+        };
+
+        // Poll for up to 120 times (every 5 seconds) -> 10 minutes total
+        for (let i = 0; i < 120; i++) {
+            await new Promise((resolve) => setTimeout(resolve, 5000));
+            try {
+                const tokenRes = await getValidAccessToken({ userId, provider });
+
+                yield {
+                    status: "resuming",
+                    message: `Account connected! Resuming task...`,
+                };
+
+                return tokenRes.accessToken;
+            } catch {
+                // Ignore and continue polling
+            }
+        }
+
+        throw new Error(
+            `${provider.charAt(0).toUpperCase() + provider.slice(1)} account connection timeout. Please try again later.`,
+        );
+    }
+}
+
 type Song = {
     title: string;
     artist: string;
@@ -158,8 +200,23 @@ export const createPlaylistTool = (userId: string) =>
                 )
                 .describe("The list of songs to add to the playlist."),
         }),
-        execute: async ({ name, songs }) => {
-            const { accessToken } = await getValidAccessToken({ userId, provider: "spotify" });
+        execute: async function* ({ name, songs }) {
+            let accessToken: string;
+
+            try {
+                accessToken = yield* waitForOAuthConnection({
+                    userId,
+                    provider: "spotify",
+                    authUrl: "/oauth/spotify/connect",
+                });
+            } catch (err) {
+                yield {
+                    success: false,
+                    message: (err as Error).message,
+                };
+                return;
+            }
+
             try {
                 const trackUris: string[] = [];
                 for (const song of songs) {
@@ -181,10 +238,11 @@ export const createPlaylistTool = (userId: string) =>
                 }
 
                 if (trackUris.length === 0) {
-                    return {
+                    yield {
                         success: false,
                         message: "Could not find any of the requested songs on Spotify.",
                     };
+                    return;
                 }
 
                 const playlist = await spotifyClient.createPlaylist(name, accessToken);
@@ -192,7 +250,7 @@ export const createPlaylistTool = (userId: string) =>
 
                 const updatedPlaylist = await spotifyClient.getPlaylist(playlist.id, accessToken);
 
-                return {
+                yield {
                     success: true,
                     id: updatedPlaylist.id,
                     title: updatedPlaylist.name,
@@ -204,7 +262,7 @@ export const createPlaylistTool = (userId: string) =>
                 };
             } catch (error) {
                 console.error("Failed to create playlist:", error);
-                return {
+                yield {
                     success: false,
                     message:
                         (error as Error)?.message ||

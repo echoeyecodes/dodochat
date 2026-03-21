@@ -95,14 +95,16 @@ export type ChatTools = {
             }>;
         };
         output: {
-            success: boolean;
+            success?: boolean;
+            status?: "requires_auth" | "resuming" | "success" | "loading";
+            authUrl?: string;
             id?: string;
             title?: string;
             description?: string;
             thumbnail?: string;
             songCount?: number;
             url?: string;
-            message: string;
+            message?: string;
         };
     };
 };
