@@ -25,6 +25,8 @@ import { Route as MainAuthGuardedProfileRouteImport } from './routes/_main/_auth
 import { Route as MainAuthGuardedConversationsRouteRouteImport } from './routes/_main/_auth/_guarded/conversations/route'
 import { Route as MainAuthGuardedConversationsIndexRouteImport } from './routes/_main/_auth/_guarded/conversations/index'
 import { Route as MainAuthGuardedConversationsIdIndexRouteImport } from './routes/_main/_auth/_guarded/conversations/$id/index'
+import { Route as MainAuthGuardedOauthPlatformConnectRouteImport } from './routes/_main/_auth/_guarded/oauth.$platform.connect'
+import { Route as MainAuthGuardedOauthPlatformCallbackRouteImport } from './routes/_main/_auth/_guarded/oauth.$platform.callback'
 
 const LogoutRoute = LogoutRouteImport.update({
   id: '/logout',
@@ -105,6 +107,18 @@ const MainAuthGuardedConversationsIdIndexRoute =
     path: '/$id/',
     getParentRoute: () => MainAuthGuardedConversationsRouteRoute,
   } as any)
+const MainAuthGuardedOauthPlatformConnectRoute =
+  MainAuthGuardedOauthPlatformConnectRouteImport.update({
+    id: '/oauth/$platform/connect',
+    path: '/oauth/$platform/connect',
+    getParentRoute: () => MainAuthGuardedRouteRoute,
+  } as any)
+const MainAuthGuardedOauthPlatformCallbackRoute =
+  MainAuthGuardedOauthPlatformCallbackRouteImport.update({
+    id: '/oauth/$platform/callback',
+    path: '/oauth/$platform/callback',
+    getParentRoute: () => MainAuthGuardedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof MainLandingIndexRoute
@@ -118,6 +132,8 @@ export interface FileRoutesByFullPath {
   '/profile': typeof MainAuthGuardedProfileRoute
   '/s/$token': typeof MainAuthSTokenRoute
   '/conversations/': typeof MainAuthGuardedConversationsIndexRoute
+  '/oauth/$platform/callback': typeof MainAuthGuardedOauthPlatformCallbackRoute
+  '/oauth/$platform/connect': typeof MainAuthGuardedOauthPlatformConnectRoute
   '/conversations/$id/': typeof MainAuthGuardedConversationsIdIndexRoute
 }
 export interface FileRoutesByTo {
@@ -131,6 +147,8 @@ export interface FileRoutesByTo {
   '/profile': typeof MainAuthGuardedProfileRoute
   '/s/$token': typeof MainAuthSTokenRoute
   '/conversations': typeof MainAuthGuardedConversationsIndexRoute
+  '/oauth/$platform/callback': typeof MainAuthGuardedOauthPlatformCallbackRoute
+  '/oauth/$platform/connect': typeof MainAuthGuardedOauthPlatformConnectRoute
   '/conversations/$id': typeof MainAuthGuardedConversationsIdIndexRoute
 }
 export interface FileRoutesById {
@@ -150,6 +168,8 @@ export interface FileRoutesById {
   '/_main/_auth/_guarded/profile': typeof MainAuthGuardedProfileRoute
   '/_main/_auth/s/$token': typeof MainAuthSTokenRoute
   '/_main/_auth/_guarded/conversations/': typeof MainAuthGuardedConversationsIndexRoute
+  '/_main/_auth/_guarded/oauth/$platform/callback': typeof MainAuthGuardedOauthPlatformCallbackRoute
+  '/_main/_auth/_guarded/oauth/$platform/connect': typeof MainAuthGuardedOauthPlatformConnectRoute
   '/_main/_auth/_guarded/conversations/$id/': typeof MainAuthGuardedConversationsIdIndexRoute
 }
 export interface FileRouteTypes {
@@ -166,6 +186,8 @@ export interface FileRouteTypes {
     | '/profile'
     | '/s/$token'
     | '/conversations/'
+    | '/oauth/$platform/callback'
+    | '/oauth/$platform/connect'
     | '/conversations/$id/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -179,6 +201,8 @@ export interface FileRouteTypes {
     | '/profile'
     | '/s/$token'
     | '/conversations'
+    | '/oauth/$platform/callback'
+    | '/oauth/$platform/connect'
     | '/conversations/$id'
   id:
     | '__root__'
@@ -197,6 +221,8 @@ export interface FileRouteTypes {
     | '/_main/_auth/_guarded/profile'
     | '/_main/_auth/s/$token'
     | '/_main/_auth/_guarded/conversations/'
+    | '/_main/_auth/_guarded/oauth/$platform/callback'
+    | '/_main/_auth/_guarded/oauth/$platform/connect'
     | '/_main/_auth/_guarded/conversations/$id/'
   fileRoutesById: FileRoutesById
 }
@@ -320,6 +346,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MainAuthGuardedConversationsIdIndexRouteImport
       parentRoute: typeof MainAuthGuardedConversationsRouteRoute
     }
+    '/_main/_auth/_guarded/oauth/$platform/connect': {
+      id: '/_main/_auth/_guarded/oauth/$platform/connect'
+      path: '/oauth/$platform/connect'
+      fullPath: '/oauth/$platform/connect'
+      preLoaderRoute: typeof MainAuthGuardedOauthPlatformConnectRouteImport
+      parentRoute: typeof MainAuthGuardedRouteRoute
+    }
+    '/_main/_auth/_guarded/oauth/$platform/callback': {
+      id: '/_main/_auth/_guarded/oauth/$platform/callback'
+      path: '/oauth/$platform/callback'
+      fullPath: '/oauth/$platform/callback'
+      preLoaderRoute: typeof MainAuthGuardedOauthPlatformCallbackRouteImport
+      parentRoute: typeof MainAuthGuardedRouteRoute
+    }
   }
 }
 
@@ -344,12 +384,18 @@ const MainAuthGuardedConversationsRouteRouteWithChildren =
 interface MainAuthGuardedRouteRouteChildren {
   MainAuthGuardedConversationsRouteRoute: typeof MainAuthGuardedConversationsRouteRouteWithChildren
   MainAuthGuardedProfileRoute: typeof MainAuthGuardedProfileRoute
+  MainAuthGuardedOauthPlatformCallbackRoute: typeof MainAuthGuardedOauthPlatformCallbackRoute
+  MainAuthGuardedOauthPlatformConnectRoute: typeof MainAuthGuardedOauthPlatformConnectRoute
 }
 
 const MainAuthGuardedRouteRouteChildren: MainAuthGuardedRouteRouteChildren = {
   MainAuthGuardedConversationsRouteRoute:
     MainAuthGuardedConversationsRouteRouteWithChildren,
   MainAuthGuardedProfileRoute: MainAuthGuardedProfileRoute,
+  MainAuthGuardedOauthPlatformCallbackRoute:
+    MainAuthGuardedOauthPlatformCallbackRoute,
+  MainAuthGuardedOauthPlatformConnectRoute:
+    MainAuthGuardedOauthPlatformConnectRoute,
 }
 
 const MainAuthGuardedRouteRouteWithChildren =

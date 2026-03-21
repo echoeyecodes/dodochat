@@ -18,6 +18,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useUpdateProfile } from "../hooks/useUpdateProfile";
 import { toast } from "sonner";
+import { ConnectedAccounts } from "@/features/connected-accounts/components/ConnectedAccounts";
 
 const profileSchema = z.object({
     gemini_api_key: z
@@ -270,6 +271,12 @@ export const ProfileDetail = () => {
                         </div>
                     </section>
                 </form>
+
+                <section className="rounded-xl border border-(--color-border) bg-(--color-bg-elevated) overflow-hidden">
+                    <div className="px-5 py-5">
+                        <ConnectedAccounts />
+                    </div>
+                </section>
             </div>
         </div>
     );

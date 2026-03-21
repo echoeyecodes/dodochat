@@ -93,6 +93,20 @@ export const musicApi = {
         });
         return (data as { data: MusicResolveResult }).data;
     },
+    createPlaylist: async ({
+        name,
+        songs,
+    }: {
+        name?: string;
+        songs: { title: string; artist: string; isrc?: string }[];
+    }): Promise<{ url: string; message: string }> => {
+        const { data } = await request({
+            path: "/api/music/playlist",
+            method: "POST",
+            body: { name, songs },
+        });
+        return data as { url: string; message: string };
+    },
 };
 
 export const conversationApi = {
