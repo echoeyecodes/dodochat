@@ -16,12 +16,16 @@ const decrypt = ({ seed, value }: { seed: string; value: string }): string => {
         throw new Error("Invalid encrypted value format");
     }
 
-    const iv = Buffer.from(ivHex, "hex");
-    const encryptedText = Buffer.from(encryptedHex, "hex");
-    const key = crypto.createHash("sha256").update(seed).digest();
-    const decipher = crypto.createDecipheriv("aes-256-cbc", key, iv);
-    const decrypted = Buffer.concat([decipher.update(encryptedText), decipher.final()]);
-    return decrypted.toString();
+    try {
+        const iv = Buffer.from(ivHex, "hex");
+        const encryptedText = Buffer.from(encryptedHex, "hex");
+        const key = crypto.createHash("sha256").update(seed).digest();
+        const decipher = crypto.createDecipheriv("aes-256-cbc", key, iv);
+        const decrypted = Buffer.concat([decipher.update(encryptedText), decipher.final()]);
+        return decrypted.toString();
+    } catch {
+        throw new Error("Failed to decrypt value. Encryption key or content might be invalid.");
+    }
 };
 
 const encryption = {

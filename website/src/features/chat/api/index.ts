@@ -74,6 +74,41 @@ const forkConversation = async (token: string): Promise<ConversationDetail> => {
     return (data as { data: ConversationDetail }).data;
 };
 
+type MusicResolveResult = {
+    link: string;
+    platform: "apple" | "spotify" | "youtube";
+};
+export const musicApi = {
+    resolveLink: async ({
+        query,
+        platform,
+    }: {
+        query: string;
+        platform: "apple" | "spotify" | "youtube";
+    }): Promise<MusicResolveResult> => {
+        const { data } = await request({
+            path: "/api/music/resolve",
+            method: "GET",
+            query: { query, platform },
+        });
+        return (data as { data: MusicResolveResult }).data;
+    },
+    createPlaylist: async ({
+        name,
+        songs,
+    }: {
+        name?: string;
+        songs: { title: string; artist: string; isrc?: string }[];
+    }): Promise<{ url: string; message: string }> => {
+        const { data } = await request({
+            path: "/api/music/playlist",
+            method: "POST",
+            body: { name, songs },
+        });
+        return data as { url: string; message: string };
+    },
+};
+
 export const conversationApi = {
     fetchConversations,
     fetchConversationById,

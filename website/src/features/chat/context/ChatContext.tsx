@@ -60,6 +60,53 @@ export type ChatTools = {
             message: string;
         };
     };
+    randomSongs: {
+        input: {
+            genre?: string;
+            artist?: string;
+            title?: string;
+            release?: string;
+            country?: string;
+            date?: string;
+            limit?: number;
+            official_only?: boolean;
+        };
+        output: {
+            songs: Array<{
+                title: string;
+                artist: string;
+                id: string;
+                release?: string;
+                releaseId?: string;
+                date?: string;
+                duration?: number;
+                isrc?: string;
+            }>;
+            message: string;
+        };
+    };
+    createPlaylist: {
+        input: {
+            name?: string;
+            songs: Array<{
+                title: string;
+                artist: string;
+                isrc?: string;
+            }>;
+        };
+        output: {
+            success?: boolean;
+            status?: "requires_auth" | "resuming" | "success" | "loading";
+            authUrl?: string;
+            id?: string;
+            title?: string;
+            description?: string;
+            thumbnail?: string;
+            songCount?: number;
+            url?: string;
+            message?: string;
+        };
+    };
 };
 
 export type FilePart = {

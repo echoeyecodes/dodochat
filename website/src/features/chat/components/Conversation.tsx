@@ -8,6 +8,8 @@ import { FileAttachment } from "./FileAttachment";
 import { ToolApplyImageEffect } from "./tools/ToolApplyImageEffect";
 import { ToolGenerateFile } from "./tools/ToolGenerateFile";
 import { ToolGetSystemInfo } from "./tools/ToolGetSystemInfo";
+import { ToolMusicSearch } from "./tools/ToolMusicSearch";
+import { ToolCreatePlaylist } from "./tools/ToolCreatePlaylist";
 import { ChatOptions } from "./ChatOptions";
 import { ShareDialog, type ShareDialogRef } from "./ShareDialog";
 import {
@@ -660,6 +662,29 @@ export const Conversation = ({ title, isSharedView = false, handleFork }: Conver
                                                                 ) {
                                                                     return (
                                                                         <ToolGenerateFile
+                                                                            key={partIdx}
+                                                                            part={part}
+                                                                        />
+                                                                    );
+                                                                }
+
+                                                                if (
+                                                                    part.type === "tool-randomSongs"
+                                                                ) {
+                                                                    return (
+                                                                        <ToolMusicSearch
+                                                                            key={partIdx}
+                                                                            part={part}
+                                                                        />
+                                                                    );
+                                                                }
+
+                                                                if (
+                                                                    part.type ===
+                                                                    "tool-createPlaylist"
+                                                                ) {
+                                                                    return (
+                                                                        <ToolCreatePlaylist
                                                                             key={partIdx}
                                                                             part={part}
                                                                         />

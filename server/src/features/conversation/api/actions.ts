@@ -11,7 +11,7 @@ import { HTTP_STATUS_CODES } from "../../common/constants/http-status-codes";
 import type { ChatInput, UpdateConversationInput } from "./req-schema";
 import type { Message } from "../types/index";
 import storageService from "../../../lib/storage";
-import { allTools } from "../tools";
+import { getAllTools } from "../tools";
 import { userSettingsCache } from "../../user/helpers/user-settings-cache";
 import { safeDecryptGeminiKey } from "../../user/helpers/safe-decrypt";
 import envConfig from "@/lib/env";
@@ -246,18 +246,38 @@ const chat = async (req: Request, res: Response, next: NextFunction) => {
         }
 
         const systemPrompt = [
-            "You are a versatile and intelligent AI assistant. You provide helpful, concise, and conversational responses to a wide range of questions, while also leveraging specialized tools like IGDB for gaming data or localized processing for files and images.",
+            "You are a versatile and intelligent AI assistant. You provide helpful, concise, and conversational responses to a wide range of questions, while also leveraging specialized tools like IGDB for gaming data, localized processing for files and images, and MusicBrainz for song queries.",
+
             `The current conversation ID is ${conversation._id}. You MUST provide this ID to tools that require it (like applyImageEffect).`,
+
             "IMPORTANT: Use the provided tools (like getSystemInfo) ONLY if the user explicitly asks for system metrics, uptime, or process information.",
+
             "Gaming Images: IGDB images use hashes. The pattern is https://images.igdb.com/igdb/image/upload/t_{size}/{hash}.jpg. Common sizes: t_cover_big, t_screenshot_huge, t_720p, t_1080p. Append _2x for high-DPI (e.g. t_720p_2x).",
+
             "CRITICAL: To display IGDB images in the chat, you MUST use Markdown image syntax: ![description](https://url). Always ensure you prepend 'https:' to IGDB image URLs if they start with '//'.",
+
             "Gaming Tools: If the user asks about a game, search for it first, then get more details if needed. Prefer showing release dates, ratings, and platforms.",
+
             "Image Processing: You can process BOTH uploaded files and external images (like IGDB covers).",
             "- For uploaded files: Use the fileId from the list below.",
             "- For IGDB/External images: Use the imageUrl from the game details.",
+
             "File Generation: You can generate .txt or .pdf files based on user requests (e.g., 'summarize this into a pdf', 'create a text file of our discussion').",
             "- You MUST always provide the current conversationId to tools like applyImageEffect and generateFile.",
+
+            "MusicBrainz Tool: If the user asks for songs, music by genre, or random song lists, you can use the MusicBrainz randomSongs tool.",
+            "- Input any combination of filters: genre, artist, title, release, country, date, limit, official_only.",
+            "- The tool will return a list of songs with title, artist, MBID, release, and date.",
+            "- You can pass random queries for diversity, e.g., pick different genres or artists to return varied lists.",
+            "- ALWAYS wrap results from the tool in a human-readable response before showing them to the user.",
+
+            "Spotify Playlist Tool: If the user asks to 'make a playlist', 'create a spotify playlist', or similar, you MUST use the createPlaylist tool.",
+            "- You should read the conversation history to gather the songs (title and artist) the user wants. If the user just says 'make a playlist of these', look at the previously suggested songs/results.",
+            "- You can also use randomSongs to find songs first if the user just asks for a 'playlist of [genre]'.",
+            "- The tool will return a Spotify URL and a success message upon completion.",
+
             fileListStr ? `The user has uploaded the following files: ${fileListStr}.` : "",
+
             context
                 ? `Use the following relevant context from these files to inform your response:\n${context}`
                 : fileListStr
@@ -271,7 +291,7 @@ const chat = async (req: Request, res: Response, next: NextFunction) => {
             model: googleProvider("gemini-3.1-flash-lite-preview"),
             messages: modelMessages,
             system: systemPrompt,
-            tools: allTools,
+            tools: getAllTools(authReq.user_id!),
             stopWhen: stepCountIs(5),
             onFinish: async (event) => {
                 const consolidatedParts: Message["parts"] = [];

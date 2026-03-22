@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as LogoutRouteImport } from './routes/logout'
 import { Route as MainRouteRouteImport } from './routes/_main/route'
+import { Route as MusicResolveRouteImport } from './routes/music.resolve'
 import { Route as MainLandingRouteRouteImport } from './routes/_main/_landing/route'
 import { Route as MainAuthRouteRouteImport } from './routes/_main/_auth/route'
 import { Route as MainLandingIndexRouteImport } from './routes/_main/_landing/index'
@@ -24,6 +25,8 @@ import { Route as MainAuthGuardedProfileRouteImport } from './routes/_main/_auth
 import { Route as MainAuthGuardedConversationsRouteRouteImport } from './routes/_main/_auth/_guarded/conversations/route'
 import { Route as MainAuthGuardedConversationsIndexRouteImport } from './routes/_main/_auth/_guarded/conversations/index'
 import { Route as MainAuthGuardedConversationsIdIndexRouteImport } from './routes/_main/_auth/_guarded/conversations/$id/index'
+import { Route as MainAuthGuardedOauthPlatformConnectRouteImport } from './routes/_main/_auth/_guarded/oauth.$platform.connect'
+import { Route as MainAuthGuardedOauthPlatformCallbackRouteImport } from './routes/_main/_auth/_guarded/oauth.$platform.callback'
 
 const LogoutRoute = LogoutRouteImport.update({
   id: '/logout',
@@ -32,6 +35,11 @@ const LogoutRoute = LogoutRouteImport.update({
 } as any)
 const MainRouteRoute = MainRouteRouteImport.update({
   id: '/_main',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MusicResolveRoute = MusicResolveRouteImport.update({
+  id: '/music/resolve',
+  path: '/music/resolve',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MainLandingRouteRoute = MainLandingRouteRouteImport.update({
@@ -99,10 +107,23 @@ const MainAuthGuardedConversationsIdIndexRoute =
     path: '/$id/',
     getParentRoute: () => MainAuthGuardedConversationsRouteRoute,
   } as any)
+const MainAuthGuardedOauthPlatformConnectRoute =
+  MainAuthGuardedOauthPlatformConnectRouteImport.update({
+    id: '/oauth/$platform/connect',
+    path: '/oauth/$platform/connect',
+    getParentRoute: () => MainAuthGuardedRouteRoute,
+  } as any)
+const MainAuthGuardedOauthPlatformCallbackRoute =
+  MainAuthGuardedOauthPlatformCallbackRouteImport.update({
+    id: '/oauth/$platform/callback',
+    path: '/oauth/$platform/callback',
+    getParentRoute: () => MainAuthGuardedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof MainLandingIndexRoute
   '/logout': typeof LogoutRoute
+  '/music/resolve': typeof MusicResolveRoute
   '/login': typeof MainLandingLoginRoute
   '/privacy': typeof MainLandingPrivacyRoute
   '/signup': typeof MainLandingSignupRoute
@@ -111,11 +132,14 @@ export interface FileRoutesByFullPath {
   '/profile': typeof MainAuthGuardedProfileRoute
   '/s/$token': typeof MainAuthSTokenRoute
   '/conversations/': typeof MainAuthGuardedConversationsIndexRoute
+  '/oauth/$platform/callback': typeof MainAuthGuardedOauthPlatformCallbackRoute
+  '/oauth/$platform/connect': typeof MainAuthGuardedOauthPlatformConnectRoute
   '/conversations/$id/': typeof MainAuthGuardedConversationsIdIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof MainLandingIndexRoute
   '/logout': typeof LogoutRoute
+  '/music/resolve': typeof MusicResolveRoute
   '/login': typeof MainLandingLoginRoute
   '/privacy': typeof MainLandingPrivacyRoute
   '/signup': typeof MainLandingSignupRoute
@@ -123,6 +147,8 @@ export interface FileRoutesByTo {
   '/profile': typeof MainAuthGuardedProfileRoute
   '/s/$token': typeof MainAuthSTokenRoute
   '/conversations': typeof MainAuthGuardedConversationsIndexRoute
+  '/oauth/$platform/callback': typeof MainAuthGuardedOauthPlatformCallbackRoute
+  '/oauth/$platform/connect': typeof MainAuthGuardedOauthPlatformConnectRoute
   '/conversations/$id': typeof MainAuthGuardedConversationsIdIndexRoute
 }
 export interface FileRoutesById {
@@ -131,6 +157,7 @@ export interface FileRoutesById {
   '/logout': typeof LogoutRoute
   '/_main/_auth': typeof MainAuthRouteRouteWithChildren
   '/_main/_landing': typeof MainLandingRouteRouteWithChildren
+  '/music/resolve': typeof MusicResolveRoute
   '/_main/_auth/_guarded': typeof MainAuthGuardedRouteRouteWithChildren
   '/_main/_landing/login': typeof MainLandingLoginRoute
   '/_main/_landing/privacy': typeof MainLandingPrivacyRoute
@@ -141,6 +168,8 @@ export interface FileRoutesById {
   '/_main/_auth/_guarded/profile': typeof MainAuthGuardedProfileRoute
   '/_main/_auth/s/$token': typeof MainAuthSTokenRoute
   '/_main/_auth/_guarded/conversations/': typeof MainAuthGuardedConversationsIndexRoute
+  '/_main/_auth/_guarded/oauth/$platform/callback': typeof MainAuthGuardedOauthPlatformCallbackRoute
+  '/_main/_auth/_guarded/oauth/$platform/connect': typeof MainAuthGuardedOauthPlatformConnectRoute
   '/_main/_auth/_guarded/conversations/$id/': typeof MainAuthGuardedConversationsIdIndexRoute
 }
 export interface FileRouteTypes {
@@ -148,6 +177,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/logout'
+    | '/music/resolve'
     | '/login'
     | '/privacy'
     | '/signup'
@@ -156,11 +186,14 @@ export interface FileRouteTypes {
     | '/profile'
     | '/s/$token'
     | '/conversations/'
+    | '/oauth/$platform/callback'
+    | '/oauth/$platform/connect'
     | '/conversations/$id/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/logout'
+    | '/music/resolve'
     | '/login'
     | '/privacy'
     | '/signup'
@@ -168,6 +201,8 @@ export interface FileRouteTypes {
     | '/profile'
     | '/s/$token'
     | '/conversations'
+    | '/oauth/$platform/callback'
+    | '/oauth/$platform/connect'
     | '/conversations/$id'
   id:
     | '__root__'
@@ -175,6 +210,7 @@ export interface FileRouteTypes {
     | '/logout'
     | '/_main/_auth'
     | '/_main/_landing'
+    | '/music/resolve'
     | '/_main/_auth/_guarded'
     | '/_main/_landing/login'
     | '/_main/_landing/privacy'
@@ -185,12 +221,15 @@ export interface FileRouteTypes {
     | '/_main/_auth/_guarded/profile'
     | '/_main/_auth/s/$token'
     | '/_main/_auth/_guarded/conversations/'
+    | '/_main/_auth/_guarded/oauth/$platform/callback'
+    | '/_main/_auth/_guarded/oauth/$platform/connect'
     | '/_main/_auth/_guarded/conversations/$id/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   MainRouteRoute: typeof MainRouteRouteWithChildren
   LogoutRoute: typeof LogoutRoute
+  MusicResolveRoute: typeof MusicResolveRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -207,6 +246,13 @@ declare module '@tanstack/react-router' {
       path: ''
       fullPath: '/'
       preLoaderRoute: typeof MainRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/music/resolve': {
+      id: '/music/resolve'
+      path: '/music/resolve'
+      fullPath: '/music/resolve'
+      preLoaderRoute: typeof MusicResolveRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_main/_landing': {
@@ -300,6 +346,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MainAuthGuardedConversationsIdIndexRouteImport
       parentRoute: typeof MainAuthGuardedConversationsRouteRoute
     }
+    '/_main/_auth/_guarded/oauth/$platform/connect': {
+      id: '/_main/_auth/_guarded/oauth/$platform/connect'
+      path: '/oauth/$platform/connect'
+      fullPath: '/oauth/$platform/connect'
+      preLoaderRoute: typeof MainAuthGuardedOauthPlatformConnectRouteImport
+      parentRoute: typeof MainAuthGuardedRouteRoute
+    }
+    '/_main/_auth/_guarded/oauth/$platform/callback': {
+      id: '/_main/_auth/_guarded/oauth/$platform/callback'
+      path: '/oauth/$platform/callback'
+      fullPath: '/oauth/$platform/callback'
+      preLoaderRoute: typeof MainAuthGuardedOauthPlatformCallbackRouteImport
+      parentRoute: typeof MainAuthGuardedRouteRoute
+    }
   }
 }
 
@@ -324,12 +384,18 @@ const MainAuthGuardedConversationsRouteRouteWithChildren =
 interface MainAuthGuardedRouteRouteChildren {
   MainAuthGuardedConversationsRouteRoute: typeof MainAuthGuardedConversationsRouteRouteWithChildren
   MainAuthGuardedProfileRoute: typeof MainAuthGuardedProfileRoute
+  MainAuthGuardedOauthPlatformCallbackRoute: typeof MainAuthGuardedOauthPlatformCallbackRoute
+  MainAuthGuardedOauthPlatformConnectRoute: typeof MainAuthGuardedOauthPlatformConnectRoute
 }
 
 const MainAuthGuardedRouteRouteChildren: MainAuthGuardedRouteRouteChildren = {
   MainAuthGuardedConversationsRouteRoute:
     MainAuthGuardedConversationsRouteRouteWithChildren,
   MainAuthGuardedProfileRoute: MainAuthGuardedProfileRoute,
+  MainAuthGuardedOauthPlatformCallbackRoute:
+    MainAuthGuardedOauthPlatformCallbackRoute,
+  MainAuthGuardedOauthPlatformConnectRoute:
+    MainAuthGuardedOauthPlatformConnectRoute,
 }
 
 const MainAuthGuardedRouteRouteWithChildren =
@@ -385,6 +451,7 @@ const MainRouteRouteWithChildren = MainRouteRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   MainRouteRoute: MainRouteRouteWithChildren,
   LogoutRoute: LogoutRoute,
+  MusicResolveRoute: MusicResolveRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

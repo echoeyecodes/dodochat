@@ -15,7 +15,7 @@ export class S3StorageProvider implements StorageProvider {
                 accessKeyId: envConfig.get("AWS_S3_ACCESS_KEY_ID")!,
                 secretAccessKey: envConfig.get("AWS_S3_SECRET_ACCESS_KEY")!,
             },
-            s3ForcePathStyle: !!envConfig.get("AWS_S3_FORCE_PATH_STYLE"),
+            s3ForcePathStyle: process.env.AWS_S3_FORCE_PATH_STYLE === "true",
         });
     }
 
