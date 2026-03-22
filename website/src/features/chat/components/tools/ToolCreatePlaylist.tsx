@@ -12,6 +12,7 @@ import {
     ToolCallChevron,
 } from "./ToolStatus";
 import { useLocation } from "@tanstack/react-router";
+import { useSelectCurrentUser } from "@/features/user/hooks/useSelectCurrentUser";
 type ToolCreatePlaylistPart = Extract<
     UIMessagePart<Record<string, unknown>, ChatTools>,
     { type: "tool-createPlaylist" }
@@ -22,7 +23,10 @@ type ToolCreatePlaylistProps = {
 };
 
 export const ToolCreatePlaylist: React.FC<ToolCreatePlaylistProps> = ({ part: p }) => {
-    const { data: accounts } = useConnectedAccounts();
+    const user = useSelectCurrentUser();
+    const { data: accounts } = useConnectedAccounts({
+        enabled: !!user,
+    });
     const isConnected = accounts?.some((acc: { provider: string }) => acc.provider === "spotify");
     const chat = useChatContext();
     const hasResumed = useRef(false);
