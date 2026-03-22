@@ -22,6 +22,7 @@ export const getConnectedAccounts = async (req: AuthRequest, res: Response, next
 export const connectProvider = async (req: AuthRequest, res: Response, next: NextFunction) => {
     try {
         const { provider: provider_name } = req.params as { provider: string };
+        const { redirect_to } = req.query as { redirect_to?: string };
         const provider = providers[provider_name];
 
         if (!provider) {
@@ -33,6 +34,7 @@ export const connectProvider = async (req: AuthRequest, res: Response, next: Nex
             value: JSON.stringify({
                 user_id: req.user_id!,
                 provider: provider_name,
+                redirect_to: redirect_to || null,
             }),
         });
 
@@ -95,9 +97,20 @@ export const oauthCallback = async (req: AuthRequest, res: Response, next: NextF
         });
 
         const website_url = envConfig.get("WEBSITE_URL") as string;
+        const redirect_to = (decoded_state as { redirect_to?: string }).redirect_to;
+
+        let redirect_url = `${website_url}/profile`;
+        if (redirect_to) {
+            if (redirect_to.startsWith("/")) {
+                redirect_url = `${website_url}${redirect_to}`;
+            } else {
+                redirect_url = redirect_to;
+            }
+        }
+
         return sendResponse({ res, status: HTTP_STATUS_CODES.OK })({
             success: true,
-            redirect_url: `${website_url}/profile`,
+            redirect_url,
         });
     } catch (error) {
         return next(error);

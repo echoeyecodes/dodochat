@@ -34,10 +34,16 @@ export const connectedAccountsApi = {
         return (data as { data: { success: boolean; redirect_url: string } }).data;
     },
 
-    fetchConnectUrl: async (provider: string): Promise<string> => {
+    fetchConnectUrl: async (provider: string, redirect_to?: string): Promise<string> => {
+        const query: Record<string, string> = {};
+        if (redirect_to) {
+            query.redirect_to = redirect_to;
+        }
+
         const { data } = await request({
             path: `api/connected-accounts/${provider}/connect`,
             method: "GET",
+            query: Object.keys(query).length > 0 ? query : undefined,
         });
         return (data as { data: { authUrl: string } }).data.authUrl;
     },

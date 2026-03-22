@@ -23,29 +23,10 @@ export async function* waitForOAuthConnection({
         yield {
             status: "requires_auth",
             authUrl,
-            message: `Please connect your ${provider} account.`,
+            message: `Authentication required for ${provider}. STOP GENERATING IMMEDIATELY. Do not add any conversational text or explanation.`,
         };
 
-        // Poll for up to 120 times (every 5 seconds) -> 10 minutes total
-        for (let i = 0; i < 120; i++) {
-            await new Promise((resolve) => setTimeout(resolve, 5000));
-            try {
-                const tokenRes = await getValidAccessToken({ userId, provider });
-
-                yield {
-                    status: "resuming",
-                    message: `Account connected! Resuming task...`,
-                };
-
-                return tokenRes.accessToken;
-            } catch {
-                // Ignore and continue polling
-            }
-        }
-
-        throw new Error(
-            `${provider.charAt(0).toUpperCase() + provider.slice(1)} account connection timeout. Please try again later.`,
-        );
+        throw new Error("OAUTH_REQUIRED");
     }
 }
 
@@ -223,7 +204,7 @@ export const musicTools = {
 export const createPlaylistTool = (userId: string) =>
     tool({
         description:
-            "Create a Spotify playlist for the user. Provide a creative name and a list of songs (title, artist, and optional isrc). Call this when the user says 'make a playlist' or similar.",
+            "Create a Spotify playlist for the user. Provide a creative name and a list of songs (title, artist, and optional isrc). Call this when the user says 'make a playlist' or similar. IMPORTANT: If the tool returns a 'requires_auth' status, YOU MUST STOP GENERATING IMMEDIATELY. Do not provide any conversational response, summarizing text, or links.",
         inputSchema: z.object({
             name: z
                 .string()
@@ -248,6 +229,9 @@ export const createPlaylistTool = (userId: string) =>
                     authUrl: "/oauth/spotify/connect",
                 });
             } catch (err) {
+                if ((err as Error).message === "OAUTH_REQUIRED") {
+                    return;
+                }
                 yield {
                     success: false,
                     message: (err as Error).message,

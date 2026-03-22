@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { type UIMessagePart } from "ai";
-import { type ChatTools } from "../../context/ChatContext";
+import { useChatContext, type ChatTools } from "../../context/ChatContext";
+import { useConnectedAccounts } from "../../../connected-accounts/hooks/useConnectedAccounts";
 import { LucideMusic, LucideExternalLink, LucideAlertCircle } from "lucide-react";
 import {
     ToolCall,
@@ -10,7 +11,7 @@ import {
     ToolCallDetails,
     ToolCallChevron,
 } from "./ToolStatus";
-
+import { useLocation } from "@tanstack/react-router";
 type ToolCreatePlaylistPart = Extract<
     UIMessagePart<Record<string, unknown>, ChatTools>,
     { type: "tool-createPlaylist" }
@@ -21,6 +22,12 @@ type ToolCreatePlaylistProps = {
 };
 
 export const ToolCreatePlaylist: React.FC<ToolCreatePlaylistProps> = ({ part: p }) => {
+    const { data: accounts } = useConnectedAccounts();
+    const isConnected = accounts?.some((acc: { provider: string }) => acc.provider === "spotify");
+    const chat = useChatContext();
+    const hasResumed = useRef(false);
+    const location = useLocation();
+
     if (p.state === "output-error") {
         return (
             <ToolCall>
@@ -36,18 +43,51 @@ export const ToolCreatePlaylist: React.FC<ToolCreatePlaylistProps> = ({ part: p 
         );
     }
 
+    useEffect(() => {
+        const searchParams = new URLSearchParams(window.location.search);
+        const resumeParam = searchParams.get("resume");
+
+        if (
+            p.state === "output-available" &&
+            p.output?.status === "requires_auth" &&
+            isConnected &&
+            resumeParam === "spotify" &&
+            !hasResumed.current
+        ) {
+            hasResumed.current = true;
+            chat.regenerate();
+
+            const url = new URL(window.location.href);
+            url.searchParams.delete("resume");
+            window.history.replaceState({}, "", url.toString());
+        }
+    }, [isConnected, p.state, p.output, chat]);
+
     if (p.output && p.output.status === "requires_auth") {
+        if (isConnected) {
+            return (
+                <ToolCall>
+                    <div className="flex items-center gap-2.5 text-left w-max">
+                        <ToolCallIcon status="loading" />
+                        <ToolCallMessage>Account connected! Resuming task...</ToolCallMessage>
+                    </div>
+                </ToolCall>
+            );
+        }
+
+        const currentPath = location.pathname;
+        const redirect_to = `${currentPath}?resume=spotify`;
+        const authUrlWithRedirect = `${p.output.authUrl}?redirect_to=${encodeURIComponent(redirect_to)}`;
+
         return (
             <div className="flex flex-col my-1.5 animate-in fade-in duration-300 text-[13px] font-mono tracking-tight">
                 <div className="flex items-center gap-2.5 text-(--color-warning)">
                     <LucideAlertCircle className="h-3.5 w-3.5 shrink-0" strokeWidth={2.5} />
-                    <span>{p.output.message || "Spotify account not connected."}</span>
+                    <span>Spotify account not connected.</span>
                 </div>
                 <div className="pl-6 mt-2 mb-1">
                     <a
-                        href={p.output.authUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href={authUrlWithRedirect}
                         className="inline-flex items-center gap-1.5 py-1.5 px-3 rounded-md bg-(--color-text-primary) text-(--color-bg) text-[11px] font-bold hover:opacity-90 transition-all active:scale-95"
                     >
                         Connect Spotify
